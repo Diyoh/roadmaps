@@ -784,6 +784,12 @@ th{background:var(--sunken)}
       <div class="cal" id="cal"></div>
       <div id="hol_list" class="hol-list"></div>
     </div>
+    <div class="panel" id="cardPreviewPanel">
+      <h3>Students’ daily progress card</h3>
+      <p class="muted small" style="margin:0">This is what students post on social media at the end of each study day, drawn with sample data.</p>
+      <div class="weekbar"><button type="button" class="btn" id="cardPreviewBtn">Preview progress card</button><span class="muted small" id="cardPreviewMsg"></span></div>
+      <img id="cardPreviewImg" class="cardimg" alt="Sample daily progress card" hidden>
+    </div>
     <div class="weekbar savebar"><button type="button" class="btn primary" id="set_save">Save and apply to all students</button><button type="button" class="btn" id="set_reset">Discard changes</button><span class="muted small" id="set_status"></span></div>
   </section>
 
@@ -1785,7 +1791,7 @@ document.addEventListener("change", function(ev){
 });
 document.addEventListener("input", function(ev){
   var el=ev.target;
-  if(el.closest("#p-wait") || el.closest("#p-start") || el.closest("#p-class") || el.closest("#p-assign") || el.closest("#p-student") || el.closest("#p-settings") || el.closest("#workList") || el.closest("#cardPanel")) return;
+  if(el.closest("#cardPreviewPanel") || el.closest("#p-wait") || el.closest("#p-start") || el.closest("#p-class") || el.closest("#p-assign") || el.closest("#p-student") || el.closest("#p-settings") || el.closest("#workList") || el.closest("#cardPanel")) return;
   if(el.dataset.pledge){ store.state.pledge[el.dataset.pledge]=el.value; saveState(); if(el.dataset.pledge==="name"){ updateNameCard(); syncUserName(); } }
   else if(el.hasAttribute("data-day")){ var w=ensureWeek(); w.hours[+el.dataset.day]=el.value; updateWeekTotal(); saveWeek(curWeek); updateStats(); updateCardDays(); }
   else if(el.hasAttribute("data-note")){ var w2=ensureWeek(); w2.notes[+el.dataset.note]=el.value; saveWeek(curWeek); renderHistory(); updateCardDays(); }
@@ -2021,10 +2027,10 @@ function wrapLines(ctx, text, maxW, maxLines){
   if(lines.length>maxLines){ lines=lines.slice(0,maxLines); var l=lines[maxLines-1]; while(ctx.measureText(l+"…").width>maxW && l.length) l=l.slice(0,-1); lines[maxLines-1]=l+"…"; }
   return lines;
 }
-function drawCard(d){
+function drawCard(d, S){
   var W=1080, H=1350, c=document.createElement("canvas"); c.width=W; c.height=H;
-  var x=c.getContext("2d"), s=store.state, e=dayEntry(d), name=(s.pledge.name||"").trim()||"DBA student";
-  var lp=levelProgress(s), cur=workingOn(s), sum=computeSummary(), dayN=planDayNumber(d), streak=streakTo(d);
+  var x=c.getContext("2d"), s=S?S.state:store.state, e=S?{hours:S.hours, note:S.note}:dayEntry(d), name=S?S.name:((s.pledge.name||"").trim()||"DBA student");
+  var lp=levelProgress(s), cur=workingOn(s), sum=S?S.sum:computeSummary(), dayN=S?S.dayN:planDayNumber(d), streak=S?S.streak:streakTo(d);
   var DISP="'Bricolage Grotesque', 'Segoe UI', sans-serif", SANS="'IBM Plex Sans', 'Segoe UI', sans-serif", MONO="'IBM Plex Mono', monospace";
   var ink="#0D1826", blue="#86B8EE", amber="#F1AB4E", green="#6FCC98", white="#F2F5F9", muted="#93A1B2";
   x.fillStyle=ink; x.fillRect(0,0,W,H);
@@ -2088,6 +2094,17 @@ function fontsReady(){
   if(!document.fonts || !document.fonts.load) return Promise.resolve();
   return Promise.all(["700 100px 'Bricolage Grotesque'","400 30px 'IBM Plex Sans'","600 30px 'IBM Plex Sans'","500 24px 'IBM Plex Mono'"].map(function(f){ return document.fonts.load(f).catch(function(){}); })).catch(function(){});
 }
+document.getElementById("cardPreviewBtn").addEventListener("click", function(){
+  var msg=document.getElementById("cardPreviewMsg"); msg.textContent="Drawing…";
+  var d=iso(today()) < PLAN_START ? PLAN_START : iso(today());
+  var done={}; LEVELS[0].tasks.forEach(function(t,i){ if(i<3) done["l1t"+i]=true; });
+  var sample={ name:"Chiamaka Obi", hours:2, note:"Finished CS50 SQL Lecture 2 and wrote 8 JOIN queries on my bookstore database.", dayN:12, streak:6,
+    state:{done:done, exams:{}, pledge:{}, subs:{}}, sum:{hours:23.5, tasksDone:3, examsPassed:0} };
+  fontsReady().then(function(){
+    var c=drawCard(d, sample), img=document.getElementById("cardPreviewImg");
+    img.src=c.toDataURL("image/jpeg",0.92); img.hidden=false; msg.textContent="Sample only: Chiamaka Obi is not a real student.";
+  });
+});
 document.getElementById("cardMake").addEventListener("click", function(){
   var d=document.getElementById("cardDay").value, st=document.getElementById("cardStatus");
   if(!d) return;
