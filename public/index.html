@@ -1,0 +1,546 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Roadmaps</title>
+<meta name="description" content="Structured career roadmaps with daily accountability and a teacher who follows your progress.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+:root{
+  --bg:#F3F5F8; --surface:#FFFFFF; --sunken:#EBEFF4; --ink:#15202C; --muted:#5B6776; --line:#D8DEE6;
+  --accent:#1D5FA6; --accent-ink:#FFFFFF; --accent-soft:#E2ECF8; --amber:#A65F00; --amber-soft:#FBF0DE;
+  --ok:#1C744A; --ok-soft:#E0F1E7; --warn:#A33A2B;
+  --display:"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --sans:"IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+  --radius:12px;
+  --shadow:0 1px 2px rgba(21,32,44,.05), 0 8px 24px rgba(21,32,44,.06);
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    color-scheme: dark;
+    --bg:#0E141B; --surface:#161F29; --sunken:#111922; --ink:#E5EAF0; --muted:#9AA6B4; --line:#2A3542;
+    --accent:#86B8EE; --accent-ink:#0E141B; --accent-soft:#1A2B3E; --amber:#F1AB4E; --amber-soft:#31240F;
+    --ok:#6FCC98; --ok-soft:#133223; --warn:#F08A7A;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+  }
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{margin:0}
+body{background:var(--bg); color:var(--ink); font:15px/1.6 var(--sans); padding-inline:20px; min-height:100vh}
+a{color:var(--accent); text-underline-offset:2px}
+h1,h2,h3{font-family:var(--display); line-height:1.12; margin:0; text-wrap:balance}
+p{margin:0}
+.wrap{max-width:1120px; margin:0 auto}
+.eyebrow{font-family:var(--mono); font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted)}
+.muted{color:var(--muted)}
+.small{font-size:13px}
+:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+
+/* top bar */
+.top{display:flex; align-items:center; justify-content:space-between; gap:16px; padding-block:20px}
+.logo{display:flex; align-items:center; gap:10px; text-decoration:none; color:var(--ink)}
+.logo svg{flex:none}
+.logo b{font-family:var(--display); font-size:1.3rem; font-weight:700; letter-spacing:-.01em}
+.who{display:flex; align-items:center; gap:12px; font-size:14px}
+.who img{width:30px; height:30px; border-radius:50%}
+.role{font-family:var(--mono); font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--accent-ink); background:var(--accent); border-radius:6px; padding:3px 8px}
+
+/* buttons */
+.btn{display:inline-flex; align-items:center; justify-content:center; gap:8px; font:inherit; font-size:14px; font-weight:500; padding:9px 16px; border-radius:9px; border:1px solid var(--line); background:var(--surface); color:var(--ink); cursor:pointer; text-decoration:none; white-space:nowrap}
+.btn:hover{border-color:var(--accent)}
+.btn:disabled{opacity:.5; cursor:default}
+.btn.primary{background:var(--accent); border-color:var(--accent); color:var(--accent-ink)}
+.btn.primary:hover{filter:brightness(1.07)}
+.btn.small{font-size:13px; padding:6px 12px; border-radius:8px}
+.btn.ghost{background:transparent}
+.linkbtn{all:unset; cursor:pointer; color:var(--accent); font-size:13px; text-decoration:underline; text-underline-offset:2px}
+
+/* landing */
+.hero{display:grid; grid-template-columns:minmax(0,1.15fr) minmax(320px,.85fr); gap:48px; align-items:center; padding-block:40px 56px}
+.hero h1{font-size:clamp(2.3rem, 5vw, 3.6rem); font-weight:700; letter-spacing:-.02em}
+.hero .lead{font-size:1.1rem; color:var(--muted); max-width:52ch; margin-top:18px}
+.points{list-style:none; padding:0; margin:28px 0 0; display:grid; gap:14px; max-width:56ch}
+.points li{display:grid; grid-template-columns:36px 1fr; gap:12px; align-items:start}
+.points .ic{width:36px; height:36px; border-radius:9px; background:var(--accent-soft); color:var(--accent); display:grid; place-items:center}
+.points b{display:block; font-weight:600}
+.points span{color:var(--muted); font-size:14px}
+
+.card{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow)}
+.authcard{padding:28px 26px; display:grid; gap:14px}
+.authcard h2{font-size:1.45rem}
+.authcard label{display:grid; gap:5px; font-size:13px; color:var(--muted)}
+input[type=email], input[type=password]{font:inherit; font-size:15px; color:var(--ink); background:var(--surface); border:1px solid var(--line); border-radius:9px; padding:10px 12px; width:100%}
+input:focus{border-color:var(--accent); outline:none; box-shadow:0 0 0 3px var(--accent-soft)}
+.gbtn{width:100%; padding:11px 16px}
+.or{display:flex; align-items:center; gap:10px; color:var(--muted); font-size:12px}
+.or::before,.or::after{content:""; flex:1; height:1px; background:var(--line)}
+.row{display:flex; flex-wrap:wrap; gap:10px; align-items:center}
+.err{color:var(--warn); font-size:13px; min-height:1em}
+.note{font-size:13px; color:var(--muted)}
+
+/* sections */
+.section{padding-block:8px 48px; display:grid; gap:20px}
+.section-head{display:flex; flex-wrap:wrap; gap:8px 20px; align-items:end; justify-content:space-between}
+.section-head h2{font-size:1.7rem}
+
+/* roadmap cards */
+.grid{display:grid; grid-template-columns:repeat(auto-fill, minmax(300px, 1fr)); gap:18px}
+.rm{position:relative; padding:24px 22px 20px; display:grid; gap:12px; align-content:start; overflow:hidden}
+.rm::before{content:""; position:absolute; inset:0 0 auto 0; height:4px; background:var(--accent)}
+.rm.current{border-color:var(--accent)}
+.rm .meta{display:flex; flex-wrap:wrap; gap:6px}
+.chip{font-family:var(--mono); font-size:11px; letter-spacing:.04em; text-transform:uppercase; padding:3px 9px; border-radius:999px; background:var(--sunken); color:var(--muted); white-space:nowrap}
+.chip.cur{background:var(--accent); color:var(--accent-ink)}
+.chip.started{background:var(--ok-soft); color:var(--ok)}
+.rm h3{font-size:1.35rem}
+.rm p{color:var(--muted); font-size:14px}
+.rm .foot{display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-top:6px}
+.ladder{display:grid; grid-template-columns:repeat(var(--n,7), 1fr); gap:4px; margin-top:2px}
+.ladder i{height:6px; border-radius:3px; background:var(--sunken)}
+.ladder i:first-child{background:var(--accent)}
+.confirm{border-top:1px solid var(--line); padding-top:12px; display:grid; gap:10px; font-size:14px}
+.empty{padding:28px; text-align:center; color:var(--muted); border:1px dashed var(--line); border-radius:var(--radius)}
+
+/* welcome back */
+.welcome{padding:36px 32px; display:grid; gap:18px; max-width:720px; margin:24px auto 56px}
+.welcome h1{font-size:clamp(2rem,4vw,2.6rem)}
+.progress{height:4px; background:var(--sunken); border-radius:2px; overflow:hidden}
+.progress i{display:block; height:100%; width:0; background:var(--accent); transition:width 1.4s linear}
+
+/* teacher */
+.stats{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden}
+.stat{background:var(--surface); padding:18px 20px; display:grid; gap:2px}
+.stat b{font-family:var(--display); font-size:2rem; font-variant-numeric:tabular-nums}
+.stat span{color:var(--muted); font-size:13px}
+.list{padding:6px 20px}
+.li{display:grid; grid-template-columns:minmax(0,1.4fr) minmax(0,1fr) auto; gap:14px; align-items:center; padding-block:14px; border-bottom:1px solid var(--line)}
+.li:last-child{border-bottom:0}
+.li .n{font-weight:600}
+.li .e{font-size:13px; color:var(--muted); overflow-wrap:anywhere}
+.steps{margin:0; padding-left:20px; display:grid; gap:8px; max-width:78ch; color:var(--ink)}
+.steps code{font-family:var(--mono); font-size:13px; background:var(--sunken); padding:1px 6px; border-radius:5px}
+.pane{padding:22px 24px; display:grid; gap:14px}
+
+input[type=text]{font:inherit; font-size:15px; color:var(--ink); background:var(--surface); border:1px solid var(--line); border-radius:9px; padding:10px 12px; width:100%}
+.tform{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+.tform label{display:grid; gap:5px; font-size:13px; color:var(--muted)}
+.rmpick{border:1px solid var(--line); border-radius:9px; padding:10px 14px 12px; margin:0}
+.rmpick legend{font-size:12px; color:var(--muted); padding:0 4px}
+.rmpick label{display:inline-flex; gap:8px; align-items:center; font-size:14px; padding:4px 10px; border:1px solid var(--line); border-radius:999px; cursor:pointer}
+.rmpick input{accent-color:var(--accent)}
+.chips{display:flex; flex-wrap:wrap; gap:6px}
+@media (max-width: 860px){ .tform{grid-template-columns:1fr} }
+footer{padding-block:24px 40px; border-top:1px solid var(--line); color:var(--muted); font-size:13px; display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap}
+
+@media (max-width: 860px){
+  .hero{grid-template-columns:1fr; gap:32px; padding-block:24px 40px}
+  .stats{grid-template-columns:1fr}
+  .li{grid-template-columns:1fr}
+  body{padding-inline:16px}
+}
+@media (prefers-reduced-motion: reduce){ *{transition:none!important} }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="logo" href="#" aria-label="Roadmaps home">
+      <svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><rect x="1" y="1" width="28" height="28" rx="8" fill="var(--accent)"/><path d="M9 22V8M21 22V8M9 18h12M9 13h12" stroke="var(--accent-ink)" stroke-width="2.2" stroke-linecap="round"/></svg>
+      <b id="brandName">Roadmaps</b>
+    </a>
+    <div class="who" id="who" hidden>
+      <span class="role" id="roleTag" hidden>Teacher</span>
+      <img id="avatar" alt="" hidden>
+      <span id="whoName" class="muted"></span>
+      <button type="button" class="btn small ghost" id="signOut">Sign out</button>
+    </div>
+  </header>
+
+  <main id="main">
+    <p class="muted" id="loading" style="padding-block:60px">Loading…</p>
+
+    <!-- signed out -->
+    <section id="vLanding" hidden>
+      <div class="hero">
+        <div>
+          <div class="eyebrow">Career roadmaps with a teacher</div>
+          <h1 id="heroTitle">Pick a career path. Climb it one level at a time.</h1>
+          <p class="lead">Each roadmap takes you from beginner to certified professional, with a daily plan, real projects and a teacher who follows your progress.</p>
+          <ul class="points">
+            <li><span class="ic" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span><div><b>A plan you commit to</b><span>Sign a commitment, then follow a dated plan: what to study, where, and which exam comes next.</span></div></li>
+            <li><span class="ic" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span><div><b>A daily log</b><span>Log your hours and what you did each day, and share a progress card to show the world your climb.</span></div></li>
+            <li><span class="ic" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span><div><b>A teacher in your corner</b><span>Get assignments, grades and comments on your work, and help when you fall behind.</span></div></li>
+          </ul>
+        </div>
+        <div class="card authcard">
+          <h2>Sign in or create an account</h2>
+          <p class="muted small" id="authLead">New here? Create an account, choose your roadmap, and your teacher will approve you.</p>
+          <button type="button" class="btn gbtn" id="googleBtn"><svg width="18" height="18" viewBox="0 0 48 48" aria-hidden="true"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.4-.4-3.5z"/></svg>Continue with Google</button>
+          <div class="or">or use email</div>
+          <label>Email<input type="email" id="authEmail" autocomplete="email"></label>
+          <label>Password<input type="password" id="authPass" autocomplete="current-password"></label>
+          <div class="row"><button type="button" class="btn primary" id="authSignIn">Sign in</button><button type="button" class="btn" id="authSignUp">Create account</button><button type="button" class="linkbtn" id="authReset" style="margin-left:auto">Forgot password?</button></div>
+          <span class="err" id="authErr" role="alert"></span>
+        </div>
+      </div>
+      <div class="section">
+        <div class="section-head"><h2>Available roadmaps</h2><span class="muted small">More roadmaps are added over time.</span></div>
+        <div class="grid" id="landingGrid"></div>
+      </div>
+    </section>
+
+    <!-- student: choose -->
+    <section id="vChoose" hidden>
+      <div class="section" style="padding-top:24px">
+        <div class="section-head">
+          <div style="display:grid;gap:8px"><div class="eyebrow" id="chooseEyebrow">Step 1 of 2</div><h2 id="chooseTitle" style="font-size:clamp(1.9rem,4vw,2.5rem)">Choose your roadmap</h2></div>
+          <a class="btn small" id="chooseBack" href="#" hidden>Back to my roadmap</a>
+        </div>
+        <p class="muted" id="chooseLead" style="max-width:66ch">Pick the career you want to build. You’ll follow this roadmap until you decide to switch, and anything you’ve done on a roadmap stays saved if you come back to it.</p>
+        <div class="grid" id="chooseGrid"></div>
+      </div>
+    </section>
+
+    <!-- student: welcome back -->
+    <section id="vWelcome" hidden>
+      <div class="card welcome">
+        <div class="eyebrow">Welcome back</div>
+        <h1 id="welTitle">Continuing your roadmap</h1>
+        <p class="muted" id="welText"></p>
+        <div class="progress"><i id="welBar"></i></div>
+        <div class="row"><a class="btn primary" id="welGo" href="#">Continue now</a><a class="btn" href="#switch" id="welSwitch">Choose a different roadmap</a></div>
+      </div>
+    </section>
+
+    <!-- teacher -->
+    <section id="vTeacher" hidden>
+      <div class="section" style="padding-top:24px">
+        <div style="display:grid;gap:8px"><div class="eyebrow" id="tEyebrow">Teacher</div><h2 style="font-size:clamp(1.9rem,4vw,2.5rem)" id="tTitle">Your roadmaps and students</h2></div>
+        <div class="stats">
+          <div class="stat"><span>Roadmaps</span><b id="tRoadmaps">0</b><span>published</span></div>
+          <div class="stat"><span>Students</span><b id="tStudents">0</b><span>approved</span></div>
+          <div class="stat"><span>Waiting</span><b id="tWaiting">0</b><span>for your approval</span></div>
+        </div>
+      </div>
+      <div class="section">
+        <div class="section-head"><h2>Waiting for approval</h2><span class="muted small" id="tPendingNote">Approving a student gives them access to every roadmap.</span></div>
+        <div class="card list" id="tPending"></div>
+      </div>
+      <div class="section">
+        <div class="section-head"><h2>Roadmaps</h2><span class="muted small">Open a roadmap to manage its class, assignments and plan settings.</span></div>
+        <div class="grid" id="tGrid"></div>
+      </div>
+      <div class="section" id="tTeachersSec" hidden>
+        <div class="section-head"><h2>Teachers</h2><span class="muted small">Teachers sign in with Google using the email you add here. They only see the roadmaps you assign to them.</span></div>
+        <div class="card pane">
+          <h3 id="tfTitle">Add a teacher</h3>
+          <div class="tform">
+            <label>Email (their Google account)<input type="email" id="tfEmail" placeholder="teacher@gmail.com"></label>
+            <label>Name<input type="text" id="tfName" placeholder="e.g. Ngozi Adeyemi"></label>
+          </div>
+          <fieldset class="rmpick"><legend>Roadmaps they manage</legend><div id="tfRoadmaps" class="row"></div></fieldset>
+          <div class="row"><button type="button" class="btn primary" id="tfSave">Add teacher</button><button type="button" class="btn" id="tfCancel" hidden>Cancel editing</button><span class="small muted" id="tfMsg" role="status"></span></div>
+        </div>
+        <div class="card list" id="tTeachers"></div>
+      </div>
+      <div class="section" id="tNewRoadmap">
+        <div class="card pane">
+          <h3>Adding a new roadmap</h3>
+          <ol class="steps">
+            <li>Create a branch for it in the <code>roadmaps</code> repository, copied from <code>dba-career-ladder</code>, and change its content.</li>
+            <li>In its <code>public/firebase-config.js</code>, give it a new <code>ROADMAP.id</code>, title and tagline.</li>
+            <li>Create a Firebase Hosting site for it: <code>firebase hosting:sites:create roadmaps-2b061-&lt;id&gt;</code>, and set that site name in its <code>firebase.json</code>.</li>
+            <li>Deploy it with <code>firebase deploy --only hosting</code>, then open it once while signed in as the teacher. It appears here and in every student’s list.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="section">
+        <div class="section-head"><h2>Removed students</h2></div>
+        <div class="card list" id="tRemoved"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer><span id="footName">Roadmaps</span><span>Learn in public. One level at a time.</span></footer>
+</div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getAuth, onAuthStateChanged, GoogleAuthProvider, signInWithPopup, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import { getFirestore, doc, getDoc, setDoc, deleteDoc, collection, onSnapshot } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import { firebaseConfig, ADMIN_EMAIL, HUB } from "./firebase-config.js";
+
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const MON = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+const fmtDate = (s) => { if (!s) return ""; const d = new Date(s.length === 10 ? s + "T00:00:00" : s); return d.getDate() + " " + MON[d.getMonth()] + " " + d.getFullYear(); };
+const hoursText = (h) => (+h === 1 ? "1 hour" : (+h || 2) + " hours");
+const VIEWS = ["loading", "vLanding", "vChoose", "vWelcome", "vTeacher"];
+const show = (id) => VIEWS.forEach((v) => $(v).hidden = v !== id);
+
+if (HUB && HUB.name) { $("brandName").textContent = HUB.name; $("footName").textContent = HUB.name; document.title = HUB.name; }
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const fs = getFirestore(app);
+
+let catalog = [], me = null, meRef = null, user = null, isTeacher = false, redirectTimer = null;
+let users = {}, access = {}, teachers = {}, isAdmin = false, myRoadmaps = [], editingTeacher = null;
+
+/* ---------- catalog (public) ---------- */
+onSnapshot(collection(fs, "catalog"), (qs) => {
+  catalog = qs.docs.map((d) => ({ id: d.id, ...d.data() })).sort((a, b) => (a.order || 99) - (b.order || 99) || String(a.title).localeCompare(b.title));
+  render();
+}, () => {});
+
+function rmCard(c, opts) {
+  const n = +c.levels || 7;
+  const chips = [];
+  if (opts.current) chips.push("<span class='chip cur'>Your roadmap</span>");
+  else if (opts.started) chips.push("<span class='chip started'>Started " + esc(fmtDate(opts.started)) + "</span>");
+  chips.push("<span class='chip'>" + n + " levels</span>");
+  if (c.dailyHours) chips.push("<span class='chip'>" + esc(hoursText(c.dailyHours)) + " a day</span>");
+  if (c.startDate) chips.push("<span class='chip'>Starts " + esc(fmtDate(c.startDate)) + "</span>");
+  return "<article class='card rm" + (opts.current ? " current" : "") + "'>" +
+    "<div class='meta'>" + chips.join("") + "</div>" +
+    "<h3>" + esc(c.title) + "</h3>" +
+    (c.tagline ? "<p>" + esc(c.tagline) + "</p>" : "") +
+    "<div class='ladder' style='--n:" + n + "' aria-hidden='true'>" + "<i></i>".repeat(n) + "</div>" +
+    (opts.footer ? "<div class='foot'>" + opts.footer + "</div>" : "") +
+    (opts.confirm || "") + "</article>";
+}
+
+/* ---------- rendering ---------- */
+let pendingSwitch = null;
+function render() {
+  if (redirectTimer) { clearTimeout(redirectTimer); redirectTimer = null; }
+  if (user === null) { renderLanding(); return; }
+  if (user === undefined) { show("loading"); return; }
+  if (isTeacher) { renderTeacher(); return; }
+  if (!me) { show("loading"); return; }
+  const wantSwitch = location.hash === "#switch";
+  const cur = catalog.find((c) => c.id === me.currentRoadmap);
+  if (!cur || wantSwitch) renderChoose(cur); else renderWelcome(cur);
+}
+
+function renderLanding() {
+  show("vLanding");
+  $("landingGrid").innerHTML = catalog.length
+    ? catalog.map((c) => rmCard(c, { footer: "<span class='muted small'>Sign in to start this roadmap</span>" })).join("")
+    : "<div class='empty'>Roadmaps will appear here soon.</div>";
+}
+
+function renderChoose(cur) {
+  show("vChoose");
+  const started = (me && me.started) || {};
+  $("chooseEyebrow").textContent = cur ? "Switch roadmap" : "Get started";
+  $("chooseTitle").textContent = cur ? "Switch to a different roadmap" : "Choose your roadmap";
+  $("chooseLead").textContent = cur
+    ? "You’re on “" + cur.title + "”. If you switch, everything you’ve done there stays saved, and you can come back to it at any time."
+    : "Pick the career you want to build. You’ll follow this roadmap until you decide to switch, and anything you’ve done on a roadmap stays saved if you come back to it.";
+  $("chooseBack").hidden = !cur;
+  if (cur) $("chooseBack").href = cur.url;
+  $("chooseGrid").innerHTML = catalog.length ? catalog.map((c) => {
+    const isCur = cur && c.id === cur.id;
+    let footer;
+    if (isCur) footer = "<a class='btn primary' href='" + esc(c.url) + "'>Continue</a>";
+    else if (started[c.id]) footer = "<button type='button' class='btn primary' data-pick='" + esc(c.id) + "'>" + (cur ? "Switch back to this" : "Continue this roadmap") + "</button>";
+    else footer = "<button type='button' class='btn primary' data-pick='" + esc(c.id) + "'>" + (cur ? "Switch to this roadmap" : "Start this roadmap") + "</button>";
+    const confirm = pendingSwitch === c.id && cur
+      ? "<div class='confirm'><span>Switch from <b>" + esc(cur.title) + "</b> to <b>" + esc(c.title) + "</b>? Your progress on " + esc(cur.title) + " stays saved.</span><div class='row'><button type='button' class='btn primary small' data-confirm='" + esc(c.id) + "'>Yes, switch</button><button type='button' class='btn small' data-cancel>Cancel</button></div></div>"
+      : "";
+    return rmCard(c, { current: isCur, started: !isCur && started[c.id], footer, confirm });
+  }).join("") : "<div class='empty'>No roadmaps are published yet. Check back soon.</div>";
+}
+
+function renderWelcome(cur) {
+  show("vWelcome");
+  const first = ((user.displayName || "").trim().split(/\s+/)[0]) || "";
+  $("welTitle").textContent = (first ? "Welcome back, " + first + "." : "Welcome back.");
+  $("welText").textContent = "Taking you to “" + cur.title + "”, where you left off.";
+  $("welGo").href = cur.url;
+  const bar = $("welBar"); bar.style.transition = "none"; bar.style.width = "0";
+  requestAnimationFrame(() => { requestAnimationFrame(() => { bar.style.transition = ""; bar.style.width = "100%"; }); });
+  redirectTimer = setTimeout(() => { location.href = cur.url; }, 1500);
+}
+
+document.addEventListener("click", (ev) => {
+  const pick = ev.target.closest("[data-pick]"), conf = ev.target.closest("[data-confirm]"), cancel = ev.target.closest("[data-cancel]");
+  if (cancel) { pendingSwitch = null; render(); return; }
+  if (pick) {
+    const id = pick.getAttribute("data-pick");
+    if (me.currentRoadmap && catalog.some((c) => c.id === me.currentRoadmap)) { pendingSwitch = id; render(); return; }
+    choose(id, pick);
+  }
+  if (conf) choose(conf.getAttribute("data-confirm"), conf);
+});
+
+function choose(id, btn) {
+  const c = catalog.find((x) => x.id === id); if (!c) return;
+  btn.disabled = true; btn.textContent = "Opening…";
+  const next = { ...me, currentRoadmap: id, started: { ...(me.started || {}) }, email: user.email || "", name: user.displayName || me.name || "", updatedAt: new Date().toISOString() };
+  if (!next.started[id]) next.started[id] = new Date().toISOString();
+  setDoc(meRef, next).then(() => { location.href = c.url; }).catch(() => { btn.disabled = false; btn.textContent = "Couldn’t save. Try again"; });
+}
+window.addEventListener("hashchange", () => { pendingSwitch = null; render(); });
+
+/* ---------- teacher ---------- */
+function renderTeacher() {
+  show("vTeacher");
+  const mine = (rid) => isAdmin || myRoadmaps.includes(rid);
+  const myCatalog = catalog.filter((c) => mine(c.id));
+  $("tEyebrow").textContent = isAdmin ? "Admin" : "Teacher";
+  $("tTitle").textContent = isAdmin ? "All roadmaps, students and teachers" : "Your roadmaps and students";
+  $("tPendingNote").textContent = isAdmin ? "Approving a student gives them access to every roadmap." : "Students who chose one of your roadmaps.";
+  $("tTeachersSec").hidden = !isAdmin; $("tNewRoadmap").hidden = !isAdmin;
+  const studentIds = Object.keys(users).filter((id) => id !== user.uid && (isAdmin || mine((users[id] || {}).currentRoadmap)));
+  const approved = studentIds.filter((id) => access[id] && access[id].approved && !access[id].removed);
+  const pending = studentIds.filter((id) => !(access[id] && (access[id].approved || access[id].removed)));
+  const removed = studentIds.filter((id) => access[id] && access[id].removed);
+  $("tRoadmaps").textContent = myCatalog.length;
+  $("tStudents").textContent = approved.length;
+  $("tWaiting").textContent = pending.length;
+  const title = (rid) => (catalog.find((c) => c.id === rid) || {}).title || "No roadmap chosen yet";
+  const row = (id, btns) => {
+    const u = users[id] || {};
+    return "<div class='li'><div><div class='n'>" + esc(u.name || "No name yet") + "</div><div class='e'>" + esc(u.email || "") + "</div></div>" +
+      "<div class='small muted'>" + esc(title(u.currentRoadmap)) + (u.updatedAt ? "<br>Joined " + esc(fmtDate(Object.values(u.started || {}).sort()[0] || u.updatedAt)) : "") + "</div>" +
+      "<div class='row'>" + btns + "</div></div>";
+  };
+  $("tPending").innerHTML = pending.length
+    ? pending.map((id) => row(id, "<button type='button' class='btn primary small' data-approve='" + esc(id) + "'>Approve</button><button type='button' class='btn small' data-remove='" + esc(id) + "'>Remove</button>")).join("")
+    : "<p class='muted' style='padding-block:14px'>No one is waiting. New students appear here after they sign up and choose a roadmap.</p>";
+  $("tRemoved").innerHTML = removed.length
+    ? removed.map((id) => row(id, "<button type='button' class='btn small' data-restore='" + esc(id) + "'>Restore</button>")).join("")
+    : "<p class='muted' style='padding-block:14px'>No removed students.</p>";
+  const teachersOf = (rid) => Object.values(teachers).filter((t) => (t.roadmaps || []).includes(rid)).map((t) => t.name || t.email);
+  $("tGrid").innerHTML = myCatalog.length ? myCatalog.map((c) => {
+    const n = approved.filter((id) => (users[id] || {}).currentRoadmap === c.id).length;
+    const tl = isAdmin ? teachersOf(c.id) : [];
+    return rmCard(c, { footer: "<a class='btn primary' href='" + esc(c.url) + "'>Open teacher view</a><span class='muted small'>" + n + (n === 1 ? " student" : " students") + " on it" + (isAdmin ? " · " + (tl.length ? "Teachers: " + esc(tl.join(", ")) : "No teacher assigned") : "") + "</span>" });
+  }).join("") : (isAdmin ? "<div class='empty'>No roadmaps yet. Open a roadmap site while signed in as the admin and it registers itself here.</div>" : "<div class='empty'>No roadmaps are assigned to you yet. Ask the admin to assign one.</div>");
+  if (isAdmin) renderTeachers();
+}
+function renderTeachers() {
+  const box = $("tfRoadmaps");
+  const checked = new Set(Array.from(box.querySelectorAll("input:checked")).map((i) => i.value));
+  if (editingTeacher && !box.dataset.loaded) { (teachers[editingTeacher].roadmaps || []).forEach((r) => checked.add(r)); box.dataset.loaded = "1"; }
+  box.innerHTML = catalog.length ? catalog.map((c) => "<label><input type='checkbox' value='" + esc(c.id) + "'" + (checked.has(c.id) ? " checked" : "") + ">" + esc(c.title) + "</label>").join("") : "<span class='muted small'>No roadmaps registered yet.</span>";
+  const list = Object.keys(teachers).sort();
+  $("tTeachers").innerHTML = list.length ? list.map((k) => {
+    const t = teachers[k], rms = (t.roadmaps || []).map((r) => (catalog.find((c) => c.id === r) || { title: r }).title);
+    return "<div class='li'><div><div class='n'>" + esc(t.name || t.email) + "</div><div class='e'>" + esc(t.email) + "</div></div>" +
+      "<div class='chips'>" + (rms.length ? rms.map((x) => "<span class='chip'>" + esc(x) + "</span>").join("") : "<span class='muted small'>No roadmaps</span>") + "</div>" +
+      "<div class='row'><button type='button' class='btn small' data-tedit='" + esc(k) + "'>Edit</button><button type='button' class='btn small' data-tdel='" + esc(k) + "'>Remove</button></div></div>";
+  }).join("") : "<p class='muted' style='padding-block:14px'>No other teachers yet. You manage all roadmaps.</p>";
+}
+function resetTeacherForm() {
+  editingTeacher = null; delete $("tfRoadmaps").dataset.loaded;
+  $("tfEmail").value = ""; $("tfName").value = ""; $("tfEmail").disabled = false;
+  $("tfTitle").textContent = "Add a teacher"; $("tfSave").textContent = "Add teacher"; $("tfCancel").hidden = true;
+  $("tfRoadmaps").querySelectorAll("input").forEach((i) => i.checked = false);
+}
+$("tfCancel").addEventListener("click", () => { resetTeacherForm(); $("tfMsg").textContent = ""; });
+$("tfSave").addEventListener("click", () => {
+  const email = $("tfEmail").value.trim().toLowerCase(), name = $("tfName").value.trim(), msg = $("tfMsg");
+  const roadmaps = Array.from($("tfRoadmaps").querySelectorAll("input:checked")).map((i) => i.value);
+  if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { msg.textContent = "Enter a valid email address."; return; }
+  if (email === ADMIN_EMAIL.toLowerCase()) { msg.textContent = "That’s the admin account; it already manages everything."; return; }
+  if (!roadmaps.length) { msg.textContent = "Pick at least one roadmap."; return; }
+  msg.textContent = "Saving…";
+  const prev = teachers[email] || {};
+  setDoc(doc(fs, "teachers", email), { email, name, roadmaps, addedAt: prev.addedAt || new Date().toISOString(), updatedAt: new Date().toISOString() })
+    .then(() => { msg.textContent = (editingTeacher ? "Saved." : "Added. ") + (editingTeacher ? "" : "Ask them to open this site and sign in with Google as " + email + "."); resetTeacherForm(); })
+    .catch(() => { msg.textContent = "Couldn’t save. Try again."; });
+});
+document.addEventListener("click", (ev) => {
+  const ed = ev.target.closest("[data-tedit]"), del = ev.target.closest("[data-tdel]");
+  if (!isAdmin) return;
+  if (ed) {
+    const k = ed.getAttribute("data-tedit"), t = teachers[k]; if (!t) return;
+    editingTeacher = k; delete $("tfRoadmaps").dataset.loaded;
+    $("tfEmail").value = t.email; $("tfEmail").disabled = true; $("tfName").value = t.name || "";
+    $("tfTitle").textContent = "Edit " + (t.name || t.email); $("tfSave").textContent = "Save changes"; $("tfCancel").hidden = false;
+    $("tfRoadmaps").querySelectorAll("input").forEach((i) => i.checked = false);
+    renderTeachers(); $("tTeachersSec").scrollIntoView({ behavior: "smooth" });
+  }
+  if (del) {
+    if (del.getAttribute("data-armed") !== "1") { del.setAttribute("data-armed", "1"); del.textContent = "Click again to remove"; return; }
+    del.disabled = true;
+    deleteDoc(doc(fs, "teachers", del.getAttribute("data-tdel"))).catch(() => { del.disabled = false; del.textContent = "Couldn’t remove"; });
+  }
+});
+document.addEventListener("click", (ev) => {
+  const b = ev.target.closest("[data-approve],[data-remove],[data-restore]"); if (!b || !isTeacher) return;
+  const id = b.getAttribute("data-approve") || b.getAttribute("data-remove") || b.getAttribute("data-restore");
+  const rm = b.hasAttribute("data-remove");
+  if (rm && b.getAttribute("data-armed") !== "1") { b.setAttribute("data-armed", "1"); b.textContent = "Click again to remove"; return; }
+  b.disabled = true;
+  setDoc(doc(fs, "access", id), { approved: !rm, removed: rm, at: new Date().toISOString() }).catch(() => { b.disabled = false; b.textContent = "Couldn’t save"; });
+});
+
+/* ---------- auth ---------- */
+user = undefined; render();
+onAuthStateChanged(auth, async (u) => {
+  if (!u) { user = null; isTeacher = false; $("who").hidden = true; render(); return; }
+  user = u;
+  const emailL = (u.email || "").toLowerCase();
+  isAdmin = !!(emailL && ADMIN_EMAIL && emailL === ADMIN_EMAIL.toLowerCase() && u.emailVerified);
+  isTeacher = isAdmin; myRoadmaps = [];
+  if (!isAdmin && emailL && u.emailVerified) {
+    try { const t = await getDoc(doc(fs, "teachers", emailL)); if (t.exists()) { isTeacher = true; myRoadmaps = t.data().roadmaps || []; } } catch (e) {}
+  }
+  $("who").hidden = false;
+  $("whoName").textContent = u.displayName || u.email || "";
+  $("roleTag").hidden = !isTeacher; $("roleTag").textContent = isAdmin ? "Admin" : "Teacher";
+  if (u.photoURL) { $("avatar").src = u.photoURL; $("avatar").hidden = false; }
+  if (isTeacher) {
+    onSnapshot(collection(fs, "users"), (qs) => { users = {}; qs.docs.forEach((d) => users[d.id] = d.data()); render(); }, () => {});
+    onSnapshot(collection(fs, "access"), (qs) => { access = {}; qs.docs.forEach((d) => access[d.id] = d.data()); render(); }, () => {});
+    if (isAdmin) onSnapshot(collection(fs, "teachers"), (qs) => { teachers = {}; qs.docs.forEach((d) => teachers[d.id] = d.data()); render(); }, () => {});
+    else onSnapshot(doc(fs, "teachers", emailL), (s) => { myRoadmaps = s.exists() ? (s.data().roadmaps || []) : []; render(); }, () => {});
+    render();
+    return;
+  }
+  meRef = doc(fs, "users", u.uid);
+  try {
+    const snap = await getDoc(meRef);
+    me = snap.exists() ? snap.data() : {};
+    if (!snap.exists()) {
+      me = { email: u.email || "", name: u.displayName || "", started: {}, createdAt: new Date().toISOString(), updatedAt: new Date().toISOString() };
+      await setDoc(meRef, me).catch(() => {});
+    }
+  } catch (e) { me = {}; }
+  render();
+});
+
+const err = $("authErr");
+const friendly = (e) => {
+  const c = (e && e.code) || "";
+  if (c.includes("invalid-credential") || c.includes("wrong-password") || c.includes("user-not-found")) return "Email or password is wrong.";
+  if (c.includes("email-already-in-use")) return "An account with this email already exists. Sign in instead.";
+  if (c.includes("weak-password")) return "Use a password of at least 6 characters.";
+  if (c.includes("invalid-email")) return "That email address doesn’t look right.";
+  if (c.includes("popup-closed") || c.includes("cancelled-popup")) return "";
+  if (c.includes("unauthorized-domain")) return "This site isn’t allowed to sign in yet. Add it under Firebase Authentication → Settings → Authorized domains.";
+  if (c.includes("too-many-requests")) return "Too many attempts. Wait a few minutes and try again.";
+  return "Something went wrong. Try again.";
+};
+$("googleBtn").addEventListener("click", () => { err.textContent = ""; signInWithPopup(auth, new GoogleAuthProvider()).catch((e) => err.textContent = friendly(e)); });
+$("authSignIn").addEventListener("click", () => { err.textContent = ""; signInWithEmailAndPassword(auth, $("authEmail").value.trim(), $("authPass").value).catch((e) => err.textContent = friendly(e)); });
+$("authSignUp").addEventListener("click", () => { err.textContent = ""; createUserWithEmailAndPassword(auth, $("authEmail").value.trim(), $("authPass").value).catch((e) => err.textContent = friendly(e)); });
+$("authReset").addEventListener("click", () => {
+  const em = $("authEmail").value.trim();
+  if (!em) { err.textContent = "Type your email above first."; return; }
+  sendPasswordResetEmail(auth, em).then(() => err.textContent = "Password reset email sent. Check your inbox.").catch((e) => err.textContent = friendly(e));
+});
+$("signOut").addEventListener("click", () => signOut(auth).then(() => { location.hash = ""; location.reload(); }));
+</script>
+</body>
+</html>
