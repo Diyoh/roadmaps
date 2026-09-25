@@ -393,6 +393,44 @@ th{background:var(--sunken)}
   .topbar{align-items:center}
   .topbar .brand .muted{display:none}
 }
+
+/* ---- mentor pages: responsive forms ---- */
+.assign-grid.set-grid{grid-template-columns:1fr 1fr}
+.assign-grid.hol-grid{grid-template-columns:1fr 1fr 1.6fr auto; align-items:end}
+.assign-grid label{min-width:0}
+.assign-grid input, .assign-grid select{min-width:0}
+.calnav b{min-width:150px; text-align:center}
+.cal{max-width:100%}
+.cal-d{min-width:0}
+@media (max-width: 720px){
+  .assign-grid.set-grid{grid-template-columns:1fr}
+  .assign-grid.hol-grid{grid-template-columns:1fr 1fr}
+  .hol-grid label:first-child{grid-column:auto}
+  .hol-grid label:nth-child(3){grid-column:1 / -1}
+  .hol-grid #hol_add{grid-column:1 / -1; width:100%; justify-content:center}
+  .assign-grid{grid-template-columns:1fr 1fr}
+  .assign-grid label:first-child{grid-column:1 / -1}
+  .calnav{justify-content:space-between}
+  .calnav b{min-width:0; flex:1}
+  .cal{gap:4px}
+  .cal-d{padding:8px 0; font-size:12.5px}
+  .savebar{flex-direction:column; align-items:stretch}
+  .savebar .btn{width:100%; justify-content:center}
+  .hol-row{grid-template-columns:1fr auto; gap:4px 12px}
+  .hol-row > :nth-child(2){grid-column:1 / -1; grid-row:2; font-size:13px; color:var(--muted)}
+  .hol-row > :nth-child(3){grid-row:1 / span 2; grid-column:2; align-self:center}
+  #classBody td, #classBody th{padding:10px}
+  .recips{flex-direction:column}
+}
+@media (max-width: 520px){
+  .topbar{display:grid; grid-template-columns:1fr; gap:10px}
+  .topbar > span{display:flex; flex-wrap:wrap; gap:8px; align-items:center; justify-content:space-between}
+  #saveState{flex-basis:100%; order:3; font-size:11px}
+  .topbar .btn.small{flex:1; justify-content:center}
+  .page > p, .page .muted{font-size:14.5px}
+  .assign-grid{grid-template-columns:1fr}
+  .assign-grid.hol-grid{grid-template-columns:1fr 1fr}
+}
 </style>
 </head>
 <body>
@@ -634,7 +672,7 @@ th{background:var(--sunken)}
     <h2>Plan settings</h2>
     <p class="muted">These settings apply to every student as soon as you save. Level dates, exam dates, weekly targets and the daily routine all move to fit.</p>
     <div class="panel">
-      <div class="assign-grid" style="grid-template-columns:1fr 1fr">
+      <div class="assign-grid set-grid">
         <label>Daily study time (hours)<input type="number" id="set_hours" min="0.5" max="8" step="0.5"></label>
         <label>Start date<input type="date" id="set_start"></label>
       </div>
@@ -643,18 +681,18 @@ th{background:var(--sunken)}
     <div class="panel">
       <h3>Holidays</h3>
       <p class="muted small" style="margin:0">Click days on the calendar to mark or unmark them, or add a range. On holidays no study is expected, and the plan moves later to make up the time.</p>
-      <div class="assign-grid" style="grid-template-columns:1fr 1fr 1.6fr auto">
+      <div class="assign-grid hol-grid">
         <label>From<input type="date" id="hol_from"></label>
         <label>To (optional)<input type="date" id="hol_to"></label>
         <label>Name (optional)<input type="text" id="hol_name" placeholder="e.g. Christmas break"></label>
-        <button type="button" class="btn" id="hol_add" style="align-self:end">Add days</button>
+        <button type="button" class="btn" id="hol_add">Add days</button>
       </div>
       <span class="muted small" id="hol_msg"></span>
-      <div class="weekbar"><button type="button" id="cal_prev" aria-label="Previous month">←</button><b id="cal_label" style="min-width:150px;text-align:center"></b><button type="button" id="cal_next" aria-label="Next month">→</button></div>
+      <div class="weekbar calnav"><button type="button" id="cal_prev" aria-label="Previous month">←</button><b id="cal_label"></b><button type="button" id="cal_next" aria-label="Next month">→</button></div>
       <div class="cal" id="cal"></div>
       <div id="hol_list" class="hol-list"></div>
     </div>
-    <div class="weekbar"><button type="button" class="btn primary" id="set_save">Save and apply to all students</button><button type="button" class="btn" id="set_reset">Discard changes</button><span class="muted small" id="set_status"></span></div>
+    <div class="weekbar savebar"><button type="button" class="btn primary" id="set_save">Save and apply to all students</button><button type="button" class="btn" id="set_reset">Discard changes</button><span class="muted small" id="set_status"></span></div>
   </section>
 
   <section class="page" id="p-student" hidden>
