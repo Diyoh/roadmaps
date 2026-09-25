@@ -635,7 +635,7 @@ function renderTeacher() {
       "<div class='row'>" + btns + "</div></div>";
   };
   $("tPending").innerHTML = pending.length
-    ? pending.map((id) => row(id, "<button type='button' class='btn primary small' data-approve='" + esc(id) + "'>Approve</button><button type='button' class='btn small' data-remove='" + esc(id) + "'>Remove</button>")).join("")
+    ? pending.map((id) => row(id, ((users[id] || {}).currentRoadmap && catalog.some((c) => c.id === users[id].currentRoadmap) ? "<a class='btn small' href='#st/" + esc(users[id].currentRoadmap) + "/" + esc(id) + "'>View</a>" : "") + "<button type='button' class='btn primary small' data-approve='" + esc(id) + "'>Approve</button><button type='button' class='btn small' data-remove='" + esc(id) + "'>Remove</button>")).join("")
     : "<p class='muted' style='padding-block:14px'>No one is waiting. New students appear here after they sign up and choose a roadmap.</p>";
   $("tRemoved").innerHTML = removed.length
     ? removed.map((id) => row(id, "<button type='button' class='btn small' data-restore='" + esc(id) + "'>Restore</button>")).join("")
@@ -1058,7 +1058,8 @@ function renderStudentPage(rid, uid, force) {
   const wks = Object.keys(d.weeks).filter((k) => { const w = d.weeks[k]; return (w.hours || []).some((h) => +h > 0) || w.did || w.blocked || w.next || (w.notes || []).some(Boolean); }).sort().reverse();
   const wc = asg.weekComments || {};
   body.innerHTML =
-    "<div class='section-head'><div style='display:grid;gap:6px'><div class='eyebrow'>Student</div><h2 class='h1'>" + esc(studentName(rid, uid)) + "</h2></div><div class='row'>" + accBtns + "</div></div>" +
+    "<div class='section-head'><div style='display:grid;gap:6px'><div class='eyebrow'>Student</div><h2 class='h1'>" + esc(studentName(rid, uid)) + " <button type='button' class='btn small' id='nameEditBtn' style='vertical-align:middle'>Edit name</button></h2>" +
+      "<div class='row' id='nameEdit' hidden><input type='text' id='nameEditInput' value='" + esc(studentName(rid, uid) === "No name yet" ? "" : studentName(rid, uid)) + "' style='max-width:320px' aria-label='Full name'><button type='button' class='btn primary small' id='nameEditSave'>Save name</button><button type='button' class='btn small' id='nameEditCancel'>Cancel</button><span class='small muted' id='nameEditMsg'></span></div></div><div class='row'>" + accBtns + "</div></div>" +
     "<div class='statrow'><div><span>Hours logged</span><b>" + (sm.hours || 0) + "</b></div><div><span>Weeks on target</span><b>" + (sm.weeksOnTarget || 0) + "</b></div><div><span>Milestones</span><b>" + (sm.tasksDone || 0) + "</b></div><div><span>Avg grade</span><b>" + (g.avg == null ? "—" : g.avg + "%") + "</b></div></div>" +
     "<div class='twocol'><div class='card pane'><h3>Commitment</h3><dl class='kv'>" + kv.map((x) => "<dt>" + esc(x[0]) + "</dt><dd>" + esc(x[1]) + "</dd>").join("") + "</dl></div>" +
     "<div class='card pane'><h3>General feedback</h3><p class='muted small'>Shown at the top of the student’s overview.</p><textarea id='fbText'>" + esc((asg.feedback || {}).text || "") + "</textarea><div class='savebar'><button type='button' class='btn primary' id='fbSave'>Send feedback</button><span class='small muted' id='fbMsg'>" + ((asg.feedback || {}).at ? "Last sent " + esc(fmtStamp(asg.feedback.at)) : "") + "</span></div></div></div>" +
@@ -1083,6 +1084,18 @@ function renderStudentPage(rid, uid, force) {
     }).join("") : "<div class='empty'>No daily logs yet.</div>") +
     "<div class='section-head'><h3>Progress by level</h3></div>" +
     (prog.length ? "<div class='lvgrid'>" + prog.map((p) => "<div class='lv" + (p.complete ? " done" : "") + "'><b>Level " + p.L.n + ": " + esc(p.L.name) + "</b><span class='muted'>" + p.done + " / " + p.L.tasks.length + " milestones</span><ul>" + p.L.tasks.map((t, i) => "<li class='" + (p.td[i] ? "d" : "") + "'>" + (p.td[i] ? "✓ " : "") + esc(t) + "</li>").join("") + "</ul>" + p.L.exams.map((e, i) => "<span>" + esc(e.name.split(" (")[0].replace(" skills test", "")) + ": <b style='font-family:var(--sans);font-size:13px'>" + esc(EXST[p.es[i]] || p.es[i]) + "</b></span>").join("") + "</div>").join("") + "</div>" : "<p class='muted'>Loading the roadmap outline…</p>");
+  $("nameEditBtn").onclick = () => { $("nameEdit").hidden = false; $("nameEditBtn").hidden = true; $("nameEditInput").focus(); };
+  $("nameEditCancel").onclick = () => { $("nameEdit").hidden = true; $("nameEditBtn").hidden = false; render(true); };
+  $("nameEditSave").onclick = () => {
+    const v = $("nameEditInput").value.trim().replace(/\s+/g, " "), m = $("nameEditMsg");
+    if (v.length < 3) { m.textContent = "Enter the student’s full name."; return; }
+    m.textContent = "Saving…";
+    const sd = clone(d.students[uid]); sd.state = sd.state || {}; sd.state.pledge = sd.state.pledge || {}; sd.state.pledge.name = v; sd.updatedAt = new Date().toISOString();
+    const ud = { ...(users[uid] || {}), name: v, updatedAt: new Date().toISOString() };
+    Promise.all([setDoc(doc(fs, "r", rid, "students", uid), sd), setDoc(doc(fs, "users", uid), ud)])
+      .then(() => { m.textContent = "Saved."; $("nameEdit").hidden = true; render(true); })
+      .catch((e) => { m.textContent = "Couldn’t save (" + ((e && e.code) || "error") + "). Deploy the latest security rules with npm run deploy."; });
+  };
   $("fbSave").onclick = () => { const txt = $("fbText").value.trim(); $("fbMsg").textContent = "Sending…"; assignedPatch(rid, uid, (x) => { if (txt) x.feedback = { text: txt, at: new Date().toISOString() }; else delete x.feedback; }).then(() => $("fbMsg").textContent = txt ? "Sent." : "Feedback cleared.").catch(() => $("fbMsg").textContent = "Couldn’t send."); };
 }
 $("stBody").addEventListener("focusout", () => setTimeout(() => { if (stPending && !$("stBody").contains(document.activeElement)) render(); }, 0));
