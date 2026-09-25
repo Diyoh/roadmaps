@@ -414,6 +414,20 @@ function choose(id, btn) {
 window.addEventListener("hashchange", () => { pendingSwitch = null; render(); });
 
 /* ---------- teacher ---------- */
+let catalogError = "";
+async function ensureCatalog() {
+  const list = (HUB && HUB.roadmaps) || [];
+  for (const r of list) {
+    try {
+      const ref = doc(fs, "catalog", r.id);
+      const snap = await getDoc(ref);
+      if (!snap.exists()) await setDoc(ref, { ...r, updatedAt: new Date().toISOString() });
+    } catch (e) {
+      catalogError = "Couldn’t add “" + r.title + "” to the list (" + ((e && e.code) || "error") + "). Check that the security rules are deployed from the Master branch: firebase deploy --only firestore:rules";
+      render();
+    }
+  }
+}
 function renderTeacher() {
   show("vTeacher");
   const mine = (rid) => isAdmin || myRoadmaps.includes(rid);
@@ -447,7 +461,7 @@ function renderTeacher() {
     const n = approved.filter((id) => (users[id] || {}).currentRoadmap === c.id).length;
     const tl = isAdmin ? teachersOf(c.id) : [];
     return rmCard(c, { footer: "<a class='btn primary' href='" + esc(c.url) + "'>Open teacher view</a><span class='muted small'>" + n + (n === 1 ? " student" : " students") + " on it" + (isAdmin ? " · " + (tl.length ? "Teachers: " + esc(tl.join(", ")) : "No teacher assigned") : "") + "</span>" });
-  }).join("") : (isAdmin ? "<div class='empty'>No roadmaps yet. Open a roadmap site while signed in as the admin and it registers itself here.</div>" : "<div class='empty'>No roadmaps are assigned to you yet. Ask the admin to assign one.</div>");
+  }).join("") : (isAdmin ? (catalogError ? "<div class='empty' style='color:var(--warn)'>" + esc(catalogError) + "</div>" : "") + "<div class='empty'>No roadmaps yet. Open a roadmap site while signed in as the admin and it registers itself here.</div>" : "<div class='empty'>No roadmaps are assigned to you yet. Ask the admin to assign one.</div>");
   if (isAdmin) renderTeachers();
 }
 function renderTeachers() {
@@ -526,6 +540,7 @@ onAuthStateChanged(auth, async (u) => {
   if (isTeacher) {
     onSnapshot(collection(fs, "users"), (qs) => { users = {}; qs.docs.forEach((d) => users[d.id] = d.data()); render(); }, () => {});
     onSnapshot(collection(fs, "access"), (qs) => { access = {}; qs.docs.forEach((d) => access[d.id] = d.data()); render(); }, () => {});
+    if (isAdmin) ensureCatalog();
     if (isAdmin) onSnapshot(collection(fs, "teachers"), (qs) => { teachers = {}; qs.docs.forEach((d) => teachers[d.id] = d.data()); render(); }, () => {});
     else onSnapshot(doc(fs, "teachers", emailL), (s) => { myRoadmaps = s.exists() ? (s.data().roadmaps || []) : []; render(); }, () => {});
     render();
