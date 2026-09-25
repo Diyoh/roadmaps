@@ -2,7 +2,7 @@
   "hosting": {
     "site": "roadmaps-2b061-dba",
     "public": "public",
-    "ignore": ["**/*"],
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "redirects": [
       { "source": "**", "destination": "https://roadmaps-2b061.web.app/dba/", "type": 301 }
     ]
