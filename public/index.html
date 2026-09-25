@@ -461,6 +461,13 @@ th{background:var(--sunken)}
     <div class="gate">
       <h1 id="waitTitle">Waiting for your mentor</h1>
       <p id="waitText" style="margin:0;max-width:60ch">You’ve signed your commitment. Your mentor now needs to approve you before you can start. This page opens your plan automatically as soon as you’re approved.</p>
+      <div class="panel" id="waitName" style="display:grid;gap:10px;max-width:520px">
+        <h3>Is your name right?</h3>
+        <p class="muted small" style="margin:0">Your mentor sees this name. Correct it here if you made a mistake.</p>
+        <label for="waitNameInput" class="muted small">Full name</label>
+        <input type="text" id="waitNameInput" autocomplete="name">
+        <div class="weekbar"><button type="button" class="btn primary" id="waitNameSave">Save name</button><span class="muted small" id="waitNameMsg" role="status"></span></div>
+      </div>
     </div>
   </section>
 
@@ -1100,6 +1107,8 @@ function showPage(){
   document.querySelectorAll("#tabs a").forEach(function(a){ if(a.getAttribute("data-page")===p || (p==="student" && a.getAttribute("data-page")==="class")) a.setAttribute("aria-current","page"); else a.removeAttribute("aria-current"); });
   if(p==="start") renderStart();
   if(p==="wait"){
+    var wn=document.getElementById("waitNameInput"); if(wn && document.activeElement!==wn) wn.value=(store.state.pledge||{}).name||"";
+    document.getElementById("waitName").hidden = removedFlag;
     document.getElementById("waitTitle").textContent = removedFlag ? "Your access has been removed" : "Waiting for your mentor";
     document.getElementById("waitText").textContent = removedFlag ? "Your mentor has removed you from this class. If you think this is a mistake, contact your mentor." : "You’ve signed your commitment. Your mentor now needs to approve you before you can start. This page opens your plan automatically as soon as you’re approved.";
   }
@@ -1135,7 +1144,7 @@ document.getElementById("g_sign").addEventListener("click", function(){
   if(n.length<3 || n.indexOf(" ")<0){ err.textContent="Enter your full name (first and last)."; return; }
   if(!document.getElementById("g_agree").checked){ err.textContent="Tick the box to accept the commitment."; return; }
   err.textContent="";
-  store.state.pledge.name=n; store.state.pledge.committedAt=new Date().toISOString();
+  store.state.pledge.name=n; store.state.pledge.committedAt=new Date().toISOString(); syncUserName();
   saveState(); applyState(); enter();
 });
 document.getElementById("g_enter").addEventListener("click", function(){
@@ -1557,8 +1566,8 @@ document.addEventListener("change", function(ev){
 });
 document.addEventListener("input", function(ev){
   var el=ev.target;
-  if(el.closest("#p-start") || el.closest("#p-class") || el.closest("#p-assign") || el.closest("#p-student") || el.closest("#p-settings") || el.closest("#workList") || el.closest("#cardPanel")) return;
-  if(el.dataset.pledge){ store.state.pledge[el.dataset.pledge]=el.value; saveState(); if(el.dataset.pledge==="name") updateNameCard(); }
+  if(el.closest("#p-wait") || el.closest("#p-start") || el.closest("#p-class") || el.closest("#p-assign") || el.closest("#p-student") || el.closest("#p-settings") || el.closest("#workList") || el.closest("#cardPanel")) return;
+  if(el.dataset.pledge){ store.state.pledge[el.dataset.pledge]=el.value; saveState(); if(el.dataset.pledge==="name"){ updateNameCard(); syncUserName(); } }
   else if(el.hasAttribute("data-day")){ var w=ensureWeek(); w.hours[+el.dataset.day]=el.value; updateWeekTotal(); saveWeek(curWeek); updateStats(); updateCardDays(); }
   else if(el.hasAttribute("data-note")){ var w2=ensureWeek(); w2.notes[+el.dataset.note]=el.value; saveWeek(curWeek); renderHistory(); updateCardDays(); }
   else if(el.dataset.week && el.dataset.week!=="rating"){ ensureWeek()[el.dataset.week]=el.value; saveWeek(curWeek); renderHistory(); }
@@ -1927,6 +1936,24 @@ function watchMentors(){
   }, function(){});
 }
 
+/* ---------- keep the account's name the same as the commitment name ---------- */
+var nameTimer=null;
+function syncUserName(){
+  clearTimeout(nameTimer);
+  nameTimer=setTimeout(function(){
+    var n=((store.state.pledge||{}).name||"").trim().replace(/\s+/g," ");
+    if(!n || !db || !uid || mode!=="db") return;
+    var ref=db.doc("users/"+uid);
+    ref.get().then(function(snap){ var u=snap.exists?clone(snap.data()):{}; if(u.name===n) return; u.name=n; u.updatedAt=new Date().toISOString(); return ref.set(u); }).catch(function(){});
+  }, 900);
+}
+document.getElementById("waitNameSave").addEventListener("click", function(){
+  var v=document.getElementById("waitNameInput").value.trim().replace(/\s+/g," "), m=document.getElementById("waitNameMsg");
+  if(v.length<3 || v.indexOf(" ")<0){ m.textContent="Enter your full name (first and last)."; return; }
+  store.state.pledge.name=v; saveState(); syncUserName(); applyState();
+  m.textContent = mode==="db" ? "Saved. Your mentor now sees “"+v+"”." : "Saved in this browser only.";
+});
+
 /* ---------- roadmap choice (shared across all roadmap sites) ---------- */
 function showHubLink(teacher){
   var a=document.getElementById("hubLink"), R=window.APP_ROADMAP;
@@ -2025,7 +2052,7 @@ Promise.all([C?C.use("db"):null, C?C.use("user"):null]).then(function(r){
         saveState();
         if(local) Object.keys(store.weeks).forEach(function(k){ queueWrite(myPath+"/weeks/"+k, (function(key){ return function(){ return clone(store.weeks[key]); }; })(k)); });
       }
-      if(first){ first=false; initLeft--; if(initLeft<=0) readyAs("student", myName); }
+      if(first){ first=false; syncUserName(); initLeft--; if(initLeft<=0) readyAs("student", myName); }
       else if(role==="student" && !entered && location.hash.replace(/^#/,"")==="start") renderStart();
     }, function(){ setStatus("Live sync paused. Reload the page to reconnect."); readyAs("student", myName); });
     var firstWeeks=true;
