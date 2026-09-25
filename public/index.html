@@ -498,6 +498,26 @@ th{background:var(--sunken)}
 .tt-row:last-child{border-bottom:0}
 .tt-name{overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
 @media (max-width: 560px){ .tt summary{grid-template-columns:1fr} .tt-counts{padding-right:0} }
+
+/* ---- my assignments: summary, submission, grade ---- */
+.wsum{display:grid; grid-template-columns:repeat(5, minmax(0,1fr)); gap:12px}
+.wsum > div{background:var(--surface); border-radius:var(--radius); box-shadow:var(--shadow); padding:14px 16px; display:grid; gap:2px}
+.wsum span{font-size:12.5px; color:var(--muted)}
+.wsum b{font-family:var(--display); font-size:1.6rem; font-variant-numeric:tabular-nums}
+.wsum small{font-size:12px; color:var(--muted)}
+.wsum .late b{color:var(--warn)}
+.gradecard{display:grid; grid-template-columns:auto minmax(0,1fr); gap:16px; align-items:center; background:var(--ok-soft); border-radius:12px; padding:14px 16px}
+.gscore{display:grid; justify-items:center; min-width:84px}
+.gscore b{font-family:var(--display); font-size:2rem; line-height:1; color:var(--ok)}
+.gscore b span{font-size:1rem; color:var(--muted)}
+.gscore em{font-style:normal; font-weight:600; font-size:13px; color:var(--ok)}
+.gtext{display:grid; gap:4px}
+.gtext p{margin:0}
+.mysub{border-left:3px solid var(--accent); padding:4px 0 4px 14px; display:grid; gap:6px}
+.mysub-h{display:flex; flex-wrap:wrap; gap:8px; justify-content:space-between; align-items:center}
+.mysub p{margin:0; white-space:pre-wrap; overflow-wrap:anywhere}
+.mysub a{overflow-wrap:anywhere}
+@media (max-width: 720px){ .wsum{grid-template-columns:repeat(2, minmax(0,1fr))} .wsum > div:last-child{grid-column:1 / -1} .gradecard{grid-template-columns:1fr} .gscore{justify-items:start} }
 </style>
 </head>
 <body>
@@ -654,6 +674,7 @@ th{background:var(--sunken)}
   <section class="page" id="p-work" hidden>
     <h2>My assignments</h2>
     <p class="muted">Tasks from your mentor. Submit your work before the due date: write what you did and add a link (for example your GitHub repo). Grades and comments appear here once your mentor marks it.</p>
+    <div id="workSummary" class="wsum" hidden></div>
     <div id="workList" class="tasklist"></div>
   </section>
 
@@ -1309,6 +1330,8 @@ function renderNext(){
   var tasks=myAssigned.tasks||{}, open=sortedTaskIds(tasks).filter(function(id){ return !(s.subs||{})[id] && !isGraded(tasks[id]); });
   if(open.length){ var k=tasks[open[0]]; items.push(["Assignment", k.title+(k.due?" · due "+fmtShort(k.due):"")+(open.length>1?" (+"+(open.length-1)+" more)":""), "work", "Open"]); }
   var nx=ALL_EXAMS.filter(function(e){ return (s.exams[e.id]||{}).status!=="passed"; }).sort(function(a,b){return a.date<b.date?-1:1;})[0];
+  var gradedIds=Object.keys(tasks).filter(function(id){ return isGraded(tasks[id]); }).sort(function(a,b){ return (tasks[b].gradedAt||"")>(tasks[a].gradedAt||"")?1:-1; });
+  if(gradedIds.length){ var lg=tasks[gradedIds[0]]; items.push(["Latest grade", lg.title+" · "+lg.grade+"/"+lg.points+" ("+Math.round((+lg.grade)/(+lg.points||1)*100)+"%)", "work", "See my grades"]); }
   if(nx) items.push(["Next exam", nx.name+" · "+fmt(nx.date), "exams", "Exam calendar"]);
   var hk=Object.keys(settings.holidays).filter(function(k){ return k>tISO && daysBetween(tISO,k)<=30; }).sort()[0];
   if(hk) items.push(["Holiday", fmt(hk)+(settings.holidays[hk]?" · "+settings.holidays[hk]:""), "log", "Daily log"]);
@@ -1429,34 +1452,54 @@ function renderMyAssigned(){
   if(f && f.text){ document.getElementById("coachText").textContent=f.text; document.getElementById("coachAt").textContent=f.at?"Sent "+fmtStamp(f.at):""; box.hidden=false; } else box.hidden=true;
   renderWeekComment(); renderHistory(); renderWork(); renderNext();
 }
+var editOpen={};
+function renderWorkSummary(){
+  var box=document.getElementById("workSummary"), tasks=myAssigned.tasks||{}, ids=Object.keys(tasks);
+  if(!ids.length){ box.hidden=true; return; }
+  var subs=store.state.subs||{}, t0=iso(today()), sub=0, graded=0, pts=0, max=0, over=0;
+  ids.forEach(function(id){ var t=tasks[id]; if(subs[id]) sub++; if(isGraded(t)){ graded++; pts+=(+t.grade); max+=(+t.points||0); } else if(!subs[id] && t.due && t.due<t0) over++; });
+  var avg=graded&&max?Math.round(pts/max*100):null;
+  box.innerHTML="<div><span>Assigned</span><b>"+ids.length+"</b></div><div><span>Submitted</span><b>"+sub+"</b></div><div><span>Graded</span><b>"+graded+"</b></div>"+
+    "<div><span>Average grade</span><b>"+(avg==null?"—":avg+"%")+"</b>"+(graded?"<small>"+(Math.round(pts*10)/10)+" of "+max+" points</small>":"")+"</div>"+
+    "<div"+(over?" class='late'":"")+"><span>Overdue</span><b>"+over+"</b></div>";
+  box.hidden=false;
+}
 function renderWork(){
   var box=document.getElementById("workList");
   var tasks=myAssigned.tasks||{}, ids=sortedTaskIds(tasks);
+  renderWorkSummary();
   if(box.contains(document.activeElement)){ workPending=true; return; }
   workPending=false;
   if(!ids.length){ box.innerHTML="<p class='empty'>No assignments yet. When your mentor assigns a task, it appears here.</p>"; return; }
   var subs=store.state.subs||{};
   box.innerHTML = ids.map(function(id){
-    var t=tasks[id], sub=subs[id], st=taskStatus(t, sub);
+    var t=tasks[id], sub=subs[id], st=taskStatus(t, sub), graded=isGraded(t), link=sub?safeUrl(sub.link):"";
     var lvl = t.level ? " · Level "+esc(t.level) : "";
-    var grade = isGraded(t) ? "<div class='gradebox'><span class='eyebrow' style='color:var(--ok)'>Grade</span><b>"+esc(t.grade)+" / "+esc(t.points)+" · "+Math.round((+t.grade)/(+t.points||1)*100)+"%</b>"+(t.comment?"<p>"+esc(t.comment)+"</p>":"")+(t.gradedAt?"<span class='muted mono' style='font-size:12px'>Marked "+esc(fmtStamp(t.gradedAt))+"</span>":"")+"</div>"
+    var pct = graded ? Math.round((+t.grade)/(+t.points||1)*100) : 0;
+    var grade = graded ? "<div class='gradecard'><div class='gscore'><b>"+esc(t.grade)+"<span>/"+esc(t.points)+"</span></b><em>"+pct+"%</em></div><div class='gtext'><span class='eyebrow' style='color:var(--ok)'>Your grade</span>"+(t.comment?"<p>“"+esc(t.comment)+"”</p>":"<p class='muted'>No comment from your mentor.</p>")+(t.gradedAt?"<span class='muted mono' style='font-size:12px'>Marked "+esc(fmtStamp(t.gradedAt))+"</span>":"")+"</div></div>"
       : (t.comment ? "<div class='gradebox'><span class='eyebrow' style='color:var(--ok)'>Mentor’s comment</span><p>"+esc(t.comment)+"</p></div>" : "");
+    var mine = sub ? "<div class='mysub'><div class='mysub-h'><span class='eyebrow'>Your submission · "+esc(fmtStamp(sub.submittedAt))+"</span>"+(graded?"<span class='muted small'>Locked after grading</span>":"<button type='button' class='btn small' data-editsub='"+id+"'>"+(editOpen[id]?"Cancel":"Edit submission")+"</button>")+"</div>"+
+      (sub.text?"<p>"+esc(sub.text)+"</p>":"")+(link?"<a href='"+esc(link)+"' target='_blank' rel='noopener'>"+esc(link)+" ↗</a>":"")+"</div>" : "";
+    var showForm = !graded && (!sub || editOpen[id]);
+    var form = showForm ? "<div class='subform'><label for='st_"+id+"'>My work: what I did, answers or notes</label><textarea id='st_"+id+"'>"+esc(sub?sub.text:"")+"</textarea>"+
+      "<label for='sl_"+id+"'>Link (optional, e.g. GitHub repo or file)</label><input type='text' id='sl_"+id+"' value='"+esc(sub?sub.link:"")+"' placeholder='https://github.com/…'>"+
+      "<div class='weekbar'><button type='button' class='btn primary' data-submit='"+id+"'>"+(sub?"Save changes":"Submit work")+"</button><span class='muted' style='font-size:13px' id='ss_"+id+"'></span></div></div>" : "<span class='muted' style='font-size:13px' id='ss_"+id+"'></span>";
     return "<div class='taskcard'><div class='th'><h3>"+esc(t.title)+"</h3><span class='chip "+st.cls+"'>"+esc(st.text)+"</span></div>"+
       "<div class='muted mono' style='font-size:12.5px'>"+(t.due?"Due "+esc(fmt(t.due)):"No due date")+" · "+esc(t.points)+" points"+lvl+"</div>"+
-      (t.details?"<p>"+esc(t.details)+"</p>":"")+grade+
-      "<div class='subform'><label for='st_"+id+"'>My work: what I did, answers or notes</label><textarea id='st_"+id+"'>"+esc(sub?sub.text:"")+"</textarea>"+
-      "<label for='sl_"+id+"'>Link (optional, e.g. GitHub repo or file)</label><input type='text' id='sl_"+id+"' value='"+esc(sub?sub.link:"")+"' placeholder='https://github.com/…'>"+
-      "<div class='weekbar'><button type='button' class='btn primary' data-submit='"+id+"'>"+(sub?"Update submission":"Submit work")+"</button><span class='muted' style='font-size:13px' id='ss_"+id+"'>"+(sub?"Submitted "+esc(fmtStamp(sub.submittedAt)):"")+"</span></div></div></div>";
+      (t.details?"<p>"+esc(t.details)+"</p>":"")+grade+mine+form+"</div>";
   }).join("");
 }
 document.getElementById("workList").addEventListener("click", function(ev){
+  var e=ev.target.closest("[data-editsub]");
+  if(e){ var eid=e.getAttribute("data-editsub"); editOpen[eid]=!editOpen[eid]; workPending=false; document.activeElement && document.activeElement.blur && document.activeElement.blur(); renderWork(); if(editOpen[eid]){ var ta=document.getElementById("st_"+eid); if(ta) ta.focus(); } return; }
   var b=ev.target.closest("[data-submit]"); if(!b) return;
   var id=b.getAttribute("data-submit");
   var text=document.getElementById("st_"+id).value.trim(), link=document.getElementById("sl_"+id).value.trim(), msg=document.getElementById("ss_"+id);
   if(!text && !link){ msg.textContent="Write what you did or add a link first."; return; }
   if(link && !safeUrl(link)){ msg.textContent="Links must start with https:// or http://"; return; }
   store.state.subs[id]={text:text, link:link, submittedAt:new Date().toISOString()};
-  saveState();
+  saveState(); editOpen[id]=false;
+  setTimeout(function(){ b.blur(); workPending=false; renderWork(); var m=document.getElementById("ss_"+id); if(m) m.textContent = mode==="db" ? "Submitted. Your mentor can see it now." : "Saved in this browser only."; }, 50);
   msg.textContent = mode==="db" ? "Submitted. Your mentor can see it now." : "Saved in this browser only. Your mentor can’t see it until your access is fixed.";
 });
 document.getElementById("workList").addEventListener("focusout", function(){
