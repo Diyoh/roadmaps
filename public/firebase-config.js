@@ -18,11 +18,12 @@ export const firebaseConfig = {
 export const ADMIN_EMAIL = "diyohshiloh4@gmail.com";
 
 // This roadmap. The id must be unique across all roadmaps (it names this roadmap's data in the
-// database). hubUrl is the main site where students choose a roadmap.
+// database). hubUrl is the hub where students choose a roadmap; this roadmap is published at /dba/
+// on the same address, so one sign-in covers the hub and every roadmap.
 export const ROADMAP = {
   id: "dba",
   title: "DBA Career Ladder",
   tagline: "Seven levels from your first SQL query to a professional database administration certification.",
   order: 1,
-  hubUrl: "https://roadmaps-2b061.web.app/"
+  hubUrl: "/"
 };

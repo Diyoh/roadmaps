@@ -2,9 +2,9 @@
   "hosting": {
     "site": "roadmaps-2b061-dba",
     "public": "public",
-    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
-    "headers": [
-      { "source": "**/*.@(js|html)", "headers": [{ "key": "Cache-Control", "value": "no-cache" }] }
+    "ignore": ["**/*"],
+    "redirects": [
+      { "source": "**", "destination": "https://roadmaps-2b061.web.app/dba/", "type": 301 }
     ]
   }
 }
