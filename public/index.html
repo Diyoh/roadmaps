@@ -1,0 +1,1841 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>DBA Career Ladder</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+:root{
+  --bg:#F3F5F8; --surface:#FFFFFF; --ink:#15202C; --muted:#5B6776; --line:#D8DEE6;
+  --accent:#1D5FA6; --accent-soft:#E2ECF8; --exam:#A65F00; --exam-soft:#FBF0DE;
+  --ok:#1C744A; --ok-soft:#E0F1E7; --warn:#A33A2B;
+  --display:"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --sans:"IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --bg:#0E141B; --surface:#161F29; --ink:#E5EAF0; --muted:#9AA6B4; --line:#2A3542;
+    --accent:#86B8EE; --accent-soft:#1A2B3E; --exam:#F1AB4E; --exam-soft:#31240F;
+    --ok:#6FCC98; --ok-soft:#133223; --warn:#F08A7A;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --bg:#0E141B; --surface:#161F29; --ink:#E5EAF0; --muted:#9AA6B4; --line:#2A3542;
+  --accent:#86B8EE; --accent-soft:#1A2B3E; --exam:#F1AB4E; --exam-soft:#31240F;
+  --ok:#6FCC98; --ok-soft:#133223; --warn:#F08A7A;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+td.mono{white-space:nowrap}
+body{background:var(--bg); color:var(--ink); font:15px/1.6 var(--sans); padding-inline:16px; padding-block:0 64px}
+.wrap{max-width:1060px; margin:0 auto}
+a{color:var(--accent); text-underline-offset:2px}
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+h1,h2,h3{font-family:var(--display); text-wrap:balance; line-height:1.15; margin:0}
+h1{font-size:clamp(2rem, 5vw, 3.1rem); font-weight:700; letter-spacing:-0.01em}
+h2{font-size:1.6rem; font-weight:700}
+h3{font-size:1.15rem; font-weight:700}
+.mono{font-family:var(--mono); font-variant-numeric:tabular-nums}
+.eyebrow{font-family:var(--mono); font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted)}
+.muted{color:var(--muted)}
+header{padding-block:40px 20px; display:grid; gap:14px}
+header p{max-width:66ch; margin:0}
+.stats{display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:10px; overflow:hidden; margin-block:8px 0}
+.stat{background:var(--surface); padding:14px 16px; display:grid; gap:2px}
+.stat b{font-family:var(--display); font-size:1.5rem; font-weight:700; font-variant-numeric:tabular-nums}
+.stat span{font-size:13px; color:var(--muted)}
+nav.jump{position:sticky; top:env(safe-area-inset-top, 0px); z-index:5; background:var(--bg); padding-block:10px; border-bottom:1px solid var(--line); display:flex; gap:8px; flex-wrap:wrap; align-items:center}
+nav.jump a{font-size:13px; font-weight:500; text-decoration:none; padding:5px 11px; border-radius:999px; border:1px solid var(--line); color:var(--ink); background:var(--surface)}
+nav.jump a:hover{border-color:var(--accent)}
+#saveState{margin-left:auto; font-size:12px; color:var(--muted); font-family:var(--mono)}
+section.block{padding-block:36px 8px; display:grid; gap:16px}
+section.block > p{max-width:70ch; margin:0}
+.tablebox{overflow-x:auto; border:1px solid var(--line); border-radius:10px; background:var(--surface)}
+table{border-collapse:collapse; width:100%; font-size:14px}
+th,td{text-align:left; padding:10px 14px; border-bottom:1px solid var(--line); vertical-align:top}
+th{font-family:var(--mono); font-size:11.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); font-weight:500; white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td.date{white-space:nowrap; font-family:var(--mono); font-size:13px}
+
+/* ladder */
+.ladder{display:grid; gap:0; position:relative}
+.level{display:grid; grid-template-columns:64px minmax(0,1fr); gap:0 18px; position:relative}
+.rail{position:relative; display:flex; justify-content:center}
+.rail::before{content:""; position:absolute; top:0; bottom:0; left:50%; width:2px; background:var(--line); transform:translateX(-50%)}
+.level:first-child .rail::before{top:28px}
+.level:last-child .rail::before{bottom:calc(100% - 28px)}
+.rung{position:relative; z-index:1; margin-top:8px; width:48px; height:48px; border-radius:50%; background:var(--surface); border:2px solid var(--line); display:grid; place-items:center; font-family:var(--display); font-weight:700; font-size:1.3rem}
+.level.current .rung{border-color:var(--accent); background:var(--accent); color:var(--surface)}
+.level.complete .rung{border-color:var(--ok); color:var(--ok)}
+.card{background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:20px 22px; margin-bottom:22px; display:grid; gap:16px}
+.level.current .card{border-color:var(--accent)}
+.card-head{display:flex; flex-wrap:wrap; gap:6px 16px; align-items:baseline; justify-content:space-between}
+.card-head .dates{font-family:var(--mono); font-size:13px; color:var(--muted)}
+.pill{display:inline-block; font-family:var(--mono); font-size:11px; letter-spacing:.05em; text-transform:uppercase; padding:2px 8px; border-radius:999px; background:var(--accent-soft); color:var(--accent); vertical-align:middle}
+.goal{margin:0; max-width:70ch}
+.cols{display:grid; grid-template-columns:minmax(0,1.45fr) minmax(0,1fr); gap:18px}
+.phases{display:grid; gap:0; border-top:1px solid var(--line)}
+.phase{display:grid; grid-template-columns:128px minmax(0,1fr); gap:4px 14px; padding-block:10px; border-bottom:1px solid var(--line)}
+.phase .when{font-family:var(--mono); font-size:12.5px; color:var(--muted); padding-top:2px}
+.phase p{margin:0}
+.links{display:flex; flex-wrap:wrap; gap:4px 14px; margin-top:4px; font-size:13.5px}
+.note{font-size:13.5px; color:var(--muted); margin:0; border-left:2px solid var(--line); padding-left:12px}
+.side{display:grid; gap:12px; align-content:start}
+.exam{background:var(--exam-soft); border-radius:10px; padding:14px 16px; display:grid; gap:8px}
+.exam .label{font-family:var(--mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--exam); font-weight:500}
+.exam h4{margin:0; font-family:var(--sans); font-size:15px; font-weight:600}
+.exam dl{display:grid; grid-template-columns:auto 1fr; gap:2px 10px; margin:0; font-size:13.5px}
+.exam dt{color:var(--muted)}
+.exam dd{margin:0}
+.track{display:grid; grid-template-columns:1fr 1fr; gap:8px}
+.track label{font-size:12px; color:var(--muted); display:grid; gap:3px}
+.qual{background:var(--ok-soft); border-radius:10px; padding:14px 16px; display:grid; gap:6px}
+.qual .label{font-family:var(--mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--ok); font-weight:500}
+.qual ul{margin:0; padding-left:18px; display:grid; gap:4px}
+.community{font-size:13.5px; display:grid; gap:4px}
+.community .label{font-family:var(--mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted)}
+.community ul{margin:0; padding-left:18px}
+.checklist{display:grid; gap:2px; border-top:1px solid var(--line); padding-top:12px}
+.checklist .ch-head{display:flex; justify-content:space-between; gap:12px; align-items:baseline; margin-bottom:4px}
+.checklist label{display:flex; gap:10px; align-items:flex-start; padding:5px 0; cursor:pointer}
+.checklist input{margin-top:4px; accent-color:var(--ok); width:16px; height:16px; flex:none}
+.checklist input:checked + span{color:var(--muted); text-decoration:line-through; text-decoration-color:var(--line)}
+.bar{height:6px; background:var(--line); border-radius:3px; overflow:hidden; min-width:80px}
+.bar i{display:block; height:100%; background:var(--ok); width:0}
+
+input[type=text], input[type=email], input[type=password], input[type=date], input[type=number], select, textarea{
+  font:inherit; font-size:14px; color:var(--ink); background:var(--surface); border:1px solid var(--line); border-radius:7px; padding:7px 9px; width:100%;
+}
+textarea{resize:vertical; min-height:70px}
+
+/* accountability */
+.acc-grid{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.3fr); gap:18px; align-items:start}
+.panel{background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:20px 22px; display:grid; gap:14px}
+.panel label{display:grid; gap:4px; font-size:13px; color:var(--muted)}
+.weekbar{display:flex; align-items:center; gap:10px; flex-wrap:wrap}
+.weekbar button, .btn{font:inherit; font-size:13px; padding:6px 12px; border-radius:7px; border:1px solid var(--line); background:var(--surface); color:var(--ink); cursor:pointer}
+.weekbar button:hover:not(:disabled){border-color:var(--accent)}
+.weekbar button:disabled{opacity:.4; cursor:default}
+#weekLabel{font-family:var(--mono); font-size:14px; font-weight:500}
+.days{display:grid; grid-template-columns:repeat(7, minmax(0,1fr)); gap:6px}
+.days label{text-align:center; font-family:var(--mono); font-size:11px}
+.days input{text-align:center; padding:6px 2px}
+.weektotal{display:flex; align-items:center; gap:12px; font-size:14px}
+.weektotal .bar{flex:1}
+.hist{display:grid; gap:0}
+.hist-row{display:grid; grid-template-columns:120px 60px minmax(0,1fr); gap:12px; align-items:center; padding-block:8px; border-bottom:1px solid var(--line); font-size:13.5px}
+.hist-row:last-child{border-bottom:0}
+.hist-row .when{font-family:var(--mono); font-size:12.5px}
+.hist-row .did{color:var(--muted); overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+.empty{color:var(--muted); font-size:14px; margin:0}
+
+.invite ol{margin:0; padding-left:20px; display:grid; gap:6px; max-width:80ch}
+.feedback{border-color:var(--accent); background:var(--accent-soft)}
+.btn.primary{background:var(--accent); border-color:var(--accent); color:var(--surface); font-weight:500}
+.btn.small{font-size:12.5px; padding:4px 10px}
+.fbform{display:grid; gap:8px; border-top:1px solid var(--line); padding-top:14px}
+.fbform label{font-size:13px; color:var(--muted)}
+.who{display:flex; gap:10px; align-items:center}
+.who img{width:26px; height:26px; border-radius:50%; flex:none}
+.tag{font-family:var(--mono); font-size:10.5px; letter-spacing:.05em; text-transform:uppercase; color:var(--muted); border:1px solid var(--line); border-radius:999px; padding:0 6px; margin-left:4px}
+.late{color:var(--warn)}
+.lvlgrid{display:grid; grid-template-columns:repeat(auto-fill, minmax(150px, 1fr)); gap:8px}
+.lvlcell{border:1px solid var(--line); border-radius:8px; padding:8px 10px; display:grid; gap:4px; font-size:12.5px}
+.lvlcell b{font-family:var(--display); font-size:14px}
+.lvlcell.done{border-color:var(--ok)}
+.pledge-dl{display:grid; grid-template-columns:max-content 1fr; gap:4px 14px; margin:0; font-size:14px}
+.pledge-dl dt{color:var(--muted)}
+.pledge-dl dd{margin:0; white-space:pre-wrap}
+#classBody tr.sel td{background:var(--accent-soft)}
+.assign-grid{display:grid; grid-template-columns:2fr 1fr .6fr 1fr; gap:10px}
+.recips{border:1px solid var(--line); border-radius:8px; padding:8px 12px 10px; margin:0; display:flex; flex-wrap:wrap; gap:6px 18px}
+.recips legend{font-size:12px; color:var(--muted); padding:0 4px}
+label.inline{display:flex !important; gap:6px; align-items:center; color:var(--ink) !important; font-size:14px !important}
+label.inline input{width:auto}
+.reciplist{flex-basis:100%; display:flex; flex-wrap:wrap; gap:4px 16px; padding-top:6px}
+.dayrows{display:grid; gap:6px}
+.dayrow{display:grid; grid-template-columns:78px 64px minmax(0,1fr); gap:8px; align-items:center}
+.dayrow .dl{font-family:var(--mono); font-size:12px; color:var(--muted)}
+.dayrow.today .dl{color:var(--accent); font-weight:500}
+.dayrow input{padding:6px 8px}
+.weekcomment{border-radius:8px; padding:10px 12px; font-size:14px; white-space:pre-wrap}
+.spark{display:inline-flex; align-items:flex-end; gap:2px; height:24px}
+.spark i{display:block; width:7px; background:var(--accent); border-radius:1px; min-height:2px; opacity:.9}
+.spark i.zero{background:var(--line)}
+.tasklist{display:grid; gap:12px}
+.taskcard{background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:16px 18px; display:grid; gap:10px}
+.taskcard .th{display:flex; flex-wrap:wrap; gap:6px 14px; justify-content:space-between; align-items:baseline}
+.taskcard p{margin:0; white-space:pre-wrap}
+.chip{font-family:var(--mono); font-size:11px; letter-spacing:.04em; text-transform:uppercase; padding:2px 8px; border-radius:999px; border:1px solid var(--line); color:var(--muted); white-space:nowrap}
+.chip.sub{border-color:var(--accent); color:var(--accent)}
+.chip.graded{border-color:var(--ok); color:var(--ok); background:var(--ok-soft)}
+.chip.over{border-color:var(--warn); color:var(--warn)}
+.subform{display:grid; gap:8px}
+.subform label{display:grid; gap:4px; font-size:13px; color:var(--muted)}
+.gradebox{background:var(--ok-soft); border-radius:8px; padding:10px 12px; display:grid; gap:4px}
+.gradebox b{font-family:var(--display); font-size:1.2rem}
+.gradeform{display:grid; grid-template-columns:120px minmax(0,1fr) auto; gap:8px; align-items:end}
+.gradeform label{display:grid; gap:4px; font-size:12px; color:var(--muted)}
+.subview{border-left:2px solid var(--accent); padding-left:12px; display:grid; gap:4px; font-size:14px}
+.wkblock{border:1px solid var(--line); border-radius:10px; padding:12px 14px; display:grid; gap:10px}
+.wkblock .wh{display:flex; flex-wrap:wrap; justify-content:space-between; gap:6px 12px; align-items:baseline}
+.wkdays{display:grid; gap:2px; font-size:13.5px}
+.wkdays div{display:grid; grid-template-columns:90px 44px minmax(0,1fr); gap:10px}
+.wkdays .d{font-family:var(--mono); font-size:12px; color:var(--muted)}
+.wcform{display:flex; gap:8px; align-items:flex-start}
+.wcform textarea{min-height:44px}
+@media (max-width: 820px){ .assign-grid{grid-template-columns:1fr 1fr} .gradeform{grid-template-columns:1fr} }
+@media (max-width: 820px){
+  .cols, .acc-grid{grid-template-columns:1fr}
+  .stats{grid-template-columns:repeat(2, minmax(0,1fr))}
+}
+@media (max-width: 520px){
+  .level{grid-template-columns:40px minmax(0,1fr); gap:0 10px}
+  .rung{width:36px; height:36px; font-size:1rem}
+  .level:first-child .rail::before{top:24px}
+  .card{padding:16px}
+  .phase{grid-template-columns:1fr}
+  .track{grid-template-columns:1fr}
+  .days{gap:3px}
+  .hist-row{grid-template-columns:96px 48px minmax(0,1fr)}
+}
+@media (prefers-reduced-motion: reduce){ *{transition:none!important; animation:none!important} }
+
+/* ---- multi-page shell ---- */
+.topbar{display:flex; flex-wrap:wrap; gap:6px 16px; align-items:baseline; justify-content:space-between; padding-block:18px 10px}
+.brand{display:flex; flex-wrap:wrap; gap:4px 12px; align-items:baseline}
+.brand b{font-family:var(--display); font-size:1.25rem; font-weight:700}
+.brand .muted{font-size:13px}
+#saveState{margin-left:0; font-size:12px; color:var(--muted); font-family:var(--mono)}
+.tabs{position:sticky; top:env(safe-area-inset-top, 0px); z-index:5; background:var(--bg); border-bottom:1px solid var(--line); display:flex; gap:4px; overflow-x:auto; scrollbar-width:thin; padding-block:6px}
+.tabs a{flex:none; font-size:14px; font-weight:500; text-decoration:none; color:var(--muted); padding:7px 12px; border-radius:8px; white-space:nowrap}
+.tabs a:hover{color:var(--ink); background:var(--surface)}
+.tabs a[aria-current="page"]{color:var(--accent); background:var(--accent-soft)}
+.tabs .sep{flex:none; width:1px; background:var(--line); margin:6px 4px}
+.tabs .role{flex:none; font-family:var(--mono); font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--surface); background:var(--accent); border-radius:6px; padding:3px 8px; align-self:center; margin-right:6px}
+main{padding-block:8px 0}
+.page{display:grid; gap:18px; padding-block:24px 8px}
+.page > p{max-width:70ch; margin:0}
+.page h1{font-size:clamp(1.9rem, 4.5vw, 2.7rem)}
+.gate{max-width:720px; display:grid; gap:18px}
+.pledge-note{background:var(--surface); border:1px solid var(--line); border-top:4px solid var(--accent); border-radius:12px; padding:22px 24px; display:grid; gap:10px}
+.pledge-note h2{font-size:1.4rem}
+.pledge-note p{margin:0; max-width:64ch}
+.pledge-note ol{margin:0; padding-left:22px; display:grid; gap:6px; max-width:64ch}
+.pledge-note .signed{border-top:1px dashed var(--line); padding-top:10px; font-family:var(--mono); font-size:13px; color:var(--muted)}
+.pledge-note .signed b{font-family:var(--display); font-size:1.15rem; color:var(--ink); font-weight:600}
+.gateform{display:grid; gap:12px; max-width:480px}
+.gateform label{display:grid; gap:4px; font-size:13px; color:var(--muted)}
+.err{color:var(--warn); font-size:13px}
+.small{font-size:13px}
+.nextlist{list-style:none; margin:0; padding:0; display:grid; gap:0}
+.nextlist li{display:grid; grid-template-columns:130px minmax(0,1fr) auto; gap:4px 14px; padding-block:10px; border-bottom:1px solid var(--line); align-items:baseline}
+.nextlist li:last-child{border-bottom:0}
+.nextlist .k{font-family:var(--mono); font-size:11.5px; letter-spacing:.05em; text-transform:uppercase; color:var(--muted)}
+.nextlist a{font-size:13.5px; white-space:nowrap}
+.backlink{font-size:14px; text-decoration:none}
+@media (max-width: 560px){ .nextlist li{grid-template-columns:1fr} }
+
+.cal{display:grid; grid-template-columns:repeat(7, minmax(0,1fr)); gap:4px; max-width:420px}
+.cal-h{font-family:var(--mono); font-size:11px; color:var(--muted); text-align:center; padding-bottom:2px}
+.cal-d{font:inherit; font-size:13px; font-variant-numeric:tabular-nums; padding:8px 0; border-radius:7px; border:1px solid var(--line); background:var(--surface); color:var(--ink); cursor:pointer}
+.cal-d:hover{border-color:var(--accent)}
+.cal-d.before{opacity:.45}
+.cal-d.today{outline:2px solid var(--accent); outline-offset:-2px}
+.cal-d.hol{background:var(--exam-soft); border-color:var(--exam); color:var(--exam); font-weight:600}
+.hol-list{display:grid; gap:0}
+.hol-row{display:grid; grid-template-columns:minmax(150px,auto) minmax(0,1fr) auto; gap:12px; align-items:center; padding-block:8px; border-bottom:1px solid var(--line); font-size:14px}
+.hol-row:last-child{border-bottom:0}
+.dayrow.holiday .dl{color:var(--exam); font-weight:500}
+.dayrow.holiday input{background:var(--exam-soft)}
+.cardimg{width:100%; max-width:432px; aspect-ratio:1080/1350; border-radius:12px; border:1px solid var(--line); display:block}
+
+body{margin:0}
+img{max-width:100%}
+.pending{border-color:var(--exam); background:var(--exam-soft)}
+.pending h3{margin-bottom:4px}
+.pending details{margin-top:8px}
+#auth{min-height:100vh; display:grid; place-items:center; padding-block:40px}
+.authbox{width:100%; max-width:420px; background:var(--surface); border:1px solid var(--line); border-top:4px solid var(--accent); border-radius:14px; padding:26px 24px; display:grid; gap:14px}
+.authbox h1{font-size:1.9rem}
+.authbox label{display:grid; gap:4px; font-size:13px; color:var(--muted)}
+.gbtn{display:flex; align-items:center; justify-content:center; gap:10px; font:inherit; font-weight:500; padding:10px; border-radius:8px; border:1px solid var(--line); background:var(--surface); color:var(--ink); cursor:pointer}
+.gbtn:hover{border-color:var(--accent)}
+.or{display:flex; align-items:center; gap:10px; color:var(--muted); font-size:12px}
+.or::before,.or::after{content:""; flex:1; height:1px; background:var(--line)}
+.linkbtn{all:unset; cursor:pointer; color:var(--accent); font-size:13px; text-decoration:underline; text-underline-offset:2px}
+</style>
+</head>
+<body>
+<div id="auth" hidden>
+  <div class="authbox">
+    <div class="eyebrow">Database administration roadmap</div>
+    <h1>DBA Career Ladder</h1>
+    <p class="muted" style="margin:0" id="authLead">Sign in to open your plan.</p>
+    <button type="button" class="gbtn" id="googleBtn"><svg width="18" height="18" viewBox="0 0 48 48" aria-hidden="true"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.4-.4-3.5z"/></svg>Continue with Google</button>
+    <div class="or">or use email</div>
+    <label>Email<input type="email" id="authEmail" autocomplete="email"></label>
+    <label>Password<input type="password" id="authPass" autocomplete="current-password"></label>
+    <div class="weekbar"><button type="button" class="btn primary" id="authSignIn">Sign in</button><button type="button" class="btn" id="authSignUp">Create account</button></div>
+    <button type="button" class="linkbtn" id="authReset">Forgot password?</button>
+    <span class="err" id="authErr" role="alert"></span>
+  </div>
+</div>
+<div class="wrap" id="appRoot" hidden>
+  <header class="topbar">
+    <div class="brand"><b>DBA Career Ladder</b><span class="muted" id="hello"></span></div>
+    <span style="display:flex;gap:12px;align-items:baseline"><span id="saveState">Opening…</span><button type="button" class="btn small" id="signOutBtn">Sign out</button></span>
+  </header>
+  <nav class="tabs" id="tabs" aria-label="Pages" hidden></nav>
+
+  <main>
+  <section class="page" id="p-loading"><p class="muted">Opening your plan…</p></section>
+
+  <!-- ============ STUDENT ENTRY ============ -->
+  <section class="page" id="p-start" hidden>
+    <div class="gate">
+      <div class="eyebrow" data-planline></div>
+      <h1>DBA Career Ladder</h1>
+      <div id="gateNew" style="display:grid;gap:18px">
+        <div class="pledge-note" data-commitment></div>
+        <div class="gateform">
+          <label for="g_name">Your full name</label>
+          <input type="text" id="g_name" autocomplete="name" placeholder="e.g. Chiamaka Obi">
+          <label class="inline"><input type="checkbox" id="g_agree"> I have read this commitment and I accept it.</label>
+          <div class="weekbar"><button type="button" class="btn primary" id="g_sign">Sign and start my plan</button><span class="err" id="g_err"></span></div>
+        </div>
+      </div>
+      <div id="gateBack" hidden style="display:grid;gap:14px">
+        <h2 id="g_welcome">Welcome back</h2>
+        <p class="muted" style="margin:0">Enter your name to open your plan. You’ll continue from <b id="g_resume">your overview</b>.</p>
+        <div class="gateform">
+          <label for="g_back">Your name</label>
+          <input type="text" id="g_back" autocomplete="name">
+          <div class="weekbar"><button type="button" class="btn primary" id="g_enter">Continue my plan</button><span class="err" id="g_err2"></span></div>
+          <p class="muted small" style="margin:0">Your plan is linked to the account you signed in with, so everything you’ve done is saved when you come back.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page" id="p-wait" hidden>
+    <div class="gate">
+      <h1 id="waitTitle">Waiting for your teacher</h1>
+      <p id="waitText" style="margin:0;max-width:60ch">You’ve signed your commitment. Your teacher now needs to approve you before you can start. This page opens your plan automatically as soon as you’re approved.</p>
+    </div>
+  </section>
+
+  <!-- ============ STUDENT PAGES ============ -->
+  <section class="page" id="p-overview" hidden>
+    <div class="eyebrow" data-planline></div>
+    <h1 id="ovTitle">Your plan</h1>
+    <p class="muted">Seven levels, from your first SQL query to a professional DBA certification. Use the tabs to move between your daily log, assignments, the ladder and the exam calendar.</p>
+    <div class="stats">
+      <div class="stat"><span>Where you are</span><b id="stNow">–</b><span id="stNowSub">&nbsp;</span></div>
+      <div class="stat"><span>Hours logged</span><b id="stHours">0</b><span id="stHoursSub">&nbsp;</span></div>
+      <div class="stat"><span>Milestones done</span><b id="stTasks">0</b><span id="stTasksSub">&nbsp;</span></div>
+      <div class="stat"><span>Exams passed</span><b id="stExams">0</b><span id="stExamsSub">&nbsp;</span></div>
+    </div>
+    <div class="panel feedback" id="coachBox" hidden>
+      <div class="eyebrow">Feedback from your teacher</div>
+      <p id="coachText" style="margin:0; white-space:pre-wrap"></p>
+      <div class="muted mono" id="coachAt" style="font-size:12px"></div>
+    </div>
+    <div class="panel">
+      <h3>Pick up where you left off</h3>
+      <ul class="nextlist" id="nextList"></ul>
+    </div>
+  </section>
+
+  <section class="page" id="p-log" hidden>
+    <h2>Daily log</h2>
+    <p class="muted">Log each day’s hours and one line on what you did, then make your progress card and post it. On Sunday, fill in the weekly reflection. Your teacher sees this and may comment on the week.</p>
+    <div class="panel">
+      <div class="weekbar">
+        <h3 style="margin-right:auto">This week</h3>
+        <button type="button" id="wkPrev" aria-label="Previous week">← Prev</button>
+        <span id="weekLabel">–</span>
+        <button type="button" id="wkNext" aria-label="Next week">Next →</button>
+      </div>
+      <div class="muted" id="weekLevel" style="font-size:13px">&nbsp;</div>
+      <div class="dayrows" id="daysBox"></div>
+      <div class="weektotal"><span class="mono" id="weekTotal">0 / 14 h</span><div class="bar"><i id="weekBar"></i></div></div>
+      <div class="feedback weekcomment" id="weekComment" hidden></div>
+      <label>What I finished this week<textarea id="w_did" data-week="did" placeholder="e.g. CS50 SQL Lecture 2 and Problem Set 2, 8 SQL 50 problems"></textarea></label>
+      <label>What got in the way<textarea id="w_blocked" data-week="blocked" placeholder="Be honest: power cuts, work, lost focus…"></textarea></label>
+      <label>Next week I will<textarea id="w_next" data-week="next" placeholder="One or two specific goals"></textarea></label>
+      <label>How did this week go?
+        <select id="w_rating" data-week="rating">
+          <option value="">Choose…</option>
+          <option value="5">Great: did everything I planned</option>
+          <option value="4">Good: most of it</option>
+          <option value="3">OK: about half</option>
+          <option value="2">Weak: fell behind</option>
+          <option value="1">Missed the week</option>
+        </select>
+      </label>
+    </div>
+    <div class="panel" id="cardPanel">
+      <h3>Share today’s progress</h3>
+      <p class="muted small" style="margin:0">At the end of each study day, make your progress card and post it on social media. That’s the last <b data-social>20 min</b> of your daily time.</p>
+      <div class="weekbar"><label class="inline" for="cardDay">Card for</label><select id="cardDay" style="width:auto;min-width:200px"></select><button type="button" class="btn primary" id="cardMake">Create my card</button></div>
+      <div id="cardOut" hidden style="display:grid;gap:12px">
+        <img id="cardImg" class="cardimg" alt="Your progress card for social media">
+        <label>Caption to post with it<textarea id="cardCaption" readonly></textarea></label>
+        <div class="weekbar"><button type="button" class="btn primary" id="cardDl">Download JPEG</button><button type="button" class="btn" id="cardCopy">Copy caption</button></div>
+      </div>
+      <span class="muted small" id="cardStatus"></span>
+    </div>
+    <div class="panel">
+      <h3>Past weeks</h3>
+      <div class="hist" id="history"></div>
+    </div>
+  </section>
+
+  <section class="page" id="p-work" hidden>
+    <h2>My assignments</h2>
+    <p class="muted">Tasks from your teacher. Submit your work before the due date: write what you did and add a link (for example your GitHub repo). Grades and comments appear here once your teacher marks it.</p>
+    <div id="workList" class="tasklist"></div>
+  </section>
+
+  <section class="page" id="p-commit" hidden>
+    <h2>My commitment</h2>
+    <div class="pledge-note" id="commitSigned"></div>
+    <div class="panel">
+      <h3>My plan details</h3>
+      <label>Full name (your teacher sees this)<input type="text" id="p_name" data-pledge="name" placeholder="Your full name"></label>
+      <label>Why I’m doing this<textarea id="p_why" data-pledge="why" placeholder="e.g. To be working as a DBA by end of 2027 and support my family"></textarea></label>
+      <label>Accountability partner (name and how to reach them)<input type="text" id="p_partner" data-pledge="partner" placeholder="Someone who checks on you every week"></label>
+      <label>Study group members<input type="text" id="p_group" data-pledge="group" placeholder="3–5 people aiming at the same exams"></label>
+      <label>My daily study hours<input type="text" id="p_time" data-pledge="time" placeholder="e.g. 5:00–7:00 am"></label>
+      <label>If I miss a day, I will…<input type="text" id="p_miss" data-pledge="miss" placeholder="e.g. make it up on Saturday afternoon"></label>
+    </div>
+  </section>
+
+  <!-- ============ SHARED PLAN PAGES ============ -->
+  <section class="page" id="p-ladder" hidden>
+    <h2>The ladder</h2>
+    <p class="muted">Start at Level 1 and climb. Finish each level before moving up. If you fall behind, push the dates back rather than skipping the exam. Tick milestones as you finish them.</p>
+    <div class="ladder" id="ladderList"></div>
+  </section>
+
+  <section class="page" id="p-exams" hidden>
+    <h2>Exam calendar</h2>
+    <p class="muted">Every test on the ladder in date order. Prices are in US dollars and can differ in Nigeria, so confirm on the exam page before you pay. Book paid exams at least three weeks ahead.</p>
+    <div class="tablebox"><table>
+      <thead><tr><th>Target date</th><th>Exam</th><th>Level</th><th>Cost</th><th>You earn</th></tr></thead>
+      <tbody id="examTable"></tbody>
+    </table></div>
+  </section>
+
+  <section class="page" id="p-routine" hidden>
+    <h2 id="routineTitle">Daily routine</h2>
+    <p class="muted">The same shape every week, whatever level you’re on. One sixth of each day goes to posting your progress card, so the world can follow your climb. Protect the time: same hours each day, phone in another room until it’s time to post.</p>
+    <div class="tablebox"><table>
+      <thead><tr><th>Day</th><th>First block</th><th>Second block</th><th>Share (1/6 of the day)</th></tr></thead>
+      <tbody id="routineBody"></tbody>
+    </table></div>
+  </section>
+
+  <!-- ============ TEACHER PAGES ============ -->
+  <section class="page" id="p-class" hidden>
+    <h2>Class</h2>
+    <div class="panel pending" id="pendingBox" hidden></div>
+    <p class="muted">Approved students, with the date they signed their commitment. Select <b>View</b> to open a student’s daily log, submissions and grades.</p>
+    <div class="tablebox"><table>
+      <thead><tr><th>Student</th><th>Signed</th><th>Working on</th><th>Last 7 days</th><th>Total hours</th><th>Last check-in</th><th>Assignments</th><th>Avg grade</th><th>Exams</th><th></th></tr></thead>
+      <tbody id="classBody"><tr><td colspan="10" class="muted">Loading your class…</td></tr></tbody>
+    </table></div>
+    <div class="panel invite">
+      <h3>Adding students</h3>
+      <ol>
+        <li>Send students the link to this site. They sign in with Google, or with an email and password.</li>
+        <li>They read and sign the commitment with their full name, then wait for you.</li>
+        <li>They appear under <b>Waiting for approval</b> at the top of this page. Approve the students you know; remove anyone you don’t. Only approved students can use the plan.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="page" id="p-assign" hidden>
+    <h2>Assign a task</h2>
+    <p class="muted">Tasks appear on each chosen student’s “My assignments” page. Grade them from the student’s page in Class.</p>
+    <div class="panel" id="assignPanel">
+      <div class="assign-grid">
+        <label>Title<input type="text" id="as_title" placeholder="e.g. Finish CS50 SQL Problem Set 2"></label>
+        <label>Due date<input type="date" id="as_due"></label>
+        <label>Points<input type="number" id="as_points" min="1" step="1" value="10"></label>
+        <label>Level<select id="as_level"><option value="">Any</option></select></label>
+      </div>
+      <label>Instructions<textarea id="as_details" placeholder="What to do, and what to submit (e.g. a GitHub link to your queries)"></textarea></label>
+      <fieldset class="recips"><legend>Assign to</legend>
+        <label class="inline"><input type="radio" name="as_to" value="all" checked> All students</label>
+        <label class="inline"><input type="radio" name="as_to" value="some"> Selected students</label>
+        <div id="as_list" class="reciplist" hidden></div>
+      </fieldset>
+      <div class="weekbar"><button type="button" class="btn primary" id="as_go">Assign task</button><span class="muted" id="as_status" style="font-size:13px"></span></div>
+    </div>
+  </section>
+
+  <section class="page" id="p-settings" hidden>
+    <h2>Plan settings</h2>
+    <p class="muted">These settings apply to every student as soon as you save. Level dates, exam dates, weekly targets and the daily routine all move to fit.</p>
+    <div class="panel">
+      <div class="assign-grid" style="grid-template-columns:1fr 1fr">
+        <label>Daily study time (hours)<input type="number" id="set_hours" min="0.5" max="8" step="0.5"></label>
+        <label>Start date<input type="date" id="set_start"></label>
+      </div>
+      <p class="note" id="set_preview" style="margin:0"></p>
+    </div>
+    <div class="panel">
+      <h3>Holidays</h3>
+      <p class="muted small" style="margin:0">Click days on the calendar to mark or unmark them, or add a range. On holidays no study is expected, and the plan moves later to make up the time.</p>
+      <div class="assign-grid" style="grid-template-columns:1fr 1fr 1.6fr auto">
+        <label>From<input type="date" id="hol_from"></label>
+        <label>To (optional)<input type="date" id="hol_to"></label>
+        <label>Name (optional)<input type="text" id="hol_name" placeholder="e.g. Christmas break"></label>
+        <button type="button" class="btn" id="hol_add" style="align-self:end">Add days</button>
+      </div>
+      <span class="muted small" id="hol_msg"></span>
+      <div class="weekbar"><button type="button" id="cal_prev" aria-label="Previous month">←</button><b id="cal_label" style="min-width:150px;text-align:center"></b><button type="button" id="cal_next" aria-label="Next month">→</button></div>
+      <div class="cal" id="cal"></div>
+      <div id="hol_list" class="hol-list"></div>
+    </div>
+    <div class="weekbar"><button type="button" class="btn primary" id="set_save">Save and apply to all students</button><button type="button" class="btn" id="set_reset">Discard changes</button><span class="muted small" id="set_status"></span></div>
+  </section>
+
+  <section class="page" id="p-student" hidden>
+    <a href="#class" class="backlink">← Back to class</a>
+    <div class="panel" id="studentDetail">
+      <div id="detailBody"></div>
+      <div class="fbform">
+        <label for="fbInput">General feedback to this student (shown on their Overview page)</label>
+        <textarea id="fbInput" placeholder="e.g. Good week. Finish Problem Set 3 before starting Lecture 4."></textarea>
+        <div class="weekbar"><button type="button" class="btn primary" id="fbSend">Send feedback</button><span class="muted" id="fbStatus" style="font-size:13px"></span></div>
+      </div>
+    </div>
+  </section>
+  </main>
+</div>
+
+<script>
+window.startApp=function(){
+"use strict";
+var PLAN_START = "2026-11-01";
+var WEEK_TARGET = 14;
+
+var LEVELS = [
+ { n:1, name:"SQL foundations", tag:"Ground level", start:"2026-11-01", end:"2027-01-02", hours:126,
+   goal:"Write correct SQL without looking things up, and design a small, well-structured (normalised) database.",
+   phases:[
+    {when:"1 – 7 Nov", what:"Set up. Install PostgreSQL and DBeaver. Create GitHub, HackerRank and LeetCode accounts and a GitHub repo called dba-journey for your notes. Watch CS50 SQL Lecture 0 (Querying) and do Problem Set 0.",
+     links:[["PostgreSQL download","https://www.postgresql.org/download/"],["DBeaver","https://dbeaver.io/download/"],["CS50 SQL","https://cs50.harvard.edu/sql/"],["GitHub","https://github.com/"]]},
+    {when:"8 Nov – 12 Dec", what:"CS50 SQL Lectures 1–6 (Relating, Designing, Writing, Viewing, Optimizing, Scaling), one a week, with each problem set. Re-run every query in your own PostgreSQL as well.",
+     links:[["CS50 SQL","https://cs50.harvard.edu/sql/"]]},
+    {when:"Every weekday", what:"30 minutes of LeetCode’s SQL 50 study plan. Aim to finish all 50 by {exam:hr_basic}.",
+     links:[["LeetCode SQL 50","https://leetcode.com/studyplan/top-sql-50/"]]},
+    {when:"13 – 19 Dec", what:"Review joins, GROUP BY, subqueries and window functions. Take the HackerRank SQL (Basic) test on {exam:hr_basic}.",
+     links:[["HackerRank SQL (Basic)","https://www.hackerrank.com/skills-verification/sql_basic"]]},
+    {when:"20 Dec – 2 Jan", what:"CS50 SQL final project: design and build your own database with its design document. A lighter holiday pace is fine.",
+     links:[["CS50 SQL","https://cs50.harvard.edu/sql/"]]}
+   ],
+   note:"Check CS50’s notice about what happens to work submitted near the end of the year, so your progress carries into 2027.",
+   exams:[
+    {id:"hr_basic", name:"HackerRank SQL (Basic) skills test", date:"2026-12-19", cost:"Free", format:"Online, timed, take it any time", link:"https://www.hackerrank.com/skills-verification/sql_basic", earn:"HackerRank SQL (Basic) certificate"},
+    {id:"cs50", name:"CS50 SQL problem sets + final project", date:"2027-01-02", cost:"Free", format:"Submitted online and auto-graded", link:"https://cs50.harvard.edu/sql/", earn:"CS50 SQL certificate (Harvard)"}
+   ],
+   quals:["HackerRank SQL (Basic) certificate","CS50’s Introduction to Databases with SQL certificate from Harvard (free)"],
+   community:[["Form a study group of 3–5 people before your start date",""],["CS50 online communities","https://cs50.harvard.edu/sql/"]],
+   tasks:["Study group formed and first call held","PostgreSQL and DBeaver installed; dba-journey repo created","CS50 SQL Problem Sets 0–6 submitted","LeetCode SQL 50 completed","HackerRank SQL (Basic) passed","CS50 SQL final project submitted"]
+ },
+ { n:2, name:"Linux and PostgreSQL at the command line", tag:"Hands-on", start:"2027-01-03", end:"2027-02-27", hours:112,
+   goal:"Work like a real DBA: in a Linux terminal, with psql, Bash scripts and Git, managing users and backups yourself.",
+   phases:[
+    {when:"3 Jan – 6 Feb", what:"freeCodeCamp Relational Database certification: Bash, PostgreSQL in the terminal and Git. Build and submit the certification projects.",
+     links:[["freeCodeCamp Relational Database","https://www.freecodecamp.org/learn/relational-database/"]]},
+    {when:"7 – 20 Feb", what:"PostgreSQL admin basics on your own install: psql commands, roles and GRANT, pg_dump and pg_restore, postgresql.conf and pg_hba.conf. Follow the Server Administration part of the manual.",
+     links:[["PostgreSQL: Server Administration","https://www.postgresql.org/docs/current/admin.html"]]},
+    {when:"21 – 27 Feb", what:"Review. Take HackerRank SQL (Intermediate) on {exam:hr_int}.",
+     links:[["HackerRank SQL (Intermediate)","https://www.hackerrank.com/skills-verification/sql_intermediate"]]}
+   ],
+   note:"freeCodeCamp’s own estimate for this certification is generous; with Level 1 behind you it usually goes faster. If you’re still on the projects when the admin-basics phase begins, finish them first and move the admin basics later.",
+   exams:[
+    {id:"fcc", name:"freeCodeCamp Relational Database certification projects", date:"2027-02-06", cost:"Free", format:"Projects checked by automated tests", link:"https://www.freecodecamp.org/learn/relational-database/", earn:"freeCodeCamp Relational Database Certification"},
+    {id:"hr_int", name:"HackerRank SQL (Intermediate) skills test", date:"2027-02-27", cost:"Free", format:"Online, timed", link:"https://www.hackerrank.com/skills-verification/sql_intermediate", earn:"HackerRank SQL (Intermediate) certificate"}
+   ],
+   quals:["freeCodeCamp Relational Database Certification","HackerRank SQL (Intermediate) certificate"],
+   community:[["freeCodeCamp forum: post your projects for feedback","https://forum.freecodecamp.org/"]],
+   tasks:["All freeCodeCamp certification projects passed","Using psql every day instead of a GUI","Lab: three roles (admin, app, read-only) tested with GRANT/REVOKE","Lab: backup with pg_dump, drop the database, restore it","HackerRank SQL (Intermediate) passed"]
+ },
+ { n:3, name:"Oracle Database Administrator, Associate", tag:"First vendor certification", start:"2027-02-28", end:"2027-06-26", hours:238,
+   goal:"Install, run and look after an Oracle database, and pass Oracle’s associate DBA exam. Oracle is used heavily by Nigerian banks, telecoms and government.",
+   phases:[
+    {when:"28 Feb – 27 Mar", what:"Install Oracle AI Database Free (VirtualBox appliance or container) and SQL Developer. Learn the architecture: instance vs database, memory (SGA/PGA), background processes, container and pluggable databases. Practise Oracle SQL in Live SQL.",
+     links:[["Oracle Database Free","https://www.oracle.com/database/free/"],["SQL Developer","https://www.oracle.com/database/sqldeveloper/"],["Oracle Live SQL","https://livesql.oracle.com/"]]},
+    {when:"28 Mar – 1 May", what:"Exam topics, part 1: starting and stopping instances, parameters, users/roles/privileges, tablespaces and datafiles, storage and undo, pluggable databases, Oracle Net and the listener. Do every task in your own install.",
+     links:[["Oracle Database documentation","https://docs.oracle.com/en/database/"],["1Z0-182 exam topics","https://mylearn.oracle.com/ou/exam/oracle-database-23ai-administration-associate-1z0-182/38560/138639/219333"]]},
+    {when:"2 May – 5 Jun", what:"Exam topics, part 2: moving data (Data Pump, SQL*Loader), auditing, maintenance, database tools and performance basics. Book the exam on Pearson VUE at least three weeks before {exam:ora182}.",
+     links:[["Pearson VUE (Oracle)","https://home.pearsonvue.com/oracle"]]},
+    {when:"6 – 26 Jun", what:"Practice questions, then weak topics, then practice again. Aim for 80%+ before exam day. Exam on {exam:ora182}.",
+     links:[["Oracle Dev Gym","https://devgym.oracle.com/"]]}
+   ],
+   note:"Start saving for the exam fee now. At about US$245, setting aside a little each month from your start date covers it.",
+   exams:[
+    {id:"ora182", name:"Oracle AI Database Administration Associate (1Z0-182)", date:"2027-06-26", cost:"≈ US$245", format:"60 questions · 120 min · pass mark 65% · Pearson VUE online or test centre", link:"https://mylearn.oracle.com/ou/exam/oracle-database-23ai-administration-associate-1z0-182/38560/138639/219333", earn:"Oracle AI Database Administration Associate"}
+   ],
+   quals:["Oracle AI Database Administration Associate (Oracle certification)","From here you can apply for junior DBA and database support roles"],
+   community:[["Oracle Dev Gym: weekly SQL quizzes and tournaments with rankings","https://devgym.oracle.com/"],["Oracle forums","https://forums.oracle.com/"]],
+   tasks:["Oracle AI Database Free and SQL Developer installed","Architecture notes written in your repo","Part 1 topics practised hands-on","Part 2 topics practised hands-on","Exam booked on Pearson VUE","Practice scores at 80% or higher","1Z0-182 passed"]
+ },
+ { n:4, name:"PostgreSQL DBA and first job applications", tag:"Second platform", start:"2027-06-27", end:"2027-09-25", hours:182,
+   goal:"Handle the real DBA jobs on PostgreSQL: backup and recovery, replication, tuning and security. Turn that work into a portfolio and start applying for jobs.",
+   phases:[
+    {when:"27 Jun – 24 Jul", what:"Backup and recovery: pg_dump vs pg_basebackup, WAL archiving, point-in-time recovery. Write a runbook and prove it works by restoring to a chosen time.",
+     links:[["PostgreSQL: Backup and Restore","https://www.postgresql.org/docs/current/backup.html"]]},
+    {when:"25 Jul – 21 Aug", what:"High availability and maintenance: streaming replication between two VMs or containers, a failover test, VACUUM and autovacuum, monitoring with pg_stat_statements.",
+     links:[["PostgreSQL: High Availability","https://www.postgresql.org/docs/current/high-availability.html"]]},
+    {when:"22 Aug – 11 Sep", what:"Performance and security: EXPLAIN ANALYZE, index types, memory settings, pg_hba.conf, SSL, roles. Write a tuning case study with before-and-after timings.",
+     links:[["PostgreSQL: Performance Tips","https://www.postgresql.org/docs/current/performance-tips.html"]]},
+    {when:"12 – 25 Sep", what:"EDB exam preparation using the topics on the exam page. Exam on {exam:edb}.",
+     links:[["EDB certification exams","https://www.enterprisedb.com/training/certification-exams"]]},
+    {when:"All level", what:"Put each lab on GitHub. Add your Oracle certification to your CV and LinkedIn, and apply for junior DBA and database support jobs.",
+     links:[]}
+   ],
+   note:"Pick the newest version of EDB Essentials for PostgreSQL (v18 at the time of writing). Earlier EDB PostgreSQL exams were about US$200; check the current price on EDB’s portal.",
+   exams:[
+    {id:"edb", name:"EDB Essentials for PostgreSQL", date:"2027-09-25", cost:"Check EDB portal (≈ US$200)", format:"Online, scheduled at your convenience", link:"https://www.enterprisedb.com/training/certification-exams", earn:"EDB Essentials for PostgreSQL"}
+   ],
+   quals:["EDB Essentials for PostgreSQL certification","Three portfolio projects: recovery runbook, replication lab, tuning case study"],
+   community:[["PostgreSQL community: Slack, mailing lists, online PGDay events","https://www.postgresql.org/community/"]],
+   tasks:["Point-in-time recovery runbook tested and on GitHub","Replication and failover lab done","Tuning case study with before/after numbers","CV and LinkedIn updated","10 job applications sent","EDB Essentials for PostgreSQL passed"]
+ },
+ { n:5, name:"How databases work inside", tag:"World-class", start:"2027-09-26", end:"2028-01-08", hours:210,
+   goal:"Understand what happens inside the engine (storage, buffer pools, indexes, query execution) by building parts of one. Few DBAs anywhere can say they’ve done this.",
+   phases:[
+    {when:"26 Sep – 5 Dec", what:"Carnegie Mellon 15-445 (Prof. Andy Pavlo): two lectures a week from the current course page. Do Project 0 (C++ primer), then Project 1 (buffer pool). Submit to the public Gradescope autograder (entry code 5R4XPZ, school: Carnegie Mellon University). It opens after CMU’s own deadline.",
+     links:[["CMU 15-445","https://15445.courses.cs.cmu.edu/"],["BusTub (project code)","https://github.com/cmu-db/bustub"]]},
+    {when:"6 – 18 Dec", what:"Advanced SQL: window functions, recursive CTEs, reading query plans. Take HackerRank SQL (Advanced) on {exam:hr_adv}.",
+     links:[["HackerRank SQL (Advanced)","https://www.hackerrank.com/skills-verification/sql_advanced"]]},
+    {when:"19 Dec – 8 Jan", what:"Project 2 (indexes) if you’re on track; otherwise polish Projects 0–1. Write a blog post explaining how a buffer pool works.",
+     links:[]}
+   ],
+   note:"This is a hard university course in C++. If C++ is new to you, spend the first two weeks on a C++ refresher. Course rule: don’t publish your project code publicly.",
+   exams:[
+    {id:"hr_adv", name:"HackerRank SQL (Advanced) skills test", date:"2027-12-18", cost:"Free", format:"Online, timed", link:"https://www.hackerrank.com/skills-verification/sql_advanced", earn:"HackerRank SQL (Advanced) certificate"},
+    {id:"cmu", name:"CMU 15-445 projects on the Gradescope autograder", date:"2028-01-08", cost:"Free", format:"Automated tests score your code", link:"https://15445.courses.cs.cmu.edu/", earn:"Autograder scores (portfolio proof, no certificate)"}
+   ],
+   quals:["HackerRank SQL (Advanced) certificate","CMU 15-445 project scores, to show in interviews (no certificate is issued)"],
+   community:[["CMU 15-445 unofficial Discord for outside students (linked from the course FAQ)","https://15445.courses.cs.cmu.edu/"]],
+   tasks:["C++ refresher done (if needed)","All lectures up to buffer pool watched","Project 0 passes the autograder","Project 1 passes the autograder","HackerRank SQL (Advanced) passed","Blog post published"]
+ },
+ { n:6, name:"Learn in a global cohort", tag:"With other students", start:"2028-01-09", end:"2028-04-29", hours:224,
+   goal:"Study alongside thousands of students worldwide, with scored homework, a public leaderboard and peer-reviewed projects, while learning the data platform around databases.",
+   phases:[
+    {when:"Jan – Mar", what:"DataTalksClub Data Engineering Zoomcamp (2028 cohort): Docker with PostgreSQL, workflow orchestration, data warehouses, batch and streaming. Submit the weekly homework, which is scored and ranked on the leaderboard.",
+     links:[["Data Engineering Zoomcamp","https://github.com/DataTalksClub/data-engineering-zoomcamp"]]},
+    {when:"Mar – Apr", what:"Final project, then peer-review other students’ projects.",
+     links:[]}
+   ],
+   note:"The cohort usually starts in January. Check the repo for the 2028 start date and register early. If the date is different, move this level to match.",
+   exams:[
+    {id:"zoomcamp", name:"Zoomcamp final project + peer reviews", date:"2028-04-29", cost:"Free", format:"Project reviewed by other students", link:"https://github.com/DataTalksClub/data-engineering-zoomcamp", earn:"Data Engineering Zoomcamp certificate"}
+   ],
+   quals:["DataTalksClub Data Engineering Zoomcamp certificate"],
+   community:[["DataTalksClub Slack community","https://datatalks.club/slack.html"]],
+   tasks:["Registered for the 2028 cohort","All weekly homework submitted","Final project submitted","Peer reviews completed","Certificate received"]
+ },
+ { n:7, name:"Professional DBA certification", tag:"Top of the ladder", start:"2028-04-30", end:"2028-09-23", hours:294,
+   goal:"Earn a professional-level certification on the platform your target employers use most.",
+   phases:[
+    {when:"30 Apr – 13 May", what:"Decide using real job adverts: note which platform (Oracle, SQL Server/Azure or PostgreSQL) appears most in 20 adverts for the jobs you want.",
+     links:[]},
+    {when:"Option A · Oracle", what:"Oracle Database Administration 2019 Certified Professional (19c OCP). Two exams: 1Z0-082 (Admin I, overlaps with your Level 3 study) about two months before your final exam, then 1Z0-083 (Admin II: RMAN backup and recovery, multitenant, upgrades) on {exam:pro}.",
+     links:[["1Z0-082","https://education.oracle.com/oracle-database-administration-i/pexam_1Z0-082"],["1Z0-083","https://education.oracle.com/oracle-database-administration-i/pexam_1Z0-083"]]},
+    {when:"Option B · Microsoft", what:"Azure Database Administrator Associate (DP-300). Free Microsoft Learn path and practice assessment, with labs on an Azure free account.",
+     links:[["DP-300 on Microsoft Learn","https://learn.microsoft.com/en-us/credentials/certifications/azure-database-administrator/"]]},
+    {when:"Option C · PostgreSQL", what:"EDB Advanced for PostgreSQL, building on your Level 4 certification.",
+     links:[["EDB certification exams","https://www.enterprisedb.com/training/certification-exams"]]}
+   ],
+   note:"Budget: Oracle ≈ US$245 per exam (two exams). Microsoft prices DP-300 by country, often well below the US price. Check EDB on its portal.",
+   exams:[
+    {id:"pro", name:"Your chosen professional exam (final exam)", date:"2028-09-23", cost:"Depends on option", format:"Proctored online or at a test centre", link:"https://education.oracle.com/", earn:"Professional DBA certification"}
+   ],
+   quals:["One of: Oracle Database Administration 2019 Certified Professional · Microsoft Certified: Azure Database Administrator Associate · EDB Advanced for PostgreSQL"],
+   community:[["Teach: run sessions for your study group and answer beginners’ questions in the forums you used",""]],
+   tasks:["20 job adverts reviewed and platform chosen","Exam(s) booked","Practice scores at 80% or higher","Professional exam passed"]
+ }
+];
+
+/* ---------- helpers ---------- */
+function parseISO(s){ var p=s.split("-"); return new Date(+p[0], +p[1]-1, +p[2]); }
+function iso(d){ return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0"); }
+var MON=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+var DOW=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+function fmt(s){ var d=parseISO(s); return DOW[d.getDay()]+" "+d.getDate()+" "+MON[d.getMonth()]+" "+d.getFullYear(); }
+function fmtShort(s){ var d=parseISO(s); return d.getDate()+" "+MON[d.getMonth()]+" "+d.getFullYear(); }
+function esc(s){ return String(s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c];}); }
+function addDays(d,n){ var x=new Date(d); x.setDate(x.getDate()+n); return x; }
+function weekStart(d){ return addDays(new Date(d.getFullYear(), d.getMonth(), d.getDate()), -d.getDay()); }
+function today(){ var n=new Date(); return new Date(n.getFullYear(), n.getMonth(), n.getDate()); }
+function levelFor(dateStr){ for(var i=0;i<LEVELS.length;i++){ if(dateStr>=LEVELS[i].start && dateStr<=LEVELS[i].end) return LEVELS[i]; } return null; }
+
+var ALL_TASKS=[], ALL_EXAMS=[];
+LEVELS.forEach(function(L){
+  L.tasks.forEach(function(t,i){ ALL_TASKS.push({id:"l"+L.n+"t"+i, level:L.n}); });
+  L.exams.forEach(function(e){ e.level=L.n; ALL_EXAMS.push(e); });
+});
+
+/* ---------- state ---------- */
+var store = { state:{done:{}, exams:{}, pledge:{}, subs:{}}, weeks:{} };
+var db = null, user = null, uid = null, isOwner = false, mode = "local", myPath = null;
+var myAssigned = {};
+var LS_KEY = "dba-ladder-v3";
+var localMsg = "Saved in this browser only";
+var STATUS_LABEL = {"":"Not booked", booked:"Booked", passed:"Passed", retake:"Retake needed"};
+var RATING_LABEL = {"5":"Great","4":"Good","3":"OK","2":"Weak","1":"Missed"};
+
+function clone(o){ return JSON.parse(JSON.stringify(o==null?{}:o)); }
+function setStatus(t){ document.getElementById("saveState").textContent = t; }
+function normState(s){ s=s||{}; return {done:s.done||{}, exams:s.exams||{}, pledge:s.pledge||{}, subs:s.subs||{}, resume:s.resume||{}}; }
+function loadLocal(){
+  try{ var raw = localStorage.getItem(LS_KEY); if(raw){ var o=JSON.parse(raw); if(o && o.state) store=o; } }catch(e){}
+  store.state=normState(store.state); store.weeks=store.weeks||{};
+}
+function saveLocal(){ try{ localStorage.setItem(LS_KEY, JSON.stringify(store)); }catch(e){} }
+function hasLocalData(){ var s=store.state; return Object.keys(s.done).length || Object.keys(s.exams).length || Object.keys(s.pledge).length || Object.keys(store.weeks).length; }
+function safeUrl(u){ u=String(u||"").trim(); return /^https?:\/\//i.test(u) ? u : ""; }
+function fmtStamp(s){ if(!s) return ""; var d=new Date(s); return d.getDate()+" "+MON[d.getMonth()]+" "+d.getFullYear()+", "+String(d.getHours()).padStart(2,"0")+":"+String(d.getMinutes()).padStart(2,"0"); }
+
+var timers={}, chains={};
+function queueWrite(path, getData){
+  saveLocal();
+  if(mode!=="db" || !path){ setStatus(localMsg); return; }
+  setStatus("Saving…");
+  clearTimeout(timers[path]);
+  timers[path]=setTimeout(function(){
+    delete timers[path];
+    var data = getData();
+    chains[path]=(chains[path]||Promise.resolve()).then(function(){ return db.doc(path).set(data); })
+      .then(function(){ if(!Object.keys(timers).length) setStatus("All changes saved"); })
+      .catch(function(e){
+        if(e && e.code==="invalid_argument"){
+          mode="local";
+          localMsg="Your access can’t save here yet, so progress is kept in this browser only. Ask your teacher to approve you.";
+          setStatus(localMsg);
+        } else setStatus("Couldn’t save just now. Your next edit will try again.");
+      });
+  }, 700);
+}
+function weekHours(w){ if(!w||!w.hours) return 0; return w.hours.reduce(function(a,b){ return a+(+b||0); },0); }
+function weekHasEntry(w){ return weekHours(w)>0 || w.did || w.blocked || w.next || (w.notes||[]).some(function(n){ return n; }); }
+function computeSummary(){
+  var s=store.state, hours=0, onT=0, logged=0, last=null, daily={}, lastActive=null;
+  var cutoff=iso(addDays(today(),-42));
+  Object.keys(store.weeks).forEach(function(k){
+    var w=store.weeks[k], h=weekHours(w); hours+=h; if(weekTarget(k)>0 && h>=weekTarget(k)) onT++;
+    if(weekHasEntry(w)){ logged++; if(!last || k>last) last=k; }
+    for(var i=0;i<7;i++){
+      var dh=+((w.hours||[])[i])||0, note=(w.notes||[])[i];
+      if(dh>0 || note){
+        var di=iso(addDays(parseISO(k),i));
+        if(di>=cutoff) daily[di]=dh;
+        if(!lastActive || di>lastActive) lastActive=di;
+      }
+    }
+  });
+  var tasks=0; ALL_TASKS.forEach(function(t){ if(s.done[t.id]) tasks++; });
+  var exams=0; ALL_EXAMS.forEach(function(e){ if((s.exams[e.id]||{}).status==="passed") exams++; });
+  return {hours:Math.round(hours*10)/10, weeksOnTarget:onT, weeksLogged:logged, lastWeek:last, lastRating:last?(store.weeks[last].rating||""):"", tasksDone:tasks, examsPassed:exams, daily:daily, lastActive:lastActive};
+}
+function studentDoc(){ return {state:clone(store.state), summary:computeSummary(), email:window.APP_USER_EMAIL||"", updatedAt:new Date().toISOString()}; }
+function saveState(){ queueWrite(myPath, studentDoc); }
+function saveWeek(id){
+  if(myPath) queueWrite(myPath+"/weeks/"+id, function(){ return clone(store.weeks[id]||{}); });
+  saveState();
+}
+
+/* ---------- progress helpers ---------- */
+function levelProgress(state){
+  var done=(state&&state.done)||{}, ex=(state&&state.exams)||{};
+  return LEVELS.map(function(L){
+    var d=0; L.tasks.forEach(function(t,i){ if(done["l"+L.n+"t"+i]) d++; });
+    var st=L.exams.map(function(e){ return (ex[e.id]||{}).status||""; });
+    return {L:L, done:d, exams:st, complete: d===L.tasks.length && st.every(function(x){ return x==="passed"; })};
+  });
+}
+function workingOn(state){ var lp=levelProgress(state); for(var i=0;i<lp.length;i++){ if(!lp[i].complete) return lp[i].L; } return LEVELS[LEVELS.length-1]; }
+function weekLabel(k){ var s=parseISO(k); return s.getDate()+" "+MON[s.getMonth()]+" "+s.getFullYear(); }
+function isGraded(t){ return t && t.grade!=null && t.grade!==""; }
+function taskStatus(t, sub){
+  if(isGraded(t)) return {cls:"graded", text:"Graded"};
+  if(sub) return {cls:"sub", text:"Submitted"};
+  if(t.due && t.due<iso(today())) return {cls:"over", text:"Overdue"};
+  return {cls:"", text:"To do"};
+}
+function sortedTaskIds(tasks){ return Object.keys(tasks||{}).sort(function(a,b){ var x=tasks[a].due||"9999", y=tasks[b].due||"9999"; return x<y?-1:(x>y?1:(a<b?-1:1)); }); }
+function gradeStats(tasks, subs){
+  tasks=tasks||{}; subs=subs||{};
+  var ids=Object.keys(tasks), sub=0, graded=0, pctSum=0, over=0, t=iso(today());
+  ids.forEach(function(id){
+    var k=tasks[id];
+    if(subs[id]) sub++;
+    if(isGraded(k)){ graded++; pctSum += (+k.grade)/(+k.points||1); }
+    else if(!subs[id] && k.due && k.due<t) over++;
+  });
+  return {assigned:ids.length, submitted:sub, graded:graded, avg: graded? Math.round(pctSum/graded*100) : null, overdue:over};
+}
+
+/* ---------- render: exam table ---------- */
+function renderExamTable(){
+  var rows = ALL_EXAMS.slice().sort(function(a,b){ return a.date<b.date?-1:1; }).map(function(e){
+    return "<tr><td class='date'>"+esc(fmt(e.date))+"</td><td><a href='"+esc(e.link)+"' target='_blank' rel='noopener'>"+esc(e.name)+"</a><div class='muted' style='font-size:12.5px'>"+esc(e.format)+"</div></td><td class='mono'>Level "+e.level+"</td><td>"+esc(e.cost)+"</td><td>"+esc(e.earn)+"</td></tr>";
+  });
+  document.getElementById("examTable").innerHTML = rows.join("");
+}
+
+/* ---------- render: ladder ---------- */
+function linkList(links){
+  if(!links || !links.length) return "";
+  return "<div class='links'>"+links.map(function(l){ return "<a href='"+esc(l[1])+"' target='_blank' rel='noopener'>"+esc(l[0])+" ↗</a>"; }).join("")+"</div>";
+}
+function renderLadder(){
+  var html = LEVELS.map(function(L){
+    var weeks = Math.round((parseISO(L.end)-parseISO(L.start))/864e5/7);
+    var phases = L.phases.map(function(p){
+      return "<div class='phase'><div class='when'>"+esc(phaseWhen(L,p))+"</div><div><p>"+fillTokens(esc(p.what))+"</p>"+linkList(p.links)+"</div></div>";
+    }).join("");
+    var exams = L.exams.map(function(e){
+      return "<div class='exam'><div class='label'>Exam · "+esc(fmt(e.date))+"</div><h4><a href='"+esc(e.link)+"' target='_blank' rel='noopener'>"+esc(e.name)+"</a></h4>"+
+        "<dl><dt>Format</dt><dd>"+esc(e.format)+"</dd><dt>Cost</dt><dd>"+esc(e.cost)+"</dd></dl>"+
+        "<div class='track'><label>Booked / taken on<input type='date' id='ex_"+e.id+"_date' data-exam='"+e.id+"' data-field='date'></label>"+
+        "<label>Result<select id='ex_"+e.id+"_status' data-exam='"+e.id+"' data-field='status'><option value=''>Not booked</option><option value='booked'>Booked</option><option value='passed'>Passed</option><option value='retake'>Retake needed</option></select></label></div></div>";
+    }).join("");
+    var quals = "<div class='qual'><div class='label'>Qualification you should hold</div><ul>"+L.quals.map(function(q){return "<li>"+esc(q)+"</li>";}).join("")+"</ul></div>";
+    var comm = "<div class='community'><div class='label'>Learn with others</div><ul>"+L.community.map(function(c){ return "<li>"+(c[1]?"<a href='"+esc(c[1])+"' target='_blank' rel='noopener'>"+esc(c[0])+"</a>":esc(c[0]))+"</li>"; }).join("")+"</ul></div>";
+    var tasks = L.tasks.map(function(t,i){
+      var id="l"+L.n+"t"+i;
+      return "<label><input type='checkbox' id='"+id+"' data-task='"+id+"'><span>"+esc(t)+"</span></label>";
+    }).join("");
+    return "<article class='level' id='level"+L.n+"' data-level='"+L.n+"'>"+
+      "<div class='rail'><div class='rung' aria-hidden='true'>"+L.n+"</div></div>"+
+      "<div class='card'>"+
+        "<div class='card-head'><div><div class='eyebrow'>Level "+L.n+" · "+esc(L.tag)+" <span class='pill' data-now='"+L.n+"' hidden>You are here</span></div><h3 style='font-size:1.4rem;margin-top:4px'>"+esc(L.name)+"</h3></div>"+
+        "<div class='dates'>"+esc(fmtShort(L.start))+" → "+esc(fmtShort(L.end))+" · "+weeks+" weeks · ≈"+L.hours+" h</div></div>"+
+        "<p class='goal'>"+esc(L.goal)+"</p>"+
+        "<div class='cols'><div style='display:grid;gap:12px;align-content:start'><div class='eyebrow'>The work: what, when, where</div><div class='phases'>"+phases+"</div>"+(L.note?"<p class='note'>"+fillTokens(esc(L.note))+"</p>":"")+"</div>"+
+        "<div class='side'>"+exams+quals+comm+"</div></div>"+
+        "<div class='checklist'><div class='ch-head'><span class='eyebrow'>Milestones</span><span class='mono muted' style='font-size:12px' id='prog"+L.n+"'>0/"+L.tasks.length+"</span></div>"+tasks+"</div>"+
+      "</div></article>";
+  }).join("");
+  document.getElementById("ladderList").innerHTML = html;
+}
+
+/* ---------- apply state to inputs ---------- */
+function setVal(el, v){ if(el && document.activeElement!==el){ if(el.type==="checkbox") el.checked=!!v; else el.value = (v==null?"":v); } }
+function applyState(){
+  var s = store.state;
+  ALL_TASKS.forEach(function(t){ setVal(document.getElementById(t.id), s.done[t.id]); });
+  ALL_EXAMS.forEach(function(e){
+    var x = s.exams[e.id]||{};
+    setVal(document.getElementById("ex_"+e.id+"_date"), x.date);
+    setVal(document.getElementById("ex_"+e.id+"_status"), x.status);
+  });
+  document.querySelectorAll("[data-pledge]").forEach(function(el){ setVal(el, s.pledge[el.getAttribute("data-pledge")]); });
+  updateNameCard();
+  updateStats();
+}
+function updateNameCard(){
+  var pl=store.state.pledge||{};
+  document.getElementById("ovTitle").textContent = (pl.name||"").trim() ? "Hello, "+pl.name.trim().split(/\s+/)[0] : "Your plan";
+  renderCommitment();
+  renderNext();
+}
+
+/* ---------- commitment note ---------- */
+var COMMITMENT = {
+  intro:"I am starting a climb from my first SQL query to a professional database administration certification. I understand that certificates alone won’t make me a DBA; practice will.",
+  points:[
+    "{STUDY}",
+    "I will log my hours and what I did every day, honestly, including the days I miss.",
+    "At the end of each study day, I will post my progress card on social media.",
+    "I will submit the work my teacher assigns by the due date.",
+    "I will sit each exam on the planned date, or agree a new date with my teacher before it passes.",
+    "I will tell my teacher early when I fall behind, instead of going quiet.",
+    "I will help the students in my study group and ask for help when I need it."
+  ]
+};
+function commitmentHtml(signedName, signedAt){
+  return "<div class='eyebrow'>Commitment note</div><h2>"+(signedAt?"My commitment":"Before you begin")+"</h2><p>"+esc(COMMITMENT.intro)+"</p><ol>"+
+    COMMITMENT.points.map(function(p){ if(p==="{STUDY}") p="I will study for "+hoursText(settings.dailyHours)+" every day, starting "+startText()+", except on the holidays my teacher sets."; return "<li>"+esc(p)+"</li>"; }).join("")+"</ol>"+
+    (signedAt ? "<div class='signed'>Signed by <b>"+esc(signedName||"")+"</b> on "+esc(fmtStamp(signedAt))+"</div>" : "");
+}
+function renderCommitment(){
+  var pl=store.state.pledge||{};
+  document.querySelectorAll("[data-commitment]").forEach(function(el){ el.innerHTML=commitmentHtml(); });
+  document.getElementById("commitSigned").innerHTML=commitmentHtml(pl.name, pl.committedAt);
+}
+
+/* ---------- pages ---------- */
+var PAGES_STUDENT=[["overview","Overview"],["log","Daily log"],["work","My assignments"],["ladder","The ladder"],["exams","Exam calendar"],["routine","Daily routine"],["commit","My commitment"]];
+var PAGES_TEACHER=[["class","Class"],["assign","Assign a task"],["settings","Plan settings"],["ladder","The ladder"],["exams","Exam calendar"],["routine","Daily routine"]];
+var PAGE_NAMES={overview:"your overview", log:"your daily log", work:"your assignments", ladder:"the ladder", exams:"the exam calendar", routine:"the daily routine", commit:"your commitment"};
+var role=null, entered=false, ready=false;
+var NEEDS_APPROVAL = window.APP_NEEDS_APPROVAL===true, approved=!NEEDS_APPROVAL, removedFlag=false;
+function blocked(){ return NEEDS_APPROVAL && (!approved || removedFlag); }
+function hasPage(list,p){ return list.some(function(x){ return x[0]===p; }); }
+function signed(){ var pl=store.state.pledge||{}; return !!(pl.committedAt && (pl.name||"").trim()); }
+function resumePage(){ var p=(store.state.resume||{}).page; return hasPage(PAGES_STUDENT,p)?p:"overview"; }
+function defaultPage(){ if(role==="teacher") return "class"; if(!entered) return "start"; return blocked() ? "wait" : resumePage(); }
+function allowed(p){
+  if(role==="teacher") return hasPage(PAGES_TEACHER,p) || (p==="student" && !!selId);
+  if(!entered) return p==="start";
+  if(blocked()) return p==="wait";
+  return hasPage(PAGES_STUDENT,p);
+}
+function renderTabs(){
+  var nav=document.getElementById("tabs");
+  if(!role || (role==="student" && (!entered || blocked()))){ nav.hidden=true; return; }
+  var list = role==="teacher" ? PAGES_TEACHER : PAGES_STUDENT;
+  nav.innerHTML = (role==="teacher"?"<span class='role'>Teacher</span>":"") + list.map(function(x,i){
+    return (role==="teacher" && i===3 ? "<span class='sep' aria-hidden='true'></span>" : "")+"<a href='#"+x[0]+"' data-page='"+x[0]+"'>"+esc(x[1])+"</a>";
+  }).join("");
+  nav.hidden=false;
+}
+function showPage(){
+  if(!ready) return;
+  var p=(location.hash||"").replace(/^#/,"");
+  if(!allowed(p)){ p=defaultPage(); if(location.hash!=="#"+p){ history.replaceState(null,"","#"+p); } }
+  document.querySelectorAll(".page").forEach(function(s){ s.hidden = s.id!=="p-"+p; });
+  document.querySelectorAll("#tabs a").forEach(function(a){ if(a.getAttribute("data-page")===p || (p==="student" && a.getAttribute("data-page")==="class")) a.setAttribute("aria-current","page"); else a.removeAttribute("aria-current"); });
+  if(p==="start") renderStart();
+  if(p==="wait"){
+    document.getElementById("waitTitle").textContent = removedFlag ? "Your access has been removed" : "Waiting for your teacher";
+    document.getElementById("waitText").textContent = removedFlag ? "Your teacher has removed you from this class. If you think this is a mistake, contact your teacher." : "You’ve signed your commitment. Your teacher now needs to approve you before you can start. This page opens your plan automatically as soon as you’re approved.";
+  }
+  if(p==="overview") renderNext();
+  if(p==="settings" && !setDirty) loadSettingsForm();
+  window.scrollTo(0,0);
+  if(role==="student" && entered && !blocked() && hasPage(PAGES_STUDENT,p) && (store.state.resume||{}).page!==p){
+    store.state.resume={page:p, at:new Date().toISOString()}; saveState();
+  }
+}
+window.addEventListener("hashchange", showPage);
+function go(p){ if(location.hash==="#"+p) showPage(); else location.hash=p; }
+
+/* ---------- student entry ---------- */
+var tries=0;
+function renderStart(){
+  var s=signed();
+  document.getElementById("gateNew").hidden=s;
+  document.getElementById("gateBack").hidden=!s;
+  if(s){
+    document.getElementById("g_welcome").textContent="Welcome back";
+    document.getElementById("g_resume").textContent=PAGE_NAMES[resumePage()]||"your overview";
+  }
+}
+function norm(n){ return String(n||"").trim().replace(/\s+/g," ").toLowerCase(); }
+function enter(){
+  entered=true;
+  try{ sessionStorage.setItem("dba-entered-"+(uid||"local"),"1"); }catch(e){}
+  renderTabs(); go(resumePage());
+}
+document.getElementById("g_sign").addEventListener("click", function(){
+  var n=document.getElementById("g_name").value.trim().replace(/\s+/g," "), err=document.getElementById("g_err");
+  if(n.length<3 || n.indexOf(" ")<0){ err.textContent="Enter your full name (first and last)."; return; }
+  if(!document.getElementById("g_agree").checked){ err.textContent="Tick the box to accept the commitment."; return; }
+  err.textContent="";
+  store.state.pledge.name=n; store.state.pledge.committedAt=new Date().toISOString();
+  saveState(); applyState(); enter();
+});
+document.getElementById("g_enter").addEventListener("click", function(){
+  var err=document.getElementById("g_err2"), typed=document.getElementById("g_back").value;
+  if(norm(typed)===norm(store.state.pledge.name) || (norm(typed).length>1 && norm(store.state.pledge.name).split(" ").indexOf(norm(typed))>=0)){ err.textContent=""; enter(); return; }
+  tries++;
+  err.textContent = tries>=2 ? "That doesn’t match. You signed as “"+store.state.pledge.name+"”." : "That doesn’t match the name you signed with. Check the spelling.";
+});
+["g_name","g_back"].forEach(function(id){ document.getElementById(id).addEventListener("keydown", function(e){ if(e.key==="Enter") document.getElementById(id==="g_name"?"g_sign":"g_enter").click(); }); });
+
+/* ---------- overview: what to do next ---------- */
+function renderNext(){
+  var ul=document.getElementById("nextList"); if(!ul) return;
+  var items=[], t=today(), tISO=iso(t), s=store.state;
+  var rp=(s.resume||{});
+  if(rp.at) items.push(["Last time", "You were on "+(PAGE_NAMES[rp.page]||"your overview")+" on "+fmtStamp(rp.at)+".", rp.page||"overview", "Go back"]);
+  if(tISO>=PLAN_START){
+    var w=store.weeks[iso(weekStart(t))], di=t.getDay();
+    var logged = w && ((+((w.hours||[])[di])>0) || (w.notes||[])[di]);
+    if(isHoliday(tISO)) items.push(["Today", "Holiday"+(settings.holidays[tISO]?": "+settings.holidays[tISO]:"")+". No study expected today.", "log", "Open log"]);
+    else items.push(["Today", logged ? "Today’s log is done. Make your progress card and post it." : "Log today’s hours and what you did, then post your progress card.", "log", logged?"Make card":"Log today"]);
+  } else {
+    items.push(["Start date", "Your plan starts on "+startText()+". Get PostgreSQL and DBeaver installed before then.", "ladder", "See Level 1"]);
+  }
+  var L=workingOn(s), nextM=null;
+  L.tasks.forEach(function(x,i){ if(!nextM && !s.done["l"+L.n+"t"+i]) nextM=x; });
+  if(nextM) items.push(["Next milestone", nextM+" (Level "+L.n+")", "ladder", "Open ladder"]);
+  var tasks=myAssigned.tasks||{}, open=sortedTaskIds(tasks).filter(function(id){ return !(s.subs||{})[id] && !isGraded(tasks[id]); });
+  if(open.length){ var k=tasks[open[0]]; items.push(["Assignment", k.title+(k.due?" · due "+fmtShort(k.due):"")+(open.length>1?" (+"+(open.length-1)+" more)":""), "work", "Open"]); }
+  var nx=ALL_EXAMS.filter(function(e){ return (s.exams[e.id]||{}).status!=="passed"; }).sort(function(a,b){return a.date<b.date?-1:1;})[0];
+  if(nx) items.push(["Next exam", nx.name+" · "+fmt(nx.date), "exams", "Exam calendar"]);
+  var hk=Object.keys(settings.holidays).filter(function(k){ return k>tISO && daysBetween(tISO,k)<=30; }).sort()[0];
+  if(hk) items.push(["Holiday", fmt(hk)+(settings.holidays[hk]?" · "+settings.holidays[hk]:""), "log", "Daily log"]);
+  ul.innerHTML = items.map(function(x){ return "<li><span class='k'>"+esc(x[0])+"</span><span>"+esc(x[1])+"</span><a href='#"+x[2]+"'>"+esc(x[3])+" →</a></li>"; }).join("");
+}
+function updateStats(){
+  var s=store.state, t=today(), tISO=iso(t);
+  var lp=levelProgress(s), doneCount=0;
+  lp.forEach(function(p){
+    doneCount+=p.done;
+    document.getElementById("prog"+p.L.n).textContent = p.done+"/"+p.L.tasks.length;
+    document.getElementById("level"+p.L.n).classList.toggle("complete", p.complete);
+  });
+  document.getElementById("stTasks").textContent = doneCount;
+  document.getElementById("stTasksSub").textContent = "of "+ALL_TASKS.length+" across 7 levels";
+  var passed = ALL_EXAMS.filter(function(e){ return (s.exams[e.id]||{}).status==="passed"; }).length;
+  document.getElementById("stExams").textContent = passed;
+  var next = ALL_EXAMS.filter(function(e){ return (s.exams[e.id]||{}).status!=="passed"; }).sort(function(a,b){return a.date<b.date?-1:1;})[0];
+  document.getElementById("stExamsSub").textContent = next ? "Next: "+next.name.split(" (")[0].slice(0,34)+" · "+fmtShort(next.date) : "All exams passed";
+
+  var cur = levelFor(tISO);
+  document.querySelectorAll(".level").forEach(function(a){ a.classList.remove("current"); });
+  document.querySelectorAll("[data-now]").forEach(function(p){ p.hidden=true; });
+  if(tISO < PLAN_START){
+    var days = Math.round((parseISO(PLAN_START)-t)/864e5);
+    document.getElementById("stNow").textContent = days+" days";
+    document.getElementById("stNowSub").textContent = "until Level 1 starts on "+fmtShort(PLAN_START);
+  } else if(cur){
+    document.getElementById("stNow").textContent = "Level "+cur.n;
+    document.getElementById("stNowSub").textContent = cur.name;
+    document.getElementById("level"+cur.n).classList.add("current");
+    var pill=document.querySelector("[data-now='"+cur.n+"']"); if(pill) pill.hidden=false;
+  } else {
+    document.getElementById("stNow").textContent = "Done";
+    document.getElementById("stNowSub").textContent = "Plan dates complete";
+  }
+  var sum=computeSummary();
+  var planned = plannedHoursToDate();
+  document.getElementById("stHours").textContent = sum.hours;
+  document.getElementById("stHoursSub").textContent = planned ? "plan so far: "+planned+" h · "+sum.weeksOnTarget+" weeks on target" : "target "+hoursText(settings.dailyHours)+" a day";
+  renderHistory();
+}
+
+/* ---------- daily log / weekly check-in ---------- */
+var curWeek = iso(weekStart(today()));
+function renderDaysBox(){
+  var html="", start=parseISO(curWeek), tISO=iso(today());
+  for(var i=0;i<7;i++){
+    var d=addDays(start,i), di=iso(d);
+    var hol=isHoliday(di);
+    html += "<div class='dayrow"+(di===tISO?" today":"")+(hol?" holiday":"")+"'>"+
+      "<label class='dl' for='day"+i+"'>"+DOW[i]+" "+d.getDate()+" "+MON[d.getMonth()]+(hol?" · holiday":(di===tISO?" · today":""))+"</label>"+
+      "<input type='number' inputmode='decimal' min='0' max='8' step='0.5' id='day"+i+"' data-day='"+i+"' placeholder='hrs' aria-label='Hours studied on "+DOW[i]+"'>"+
+      "<input type='text' id='note"+i+"' data-note='"+i+"' placeholder='"+(hol?esc(settings.holidays[di]||"Holiday")+": no study expected":"What I did")+"' aria-label='What I did on "+DOW[i]+"'></div>";
+  }
+  document.getElementById("daysBox").innerHTML = html;
+}
+function loadWeek(force){
+  var w = store.weeks[curWeek]||{};
+  var start=parseISO(curWeek), end=addDays(start,6);
+  document.getElementById("weekLabel").textContent = start.getDate()+" "+MON[start.getMonth()]+" – "+end.getDate()+" "+MON[end.getMonth()]+" "+end.getFullYear();
+  var L = levelFor(curWeek);
+  var wkNo = Math.floor((start-weekStart(parseISO(PLAN_START)))/864e5/7)+1;
+  document.getElementById("weekLevel").textContent = "Week "+wkNo+(L?" · Level "+L.n+": "+L.name:"")+" · log each day’s hours and what you did";
+  document.getElementById("wkPrev").disabled = curWeek<=iso(weekStart(parseISO(PLAN_START)));
+  for(var i=0;i<7;i++){
+    var el=document.getElementById("day"+i); if(force||document.activeElement!==el) el.value = (w.hours&&w.hours[i]!=null&&w.hours[i]!=="")?w.hours[i]:"";
+    var nl=document.getElementById("note"+i); if(force||document.activeElement!==nl) nl.value = (w.notes&&w.notes[i])||"";
+  }
+  document.querySelectorAll("[data-week]").forEach(function(el){ if(force||document.activeElement!==el) el.value = w[el.getAttribute("data-week")]||""; });
+  renderWeekComment();
+  updateWeekTotal();
+  updateCardDays();
+}
+function renderWeekComment(){
+  var box=document.getElementById("weekComment");
+  var c=((myAssigned.weekComments)||{})[curWeek];
+  if(c && c.text){ box.textContent = "Teacher’s comment on this week: "+c.text; box.hidden=false; } else box.hidden=true;
+}
+function updateWeekTotal(){
+  var h = weekHours(store.weeks[curWeek]);
+  var tg=weekTarget(curWeek);
+  document.getElementById("weekTotal").textContent = (Math.round(h*10)/10)+" / "+(Math.round(tg*10)/10)+" h";
+  document.getElementById("weekBar").style.width = (tg>0?Math.min(100, h/tg*100):(h>0?100:0))+"%";
+}
+function ensureWeek(){
+  var w=store.weeks[curWeek];
+  if(!w) w=store.weeks[curWeek]={week:curWeek, hours:["","","","","","",""], notes:["","","","","","",""]};
+  if(!w.hours) w.hours=["","","","","","",""];
+  if(!w.notes) w.notes=["","","","","","",""];
+  return w;
+}
+function renderHistory(){
+  var box=document.getElementById("history");
+  var keys = Object.keys(store.weeks).filter(function(k){ return weekHasEntry(store.weeks[k]); }).sort().reverse();
+  box.textContent="";
+  if(!keys.length){ var p=document.createElement("p"); p.className="empty"; p.textContent="Nothing logged yet. Starting "+fmtShort(PLAN_START)+", log each day’s hours and what you did."; box.appendChild(p); return; }
+  var wc=(myAssigned.weekComments)||{};
+  keys.forEach(function(k){
+    var w=store.weeks[k], h=weekHours(w);
+    var row=document.createElement("div"); row.className="hist-row";
+    var a=document.createElement("button"); a.type="button"; a.style.cssText="all:unset;cursor:pointer;font-family:var(--mono);font-size:12.5px;color:var(--accent)";
+    a.textContent = weekLabel(k);
+    a.addEventListener("click", function(){ curWeek=k; renderDaysBox(); loadWeek(true); window.scrollTo(0,0); });
+    var hh=document.createElement("span"); hh.className="mono"; hh.textContent=(Math.round(h*10)/10)+" h"; hh.style.color = hoursColor(h,k);
+    var did=document.createElement("span"); did.className="did";
+    did.textContent = (wc[k]&&wc[k].text ? "Teacher commented · " : "") + (w.did || "—");
+    row.appendChild(a); row.appendChild(hh); row.appendChild(did); box.appendChild(row);
+  });
+}
+
+/* ---------- student: assignments + feedback from the teacher ---------- */
+var workPending=false;
+function renderMyAssigned(){
+  var f=myAssigned.feedback, box=document.getElementById("coachBox");
+  if(f && f.text){ document.getElementById("coachText").textContent=f.text; document.getElementById("coachAt").textContent=f.at?"Sent "+fmtStamp(f.at):""; box.hidden=false; } else box.hidden=true;
+  renderWeekComment(); renderHistory(); renderWork(); renderNext();
+}
+function renderWork(){
+  var box=document.getElementById("workList");
+  var tasks=myAssigned.tasks||{}, ids=sortedTaskIds(tasks);
+  if(box.contains(document.activeElement)){ workPending=true; return; }
+  workPending=false;
+  if(!ids.length){ box.innerHTML="<p class='empty'>No assignments yet. When your teacher assigns a task, it appears here.</p>"; return; }
+  var subs=store.state.subs||{};
+  box.innerHTML = ids.map(function(id){
+    var t=tasks[id], sub=subs[id], st=taskStatus(t, sub);
+    var lvl = t.level ? " · Level "+esc(t.level) : "";
+    var grade = isGraded(t) ? "<div class='gradebox'><span class='eyebrow' style='color:var(--ok)'>Grade</span><b>"+esc(t.grade)+" / "+esc(t.points)+" · "+Math.round((+t.grade)/(+t.points||1)*100)+"%</b>"+(t.comment?"<p>"+esc(t.comment)+"</p>":"")+(t.gradedAt?"<span class='muted mono' style='font-size:12px'>Marked "+esc(fmtStamp(t.gradedAt))+"</span>":"")+"</div>"
+      : (t.comment ? "<div class='gradebox'><span class='eyebrow' style='color:var(--ok)'>Teacher’s comment</span><p>"+esc(t.comment)+"</p></div>" : "");
+    return "<div class='taskcard'><div class='th'><h3>"+esc(t.title)+"</h3><span class='chip "+st.cls+"'>"+esc(st.text)+"</span></div>"+
+      "<div class='muted mono' style='font-size:12.5px'>"+(t.due?"Due "+esc(fmt(t.due)):"No due date")+" · "+esc(t.points)+" points"+lvl+"</div>"+
+      (t.details?"<p>"+esc(t.details)+"</p>":"")+grade+
+      "<div class='subform'><label for='st_"+id+"'>My work: what I did, answers or notes</label><textarea id='st_"+id+"'>"+esc(sub?sub.text:"")+"</textarea>"+
+      "<label for='sl_"+id+"'>Link (optional, e.g. GitHub repo or file)</label><input type='text' id='sl_"+id+"' value='"+esc(sub?sub.link:"")+"' placeholder='https://github.com/…'>"+
+      "<div class='weekbar'><button type='button' class='btn primary' data-submit='"+id+"'>"+(sub?"Update submission":"Submit work")+"</button><span class='muted' style='font-size:13px' id='ss_"+id+"'>"+(sub?"Submitted "+esc(fmtStamp(sub.submittedAt)):"")+"</span></div></div></div>";
+  }).join("");
+}
+document.getElementById("workList").addEventListener("click", function(ev){
+  var b=ev.target.closest("[data-submit]"); if(!b) return;
+  var id=b.getAttribute("data-submit");
+  var text=document.getElementById("st_"+id).value.trim(), link=document.getElementById("sl_"+id).value.trim(), msg=document.getElementById("ss_"+id);
+  if(!text && !link){ msg.textContent="Write what you did or add a link first."; return; }
+  if(link && !safeUrl(link)){ msg.textContent="Links must start with https:// or http://"; return; }
+  store.state.subs[id]={text:text, link:link, submittedAt:new Date().toISOString()};
+  saveState();
+  msg.textContent = mode==="db" ? "Submitted. Your teacher can see it now." : "Saved in this browser only. Your teacher can’t see it until your access is fixed.";
+});
+document.getElementById("workList").addEventListener("focusout", function(){
+  setTimeout(function(){ if(workPending && !document.getElementById("workList").contains(document.activeElement)) renderWork(); }, 0);
+});
+
+/* ---------- class dashboard (owner only) ---------- */
+var classRows=[], classAssigned={}, selId=null, selUnsub=null, selWeeks={}, detailPending=false, ownerChains={};
+function startClass(){
+  var sel=document.getElementById("as_level");
+  LEVELS.forEach(function(L){ var o=document.createElement("option"); o.value=L.n; o.textContent="Level "+L.n+": "+L.name; sel.appendChild(o); });
+  db.collection("students").onSnapshot(function(qs){
+    classRows = qs.docs.map(function(d){ return {id:d.id, data:clone(d.data())}; });
+    renderClass(); if(selId) renderDetail();
+  }, function(){ document.getElementById("classBody").innerHTML="<tr><td colspan='10' class='muted'>The class list stopped updating. Reload the page to reconnect.</td></tr>"; });
+  db.collection("assigned").onSnapshot(function(qs){
+    var m={}; qs.docs.forEach(function(d){ m[d.id]=clone(d.data()); });
+    classAssigned=m; renderClass(); if(selId) renderDetail();
+  }, function(){});
+}
+function ownerPatch(sid, mutate){
+  var path="assigned/"+sid;
+  var next=clone(classAssigned[sid]); mutate(next); classAssigned[sid]=next;
+  ownerChains[path]=(ownerChains[path]||Promise.resolve()).catch(function(){}).then(function(){ return db.doc(path).set(next); });
+  return ownerChains[path];
+}
+function isApproved(id){ if(!NEEDS_APPROVAL) return true; var a=classAssigned[id]||{}; return a.approved===true && !a.removed; }
+function renderPending(ps){
+  var box=document.getElementById("pendingBox"); if(!box) return;
+  if(!NEEDS_APPROVAL){ box.hidden=true; return; }
+  var pend=classRows.filter(function(r){ var a=classAssigned[r.id]||{}; return r.id!==uid && a.approved!==true && !a.removed; });
+  var rem=classRows.filter(function(r){ var a=classAssigned[r.id]||{}; return r.id!==uid && a.removed; });
+  if(!pend.length && !rem.length){ box.hidden=true; return; }
+  var row=function(r, btns){ var pl=((r.data.state||{}).pledge||{});
+    return "<div class='hol-row'><span><b>"+esc(studentName(r,ps))+"</b><br><span class='muted small'>"+esc(r.data.email||"")+"</span></span><span class='muted small'>"+(pl.committedAt?"Signed "+esc(fmtStamp(pl.committedAt)):"Hasn’t signed the commitment yet")+"</span><span style='display:flex;gap:6px'>"+btns+"</span></div>"; };
+  box.innerHTML=(pend.length?"<h3>Waiting for approval ("+pend.length+")</h3>"+pend.map(function(r){ return row(r,"<button type='button' class='btn primary small' data-approve='"+esc(r.id)+"'>Approve</button><button type='button' class='btn small' data-remove='"+esc(r.id)+"'>Remove</button>"); }).join(""):"")+
+    (rem.length?"<details><summary class='muted small'>Removed ("+rem.length+")</summary>"+rem.map(function(r){ return row(r,"<button type='button' class='btn small' data-restore='"+esc(r.id)+"'>Restore</button>"); }).join("")+"</details>":"");
+  box.hidden=false;
+}
+document.getElementById("pendingBox").addEventListener("click", function(ev){
+  var b=ev.target.closest("[data-approve],[data-remove],[data-restore]"); if(!b) return;
+  var id=b.getAttribute("data-approve")||b.getAttribute("data-remove")||b.getAttribute("data-restore");
+  if(b.hasAttribute("data-remove") && b.getAttribute("data-armed")!=="1"){ b.setAttribute("data-armed","1"); b.textContent="Click again to remove"; return; }
+  b.disabled=true;
+  ownerPatch(id, function(d){ if(b.hasAttribute("data-remove")){ d.removed=true; d.approved=false; } else { d.approved=true; d.removed=false; } }).then(function(){ renderClass(); });
+});
+function profilesFor(ids){ return (user && ids.length) ? user.profiles(ids) : Promise.resolve({}); }
+function studentName(r, ps){
+  var n=(((r.data.state||{}).pledge||{}).name||"").trim();
+  var p=ps[r.id];
+  return n || (p && p.name) || "No name yet";
+}
+function spark(daily){
+  var t=today(), out="", title=[];
+  for(var i=6;i>=0;i--){
+    var d=iso(addDays(t,-i)), h=+((daily||{})[d])||0;
+    out+="<i class='"+(h?"":"zero")+"' style='height:"+Math.max(2, Math.min(24, h/3*24))+"px'></i>";
+    title.push(DOW[parseISO(d).getDay()]+" "+h+"h");
+  }
+  return "<span class='spark' title='"+esc(title.join(" · "))+"' aria-label='Last 7 days: "+esc(title.join(", "))+"'>"+out+"</span>";
+}
+function renderClass(){
+  var ids=classRows.map(function(r){ return r.id; });
+  profilesFor(ids).then(function(ps){
+    renderRecipients(ps);
+    var body=document.getElementById("classBody");
+    renderPending(ps);
+    var others=classRows.filter(function(r){ return r.id!==uid && isApproved(r.id); });
+    if(!others.length){ body.innerHTML="<tr><td colspan='10' class='muted'>No approved students yet. New students appear under “Waiting for approval” after they sign in and sign their commitment.</td></tr>"; return; }
+    var rows=others.slice().sort(function(a,b){ return studentName(a,ps).toLowerCase()<studentName(b,ps).toLowerCase()?-1:1; });
+    var thisWeek=iso(weekStart(today())), lateCutoff=iso(addDays(parseISO(thisWeek),-14));
+    body.innerHTML = rows.map(function(r){
+      var sm=r.data.summary||{}, p=ps[r.id]||{}, L=workingOn(r.data.state);
+      var g=gradeStats((classAssigned[r.id]||{}).tasks, (r.data.state||{}).subs);
+      var last = sm.lastWeek ? weekLabel(sm.lastWeek)+(sm.lastRating?" · "+RATING_LABEL[sm.lastRating]:"") : "Not yet";
+      var late = thisWeek>PLAN_START && (!sm.lastWeek || sm.lastWeek<lateCutoff);
+      var pl=((r.data.state||{}).pledge||{});
+      return "<tr data-id='"+esc(r.id)+"'"+(r.id===selId?" class='sel'":"")+">"+
+        "<td><div class='who'>"+(p.avatarUrl?"<img alt='' src='"+esc(p.avatarUrl)+"'>":"")+"<span>"+esc(studentName(r,ps))+"</span></div></td>"+
+        "<td"+(pl.committedAt?"":" class='late'")+">"+(pl.committedAt?esc(fmtShort(pl.committedAt.slice(0,10))):"Not yet")+"</td>"+
+        "<td>Level "+L.n+"</td>"+
+        "<td>"+spark(sm.daily)+"</td>"+
+        "<td class='mono'>"+(sm.hours||0)+"</td>"+
+        "<td"+(late?" class='late'":"")+">"+esc(last)+"</td>"+
+        "<td class='mono'>"+g.submitted+" / "+g.assigned+(g.overdue?" <span class='late'>("+g.overdue+" late)</span>":"")+"</td>"+
+        "<td class='mono'>"+(g.avg==null?"—":g.avg+"%")+"</td>"+
+        "<td class='mono'>"+(sm.examsPassed||0)+" / "+ALL_EXAMS.length+"</td>"+
+        "<td><button type='button' class='btn small' data-view='"+esc(r.id)+"'>View</button></td></tr>";
+    }).join("");
+  });
+}
+function renderRecipients(ps){
+  var box=document.getElementById("as_list");
+  var checked={}; box.querySelectorAll("input:checked").forEach(function(i){ checked[i.value]=true; });
+  box.textContent="";
+  var others=classRows.filter(function(r){ return r.id!==uid && isApproved(r.id); });
+  if(!others.length){ var e=document.createElement("span"); e.className="muted"; e.textContent="No students yet."; box.appendChild(e); return; }
+  others.forEach(function(r){
+    var l=document.createElement("label"); l.className="inline";
+    var i=document.createElement("input"); i.type="checkbox"; i.value=r.id; i.checked=!!checked[r.id];
+    var s=document.createElement("span"); s.textContent=studentName(r,ps);
+    l.appendChild(i); l.appendChild(s); box.appendChild(l);
+  });
+}
+document.querySelectorAll("input[name='as_to']").forEach(function(r){ r.addEventListener("change", function(){ document.getElementById("as_list").hidden = document.querySelector("input[name='as_to']:checked").value!=="some"; }); });
+document.getElementById("as_go").addEventListener("click", function(){
+  var st=document.getElementById("as_status");
+  var title=document.getElementById("as_title").value.trim();
+  var pts=+document.getElementById("as_points").value;
+  if(!title){ st.textContent="Give the task a title."; return; }
+  if(!(pts>0)){ st.textContent="Points must be more than 0."; return; }
+  var all=document.querySelector("input[name='as_to']:checked").value==="all";
+  var recips = all ? classRows.filter(function(r){ return r.id!==uid && isApproved(r.id); }).map(function(r){ return r.id; }) : Array.prototype.map.call(document.querySelectorAll("#as_list input:checked"), function(i){ return i.value; });
+  if(!recips.length){ st.textContent = all ? "No students have joined yet." : "Pick at least one student."; return; }
+  var id="t"+Date.now().toString(36);
+  var task={title:title, details:document.getElementById("as_details").value.trim(), due:document.getElementById("as_due").value, points:pts, level:document.getElementById("as_level").value, createdAt:new Date().toISOString()};
+  st.textContent="Assigning…";
+  Promise.all(recips.map(function(sid){ return ownerPatch(sid, function(doc){ doc.tasks=doc.tasks||{}; doc.tasks[id]=clone(task); }); }))
+    .then(function(){
+      st.textContent="Assigned to "+recips.length+(recips.length===1?" student.":" students.");
+      ["as_title","as_details","as_due"].forEach(function(x){ document.getElementById(x).value=""; });
+    })
+    .catch(function(){ st.textContent="Some assignments didn’t save. Try again."; });
+});
+function selectStudent(id){
+  selId=id; selWeeks={};
+  if(selUnsub){ selUnsub(); selUnsub=null; }
+  document.getElementById("fbStatus").textContent="";
+  document.getElementById("fbInput").value=((classAssigned[id]||{}).feedback||{}).text||"";
+  detailPending=false; renderDetail(true); renderClass();
+  selUnsub = db.collection("students/"+id+"/weeks").onSnapshot(function(qs){
+    selWeeks={}; qs.docs.forEach(function(d){ selWeeks[d.id]=clone(d.data()); });
+    renderDetail();
+  }, function(){});
+  go("student");
+}
+function renderDetail(force){
+  var body=document.getElementById("detailBody");
+  if(!force && body.contains(document.activeElement)){ detailPending=true; return; }
+  detailPending=false;
+  var r=null; classRows.forEach(function(x){ if(x.id===selId) r=x; });
+  if(!r){ body.innerHTML="<p class='empty'>This student has no data yet.</p>"; return; }
+  var sid=r.id;
+  profilesFor([sid]).then(function(ps){
+    if(sid!==selId) return;
+    if(!force && body.contains(document.activeElement)){ detailPending=true; return; }
+    var st=r.data.state||{}, pl=st.pledge||{}, lp=levelProgress(st), asg=classAssigned[sid]||{}, subs=st.subs||{}, p=ps[sid]||{};
+    var pledge=[["Signed commitment",pl.committedAt?fmtStamp(pl.committedAt):"Not signed yet"],["Last seen on",(st.resume||{}).at?(PAGE_NAMES[(st.resume||{}).page]||"")+" · "+fmtStamp(st.resume.at):""],["Why",pl.why],["Partner",pl.partner],["Study group",pl.group],["Study hours",pl.time],["If they miss a day",pl.miss]]
+      .filter(function(x){ return x[1]; }).map(function(x){ return "<dt>"+esc(x[0])+"</dt><dd>"+esc(x[1])+"</dd>"; }).join("");
+    var levels=lp.map(function(q){
+      var ex=q.L.exams.map(function(e,i){ return esc(e.name.split(" (")[0].replace(" skills test",""))+": <b>"+esc(STATUS_LABEL[q.exams[i]]||q.exams[i])+"</b>"; }).join("<br>");
+      return "<div class='lvlcell"+(q.complete?" done":"")+"'><b>Level "+q.L.n+"</b><span class='muted'>"+esc(q.L.name)+"</span><span class='mono'>"+q.done+"/"+q.L.tasks.length+" milestones</span><span>"+ex+"</span></div>";
+    }).join("");
+    var tids=sortedTaskIds(asg.tasks);
+    var tasksHtml = tids.length ? tids.map(function(tid){
+      var t=asg.tasks[tid], sub=subs[tid], s=taskStatus(t, sub), link=sub?safeUrl(sub.link):"";
+      return "<div class='taskcard'><div class='th'><b>"+esc(t.title)+"</b><span class='chip "+s.cls+"'>"+esc(s.text)+"</span></div>"+
+        "<div class='muted mono' style='font-size:12.5px'>"+(t.due?"Due "+esc(fmt(t.due)):"No due date")+" · "+esc(t.points)+" points"+(t.level?" · Level "+esc(t.level):"")+"</div>"+
+        (sub ? "<div class='subview'><span class='eyebrow'>Submitted "+esc(fmtStamp(sub.submittedAt))+"</span>"+(sub.text?"<p style='margin:0;white-space:pre-wrap'>"+esc(sub.text)+"</p>":"")+(link?"<a href='"+esc(link)+"' target='_blank' rel='noopener'>"+esc(link)+" ↗</a>":"")+"</div>" : "<p class='empty'>Not submitted yet.</p>")+
+        "<div class='gradeform'><label>Grade (out of "+esc(t.points)+")<input type='number' min='0' max='"+esc(t.points)+"' step='0.5' id='gr_"+tid+"' value='"+(isGraded(t)?esc(t.grade):"")+"'></label>"+
+        "<label>Comment on this work<textarea id='cm_"+tid+"' style='min-height:44px'>"+esc(t.comment||"")+"</textarea></label>"+
+        "<div style='display:flex;gap:6px'><button type='button' class='btn primary small' data-gradesave='"+tid+"'>Save</button><button type='button' class='btn small' data-taskdel='"+tid+"'>Remove</button></div></div>"+
+        "<span class='muted' style='font-size:12.5px' id='gs_"+tid+"'>"+(t.gradedAt?"Last marked "+esc(fmtStamp(t.gradedAt)):"")+"</span></div>";
+    }).join("") : "<p class='empty'>No tasks assigned to this student yet. Use “Assign a task” above.</p>";
+    var wks=Object.keys(selWeeks).filter(function(k){ return weekHasEntry(selWeeks[k]); }).sort().reverse();
+    var wc=asg.weekComments||{};
+    var weeksHtml = wks.length ? wks.map(function(k){
+      var w=selWeeks[k], h=weekHours(w), start=parseISO(k), days="";
+      for(var i=0;i<7;i++){
+        var dh=(w.hours||[])[i], note=(w.notes||[])[i];
+        if((+dh)>0 || note){ var d=addDays(start,i); days+="<div><span class='d'>"+DOW[i]+" "+d.getDate()+" "+MON[d.getMonth()]+"</span><span class='mono'>"+esc(dh||0)+"h</span><span>"+esc(note||"—")+"</span></div>"; }
+      }
+      return "<div class='wkblock'><div class='wh'><b>Week of "+esc(weekLabel(k))+"</b><span class='mono' style='color:"+hoursColor(h,k)+"'>"+(Math.round(h*10)/10)+" h"+(w.rating?" · "+esc(RATING_LABEL[w.rating]):"")+"</span></div>"+
+        "<div class='wkdays'>"+(days||"<span class='muted'>No daily entries.</span>")+"</div>"+
+        ((w.did||w.blocked||w.next)?"<dl class='pledge-dl'>"+(w.did?"<dt>Finished</dt><dd>"+esc(w.did)+"</dd>":"")+(w.blocked?"<dt>Got in the way</dt><dd>"+esc(w.blocked)+"</dd>":"")+(w.next?"<dt>Next week</dt><dd>"+esc(w.next)+"</dd>":"")+"</dl>":"")+
+        "<div class='wcform'><textarea id='wc_"+k+"' placeholder='Comment on this week'>"+esc((wc[k]||{}).text||"")+"</textarea><button type='button' class='btn small' data-wcsave='"+k+"'>Save</button></div>"+
+        "<span class='muted' style='font-size:12.5px' id='ws_"+k+"'>"+((wc[k]||{}).at?"Commented "+esc(fmtStamp(wc[k].at)):"")+"</span></div>";
+    }).join("") : "<p class='empty'>No daily logs yet.</p>";
+    var profileLine = p.name && p.name!==studentName(r,ps) ? "<span class='muted' style='font-size:13px'>Account: "+esc(p.name)+"</span>" : "";
+    body.innerHTML = "<div style='display:grid;gap:14px'><div><h3>"+esc(studentName(r,ps))+"</h3>"+profileLine+"</div>"+
+      (pledge?"<dl class='pledge-dl'>"+pledge+"</dl>":"<p class='empty'>They haven’t filled in their commitment yet.</p>")+
+      "<div class='eyebrow'>Assignments and grades</div><div class='tasklist'>"+tasksHtml+"</div>"+
+      "<div class='eyebrow'>Daily progress</div><div style='display:grid;gap:10px'>"+weeksHtml+"</div>"+
+      "<div class='eyebrow'>Progress by level</div><div class='lvlgrid'>"+levels+"</div></div>";
+  });
+}
+document.getElementById("detailBody").addEventListener("focusout", function(){
+  setTimeout(function(){ if(detailPending && !document.getElementById("detailBody").contains(document.activeElement)) renderDetail(); }, 0);
+});
+document.getElementById("detailBody").addEventListener("click", function(ev){
+  var sid=selId, b;
+  if((b=ev.target.closest("[data-gradesave]"))){
+    var tid=b.getAttribute("data-gradesave"), t=((classAssigned[sid]||{}).tasks||{})[tid]; if(!t) return;
+    var gv=document.getElementById("gr_"+tid).value.trim(), cm=document.getElementById("cm_"+tid).value.trim(), msg=document.getElementById("gs_"+tid);
+    if(gv!=="" && (isNaN(+gv) || +gv<0 || +gv>+t.points)){ msg.textContent="Grade must be between 0 and "+t.points+"."; return; }
+    msg.textContent="Saving…";
+    ownerPatch(sid, function(doc){ var x=doc.tasks[tid]; x.grade = gv===""?"":+gv; x.comment=cm; x.gradedAt=new Date().toISOString(); })
+      .then(function(){ msg.textContent="Saved. The student can see it."; }).catch(function(){ msg.textContent="Couldn’t save. Try again."; });
+  } else if((b=ev.target.closest("[data-taskdel]"))){
+    var did=b.getAttribute("data-taskdel");
+    if(b.getAttribute("data-armed")!=="1"){ b.setAttribute("data-armed","1"); b.textContent="Click again to remove"; return; }
+    ownerPatch(sid, function(doc){ if(doc.tasks) delete doc.tasks[did]; }).then(function(){ renderDetail(true); });
+  } else if((b=ev.target.closest("[data-wcsave]"))){
+    var wk=b.getAttribute("data-wcsave"), txt=document.getElementById("wc_"+wk).value.trim(), wm=document.getElementById("ws_"+wk);
+    wm.textContent="Saving…";
+    ownerPatch(sid, function(doc){ doc.weekComments=doc.weekComments||{}; if(txt) doc.weekComments[wk]={text:txt, at:new Date().toISOString()}; else delete doc.weekComments[wk]; })
+      .then(function(){ wm.textContent = txt ? "Saved. The student sees it on that week." : "Comment removed."; }).catch(function(){ wm.textContent="Couldn’t save. Try again."; });
+  }
+});
+document.getElementById("classBody").addEventListener("click", function(ev){
+  var b=ev.target.closest("[data-view]"); if(b) selectStudent(b.getAttribute("data-view"));
+});
+document.getElementById("fbSend").addEventListener("click", function(){
+  if(!selId || !db) return;
+  var sid=selId, text=document.getElementById("fbInput").value.trim(), st=document.getElementById("fbStatus");
+  st.textContent="Sending…";
+  ownerPatch(sid, function(doc){ if(text) doc.feedback={text:text, at:new Date().toISOString()}; else delete doc.feedback; })
+    .then(function(){ if(selId===sid) st.textContent = text ? "Sent. The student sees it on their page." : "Feedback cleared."; })
+    .catch(function(){ if(selId===sid) st.textContent="Couldn’t send. Try again in a moment."; });
+});
+
+/* ---------- events ---------- */
+document.addEventListener("change", function(ev){
+  var el=ev.target;
+  if(el.dataset.task){ if(el.checked) store.state.done[el.dataset.task]=true; else delete store.state.done[el.dataset.task]; saveState(); updateStats(); }
+  else if(el.dataset.exam){ var x=store.state.exams[el.dataset.exam]=store.state.exams[el.dataset.exam]||{}; x[el.dataset.field]=el.value; saveState(); updateStats(); }
+  else if(el.dataset.week==="rating"){ ensureWeek().rating=el.value; saveWeek(curWeek); updateStats(); }
+});
+document.addEventListener("input", function(ev){
+  var el=ev.target;
+  if(el.closest("#p-start") || el.closest("#p-class") || el.closest("#p-assign") || el.closest("#p-student") || el.closest("#p-settings") || el.closest("#workList") || el.closest("#cardPanel")) return;
+  if(el.dataset.pledge){ store.state.pledge[el.dataset.pledge]=el.value; saveState(); if(el.dataset.pledge==="name") updateNameCard(); }
+  else if(el.hasAttribute("data-day")){ var w=ensureWeek(); w.hours[+el.dataset.day]=el.value; updateWeekTotal(); saveWeek(curWeek); updateStats(); updateCardDays(); }
+  else if(el.hasAttribute("data-note")){ var w2=ensureWeek(); w2.notes[+el.dataset.note]=el.value; saveWeek(curWeek); renderHistory(); updateCardDays(); }
+  else if(el.dataset.week && el.dataset.week!=="rating"){ ensureWeek()[el.dataset.week]=el.value; saveWeek(curWeek); renderHistory(); }
+});
+document.getElementById("wkPrev").addEventListener("click", function(){ var d=addDays(parseISO(curWeek),-7); if(iso(d)>=iso(weekStart(parseISO(PLAN_START)))){ curWeek=iso(d); renderDaysBox(); loadWeek(true); } });
+document.getElementById("wkNext").addEventListener("click", function(){ curWeek=iso(addDays(parseISO(curWeek),7)); renderDaysBox(); loadWeek(true); });
+
+/* ---------- plan settings (set by the teacher, read by everyone) ---------- */
+var DEFAULT_START="2026-11-01", DEFAULT_HOURS=2, PLAN_ORIG_END="2028-09-24";
+var settings={dailyHours:DEFAULT_HOURS, startDate:DEFAULT_START, holidays:{}};
+var studyDays=[];
+LEVELS.forEach(function(L){ L.ostart=L.start; L.oend=L.end; L.exams.forEach(function(e){ e.odate=e.date; }); });
+var PHASE_RANGES = {
+"1|1 – 7 Nov":["2026-11-01","2026-11-07"], "1|8 Nov – 12 Dec":["2026-11-08","2026-12-12"], "1|13 – 19 Dec":["2026-12-13","2026-12-19"], "1|20 Dec – 2 Jan":["2026-12-20","2027-01-02"],
+"2|3 Jan – 6 Feb":["2027-01-03","2027-02-06"], "2|7 – 20 Feb":["2027-02-07","2027-02-20"], "2|21 – 27 Feb":["2027-02-21","2027-02-27"],
+"3|28 Feb – 27 Mar":["2027-02-28","2027-03-27"], "3|28 Mar – 1 May":["2027-03-28","2027-05-01"], "3|2 May – 5 Jun":["2027-05-02","2027-06-05"], "3|6 – 26 Jun":["2027-06-06","2027-06-26"],
+"4|27 Jun – 24 Jul":["2027-06-27","2027-07-24"], "4|25 Jul – 21 Aug":["2027-07-25","2027-08-21"], "4|22 Aug – 11 Sep":["2027-08-22","2027-09-11"], "4|12 – 25 Sep":["2027-09-12","2027-09-25"],
+"5|26 Sep – 5 Dec":["2027-09-26","2027-12-05"], "5|6 – 18 Dec":["2027-12-06","2027-12-18"], "5|19 Dec – 8 Jan":["2027-12-19","2028-01-08"],
+"6|Jan – Mar":["2028-01-09","2028-03-11"], "6|Mar – Apr":["2028-03-12","2028-04-29"],
+"7|30 Apr – 13 May":["2028-04-30","2028-05-13"]
+};
+function daysBetween(a,b){ return Math.round((parseISO(b)-parseISO(a))/864e5); }
+function normSettings(o){
+  o=o||{};
+  var h=+o.dailyHours; if(!(h>=0.5 && h<=8)) h=DEFAULT_HOURS;
+  var s=/^\d{4}-\d{2}-\d{2}$/.test(o.startDate||"")?o.startDate:DEFAULT_START;
+  var hol={}; Object.keys(o.holidays||{}).forEach(function(k){ if(/^\d{4}-\d{2}-\d{2}$/.test(k)) hol[k]=String(o.holidays[k]||""); });
+  return {dailyHours:h, startDate:s, holidays:hol, updatedAt:o.updatedAt||""};
+}
+function computeStudyDays(st){
+  var scale=DEFAULT_HOURS/st.dailyHours, need=Math.ceil(daysBetween(DEFAULT_START,PLAN_ORIG_END)*scale)+40, out=[], d=parseISO(st.startDate), guard=0;
+  while(out.length<need && guard<need*4){ var k=iso(d); if(!st.holidays[k]) out.push(k); d=addDays(d,1); guard++; }
+  return out;
+}
+function mapperFor(st, days){
+  var scale=DEFAULT_HOURS/st.dailyHours;
+  function map(o){ var s=Math.max(0, Math.round(daysBetween(DEFAULT_START,o)*scale)); return days[Math.min(s, days.length-1)]; }
+  function mapEnd(o){ return iso(addDays(parseISO(map(iso(addDays(parseISO(o),1)))),-1)); }
+  return {map:map, mapEnd:mapEnd};
+}
+function applySchedule(){
+  studyDays=computeStudyDays(settings);
+  var m=mapperFor(settings, studyDays);
+  PLAN_START=settings.startDate;
+  LEVELS.forEach(function(L){
+    L.start=m.map(L.ostart); L.end=m.mapEnd(L.oend);
+    L.exams.forEach(function(e){ var d=m.map(e.odate); e.date = d>L.end ? L.end : d; });
+  });
+  PHASE_MAP={};
+  Object.keys(PHASE_RANGES).forEach(function(k){ var r=PHASE_RANGES[k]; PHASE_MAP[k]=[m.map(r[0]), m.mapEnd(r[1])]; });
+}
+var PHASE_MAP={};
+function fmtRange(a,b){
+  var x=parseISO(a), y=parseISO(b);
+  if(a===b) return x.getDate()+" "+MON[x.getMonth()]+" "+x.getFullYear();
+  if(x.getFullYear()!==y.getFullYear()) return x.getDate()+" "+MON[x.getMonth()]+" "+x.getFullYear()+" – "+y.getDate()+" "+MON[y.getMonth()]+" "+y.getFullYear();
+  if(x.getMonth()===y.getMonth()) return x.getDate()+" – "+y.getDate()+" "+MON[y.getMonth()];
+  return x.getDate()+" "+MON[x.getMonth()]+" – "+y.getDate()+" "+MON[y.getMonth()];
+}
+function phaseWhen(L,p){ var r=PHASE_MAP[L.n+"|"+p.when]; return r ? fmtRange(r[0],r[1]) : p.when; }
+function examById(id){ var f=null; ALL_EXAMS.forEach(function(e){ if(e.id===id) f=e; }); return f; }
+function fillTokens(escaped){ return escaped.replace(/\{exam:([a-z0-9_]+)\}/g, function(_,id){ var e=examById(id); return e?esc(fmt(e.date)):""; }); }
+function hoursText(h){ h=+h; return (h===1?"1 hour":(h+" hours")); }
+function minsText(m){ m=Math.round(m); if(m<60) return m+" min"; var h=Math.floor(m/60), r=m%60; return h+" h"+(r?" "+r+" min":""); }
+function round5(x){ return Math.max(5, Math.round(x/5)*5); }
+function isHoliday(d){ return Object.prototype.hasOwnProperty.call(settings.holidays, d); }
+function weekTarget(k){ var n=0; for(var i=0;i<7;i++){ var d=iso(addDays(parseISO(k),i)); if(d>=PLAN_START && !isHoliday(d)) n++; } return n*settings.dailyHours; }
+function hoursColor(h,k){ var t=weekTarget(k); return (t>0 && h>=t)?"var(--ok)":(h>=t*0.7?"var(--ink)":"var(--warn)"); }
+function plannedHoursToDate(){ var t=iso(today()), n=0; for(var i=0;i<studyDays.length && studyDays[i]<=t;i++) n++; return Math.round(n*settings.dailyHours*10)/10; }
+function planDayNumber(d){ var n=0; for(var i=0;i<studyDays.length && studyDays[i]<=d;i++) n++; return n; }
+function socialMins(){ return round5(settings.dailyHours*60/6); }
+
+function renderPlanLines(){
+  var s=parseISO(PLAN_START);
+  var txt="Database administration · "+hoursText(settings.dailyHours)+" a day · starts "+DOW_FULL[s.getDay()]+" "+s.getDate()+" "+MON_FULL[s.getMonth()]+" "+s.getFullYear();
+  document.querySelectorAll("[data-planline]").forEach(function(el){ el.textContent=txt; });
+  document.querySelectorAll("[data-social]").forEach(function(el){ el.textContent=minsText(socialMins()); });
+}
+var DOW_FULL=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+var MON_FULL=["January","February","March","April","May","June","July","August","September","October","November","December"];
+function startText(){ var s=parseISO(PLAN_START); return DOW_FULL[s.getDay()]+" "+s.getDate()+" "+MON_FULL[s.getMonth()]+" "+s.getFullYear(); }
+
+function renderRoutine(){
+  var D=settings.dailyHours*60, soc=socialMins();
+  var practice=round5(D*0.25), main=Math.max(5, D-soc-practice);
+  var lab=Math.max(5, D-soc);
+  var review=round5(D*0.35), call=round5(D*0.25), refl=Math.max(5, D-soc-review-call);
+  document.getElementById("routineTitle").textContent="Daily routine: "+hoursText(settings.dailyHours)+" a day";
+  var post="<b>"+minsText(soc)+"</b> post your progress card on social media";
+  document.getElementById("routineBody").innerHTML=
+    "<tr><td class='date'>Mon – Fri</td><td><b>"+minsText(main)+"</b> main track: the lesson, reading or lab for this week’s phase</td><td><b>"+minsText(practice)+"</b> SQL practice: LeetCode, HackerRank or Oracle Dev Gym</td><td>"+post+"</td></tr>"+
+    "<tr><td class='date'>Saturday</td><td colspan='2'><b>"+minsText(lab)+"</b> hands-on lab: build it, break it, fix it, and write down what happened</td><td>"+post+"</td></tr>"+
+    "<tr><td class='date'>Sunday</td><td><b>"+minsText(review)+"</b> review the week and push notes to your GitHub repo</td><td><b>"+minsText(call)+"</b> study-group call · <b>"+minsText(refl)+"</b> weekly reflection in your daily log</td><td>"+post+"</td></tr>"+
+    "<tr><td class='date'>Holidays</td><td colspan='3'>No study expected. Holidays set by your teacher are marked in your daily log, and your plan dates move later to make up for them.</td></tr>";
+}
+function rerenderPlan(){
+  applySchedule();
+  renderPlanLines(); renderRoutine(); renderExamTable(); renderLadder(); applyState();
+  var minW=iso(weekStart(parseISO(PLAN_START))); if(curWeek<minW) curWeek=minW;
+  renderDaysBox(); loadWeek(true);
+  if(role==="teacher"){ renderClass(); if(selId) renderDetail(); if(!setDirty) loadSettingsForm(); }
+}
+function applySettings(o){ settings=normSettings(o); rerenderPlan(); }
+
+/* ---------- teacher: plan settings page ---------- */
+var setDraft=null, setDirty=false, calMonth=null;
+function loadSettingsForm(){
+  setDraft=clone(settings); setDirty=false;
+  document.getElementById("set_hours").value=setDraft.dailyHours;
+  document.getElementById("set_start").value=setDraft.startDate;
+  var t=today(), s0=parseISO(setDraft.startDate), b0 = t>s0 ? t : s0; calMonth=new Date(b0.getFullYear(), b0.getMonth(), 1);
+  renderSettingsExtras();
+}
+function markDirty(){ setDirty=true; document.getElementById("set_status").textContent="Unsaved changes"; renderSettingsExtras(); }
+function renderSettingsExtras(){
+  if(!setDraft) return;
+  var d=normSettings(setDraft), days=computeStudyDays(d), m=mapperFor(d, days);
+  var newEnd=m.mapEnd(LEVELS[LEVELS.length-1].oend), curEnd=LEVELS[LEVELS.length-1].end;
+  var firstExam=m.map(LEVELS[0].exams[0].odate);
+  document.getElementById("set_preview").textContent =
+    "With these settings: "+hoursText(d.dailyHours)+" a day ("+minsText(round5(d.dailyHours*60/6))+" of it for posting the progress card), starting "+fmt(d.startDate)+". "+
+    "First exam on "+fmt(firstExam)+". The plan ends on "+fmt(newEnd)+(newEnd!==curEnd?" (currently "+fmt(curEnd)+")":"")+".";
+  renderCal(); renderHolList();
+}
+function renderCal(){
+  var y=calMonth.getFullYear(), mo=calMonth.getMonth();
+  document.getElementById("cal_label").textContent=MON_FULL[mo]+" "+y;
+  var first=new Date(y,mo,1), n=new Date(y,mo+1,0).getDate(), html="";
+  DOW.forEach(function(d){ html+="<span class='cal-h'>"+d.slice(0,2)+"</span>"; });
+  for(var i=0;i<first.getDay();i++) html+="<span></span>";
+  for(var dd=1; dd<=n; dd++){
+    var k=iso(new Date(y,mo,dd)), hol=Object.prototype.hasOwnProperty.call(setDraft.holidays,k), before=k<setDraft.startDate;
+    html+="<button type='button' class='cal-d"+(hol?" hol":"")+(before?" before":"")+(k===iso(today())?" today":"")+"' data-cal='"+k+"' aria-pressed='"+hol+"' title='"+(hol?esc(setDraft.holidays[k]||"Holiday"):"Mark as holiday")+"'>"+dd+"</button>";
+  }
+  document.getElementById("cal").innerHTML=html;
+}
+function holGroups(hol){
+  var keys=Object.keys(hol).sort(), groups=[];
+  keys.forEach(function(k){
+    var g=groups[groups.length-1];
+    if(g && iso(addDays(parseISO(g.to),1))===k && (hol[k]||"")===(g.name||"")){ g.to=k; g.days.push(k); }
+    else groups.push({from:k, to:k, name:hol[k]||"", days:[k]});
+  });
+  return groups;
+}
+function renderHolList(){
+  var box=document.getElementById("hol_list"), groups=holGroups(setDraft.holidays);
+  if(!groups.length){ box.innerHTML="<p class='empty'>No holidays set.</p>"; return; }
+  box.innerHTML=groups.map(function(g,i){
+    return "<div class='hol-row'><span class='mono'>"+esc(fmtRange(g.from,g.to))+"</span><span>"+esc(g.name||"Holiday")+" · "+g.days.length+(g.days.length===1?" day":" days")+"</span><button type='button' class='btn small' data-holdel='"+i+"'>Remove</button></div>";
+  }).join("");
+}
+document.getElementById("set_hours").addEventListener("input", function(){ setDraft.dailyHours=+this.value; markDirty(); });
+document.getElementById("set_start").addEventListener("input", function(){ if(this.value){ setDraft.startDate=this.value; markDirty(); } });
+document.getElementById("cal_prev").addEventListener("click", function(){ calMonth=new Date(calMonth.getFullYear(), calMonth.getMonth()-1, 1); renderCal(); });
+document.getElementById("cal_next").addEventListener("click", function(){ calMonth=new Date(calMonth.getFullYear(), calMonth.getMonth()+1, 1); renderCal(); });
+document.getElementById("cal").addEventListener("click", function(ev){
+  var b=ev.target.closest("[data-cal]"); if(!b) return;
+  var k=b.getAttribute("data-cal");
+  if(Object.prototype.hasOwnProperty.call(setDraft.holidays,k)) delete setDraft.holidays[k];
+  else setDraft.holidays[k]=document.getElementById("hol_name").value.trim();
+  markDirty();
+});
+document.getElementById("hol_add").addEventListener("click", function(){
+  var f=document.getElementById("hol_from").value, t=document.getElementById("hol_to").value||f, name=document.getElementById("hol_name").value.trim(), st=document.getElementById("hol_msg");
+  if(!f){ st.textContent="Pick a start date."; return; }
+  if(t<f){ st.textContent="The end date is before the start date."; return; }
+  if(daysBetween(f,t)>120){ st.textContent="That’s more than 120 days. Add it in smaller ranges."; return; }
+  for(var d=parseISO(f); iso(d)<=t; d=addDays(d,1)) setDraft.holidays[iso(d)]=name;
+  st.textContent="Added "+(daysBetween(f,t)+1)+(f===t?" day.":" days.");
+  document.getElementById("hol_from").value=""; document.getElementById("hol_to").value="";
+  calMonth=new Date(parseISO(f).getFullYear(), parseISO(f).getMonth(), 1);
+  markDirty();
+});
+document.getElementById("hol_list").addEventListener("click", function(ev){
+  var b=ev.target.closest("[data-holdel]"); if(!b) return;
+  var g=holGroups(setDraft.holidays)[+b.getAttribute("data-holdel")]; if(!g) return;
+  g.days.forEach(function(k){ delete setDraft.holidays[k]; }); markDirty();
+});
+document.getElementById("set_save").addEventListener("click", function(){
+  var st=document.getElementById("set_status"), h=+setDraft.dailyHours;
+  if(!(h>=0.5 && h<=8)){ st.textContent="Daily time must be between 0.5 and 8 hours."; return; }
+  if(!db){ st.textContent="Not connected. Check your internet connection and reload."; return; }
+  var out=normSettings(setDraft); out.updatedAt=new Date().toISOString();
+  st.textContent="Saving…";
+  db.doc("settings/plan").set(out).then(function(){ setDirty=false; st.textContent="Saved. Every student’s plan now uses these settings."; applySettings(out); })
+    .catch(function(){ st.textContent="Couldn’t save. Try again."; });
+});
+document.getElementById("set_reset").addEventListener("click", function(){ loadSettingsForm(); document.getElementById("set_status").textContent="Changes discarded."; });
+
+/* ---------- student: daily progress card ---------- */
+var cardBlob=null, cardName="";
+function updateCardDays(){
+  var sel=document.getElementById("cardDay"); if(!sel) return;
+  var prev=sel.value, w=store.weeks[curWeek]||{}, tISO=iso(today()), opts=[];
+  for(var i=0;i<7;i++){
+    var d=iso(addDays(parseISO(curWeek),i));
+    if(d>tISO || d<PLAN_START) continue;
+    var has=(+((w.hours||[])[i])>0) || (w.notes||[])[i];
+    if(has || d===tISO) opts.push([d, DOW[i]+" "+parseISO(d).getDate()+" "+MON[parseISO(d).getMonth()]+(d===tISO?" (today)":"")+(has?"":" · not logged yet")]);
+  }
+  if(!opts.length){ sel.innerHTML="<option value=''>No logged days this week</option>"; sel.disabled=true; document.getElementById("cardMake").disabled=true; return; }
+  sel.disabled=false; document.getElementById("cardMake").disabled=false;
+  sel.innerHTML=opts.map(function(o){ return "<option value='"+o[0]+"'>"+esc(o[1])+"</option>"; }).join("");
+  var keep=opts.some(function(o){ return o[0]===prev; });
+  sel.value = keep ? prev : opts[opts.length-1][0];
+}
+function dayEntry(d){ var k=iso(weekStart(parseISO(d))), w=store.weeks[k]||{}, i=parseISO(d).getDay(); return {hours:+((w.hours||[])[i])||0, note:(w.notes||[])[i]||""}; }
+function streakTo(d){
+  var n=0, x=parseISO(d), guard=0;
+  while(guard++<800){ var k=iso(x); if(k<PLAN_START) break; if(isHoliday(k)){ x=addDays(x,-1); continue; } if(dayEntry(k).hours>0){ n++; x=addDays(x,-1); } else break; }
+  return n;
+}
+function wrapLines(ctx, text, maxW, maxLines){
+  var words=String(text).split(/\s+/), lines=[], line="";
+  words.forEach(function(w){ var t=line?line+" "+w:w; if(ctx.measureText(t).width>maxW && line){ lines.push(line); line=w; } else line=t; });
+  if(line) lines.push(line);
+  if(lines.length>maxLines){ lines=lines.slice(0,maxLines); var l=lines[maxLines-1]; while(ctx.measureText(l+"…").width>maxW && l.length) l=l.slice(0,-1); lines[maxLines-1]=l+"…"; }
+  return lines;
+}
+function drawCard(d){
+  var W=1080, H=1350, c=document.createElement("canvas"); c.width=W; c.height=H;
+  var x=c.getContext("2d"), s=store.state, e=dayEntry(d), name=(s.pledge.name||"").trim()||"DBA student";
+  var lp=levelProgress(s), cur=workingOn(s), sum=computeSummary(), dayN=planDayNumber(d), streak=streakTo(d);
+  var DISP="'Bricolage Grotesque', 'Segoe UI', sans-serif", SANS="'IBM Plex Sans', 'Segoe UI', sans-serif", MONO="'IBM Plex Mono', monospace";
+  var ink="#0D1826", blue="#86B8EE", amber="#F1AB4E", green="#6FCC98", white="#F2F5F9", muted="#93A1B2";
+  x.fillStyle=ink; x.fillRect(0,0,W,H);
+  x.strokeStyle="rgba(134,184,238,0.07)"; x.lineWidth=1;
+  for(var gx=0; gx<=W; gx+=54){ x.beginPath(); x.moveTo(gx+.5,0); x.lineTo(gx+.5,H); x.stroke(); }
+  for(var gy=0; gy<=H; gy+=54){ x.beginPath(); x.moveTo(0,gy+.5); x.lineTo(W,gy+.5); x.stroke(); }
+  x.fillStyle=blue; x.fillRect(0,0,W,10);
+  var P=80;
+  x.textBaseline="alphabetic";
+  x.fillStyle=blue; x.font="500 26px "+MONO; x.fillText("DBA CAREER LADDER", P, 100);
+  x.fillStyle=muted; x.textAlign="right"; x.fillText(fmt(d).toUpperCase(), W-P, 100); x.textAlign="left";
+  x.fillStyle=white; x.font="700 170px "+DISP; x.fillText("Day "+dayN, P-6, 280);
+  x.fillStyle=muted; x.font="400 38px "+SANS; x.fillText("of my database administration journey", P, 372);
+  x.fillStyle=white; x.font="600 46px "+SANS; x.fillText(name.slice(0,40), P, 450);
+  x.fillStyle="rgba(255,255,255,0.12)"; x.fillRect(P, 490, W-2*P, 2);
+  x.fillStyle=amber; x.font="700 150px "+DISP; var hs=(Math.round(e.hours*10)/10)+"h"; x.fillText(hs, P-4, 660);
+  var hw=x.measureText(hs).width;
+  x.fillStyle=muted; x.font="500 24px "+MONO; x.fillText("STUDIED TODAY", P, 705);
+  var tx=P+Math.max(hw, 230)+50, tw=W-P-tx;
+  x.fillStyle=muted; x.font="500 24px "+MONO; x.fillText("WHAT I DID", tx, 560);
+  x.fillStyle=white; x.font="400 36px "+SANS;
+  wrapLines(x, e.note || "Studied and logged my progress.", tw, 4).forEach(function(l,i){ x.fillText(l, tx, 612+i*48); });
+  var stats=[[String(sum.hours),"total hours"],[String(streak),streak===1?"day streak":"day streak"],[sum.tasksDone+"/"+ALL_TASKS.length,"milestones"],[String(sum.examsPassed),"exams passed"]];
+  var bw=(W-2*P-3*20)/4;
+  stats.forEach(function(st,i){
+    var bx=P+i*(bw+20), by=780;
+    x.fillStyle="rgba(134,184,238,0.10)"; roundRect(x,bx,by,bw,150,16); x.fill();
+    x.fillStyle=white; x.font="700 60px "+DISP; x.fillText(st[0], bx+24, by+80);
+    x.fillStyle=muted; x.font="400 24px "+SANS; x.fillText(st[1], bx+24, by+122);
+  });
+  x.fillStyle=muted; x.font="500 24px "+MONO; x.fillText("THE LADDER · NOW ON LEVEL "+cur.n+": "+cur.name.toUpperCase().slice(0,34), P, 1010);
+  var rw=(W-2*P-6*14)/7;
+  lp.forEach(function(q,i){
+    var rx=P+i*(rw+14), ry=1036, frac=q.complete?1:(q.done/q.L.tasks.length);
+    x.fillStyle="rgba(255,255,255,0.08)"; roundRect(x,rx,ry,rw,74,10); x.fill();
+    if(frac>0){ x.fillStyle = q.complete?green:blue; roundRect(x,rx,ry,Math.max(12,rw*frac),74,10); x.fill(); }
+    x.fillStyle = (q.complete||q.L.n===cur.n)?ink:muted; if(!q.complete && frac<0.35) x.fillStyle = q.L.n===cur.n?white:muted;
+    x.font="700 30px "+DISP; x.fillText("L"+q.L.n, rx+16, ry+48);
+  });
+  var nx=ALL_EXAMS.filter(function(ex){ return (s.exams[ex.id]||{}).status!=="passed"; }).sort(function(a,b){ return a.date<b.date?-1:1; })[0];
+  if(nx){
+    var left=daysBetween(d, nx.date);
+    x.fillStyle=amber; x.font="500 26px "+MONO; x.fillText("NEXT EXAM", P, 1182);
+    x.fillStyle=white; x.font="500 32px "+SANS;
+    x.fillText((nx.name.split(" (")[0].replace(" skills test","").slice(0,40))+" · "+(left>0?"in "+left+" days":(left===0?"today":fmtShort(nx.date))), P+190, 1182);
+  }
+  x.fillStyle=blue; x.font="500 28px "+MONO; x.fillText("#DBAJourney  #LearnInPublic  #SQL", P, 1270);
+  return c;
+}
+function roundRect(x,a,b,w,h,r){ x.beginPath(); x.moveTo(a+r,b); x.arcTo(a+w,b,a+w,b+h,r); x.arcTo(a+w,b+h,a,b+h,r); x.arcTo(a,b+h,a,b,r); x.arcTo(a,b,a+w,b,r); x.closePath(); }
+function cardCaption(d){
+  var e=dayEntry(d), s=store.state, cur=workingOn(s), sum=computeSummary();
+  return "Day "+planDayNumber(d)+" of my database administration journey. "+
+    "Today I studied "+(Math.round(e.hours*10)/10)+"h"+(e.note?": "+e.note.replace(/\s+/g," ").trim()+(/[.!?]$/.test(e.note.trim())?"":"."):".")+
+    " Now on Level "+cur.n+" ("+cur.name+"), "+sum.hours+" hours so far. #DBAJourney #LearnInPublic #SQL";
+}
+function fontsReady(){
+  if(!document.fonts || !document.fonts.load) return Promise.resolve();
+  return Promise.all(["700 100px 'Bricolage Grotesque'","400 30px 'IBM Plex Sans'","600 30px 'IBM Plex Sans'","500 24px 'IBM Plex Mono'"].map(function(f){ return document.fonts.load(f).catch(function(){}); })).catch(function(){});
+}
+document.getElementById("cardMake").addEventListener("click", function(){
+  var d=document.getElementById("cardDay").value, st=document.getElementById("cardStatus");
+  if(!d) return;
+  if(!(dayEntry(d).hours>0)){ st.textContent="Log your hours for this day first, then make the card."; document.getElementById("cardOut").hidden=true; return; }
+  st.textContent="Drawing…";
+  fontsReady().then(function(){
+    var c=drawCard(d);
+    document.getElementById("cardImg").src=c.toDataURL("image/jpeg",0.92);
+    document.getElementById("cardCaption").value=cardCaption(d);
+    cardName="dba-journey-day-"+planDayNumber(d)+".jpg";
+    c.toBlob(function(b){ cardBlob=b; }, "image/jpeg", 0.92);
+    document.getElementById("cardOut").hidden=false;
+    st.textContent="";
+  });
+});
+document.getElementById("cardDl").addEventListener("click", function(){
+  var st=document.getElementById("cardStatus");
+  if(!cardBlob){ st.textContent="The card is still being prepared. Try again in a second."; return; }
+  var C2=(window.claude && typeof window.claude.use==="function") ? window.claude.use("downloads") : Promise.resolve(null);
+  C2.then(function(dl){
+    if(!dl){ st.textContent="Downloads aren’t available here. Right-click or long-press the card and choose Save image."; return; }
+    return dl.save({filename:cardName, data:cardBlob}).then(function(r){ st.textContent = r && r.status==="saved" ? "Saved as "+cardName+". Now post it!" : ""; })
+      .catch(function(e){ st.textContent = e && e.code==="declined" ? "Download cancelled." : (e && e.code==="rate_limited" ? "A download prompt is already open." : "Couldn’t download. Right-click or long-press the card and choose Save image."); });
+  });
+});
+document.getElementById("cardCopy").addEventListener("click", function(){
+  var ta=document.getElementById("cardCaption"), st=document.getElementById("cardStatus");
+  try{ navigator.clipboard.writeText(ta.value).then(function(){ st.textContent="Caption copied."; }, function(){ ta.select(); st.textContent="Press Ctrl+C (or long-press) to copy."; }); }
+  catch(e){ ta.select(); st.textContent="Press Ctrl+C (or long-press) to copy."; }
+});
+
+/* ---------- boot ---------- */
+applySchedule();
+renderPlanLines();
+renderRoutine();
+renderExamTable();
+renderLadder();
+renderDaysBox();
+loadLocal();
+applyState();
+loadWeek(true);
+setStatus(localMsg);
+
+function becomeReady(r, name){
+  if(ready) return;
+  role=r; ready=true;
+  document.getElementById("p-loading").hidden=true;
+  document.getElementById("hello").textContent = r==="teacher" ? "Teacher view"+(name?" · "+name:"") : (name?"Signed in as "+name:"");
+  if(r==="student"){ try{ if(signed() && sessionStorage.getItem("dba-entered-"+(uid||"local"))==="1") entered=true; }catch(e){} }
+  renderTabs(); showPage();
+}
+var fallback=setTimeout(function(){ becomeReady("student",""); }, 12000);
+function readyAs(r,name){ clearTimeout(fallback); becomeReady(r,name); }
+
+var C = (window.claude && typeof window.claude.use==="function") ? window.claude : null;
+Promise.all([C?C.use("db"):null, C?C.use("user"):null]).then(function(r){
+  db=r[0]; user=r[1];
+  if(db) db.doc("settings/plan").onSnapshot(function(snap){ if(snap.exists) applySettings(clone(snap.data())); }, function(){});
+  var idP = user ? Promise.all([user.id(), user.isOwner(), user.me()]) : Promise.resolve([null,false,null]);
+  return idP.then(function(x){
+    uid=x[0]; isOwner=!!x[1];
+    var me=x[2], myName=(me&&me.name)||"";
+    if(isOwner){
+      if(db){ startClass(); setStatus("Connected: your class updates live"); }
+      else setStatus("Not connected. Check your internet connection and reload.");
+      readyAs("teacher", myName); return;
+    }
+    if(!db || !uid){
+      if(db && !uid) localMsg="This page can’t identify your account, so progress is kept in this browser only. Sign out and sign in again.";
+      setStatus(localMsg); readyAs("student", myName); return;
+    }
+    myPath="students/"+uid; mode="db"; setStatus("Connected: your progress saves to this page");
+    var first=true, initLeft=2, firstAsg=true;
+    db.doc(myPath).onSnapshot(function(snap){
+      if(timers[myPath]) return;
+      if(snap.exists){
+        store.state=normState(clone(snap.data()).state);
+        saveLocal(); applyState(); renderWork(); renderNext();
+      } else if(first){
+        var local=hasLocalData();
+        saveState();
+        if(local) Object.keys(store.weeks).forEach(function(k){ queueWrite(myPath+"/weeks/"+k, (function(key){ return function(){ return clone(store.weeks[key]); }; })(k)); });
+      }
+      if(first){ first=false; initLeft--; if(initLeft<=0) readyAs("student", myName); }
+      else if(role==="student" && !entered && location.hash.replace(/^#/,"")==="start") renderStart();
+    }, function(){ setStatus("Live sync paused. Reload the page to reconnect."); readyAs("student", myName); });
+    var firstWeeks=true;
+    db.collection(myPath+"/weeks").onSnapshot(function(qs){
+      var pending = Object.keys(timers).some(function(k){ return k.indexOf(myPath+"/weeks/")===0; });
+      if(pending) return;
+      if(firstWeeks && qs.empty && Object.keys(store.weeks).length){ firstWeeks=false; return; }
+      firstWeeks=false;
+      var weeks={}; qs.docs.forEach(function(doc){ weeks[doc.id]=clone(doc.data()); });
+      store.weeks=weeks; saveLocal(); loadWeek(false); updateStats(); renderNext();
+    }, function(){ setStatus("Live sync paused. Reload the page to reconnect."); });
+    db.doc("assigned/"+uid).onSnapshot(function(snap){
+      myAssigned = snap.exists ? clone(snap.data()) : {};
+      if(NEEDS_APPROVAL){ approved = myAssigned.approved===true; removedFlag = myAssigned.removed===true; }
+      renderMyAssigned();
+      if(firstAsg){ firstAsg=false; initLeft--; if(initLeft<=0) readyAs("student", myName); }
+      else if(ready && role==="student"){ renderTabs(); showPage(); }
+    }, function(){ if(firstAsg){ firstAsg=false; initLeft--; if(initLeft<=0) readyAs("student", myName); } });
+  });
+}).catch(function(){ readyAs("student",""); });
+};
+</script>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getAuth, onAuthStateChanged, GoogleAuthProvider, signInWithPopup, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import { getFirestore, doc, collection, getDoc, setDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import { firebaseConfig, TEACHER_EMAIL } from "./firebase-config.js";
+
+const $ = (id) => document.getElementById(id);
+const authBox = $("auth"), appBox = $("appRoot"), err = $("authErr");
+
+if (!firebaseConfig || !firebaseConfig.apiKey || firebaseConfig.apiKey.startsWith("PASTE")) {
+  authBox.hidden = false;
+  $("authLead").textContent = "This site isn’t set up yet: add your Firebase settings to firebase-config.js.";
+  ["googleBtn","authSignIn","authSignUp","authReset"].forEach(id => $(id).disabled = true);
+} else {
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const fs = getFirestore(app);
+
+  const mapErr = (e) => ({ code: e && e.code === "permission-denied" ? "invalid_argument" : "unavailable", message: (e && e.message) || "" });
+  const wrap = (s) => ({ id: s.id, exists: s.exists(), data: () => (s.exists() ? s.data() : undefined), metadata: { fromCache: s.metadata.fromCache, hasPendingWrites: s.metadata.hasPendingWrites } });
+  const dbAdapter = {
+    doc(path) {
+      const r = doc(fs, path);
+      return {
+        id: r.id, path,
+        get: () => getDoc(r).then(wrap).catch((e) => { throw mapErr(e); }),
+        set: (d) => setDoc(r, d).catch((e) => { throw mapErr(e); }),
+        onSnapshot: (next, onErr) => onSnapshot(r, (s) => next(wrap(s)), (e) => onErr && onErr(mapErr(e)))
+      };
+    },
+    collection(path) {
+      const r = collection(fs, path);
+      return {
+        path,
+        onSnapshot: (next, onErr) => onSnapshot(r, (qs) => next({ docs: qs.docs.map(wrap), empty: qs.empty, size: qs.size }), (e) => onErr && onErr(mapErr(e)))
+      };
+    }
+  };
+  const downloadsAdapter = {
+    save({ filename, data }) {
+      const blob = data instanceof Blob ? data : new Blob([data]);
+      const url = URL.createObjectURL(blob), a = document.createElement("a");
+      a.href = url; a.download = filename; document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 5000);
+      return Promise.resolve({ status: "saved" });
+    }
+  };
+
+  let started = false;
+  onAuthStateChanged(auth, (u) => {
+    if (!u) { if (started) { location.reload(); return; } authBox.hidden = false; appBox.hidden = true; return; }
+    if (started) return;
+    started = true;
+    const isTeacher = !!(u.email && TEACHER_EMAIL && u.email.toLowerCase() === TEACHER_EMAIL.toLowerCase() && u.emailVerified);
+    const userAdapter = {
+      id: () => Promise.resolve(u.uid),
+      isOwner: () => Promise.resolve(isTeacher),
+      me: () => Promise.resolve({ id: u.uid, name: u.displayName || "", avatarUrl: u.photoURL || "", color: "#1D5FA6", email: u.email, isOwner: isTeacher, canEdit: isTeacher }),
+      profiles: (ids) => Promise.resolve(Object.fromEntries([].concat(ids).map((i) => [i, { id: i, name: "", avatarUrl: "", color: "#1D5FA6", email: null, isMe: i === u.uid, guest: false }])))
+    };
+    window.claude = { use: (n) => Promise.resolve(n === "db" ? dbAdapter : n === "user" ? userAdapter : n === "downloads" ? downloadsAdapter : null) };
+    window.APP_NEEDS_APPROVAL = true;
+    window.APP_USER_EMAIL = u.email || "";
+    authBox.hidden = true; appBox.hidden = false;
+    window.startApp();
+  });
+
+  const friendly = (e) => {
+    const c = (e && e.code) || "";
+    if (c.includes("invalid-credential") || c.includes("wrong-password") || c.includes("user-not-found")) return "Email or password is wrong.";
+    if (c.includes("email-already-in-use")) return "An account with this email already exists. Sign in instead.";
+    if (c.includes("weak-password")) return "Use a password of at least 6 characters.";
+    if (c.includes("invalid-email")) return "That email address doesn’t look right.";
+    if (c.includes("popup-closed")) return "";
+    if (c.includes("too-many-requests")) return "Too many attempts. Wait a few minutes and try again.";
+    return "Something went wrong. Try again.";
+  };
+  $("googleBtn").addEventListener("click", () => { err.textContent = ""; signInWithPopup(auth, new GoogleAuthProvider()).catch((e) => err.textContent = friendly(e)); });
+  $("authSignIn").addEventListener("click", () => { err.textContent = ""; signInWithEmailAndPassword(auth, $("authEmail").value.trim(), $("authPass").value).catch((e) => err.textContent = friendly(e)); });
+  $("authSignUp").addEventListener("click", () => { err.textContent = ""; createUserWithEmailAndPassword(auth, $("authEmail").value.trim(), $("authPass").value).catch((e) => err.textContent = friendly(e)); });
+  $("authReset").addEventListener("click", () => {
+    const em = $("authEmail").value.trim();
+    if (!em) { err.textContent = "Type your email above first."; return; }
+    sendPasswordResetEmail(auth, em).then(() => err.textContent = "Password reset email sent. Check your inbox.").catch((e) => err.textContent = friendly(e));
+  });
+  $("signOutBtn").addEventListener("click", () => { try { sessionStorage.clear(); } catch (e) {} signOut(auth); });
+}
+</script>
+</body>
+</html>
