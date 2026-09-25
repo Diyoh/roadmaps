@@ -1,0 +1,201 @@
+{
+  "id": "dba",
+  "title": "DBA Career Ladder",
+  "defaultStart": "2026-11-01",
+  "defaultHours": 2,
+  "levels": [
+    {
+      "n": 1,
+      "name": "SQL foundations",
+      "tag": "Ground level",
+      "start": "2026-11-01",
+      "end": "2027-01-02",
+      "hours": 126,
+      "tasks": [
+        "Study group formed and first call held",
+        "PostgreSQL and DBeaver installed; dba-journey repo created",
+        "CS50 SQL Problem Sets 0–6 submitted",
+        "LeetCode SQL 50 completed",
+        "HackerRank SQL (Basic) passed",
+        "CS50 SQL final project submitted"
+      ],
+      "exams": [
+        {
+          "id": "hr_basic",
+          "name": "HackerRank SQL (Basic) skills test",
+          "date": "2026-12-19",
+          "cost": "Free",
+          "earn": "HackerRank SQL (Basic) certificate"
+        },
+        {
+          "id": "cs50",
+          "name": "CS50 SQL problem sets + final project",
+          "date": "2027-01-02",
+          "cost": "Free",
+          "earn": "CS50 SQL certificate (Harvard)"
+        }
+      ]
+    },
+    {
+      "n": 2,
+      "name": "Linux and PostgreSQL at the command line",
+      "tag": "Hands-on",
+      "start": "2027-01-03",
+      "end": "2027-02-27",
+      "hours": 112,
+      "tasks": [
+        "All freeCodeCamp certification projects passed",
+        "Using psql every day instead of a GUI",
+        "Lab: three roles (admin, app, read-only) tested with GRANT/REVOKE",
+        "Lab: backup with pg_dump, drop the database, restore it",
+        "HackerRank SQL (Intermediate) passed"
+      ],
+      "exams": [
+        {
+          "id": "fcc",
+          "name": "freeCodeCamp Relational Database certification projects",
+          "date": "2027-02-06",
+          "cost": "Free",
+          "earn": "freeCodeCamp Relational Database Certification"
+        },
+        {
+          "id": "hr_int",
+          "name": "HackerRank SQL (Intermediate) skills test",
+          "date": "2027-02-27",
+          "cost": "Free",
+          "earn": "HackerRank SQL (Intermediate) certificate"
+        }
+      ]
+    },
+    {
+      "n": 3,
+      "name": "Oracle Database Administrator, Associate",
+      "tag": "First vendor certification",
+      "start": "2027-02-28",
+      "end": "2027-06-26",
+      "hours": 238,
+      "tasks": [
+        "Oracle AI Database Free and SQL Developer installed",
+        "Architecture notes written in your repo",
+        "Part 1 topics practised hands-on",
+        "Part 2 topics practised hands-on",
+        "Exam booked on Pearson VUE",
+        "Practice scores at 80% or higher",
+        "1Z0-182 passed"
+      ],
+      "exams": [
+        {
+          "id": "ora182",
+          "name": "Oracle AI Database Administration Associate (1Z0-182)",
+          "date": "2027-06-26",
+          "cost": "≈ US$245",
+          "earn": "Oracle AI Database Administration Associate"
+        }
+      ]
+    },
+    {
+      "n": 4,
+      "name": "PostgreSQL DBA and first job applications",
+      "tag": "Second platform",
+      "start": "2027-06-27",
+      "end": "2027-09-25",
+      "hours": 182,
+      "tasks": [
+        "Point-in-time recovery runbook tested and on GitHub",
+        "Replication and failover lab done",
+        "Tuning case study with before/after numbers",
+        "CV and LinkedIn updated",
+        "10 job applications sent",
+        "EDB Essentials for PostgreSQL passed"
+      ],
+      "exams": [
+        {
+          "id": "edb",
+          "name": "EDB Essentials for PostgreSQL",
+          "date": "2027-09-25",
+          "cost": "Check EDB portal (≈ US$200)",
+          "earn": "EDB Essentials for PostgreSQL"
+        }
+      ]
+    },
+    {
+      "n": 5,
+      "name": "How databases work inside",
+      "tag": "World-class",
+      "start": "2027-09-26",
+      "end": "2028-01-08",
+      "hours": 210,
+      "tasks": [
+        "C++ refresher done (if needed)",
+        "All lectures up to buffer pool watched",
+        "Project 0 passes the autograder",
+        "Project 1 passes the autograder",
+        "HackerRank SQL (Advanced) passed",
+        "Blog post published"
+      ],
+      "exams": [
+        {
+          "id": "hr_adv",
+          "name": "HackerRank SQL (Advanced) skills test",
+          "date": "2027-12-18",
+          "cost": "Free",
+          "earn": "HackerRank SQL (Advanced) certificate"
+        },
+        {
+          "id": "cmu",
+          "name": "CMU 15-445 projects on the Gradescope autograder",
+          "date": "2028-01-08",
+          "cost": "Free",
+          "earn": "Autograder scores (portfolio proof, no certificate)"
+        }
+      ]
+    },
+    {
+      "n": 6,
+      "name": "Learn in a global cohort",
+      "tag": "With other students",
+      "start": "2028-01-09",
+      "end": "2028-04-29",
+      "hours": 224,
+      "tasks": [
+        "Registered for the 2028 cohort",
+        "All weekly homework submitted",
+        "Final project submitted",
+        "Peer reviews completed",
+        "Certificate received"
+      ],
+      "exams": [
+        {
+          "id": "zoomcamp",
+          "name": "Zoomcamp final project + peer reviews",
+          "date": "2028-04-29",
+          "cost": "Free",
+          "earn": "Data Engineering Zoomcamp certificate"
+        }
+      ]
+    },
+    {
+      "n": 7,
+      "name": "Professional DBA certification",
+      "tag": "Top of the ladder",
+      "start": "2028-04-30",
+      "end": "2028-09-23",
+      "hours": 294,
+      "tasks": [
+        "20 job adverts reviewed and platform chosen",
+        "Exam(s) booked",
+        "Practice scores at 80% or higher",
+        "Professional exam passed"
+      ],
+      "exams": [
+        {
+          "id": "pro",
+          "name": "Your chosen professional exam (final exam)",
+          "date": "2028-09-23",
+          "cost": "Depends on option",
+          "earn": "Professional DBA certification"
+        }
+      ]
+    }
+  ]
+}

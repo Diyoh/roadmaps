@@ -284,6 +284,110 @@ input:focus, select:focus, textarea:focus{border-color:var(--accent); outline:no
 .pwtoggle .eyeoff{display:none}
 .pwtoggle[aria-pressed="true"] .eye{display:none}
 .pwtoggle[aria-pressed="true"] .eyeoff{display:inline}
+
+/* ================= refreshed design ================= */
+:root{ --radius:14px; --shadow:0 1px 2px rgba(21,32,44,.05), 0 10px 30px rgba(21,32,44,.06); --shadow-lg:0 2px 4px rgba(21,32,44,.06), 0 18px 40px rgba(21,32,44,.10); --sunken:#EBEFF4; --hero:#0E1A2B; --hero-ink:#F2F5F9; --hero-muted:#9FB0C3; }
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --sunken:#111922; --shadow:0 1px 2px rgba(0,0,0,.3), 0 10px 30px rgba(0,0,0,.25); --shadow-lg:0 2px 4px rgba(0,0,0,.3), 0 18px 40px rgba(0,0,0,.35); --hero:#101B28; } }
+:root[data-theme="dark"]{ --sunken:#111922; --hero:#101B28; }
+body{font-size:15.5px}
+.wrap{max-width:1240px}
+.panel, .card, .taskcard, .tablebox, .stats, .pledge-note, .exam, .qual, .wkblock, .authbox{border:0 !important; border-radius:var(--radius); box-shadow:var(--shadow)}
+.panel{padding:24px 26px}
+.card{padding:22px 24px}
+.btn, .weekbar button{border-radius:10px; padding:8px 14px; font-weight:500; transition:background .15s, border-color .15s, box-shadow .15s}
+.btn.primary{box-shadow:0 1px 2px rgba(29,95,166,.25)}
+.btn.lg{font-size:15px; padding:12px 20px; border-radius:11px}
+.page{gap:24px; padding-block:28px 40px}
+.page h2{font-size:clamp(1.6rem,3.2vw,2.1rem)}
+.muted.small, .small{font-size:13px}
+
+/* top bar */
+.topbar{padding-block:18px 14px; border-bottom:1px solid var(--line)}
+.brand b{font-size:1.2rem}
+
+/* navigation: horizontal on phones, sidebar on wide screens */
+.tabs{gap:6px; padding-block:10px; border-bottom:0}
+.tabs a{display:inline-flex; align-items:center; gap:8px; font-size:14px; padding:8px 12px; border-radius:10px}
+.tabs a svg, .stat-l svg{width:18px; height:18px; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; flex:none}
+.tabs a[aria-current="page"]{background:var(--accent); color:var(--surface)}
+@media (min-width: 1000px){
+  .wrap.shell{display:grid; grid-template-columns:230px minmax(0,1fr); column-gap:44px; align-items:start}
+  .wrap.shell > .topbar{grid-column:1 / -1}
+  .wrap.shell > .tabs{position:sticky; top:20px; flex-direction:column; align-items:stretch; overflow:visible; padding-block:24px 0; background:transparent}
+  .wrap.shell > .tabs a{padding:11px 14px; font-size:14.5px}
+  .wrap.shell > .tabs .sep{width:auto; height:1px; margin:8px 6px}
+  .wrap.shell > .tabs .role{align-self:flex-start; margin:0 0 8px 6px}
+  .wrap.shell > main{grid-column:2; min-width:0}
+}
+
+/* overview hero */
+.hero{position:relative; overflow:hidden; background:var(--hero); color:var(--hero-ink); border-radius:20px; padding:34px 36px; display:grid; grid-template-columns:minmax(0,1fr) auto; gap:28px; align-items:center; box-shadow:var(--shadow-lg)}
+.hero::before{content:""; position:absolute; inset:0; background-image:linear-gradient(rgba(134,184,238,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(134,184,238,.07) 1px, transparent 1px); background-size:44px 44px; pointer-events:none}
+.hero > *{position:relative}
+.hero-eyebrow{font-family:var(--mono); font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#86B8EE}
+.hero h1{color:var(--hero-ink); font-size:clamp(2.1rem,5vw,3.2rem); margin-top:10px}
+.hero-sub{color:var(--hero-muted); font-size:1.05rem; max-width:56ch; margin:12px 0 0}
+.hero-cta{display:flex; flex-wrap:wrap; gap:10px; margin-top:22px}
+.hero .btn.primary{background:#86B8EE; border-color:#86B8EE; color:#0E1A2B}
+.hero-ghost{background:transparent; color:var(--hero-ink); border:1px solid rgba(255,255,255,.22)}
+.hero-ghost:hover{border-color:#86B8EE}
+.ring{position:relative; width:148px; height:148px}
+.ring svg{width:100%; height:100%}
+.ring-bg{fill:none; stroke:rgba(255,255,255,.10); stroke-width:12}
+.ring-fg{fill:none; stroke:#86B8EE; stroke-width:12; stroke-linecap:round; transition:stroke-dashoffset .8s ease}
+.ring-t{position:absolute; inset:0; display:grid; place-content:center; text-align:center}
+.ring-t b{font-family:var(--display); font-size:2rem; line-height:1}
+.ring-t span{font-size:12px; color:var(--hero-muted)}
+
+/* level strip */
+.strip{display:grid; grid-template-columns:repeat(7, minmax(0,1fr)); gap:8px}
+.rung-s{position:relative; overflow:hidden; display:grid; gap:2px; padding:12px 12px 11px; border-radius:12px; background:var(--surface); box-shadow:var(--shadow); text-decoration:none; color:var(--ink); min-width:0}
+.rung-fill{position:absolute; left:0; bottom:0; height:4px; background:var(--accent)}
+.rung-s.done .rung-fill{background:var(--ok)}
+.rung-s.cur{box-shadow:0 0 0 2px var(--accent), var(--shadow)}
+.rung-n{font-family:var(--display); font-weight:700; font-size:1.05rem}
+.rung-name{font-size:12px; color:var(--muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+
+/* stats */
+.stats{background:transparent; gap:14px; overflow:visible; box-shadow:none !important}
+.stat{border-radius:var(--radius); box-shadow:var(--shadow); padding:18px 20px}
+.stat-l{display:flex; align-items:center; gap:8px; font-size:13px; color:var(--muted)}
+.stat-l svg{color:var(--accent)}
+.stat b{font-size:1.8rem}
+
+/* next steps */
+.nextlist li{padding-block:14px}
+.nextlist a{font-weight:500; text-decoration:none}
+
+/* ladder cards */
+.level .card{box-shadow:var(--shadow)}
+.level.current .card{box-shadow:0 0 0 2px var(--accent), var(--shadow)}
+.rung{box-shadow:var(--shadow); border-width:0}
+.exam{background:var(--exam-soft); box-shadow:none}
+.qual{box-shadow:none}
+
+/* tables */
+.tablebox{overflow-x:auto}
+th{background:var(--sunken)}
+
+/* daily log */
+.dayrow{padding:6px 8px; border-radius:10px}
+.dayrow.today{background:var(--accent-soft)}
+
+@media (max-width: 860px){
+  .hero{grid-template-columns:1fr; padding:26px 22px}
+  .ring{width:120px; height:120px; justify-self:start}
+  .strip{grid-template-columns:repeat(4, minmax(0,1fr))}
+  .stats{grid-template-columns:1fr 1fr}
+}
+@media (max-width: 520px){
+  .strip{grid-template-columns:repeat(4, minmax(0,1fr)); gap:6px}
+  .rung-name{display:none}
+  .panel{padding:18px}
+  .hero-cta .btn{flex:1 1 auto; justify-content:center}
+  .topbar{align-items:center}
+  .topbar .brand .muted{display:none}
+}
 </style>
 </head>
 <body>
@@ -350,24 +454,31 @@ input:focus, select:focus, textarea:focus{border-color:var(--accent); outline:no
 
   <section class="page" id="p-wait" hidden>
     <div class="gate">
-      <h1 id="waitTitle">Waiting for your teacher</h1>
-      <p id="waitText" style="margin:0;max-width:60ch">You’ve signed your commitment. Your teacher now needs to approve you before you can start. This page opens your plan automatically as soon as you’re approved.</p>
+      <h1 id="waitTitle">Waiting for your mentor</h1>
+      <p id="waitText" style="margin:0;max-width:60ch">You’ve signed your commitment. Your mentor now needs to approve you before you can start. This page opens your plan automatically as soon as you’re approved.</p>
     </div>
   </section>
 
   <!-- ============ STUDENT PAGES ============ -->
   <section class="page" id="p-overview" hidden>
-    <div class="eyebrow" data-planline></div>
-    <h1 id="ovTitle">Your plan</h1>
-    <p class="muted">Seven levels, from your first SQL query to a professional DBA certification. Use the tabs to move between your daily log, assignments, the ladder and the exam calendar.</p>
+    <div class="hero">
+      <div class="hero-text">
+        <div class="hero-eyebrow" data-planline></div>
+        <h1 id="ovTitle">Your plan</h1>
+        <p class="hero-sub" id="ovSub">Seven levels, from your first SQL query to a professional DBA certification.</p>
+        <div class="hero-cta"><a class="btn primary lg" href="#log" id="ovCta">Log today</a><a class="btn hero-ghost lg" href="#ladder">View the ladder</a></div>
+      </div>
+      <div class="ring" id="ovRing" aria-label="Overall progress"></div>
+    </div>
+    <div class="strip" id="ovStrip" aria-label="Your progress through the levels"></div>
     <div class="stats">
-      <div class="stat"><span>Where you are</span><b id="stNow">–</b><span id="stNowSub">&nbsp;</span></div>
-      <div class="stat"><span>Hours logged</span><b id="stHours">0</b><span id="stHoursSub">&nbsp;</span></div>
-      <div class="stat"><span>Milestones done</span><b id="stTasks">0</b><span id="stTasksSub">&nbsp;</span></div>
-      <div class="stat"><span>Exams passed</span><b id="stExams">0</b><span id="stExamsSub">&nbsp;</span></div>
+      <div class="stat"><span class="stat-l"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Where you are</span><b id="stNow">–</b><span id="stNowSub">&nbsp;</span></div>
+      <div class="stat"><span class="stat-l"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>Hours logged</span><b id="stHours">0</b><span id="stHoursSub">&nbsp;</span></div>
+      <div class="stat"><span class="stat-l"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Milestones done</span><b id="stTasks">0</b><span id="stTasksSub">&nbsp;</span></div>
+      <div class="stat"><span class="stat-l"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M8.2 13.9L7 23l5-3 5 3-1.2-9.1"/></svg>Exams passed</span><b id="stExams">0</b><span id="stExamsSub">&nbsp;</span></div>
     </div>
     <div class="panel feedback" id="coachBox" hidden>
-      <div class="eyebrow">Feedback from your teacher</div>
+      <div class="eyebrow">Feedback from your mentor</div>
       <p id="coachText" style="margin:0; white-space:pre-wrap"></p>
       <div class="muted mono" id="coachAt" style="font-size:12px"></div>
     </div>
@@ -379,7 +490,7 @@ input:focus, select:focus, textarea:focus{border-color:var(--accent); outline:no
 
   <section class="page" id="p-log" hidden>
     <h2>Daily log</h2>
-    <p class="muted">Log each day’s hours and one line on what you did, then make your progress card and post it. On Sunday, fill in the weekly reflection. Your teacher sees this and may comment on the week.</p>
+    <p class="muted">Log each day’s hours and one line on what you did, then make your progress card and post it. On Sunday, fill in the weekly reflection. Your mentor sees this and may comment on the week.</p>
     <div class="panel">
       <div class="weekbar">
         <h3 style="margin-right:auto">This week</h3>
@@ -424,7 +535,7 @@ input:focus, select:focus, textarea:focus{border-color:var(--accent); outline:no
 
   <section class="page" id="p-work" hidden>
     <h2>My assignments</h2>
-    <p class="muted">Tasks from your teacher. Submit your work before the due date: write what you did and add a link (for example your GitHub repo). Grades and comments appear here once your teacher marks it.</p>
+    <p class="muted">Tasks from your mentor. Submit your work before the due date: write what you did and add a link (for example your GitHub repo). Grades and comments appear here once your mentor marks it.</p>
     <div id="workList" class="tasklist"></div>
   </section>
 
@@ -433,7 +544,7 @@ input:focus, select:focus, textarea:focus{border-color:var(--accent); outline:no
     <div class="pledge-note" id="commitSigned"></div>
     <div class="panel">
       <h3>My plan details</h3>
-      <label>Full name (your teacher sees this)<input type="text" id="p_name" data-pledge="name" placeholder="Your full name"></label>
+      <label>Full name (your mentor sees this)<input type="text" id="p_name" data-pledge="name" placeholder="Your full name"></label>
       <label>Why I’m doing this<textarea id="p_why" data-pledge="why" placeholder="e.g. To be working as a DBA by end of 2027 and support my family"></textarea></label>
       <label>Accountability partner (name and how to reach them)<input type="text" id="p_partner" data-pledge="partner" placeholder="Someone who checks on you every week"></label>
       <label>Study group members<input type="text" id="p_group" data-pledge="group" placeholder="3–5 people aiming at the same exams"></label>
@@ -467,7 +578,7 @@ input:focus, select:focus, textarea:focus{border-color:var(--accent); outline:no
     </table></div>
   </section>
 
-  <!-- ============ TEACHER PAGES ============ -->
+  <!-- ============ MENTOR PAGES ============ -->
   <section class="page" id="p-class" hidden>
     <h2>Class</h2>
     <div class="panel pending" id="pendingBox" hidden></div>
@@ -749,7 +860,7 @@ function queueWrite(path, getData){
       .catch(function(e){
         if(e && e.code==="invalid_argument"){
           mode="local";
-          localMsg="Your access can’t save here yet, so progress is kept in this browser only. Ask your teacher to approve you.";
+          localMsg="Your access can’t save here yet, so progress is kept in this browser only. Ask your mentor to approve you.";
           setStatus(localMsg);
         } else setStatus("Couldn’t save just now. Your next edit will try again.");
       });
@@ -887,15 +998,17 @@ var COMMITMENT = {
     "{STUDY}",
     "I will log my hours and what I did every day, honestly, including the days I miss.",
     "At the end of each study day, I will post my progress card on social media.",
-    "I will submit the work my teacher assigns by the due date.",
-    "I will sit each exam on the planned date, or agree a new date with my teacher before it passes.",
-    "I will tell my teacher early when I fall behind, instead of going quiet.",
-    "I will help the students in my study group and ask for help when I need it."
+    "I will submit the work my mentor assigns by the due date.",
+    "I will sit each exam on the planned date, or agree a new date with my mentor before it passes.",
+    "I will tell my mentor early when I fall behind, instead of going quiet.",
+    "I will help the students in my study group and ask for help when I need it.",
+    "I will finish this roadmap to the end.",
+    "When I finish, I will mentor another person through this roadmap."
   ]
 };
 function commitmentHtml(signedName, signedAt){
   return "<div class='eyebrow'>Commitment note</div><h2>"+(signedAt?"My commitment":"Before you begin")+"</h2><p>"+esc(COMMITMENT.intro)+"</p><ol>"+
-    COMMITMENT.points.map(function(p){ if(p==="{STUDY}") p="I will study for "+hoursText(settings.dailyHours)+" every day, starting "+startText()+", except on the holidays my teacher sets."; return "<li>"+esc(p)+"</li>"; }).join("")+"</ol>"+
+    COMMITMENT.points.map(function(p){ if(p==="{STUDY}") p="I will study for "+hoursText(settings.dailyHours)+" every day, starting "+startText()+", except on the holidays my mentor sets."; return "<li>"+esc(p)+"</li>"; }).join("")+"</ol>"+
     (signedAt ? "<div class='signed'>Signed by <b>"+esc(signedName||"")+"</b> on "+esc(fmtStamp(signedAt))+"</div>" : "");
 }
 function renderCommitment(){
@@ -905,6 +1018,47 @@ function renderCommitment(){
 }
 
 /* ---------- pages ---------- */
+var ICO=function(d){ return "<svg viewBox='0 0 24 24' aria-hidden='true'>"+d+"</svg>"; };
+var ICONS={
+  overview:ICO("<path d='M3 11l9-8 9 8'/><path d='M5 10v10h14V10'/>"),
+  log:ICO("<rect x='3' y='4' width='18' height='18' rx='2'/><path d='M16 2v4M8 2v4M3 10h18'/>"),
+  work:ICO("<path d='M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z'/><path d='M14 3v5h5M9 13h6M9 17h6'/>"),
+  ladder:ICO("<path d='M7 21V3M17 21V3M7 7h10M7 12h10M7 17h10'/>"),
+  exams:ICO("<circle cx='12' cy='8' r='6'/><path d='M8.2 13.9L7 23l5-3 5 3-1.2-9.1'/>"),
+  routine:ICO("<circle cx='12' cy='12' r='9'/><path d='M12 7v5l3 3'/>"),
+  commit:ICO("<path d='M12 20h9'/><path d='M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z'/>"),
+  class:ICO("<path d='M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2'/><circle cx='9' cy='7' r='4'/><path d='M23 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8'/>"),
+  assign:ICO("<path d='M12 5v14M5 12h14'/>"),
+  settings:ICO("<circle cx='12' cy='12' r='3'/><path d='M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z'/>")
+};
+
+/* ---------- overview hero: ring, level strip, main call to action ---------- */
+function renderHero(){
+  var s=store.state, lp=levelProgress(s), cur=workingOn(s), t=today(), tISO=iso(t);
+  var total=0, done=0;
+  lp.forEach(function(p){ total+=p.L.tasks.length+p.L.exams.length; done+=p.done+p.exams.filter(function(x){ return x==="passed"; }).length; });
+  var pct=total?Math.round(done/total*100):0, R=52, C=2*Math.PI*R;
+  var ring=document.getElementById("ovRing");
+  if(ring) ring.innerHTML="<svg viewBox='0 0 128 128' role='img' aria-label='"+pct+"% of the roadmap complete'><circle cx='64' cy='64' r='"+R+"' class='ring-bg'/><circle cx='64' cy='64' r='"+R+"' class='ring-fg' stroke-dasharray='"+C.toFixed(1)+"' stroke-dashoffset='"+(C*(1-pct/100)).toFixed(1)+"' transform='rotate(-90 64 64)'/></svg><div class='ring-t'><b>"+pct+"%</b><span>complete</span></div>";
+  var sub=document.getElementById("ovSub");
+  if(sub){
+    if(tISO<PLAN_START) sub.textContent="Level 1 of "+LEVELS.length+" starts on "+fmt(PLAN_START)+". Use the time before then to set up and find your study group.";
+    else sub.textContent="You’re on Level "+cur.n+" of "+LEVELS.length+": "+cur.name+". "+(lp[cur.n-1].done)+" of "+cur.tasks.length+" milestones done on this level.";
+  }
+  var cta=document.getElementById("ovCta");
+  if(cta){
+    var w=store.weeks[iso(weekStart(t))], di=t.getDay(), logged=w && ((+((w.hours||[])[di])>0) || (w.notes||[])[di]);
+    if(tISO<PLAN_START){ cta.textContent="See what to prepare"; cta.href="#ladder"; }
+    else if(isHoliday(tISO)){ cta.textContent="Today is a holiday"; cta.href="#log"; }
+    else if(logged){ cta.textContent="Make today’s progress card"; cta.href="#log"; }
+    else { cta.textContent="Log today"; cta.href="#log"; }
+  }
+  var strip=document.getElementById("ovStrip");
+  if(strip) strip.innerHTML=lp.map(function(p){
+    var frac=p.complete?1:(p.done/p.L.tasks.length), isCur=p.L.n===cur.n;
+    return "<a href='#ladder' class='rung-s"+(p.complete?" done":"")+(isCur?" cur":"")+"' title='Level "+p.L.n+": "+esc(p.L.name)+"'><span class='rung-fill' style='width:"+Math.round(frac*100)+"%'></span><span class='rung-n'>L"+p.L.n+"</span><span class='rung-name'>"+esc(p.L.name)+"</span></a>";
+  }).join("");
+}
 var PAGES_STUDENT=[["overview","Overview"],["log","Daily log"],["work","My assignments"],["ladder","The ladder"],["exams","Exam calendar"],["routine","Daily routine"],["commit","My commitment"]];
 var PAGES_TEACHER=[["class","Class"],["assign","Assign a task"],["settings","Plan settings"],["ladder","The ladder"],["exams","Exam calendar"],["routine","Daily routine"]];
 var PAGE_NAMES={overview:"your overview", log:"your daily log", work:"your assignments", ladder:"the ladder", exams:"the exam calendar", routine:"the daily routine", commit:"your commitment"};
@@ -924,12 +1078,13 @@ function allowed(p){
 }
 function renderTabs(){
   var nav=document.getElementById("tabs");
-  if(!role || (role==="student" && (!entered || blocked()))){ nav.hidden=true; return; }
+  if(!role || (role==="student" && (!entered || blocked()))){ nav.hidden=true; document.querySelector(".wrap").classList.remove("shell"); return; }
   var list = role==="teacher" ? PAGES_TEACHER : PAGES_STUDENT;
-  nav.innerHTML = (role==="teacher"?"<span class='role'>Teacher</span>":"") + list.map(function(x,i){
-    return (role==="teacher" && i===3 ? "<span class='sep' aria-hidden='true'></span>" : "")+"<a href='#"+x[0]+"' data-page='"+x[0]+"'>"+esc(x[1])+"</a>";
+  nav.innerHTML = (role==="teacher"?"<span class='role'>Mentor</span>":"") + list.map(function(x,i){
+    return (role==="teacher" && i===3 ? "<span class='sep' aria-hidden='true'></span>" : "")+"<a href='#"+x[0]+"' data-page='"+x[0]+"'>"+(ICONS[x[0]]||"")+"<span>"+esc(x[1])+"</span></a>";
   }).join("");
   nav.hidden=false;
+  document.querySelector(".wrap").classList.add("shell");
 }
 function showPage(){
   if(!ready) return;
@@ -939,8 +1094,8 @@ function showPage(){
   document.querySelectorAll("#tabs a").forEach(function(a){ if(a.getAttribute("data-page")===p || (p==="student" && a.getAttribute("data-page")==="class")) a.setAttribute("aria-current","page"); else a.removeAttribute("aria-current"); });
   if(p==="start") renderStart();
   if(p==="wait"){
-    document.getElementById("waitTitle").textContent = removedFlag ? "Your access has been removed" : "Waiting for your teacher";
-    document.getElementById("waitText").textContent = removedFlag ? "Your teacher has removed you from this class. If you think this is a mistake, contact your teacher." : "You’ve signed your commitment. Your teacher now needs to approve you before you can start. This page opens your plan automatically as soon as you’re approved.";
+    document.getElementById("waitTitle").textContent = removedFlag ? "Your access has been removed" : "Waiting for your mentor";
+    document.getElementById("waitText").textContent = removedFlag ? "Your mentor has removed you from this class. If you think this is a mistake, contact your mentor." : "You’ve signed your commitment. Your mentor now needs to approve you before you can start. This page opens your plan automatically as soon as you’re approved.";
   }
   if(p==="overview") renderNext();
   if(p==="settings" && !setDirty) loadSettingsForm();
@@ -1019,6 +1174,7 @@ function updateStats(){
     document.getElementById("level"+p.L.n).classList.toggle("complete", p.complete);
   });
   document.getElementById("stTasks").textContent = doneCount;
+  renderHero();
   document.getElementById("stTasksSub").textContent = "of "+ALL_TASKS.length+" across 7 levels";
   var passed = ALL_EXAMS.filter(function(e){ return (s.exams[e.id]||{}).status==="passed"; }).length;
   document.getElementById("stExams").textContent = passed;
@@ -1082,7 +1238,7 @@ function loadWeek(force){
 function renderWeekComment(){
   var box=document.getElementById("weekComment");
   var c=((myAssigned.weekComments)||{})[curWeek];
-  if(c && c.text){ box.textContent = "Teacher’s comment on this week: "+c.text; box.hidden=false; } else box.hidden=true;
+  if(c && c.text){ box.textContent = "Mentor’s comment on this week: "+c.text; box.hidden=false; } else box.hidden=true;
 }
 function updateWeekTotal(){
   var h = weekHours(store.weeks[curWeek]);
@@ -1111,12 +1267,12 @@ function renderHistory(){
     a.addEventListener("click", function(){ curWeek=k; renderDaysBox(); loadWeek(true); window.scrollTo(0,0); });
     var hh=document.createElement("span"); hh.className="mono"; hh.textContent=(Math.round(h*10)/10)+" h"; hh.style.color = hoursColor(h,k);
     var did=document.createElement("span"); did.className="did";
-    did.textContent = (wc[k]&&wc[k].text ? "Teacher commented · " : "") + (w.did || "—");
+    did.textContent = (wc[k]&&wc[k].text ? "Mentor commented · " : "") + (w.did || "—");
     row.appendChild(a); row.appendChild(hh); row.appendChild(did); box.appendChild(row);
   });
 }
 
-/* ---------- student: assignments + feedback from the teacher ---------- */
+/* ---------- student: assignments + feedback from the mentor ---------- */
 var workPending=false;
 function renderMyAssigned(){
   var f=myAssigned.feedback, box=document.getElementById("coachBox");
@@ -1128,13 +1284,13 @@ function renderWork(){
   var tasks=myAssigned.tasks||{}, ids=sortedTaskIds(tasks);
   if(box.contains(document.activeElement)){ workPending=true; return; }
   workPending=false;
-  if(!ids.length){ box.innerHTML="<p class='empty'>No assignments yet. When your teacher assigns a task, it appears here.</p>"; return; }
+  if(!ids.length){ box.innerHTML="<p class='empty'>No assignments yet. When your mentor assigns a task, it appears here.</p>"; return; }
   var subs=store.state.subs||{};
   box.innerHTML = ids.map(function(id){
     var t=tasks[id], sub=subs[id], st=taskStatus(t, sub);
     var lvl = t.level ? " · Level "+esc(t.level) : "";
     var grade = isGraded(t) ? "<div class='gradebox'><span class='eyebrow' style='color:var(--ok)'>Grade</span><b>"+esc(t.grade)+" / "+esc(t.points)+" · "+Math.round((+t.grade)/(+t.points||1)*100)+"%</b>"+(t.comment?"<p>"+esc(t.comment)+"</p>":"")+(t.gradedAt?"<span class='muted mono' style='font-size:12px'>Marked "+esc(fmtStamp(t.gradedAt))+"</span>":"")+"</div>"
-      : (t.comment ? "<div class='gradebox'><span class='eyebrow' style='color:var(--ok)'>Teacher’s comment</span><p>"+esc(t.comment)+"</p></div>" : "");
+      : (t.comment ? "<div class='gradebox'><span class='eyebrow' style='color:var(--ok)'>Mentor’s comment</span><p>"+esc(t.comment)+"</p></div>" : "");
     return "<div class='taskcard'><div class='th'><h3>"+esc(t.title)+"</h3><span class='chip "+st.cls+"'>"+esc(st.text)+"</span></div>"+
       "<div class='muted mono' style='font-size:12.5px'>"+(t.due?"Due "+esc(fmt(t.due)):"No due date")+" · "+esc(t.points)+" points"+lvl+"</div>"+
       (t.details?"<p>"+esc(t.details)+"</p>":"")+grade+
@@ -1151,7 +1307,7 @@ document.getElementById("workList").addEventListener("click", function(ev){
   if(link && !safeUrl(link)){ msg.textContent="Links must start with https:// or http://"; return; }
   store.state.subs[id]={text:text, link:link, submittedAt:new Date().toISOString()};
   saveState();
-  msg.textContent = mode==="db" ? "Submitted. Your teacher can see it now." : "Saved in this browser only. Your teacher can’t see it until your access is fixed.";
+  msg.textContent = mode==="db" ? "Submitted. Your mentor can see it now." : "Saved in this browser only. Your mentor can’t see it until your access is fixed.";
 });
 document.getElementById("workList").addEventListener("focusout", function(){
   setTimeout(function(){ if(workPending && !document.getElementById("workList").contains(document.activeElement)) renderWork(); }, 0);
@@ -1403,9 +1559,9 @@ document.addEventListener("input", function(ev){
 document.getElementById("wkPrev").addEventListener("click", function(){ var d=addDays(parseISO(curWeek),-7); if(iso(d)>=iso(weekStart(parseISO(PLAN_START)))){ curWeek=iso(d); renderDaysBox(); loadWeek(true); } });
 document.getElementById("wkNext").addEventListener("click", function(){ curWeek=iso(addDays(parseISO(curWeek),7)); renderDaysBox(); loadWeek(true); });
 
-/* ---------- plan settings (set by the teacher, read by everyone) ---------- */
-var DEFAULT_START="2026-11-01", DEFAULT_HOURS=2, PLAN_ORIG_END="2028-09-24";
-var settings={dailyHours:DEFAULT_HOURS, startDate:DEFAULT_START, holidays:{}};
+/* ---------- plan settings (set by the mentor, read by everyone) ---------- */
+var DEFAULT_START="2026-11-01", DEFAULT_HOURS=2;
+var settings={dailyHours:DEFAULT_HOURS, startDate:DEFAULT_START, holidays:{}, levelWeeks:{}};
 var studyDays=[];
 LEVELS.forEach(function(L){ L.ostart=L.start; L.oend=L.end; L.exams.forEach(function(e){ e.odate=e.date; }); });
 var PHASE_RANGES = {
@@ -1423,16 +1579,30 @@ function normSettings(o){
   var h=+o.dailyHours; if(!(h>=0.5 && h<=8)) h=DEFAULT_HOURS;
   var s=/^\d{4}-\d{2}-\d{2}$/.test(o.startDate||"")?o.startDate:DEFAULT_START;
   var hol={}; Object.keys(o.holidays||{}).forEach(function(k){ if(/^\d{4}-\d{2}-\d{2}$/.test(k)) hol[k]=String(o.holidays[k]||""); });
-  return {dailyHours:h, startDate:s, holidays:hol, updatedAt:o.updatedAt||""};
+  var lw={}; Object.keys(o.levelWeeks||{}).forEach(function(k){ var w=Math.round(+o.levelWeeks[k]); if(/^\d+$/.test(k) && w>=1 && w<=104) lw[k]=w; });
+  return {dailyHours:h, startDate:s, holidays:hol, levelWeeks:lw, updatedAt:o.updatedAt||""};
+}
+/* Level lengths: the mentor can set how many weeks each level takes. The original plan is
+   stretched or squeezed level by level, then scaled for daily hours and holidays. */
+function segmentsFor(st){
+  var acc=0, segs=LEVELS.map(function(L){
+    var os=daysBetween(DEFAULT_START,L.ostart), ol=daysBetween(L.ostart,L.oend)+1, w=+((st.levelWeeks||{})[L.n]);
+    return {os:os, ol:ol, nl:(w>0?w*7:ol)};
+  });
+  segs.forEach(function(g){ g.ns=acc; acc+=g.nl; }); segs.total=acc; return segs;
+}
+function remapX(segs, x){
+  for(var i=0;i<segs.length;i++){ var g=segs[i]; if(x < g.os+g.ol || i===segs.length-1) return g.ns + (x-g.os)*g.nl/g.ol; }
+  return x;
 }
 function computeStudyDays(st){
-  var scale=DEFAULT_HOURS/st.dailyHours, need=Math.ceil(daysBetween(DEFAULT_START,PLAN_ORIG_END)*scale)+40, out=[], d=parseISO(st.startDate), guard=0;
+  var scale=DEFAULT_HOURS/st.dailyHours, need=Math.ceil(segmentsFor(st).total*scale)+40, out=[], d=parseISO(st.startDate), guard=0;
   while(out.length<need && guard<need*4){ var k=iso(d); if(!st.holidays[k]) out.push(k); d=addDays(d,1); guard++; }
   return out;
 }
 function mapperFor(st, days){
-  var scale=DEFAULT_HOURS/st.dailyHours;
-  function map(o){ var s=Math.max(0, Math.round(daysBetween(DEFAULT_START,o)*scale)); return days[Math.min(s, days.length-1)]; }
+  var scale=DEFAULT_HOURS/st.dailyHours, segs=segmentsFor(st);
+  function map(o){ var s=Math.max(0, Math.round(remapX(segs, daysBetween(DEFAULT_START,o))*scale)); return days[Math.min(s, days.length-1)]; }
   function mapEnd(o){ return iso(addDays(parseISO(map(iso(addDays(parseISO(o),1)))),-1)); }
   return {map:map, mapEnd:mapEnd};
 }
@@ -1489,7 +1659,7 @@ function renderRoutine(){
     "<tr><td class='date'>Mon – Fri</td><td><b>"+minsText(main)+"</b> main track: the lesson, reading or lab for this week’s phase</td><td><b>"+minsText(practice)+"</b> SQL practice: LeetCode, HackerRank or Oracle Dev Gym</td><td>"+post+"</td></tr>"+
     "<tr><td class='date'>Saturday</td><td colspan='2'><b>"+minsText(lab)+"</b> hands-on lab: build it, break it, fix it, and write down what happened</td><td>"+post+"</td></tr>"+
     "<tr><td class='date'>Sunday</td><td><b>"+minsText(review)+"</b> review the week and push notes to your GitHub repo</td><td><b>"+minsText(call)+"</b> study-group call · <b>"+minsText(refl)+"</b> weekly reflection in your daily log</td><td>"+post+"</td></tr>"+
-    "<tr><td class='date'>Holidays</td><td colspan='3'>No study expected. Holidays set by your teacher are marked in your daily log, and your plan dates move later to make up for them.</td></tr>";
+    "<tr><td class='date'>Holidays</td><td colspan='3'>No study expected. Holidays set by your mentor are marked in your daily log, and your plan dates move later to make up for them.</td></tr>";
 }
 function rerenderPlan(){
   applySchedule();
@@ -1768,7 +1938,7 @@ function becomeReady(r, name){
   if(ready) return;
   role=r; ready=true;
   document.getElementById("p-loading").hidden=true;
-  document.getElementById("hello").textContent = r==="teacher" ? "Teacher view"+(name?" · "+name:"") : (name?"Signed in as "+name:"");
+  document.getElementById("hello").textContent = r==="teacher" ? "Mentor view"+(name?" · "+name:"") : (name?"Signed in as "+name:"");
   if(r==="student"){ try{ if(signed() && sessionStorage.getItem("dba-entered-"+(uid||"local"))==="1") entered=true; }catch(e){} }
   renderTabs(); showPage();
 }
