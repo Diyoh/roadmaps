@@ -16,14 +16,17 @@ export const ADMIN_EMAIL = "diyohshiloh4@gmail.com";
 // Name shown in the hub's header, browser tab and footer.
 export const HUB = {
   name: "Roadmaps",
-  // Every roadmap site. When the admin opens the hub, any roadmap missing from the list is
-  // added automatically. Add an entry here for each new roadmap.
+  // Every roadmap. "branch" is its branch in the repository and "path" the folder it is
+  // published under (roadmaps-2b061.web.app/<path>/). The build copies each branch in, and when
+  // the admin opens the hub, any roadmap missing from the list is added automatically.
   roadmaps: [
     {
       id: "dba",
+      branch: "dba-career-ladder",
+      path: "dba",
       title: "DBA Career Ladder",
       tagline: "Seven levels from your first SQL query to a professional database administration certification.",
-      url: "https://roadmaps-2b061-dba.web.app/",
+      url: "/dba/",
       levels: 7,
       dailyHours: 2,
       startDate: "2026-11-01",

@@ -1,10 +1,11 @@
 {
   "hosting": {
     "site": "roadmaps-2b061",
-    "public": "public",
+    "public": "dist",
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "cleanUrls": false,
     "headers": [
-      { "source": "**/*.@(js|html)", "headers": [{ "key": "Cache-Control", "value": "no-cache" }] }
+      { "source": "**/*.@(js|html|json)", "headers": [{ "key": "Cache-Control", "value": "no-cache" }] }
     ]
   },
   "firestore": {
