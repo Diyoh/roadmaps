@@ -326,6 +326,11 @@ body{font-size:15.5px}
 .hero > *{position:relative}
 .hero-eyebrow{font-family:var(--mono); font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#86B8EE}
 .hero h1{color:var(--hero-ink); font-size:clamp(2.1rem,5vw,3.2rem); margin-top:10px}
+.hero-mentor{display:inline-flex; align-items:center; gap:8px; margin-top:12px; font-size:14px; font-weight:500; color:#F1AB4E}
+.hero-mentor::before{content:""; width:8px; height:8px; border-radius:50%; background:#F1AB4E}
+.hero-mentor{flex-wrap:wrap}
+.hero-link{font-size:12.5px; font-weight:500; color:#F2F5F9; text-decoration:none; border:1px solid rgba(255,255,255,.22); border-radius:999px; padding:3px 10px}
+.hero-link:hover{border-color:#F1AB4E; color:#F1AB4E}
 .hero-sub{color:var(--hero-muted); font-size:1.05rem; max-width:56ch; margin:12px 0 0}
 .hero-cta{display:flex; flex-wrap:wrap; gap:10px; margin-top:22px}
 .hero .btn.primary{background:#86B8EE; border-color:#86B8EE; color:#0E1A2B}
@@ -465,6 +470,7 @@ th{background:var(--sunken)}
       <div class="hero-text">
         <div class="hero-eyebrow" data-planline></div>
         <h1 id="ovTitle">Your plan</h1>
+        <div class="hero-mentor" id="ovMentor" hidden></div>
         <p class="hero-sub" id="ovSub">Seven levels, from your first SQL query to a professional DBA certification.</p>
         <div class="hero-cta"><a class="btn primary lg" href="#log" id="ovCta">Log today</a><a class="btn hero-ghost lg" href="#ladder">View the ladder</a></div>
       </div>
@@ -1336,7 +1342,8 @@ var classAccess={};
 function registerRoadmap(){
   var R=window.APP_ROADMAP; if(!R || !db) return;
   var entry={id:R.id, title:R.title, tagline:R.tagline||"", url:location.origin+location.pathname, levels:LEVELS.length, dailyHours:settings.dailyHours, startDate:settings.startDate, order:R.order||1, updatedAt:new Date().toISOString()};
-  db.doc("catalog/"+R.id).set(entry).catch(function(){});
+  var ref=db.doc("catalog/"+R.id);
+  ref.get().then(function(snap){ var cur=snap.exists?clone(snap.data()):{}; Object.keys(entry).forEach(function(k){ cur[k]=entry[k]; }); return ref.set(cur); }).catch(function(){});
 }
 function accessSet(id, v){ classAccess[id]=v; return db.doc("access/"+id).set(v); }
 function ownerPatch(sid, mutate){
@@ -1767,7 +1774,7 @@ function updateCardDays(){
     var has=(+((w.hours||[])[i])>0) || (w.notes||[])[i];
     if(has || d===tISO) opts.push([d, DOW[i]+" "+parseISO(d).getDate()+" "+MON[parseISO(d).getMonth()]+(d===tISO?" (today)":"")+(has?"":" · not logged yet")]);
   }
-  if(!opts.length){ sel.innerHTML="<option value=''>No logged days this week</option>"; sel.disabled=true; document.getElementById("cardMake").disabled=true; return; }
+  if(!opts.length){ sel.innerHTML="<option value=''>"+(iso(today())<PLAN_START ? "Your plan starts on "+esc(fmtShort(PLAN_START)) : "Log today’s hours first")+"</option>"; sel.disabled=true; document.getElementById("cardMake").disabled=true; return; }
   sel.disabled=false; document.getElementById("cardMake").disabled=false;
   sel.innerHTML=opts.map(function(o){ return "<option value='"+o[0]+"'>"+esc(o[1])+"</option>"; }).join("");
   var keep=opts.some(function(o){ return o[0]===prev; });
@@ -1803,15 +1810,18 @@ function drawCard(d){
   x.fillStyle=muted; x.textAlign="right"; x.fillText(fmt(d).toUpperCase(), W-P, 100); x.textAlign="left";
   x.fillStyle=white; x.font="700 170px "+DISP; x.fillText("Day "+dayN, P-6, 280);
   x.fillStyle=muted; x.font="400 38px "+SANS; x.fillText("of my database administration journey", P, 372);
-  x.fillStyle=white; x.font="600 46px "+SANS; x.fillText(name.slice(0,40), P, 450);
-  x.fillStyle="rgba(255,255,255,0.12)"; x.fillRect(P, 490, W-2*P, 2);
-  x.fillStyle=amber; x.font="700 150px "+DISP; var hs=(Math.round(e.hours*10)/10)+"h"; x.fillText(hs, P-4, 660);
+  x.fillStyle=white; x.font="600 46px "+SANS; x.fillText(name.slice(0,40), P, 440);
+  var soc=mentorSocialLine();
+  if(MENTORS.length){ x.fillStyle=amber; x.font="500 24px "+MONO; x.fillText(((MENTORS.length>1?"MENTORS: ":"MENTOR: ")+mentorText()).toUpperCase().slice(0,52), P, 484); }
+  if(soc){ x.fillStyle=muted; x.font="400 22px "+MONO; x.fillText(soc.slice(0,70), P, 516); }
+  x.fillStyle="rgba(255,255,255,0.12)"; x.fillRect(P, soc?536:510, W-2*P, 2);
+  x.fillStyle=amber; x.font="700 150px "+DISP; var hs=(Math.round(e.hours*10)/10)+"h"; x.fillText(hs, P-4, 672);
   var hw=x.measureText(hs).width;
-  x.fillStyle=muted; x.font="500 24px "+MONO; x.fillText("STUDIED TODAY", P, 705);
+  x.fillStyle=muted; x.font="500 24px "+MONO; x.fillText("STUDIED TODAY", P, 716);
   var tx=P+Math.max(hw, 230)+50, tw=W-P-tx;
-  x.fillStyle=muted; x.font="500 24px "+MONO; x.fillText("WHAT I DID", tx, 560);
+  x.fillStyle=muted; x.font="500 24px "+MONO; x.fillText("WHAT I DID", tx, 574);
   x.fillStyle=white; x.font="400 36px "+SANS;
-  wrapLines(x, e.note || "Studied and logged my progress.", tw, 4).forEach(function(l,i){ x.fillText(l, tx, 612+i*48); });
+  wrapLines(x, e.note || "Studied and logged my progress.", tw, 3).forEach(function(l,i){ x.fillText(l, tx, 624+i*48); });
   var stats=[[String(sum.hours),"total hours"],[String(streak),streak===1?"day streak":"day streak"],[sum.tasksDone+"/"+ALL_TASKS.length,"milestones"],[String(sum.examsPassed),"exams passed"]];
   var bw=(W-2*P-3*20)/4;
   stats.forEach(function(st,i){
@@ -1844,7 +1854,7 @@ function cardCaption(d){
   var e=dayEntry(d), s=store.state, cur=workingOn(s), sum=computeSummary();
   return "Day "+planDayNumber(d)+" of my database administration journey. "+
     "Today I studied "+(Math.round(e.hours*10)/10)+"h"+(e.note?": "+e.note.replace(/\s+/g," ").trim()+(/[.!?]$/.test(e.note.trim())?"":"."):".")+
-    " Now on Level "+cur.n+" ("+cur.name+"), "+sum.hours+" hours so far. #DBAJourney #LearnInPublic #SQL";
+    " Now on Level "+cur.n+" ("+cur.name+"), "+sum.hours+" hours so far."+(MENTORS.length?" Mentored by "+mentorText()+(MENTOR_PROFILES[0]&&safeSocial(MENTOR_PROFILES[0].instagram)?" (@"+socialHandle(MENTOR_PROFILES[0].instagram)+")":"")+".":"")+" #DBAJourney #LearnInPublic #SQL";
 }
 function fontsReady(){
   if(!document.fonts || !document.fonts.load) return Promise.resolve();
@@ -1880,6 +1890,42 @@ document.getElementById("cardCopy").addEventListener("click", function(){
   try{ navigator.clipboard.writeText(ta.value).then(function(){ st.textContent="Caption copied."; }, function(){ ta.select(); st.textContent="Press Ctrl+C (or long-press) to copy."; }); }
   catch(e){ ta.select(); st.textContent="Press Ctrl+C (or long-press) to copy."; }
 });
+
+/* ---------- mentors of this roadmap (from the public catalog) ---------- */
+var MENTORS=[], MENTOR_PROFILES=[];
+function mentorText(){ return MENTORS.length ? MENTORS.join(" & ") : ""; }
+function safeSocial(u){ return /^https:\/\/(www\.)?(github\.com|linkedin\.com|instagram\.com)\//i.test(String(u||"")) ? String(u) : ""; }
+function socialHandle(u){ return String(u||"").replace(/\/+$/,"").split("/").pop(); }
+function mentorSocialLine(){
+  var p=MENTOR_PROFILES[0]; if(!p) return "";
+  var parts=[];
+  if(safeSocial(p.github)) parts.push("GitHub "+socialHandle(p.github));
+  if(safeSocial(p.instagram)) parts.push("IG @"+socialHandle(p.instagram));
+  if(safeSocial(p.linkedin)) parts.push("LinkedIn "+socialHandle(p.linkedin));
+  return parts.join("  ·  ");
+}
+function watchMentors(){
+  var R=window.APP_ROADMAP; if(!R || !db) return;
+  db.doc("catalog/"+R.id).onSnapshot(function(snap){
+    var data = snap.exists ? (snap.data()||{}) : {};
+    MENTOR_PROFILES = (data.mentorProfiles||[]).filter(function(p){ return p && p.name; });
+    MENTORS = MENTOR_PROFILES.length ? MENTOR_PROFILES.map(function(p){ return p.name; }) : (data.mentors||[]).filter(Boolean);
+    var el=document.getElementById("ovMentor");
+    if(el){
+      el.textContent="";
+      if(MENTORS.length){
+        var lab=document.createElement("span"); lab.textContent=(MENTORS.length>1?"Your mentors: ":"Your mentor: ")+mentorText(); el.appendChild(lab);
+        MENTOR_PROFILES.forEach(function(p){
+          [["github","GitHub"],["linkedin","LinkedIn"],["instagram","Instagram"]].forEach(function(k){
+            var u=safeSocial(p[k[0]]); if(!u) return;
+            var a=document.createElement("a"); a.href=u; a.target="_blank"; a.rel="noopener"; a.className="hero-link"; a.textContent=k[1]; a.setAttribute("aria-label", p.name+" on "+k[1]); el.appendChild(a);
+          });
+        });
+      }
+      el.hidden=!MENTORS.length;
+    }
+  }, function(){});
+}
 
 /* ---------- roadmap choice (shared across all roadmap sites) ---------- */
 function showHubLink(teacher){
@@ -1948,6 +1994,7 @@ function readyAs(r,name){ clearTimeout(fallback); becomeReady(r,name); }
 var C = (window.claude && typeof window.claude.use==="function") ? window.claude : null;
 Promise.all([C?C.use("db"):null, C?C.use("user"):null]).then(function(r){
   db=r[0]; user=r[1];
+  if(db) watchMentors();
   if(db) db.doc(RP+"settings/plan").onSnapshot(function(snap){ if(snap.exists) applySettings(clone(snap.data())); }, function(){});
   var idP = user ? Promise.all([user.id(), user.isOwner(), user.me()]) : Promise.resolve([null,false,null]);
   return idP.then(function(x){
