@@ -240,6 +240,37 @@ input:focus, select:focus, textarea:focus{border-color:var(--accent); outline:no
   #whoName{display:none}
   .pane{padding:18px}
 }
+
+/* students table: compact on wide screens, cards below */
+.cardtable td .n{font-weight:600}
+.cardtable .acts{white-space:nowrap}
+.cardtable .acts .btn{margin-right:4px}
+@media (max-width: 1100px){
+  .cardtable thead{display:none}
+  .cardtable, .cardtable tbody{display:block}
+  .cardtable tr{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:10px 14px; padding:16px; border-bottom:1px solid var(--line)}
+  .cardtable tr:last-child{border-bottom:0}
+  .cardtable td{border:0; padding:0; min-width:0}
+  .cardtable td.full{grid-column:1 / -1}
+  .cardtable td[data-l]::before{content:attr(data-l); display:block; font-family:var(--mono); font-size:10.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); margin-bottom:2px}
+}
+@media (max-width: 520px){ .cardtable tr{grid-template-columns:1fr 1fr} }
+/* task tracking */
+.tasktrack{display:grid; gap:10px}
+.tt{padding:0; overflow:hidden}
+.tt summary{list-style:none; cursor:pointer; display:grid; grid-template-columns:minmax(0,1fr) auto; gap:6px 16px; align-items:center; padding:16px 18px; position:relative}
+.tt summary::-webkit-details-marker{display:none}
+.tt summary::after{content:"▾"; position:absolute; right:14px; top:14px; color:var(--muted); transition:transform .15s}
+.tt[open] summary::after{transform:rotate(180deg)}
+.tt-main{display:grid; gap:2px; min-width:0; padding-right:18px}
+.tt-counts{display:flex; flex-wrap:wrap; gap:4px 14px; font-size:13px; color:var(--muted); padding-right:22px}
+.tt-counts b{color:var(--ink)}
+.tt-bar{grid-column:1 / -1; height:4px; border-radius:2px; background:var(--sunken); overflow:hidden}
+.tt-bar i{display:block; height:100%; background:var(--ok)}
+.tt-body{border-top:1px solid var(--line); padding:6px 18px 12px}
+.tt-row{display:grid; grid-template-columns:minmax(0,1fr) auto auto; gap:10px; align-items:center; padding-block:8px; border-bottom:1px solid var(--line); font-size:14px}
+.tt-name{overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+@media (max-width: 560px){ .tt summary{grid-template-columns:1fr} .tt-counts{padding-right:0} }
 footer{padding-block:24px 40px; border-top:1px solid var(--line); color:var(--muted); font-size:13px; display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap}
 
 @media (max-width: 860px){
@@ -621,7 +652,7 @@ function renderTeacher() {
   $("tPendingNote").textContent = isAdmin ? "Approving a student gives them access to every roadmap." : "Students who chose one of your roadmaps.";
   $("tTeachersSec").hidden = !isAdmin; $("tNewRoadmap").hidden = !isAdmin;
   const studentIds = Object.keys(users).filter((id) => id !== user.uid && (isAdmin || mine((users[id] || {}).currentRoadmap)));
-  const approved = studentIds.filter((id) => access[id] && access[id].approved && !access[id].removed);
+  const approved = studentIds.filter((id) => access[id] && access[id].approved && !access[id].removed && !access[id].suspended);
   const pending = studentIds.filter((id) => !(access[id] && (access[id].approved || access[id].removed)));
   const removed = studentIds.filter((id) => access[id] && access[id].removed);
   $("tRoadmaps").textContent = myCatalog.length;
@@ -782,6 +813,11 @@ function assignedPatch(rid, uid, mutate) {
   return d.chains[key];
 }
 function setAccess(uid, approve) { return setDoc(doc(fs, "access", uid), { approved: approve, removed: !approve, at: new Date().toISOString() }); }
+function setSuspended(uid, on, reason) {
+  const cur = { ...(access[uid] || {}), approved: true, removed: false, suspended: !!on, at: new Date().toISOString() };
+  if (on) { cur.suspendedAt = cur.at; cur.reason = reason || ""; } else { delete cur.suspendedAt; delete cur.reason; }
+  return setDoc(doc(fs, "access", uid), cur);
+}
 
 function progressOf(ol, state) {
   const done = (state && state.done) || {}, ex = (state && state.exams) || {};
@@ -805,7 +841,7 @@ function spark(daily) {
   return "<span class='spark' title='" + esc(tip.join(" · ")) + "' aria-label='Last 7 days: " + esc(tip.join(", ")) + "'>" + out + "</span>";
 }
 const studentName = (rid, uid) => { const s = rmData(rid).students[uid] || {}, p = ((s.state || {}).pledge || {}); return (p.name || "").trim() || (users[uid] || {}).name || "No name yet"; };
-const accessOf = (uid) => { const a = access[uid] || {}; return a.removed ? "removed" : (a.approved ? "approved" : "waiting"); };
+const accessOf = (uid) => { const a = access[uid] || {}; return a.removed ? "removed" : a.suspended ? "suspended" : (a.approved ? "approved" : "waiting"); };
 
 let rmMounted = {};
 function renderRoadmap(rid, tab, force) {
@@ -831,29 +867,30 @@ function renderStudentsTab(rid) {
   const d = rmData(rid), ol = d.outline, box = $("rt-students");
   const ids = Object.keys(d.students).filter((id) => id !== user.uid);
   if (!ids.length) { box.innerHTML = "<div class='empty'>No students on this roadmap yet. They appear here after they choose it and open it.</div>"; return; }
-  const order = { waiting: 0, approved: 1, removed: 2 };
+  const order = { waiting: 0, approved: 1, suspended: 2, removed: 3 };
   ids.sort((a, b) => order[accessOf(a)] - order[accessOf(b)] || studentName(rid, a).localeCompare(studentName(rid, b)));
   const thisWeek = isoD(weekStart(new Date())), late = isoD(addDays(parseISO(thisWeek), -14));
-  const counts = { approved: 0, waiting: 0, removed: 0 }; ids.forEach((id) => counts[accessOf(id)]++);
-  box.innerHTML = "<div class='statrow'><div><span>Approved</span><b>" + counts.approved + "</b></div><div><span>Waiting</span><b>" + counts.waiting + "</b></div><div><span>Removed</span><b>" + counts.removed + "</b></div><div><span>Total</span><b>" + ids.length + "</b></div></div>" +
-    "<div class='card tablebox'><table><thead><tr><th>Student</th><th>Access</th><th>Working on</th><th>Last 7 days</th><th>Hours</th><th>Last check-in</th><th>Assignments</th><th>Avg grade</th><th></th></tr></thead><tbody>" +
+  const counts = { approved: 0, waiting: 0, suspended: 0, removed: 0 }; ids.forEach((id) => counts[accessOf(id)]++);
+  box.innerHTML = "<div class='statrow'><div><span>Active</span><b>" + counts.approved + "</b></div><div><span>Waiting</span><b>" + counts.waiting + "</b></div><div><span>Suspended</span><b>" + counts.suspended + "</b></div><div><span>Removed</span><b>" + counts.removed + "</b></div></div>" +
+    "<div class='card tablebox'><table class='cardtable'><thead><tr><th>Student</th><th>Access</th><th>Level</th><th>Last 7 days</th><th>Hours</th><th>Check-in</th><th>Work · grade</th><th></th></tr></thead><tbody>" +
     ids.map((id) => {
       const s = d.students[id] || {}, sm = s.summary || {}, st = s.state || {}, a = accessOf(id);
       const g = gradeStats((d.assigned[id] || {}).tasks, st.subs);
       const L = ol ? workingOn(ol, st) : null;
       const lastOk = sm.lastWeek && sm.lastWeek >= late;
-      const acc = a === "approved" ? "<span class='st ok'>Approved</span>" : a === "waiting"
-        ? "<span class='st wait'>Waiting</span> <button type='button' class='btn primary small' data-approve='" + esc(id) + "'>Approve</button> <button type='button' class='btn small' data-remove='" + esc(id) + "'>Remove</button>"
-        : "<span class='st off'>Removed</span> <button type='button' class='btn small' data-restore='" + esc(id) + "'>Restore</button>";
-      return "<tr><td><div class='n'>" + esc(studentName(rid, id)) + "</div><div class='e'>" + esc(s.email || (users[id] || {}).email || "") + "</div></td>" +
-        "<td style='white-space:nowrap'>" + acc + "</td>" +
-        "<td>" + (L ? "Level " + L.n : "—") + "</td>" +
-        "<td>" + spark(sm.daily) + "</td>" +
-        "<td class='num'>" + (sm.hours || 0) + "</td>" +
-        "<td class='" + (lastOk ? "" : "late") + "' style='white-space:nowrap'>" + (sm.lastWeek ? esc(fmtDate(sm.lastWeek)) + (sm.lastRating ? " · " + RATING[sm.lastRating] : "") : "Not yet") + "</td>" +
-        "<td class='num'>" + g.submitted + " / " + g.assigned + (g.overdue ? " <span class='late'>(" + g.overdue + " late)</span>" : "") + "</td>" +
-        "<td class='num'>" + (g.avg == null ? "—" : g.avg + "%") + "</td>" +
-        "<td><a class='btn small' href='#st/" + esc(rid) + "/" + esc(id) + "'>View</a></td></tr>";
+      const acc = a === "approved" ? "<span class='st ok'>Active</span>" : a === "suspended" ? "<span class='st' style='background:var(--amber-soft);color:var(--warn)'>Suspended</span>" : a === "waiting" ? "<span class='st wait'>Waiting</span>" : "<span class='st off'>Removed</span>";
+      const btns = a === "approved" ? "<button type='button' class='btn small' data-suspend='" + esc(id) + "'>Suspend</button>"
+        : a === "suspended" ? "<button type='button' class='btn small' data-reinstate='" + esc(id) + "'>Reinstate</button>"
+        : a === "waiting" ? "<button type='button' class='btn primary small' data-approve='" + esc(id) + "'>Approve</button><button type='button' class='btn small' data-remove='" + esc(id) + "'>Remove</button>"
+        : "<button type='button' class='btn small' data-restore='" + esc(id) + "'>Restore</button>";
+      return "<tr><td class='full'><div class='n'>" + esc(studentName(rid, id)) + "</div><div class='e'>" + esc(s.email || (users[id] || {}).email || "") + "</div></td>" +
+        "<td data-l='Access'>" + acc + "</td>" +
+        "<td data-l='Level'>" + (L ? "L" + L.n : "—") + "</td>" +
+        "<td data-l='Last 7 days'>" + spark(sm.daily) + "</td>" +
+        "<td data-l='Hours' class='num'>" + (sm.hours || 0) + "</td>" +
+        "<td data-l='Check-in' class='" + (lastOk ? "" : "late") + "'>" + (sm.lastWeek ? esc(fmtDate(sm.lastWeek)) + (sm.lastRating ? " · " + RATING[sm.lastRating] : "") : "Not yet") + "</td>" +
+        "<td data-l='Work · grade' class='num'>" + g.submitted + "/" + g.assigned + (g.overdue ? " <span class='late'>(" + g.overdue + " late)</span>" : "") + " · " + (g.avg == null ? "—" : g.avg + "%") + "</td>" +
+        "<td class='full acts'><a class='btn small' href='#st/" + esc(rid) + "/" + esc(id) + "'>View</a>" + btns + "</td></tr>";
     }).join("") + "</tbody></table></div>";
 }
 
@@ -878,13 +915,27 @@ function renderAssignTab(rid) {
   const approved = Object.keys(d.students).filter((id) => id !== user.uid && accessOf(id) === "approved");
   const list = $("asList"), checked = new Set(Array.from(list.querySelectorAll("input:checked")).map((i) => i.value));
   list.innerHTML = approved.length ? approved.map((id) => "<label><input type='checkbox' value='" + esc(id) + "'" + (checked.has(id) ? " checked" : "") + "> " + esc(studentName(rid, id)) + "</label>").join("") : "<span class='muted small'>No approved students yet.</span>";
-  const byTask = {};
-  Object.keys(d.assigned).forEach((uid) => { const tasks = (d.assigned[uid] || {}).tasks || {}; Object.keys(tasks).forEach((tid) => { const t = tasks[tid]; const b = byTask[tid] = byTask[tid] || { t, uids: [], sub: 0, graded: 0 }; b.uids.push(uid); if ((((d.students[uid] || {}).state || {}).subs || {})[tid]) b.sub++; if (isGraded(t)) b.graded++; }); });
+  const byTask = {}, t0 = todayISO();
+  Object.keys(d.assigned).forEach((uid) => { const tasks = (d.assigned[uid] || {}).tasks || {}; Object.keys(tasks).forEach((tid) => { const b = byTask[tid] = byTask[tid] || { t: tasks[tid], rows: [] }; b.rows.push({ uid, t: tasks[tid] }); }); });
   const tids = Object.keys(byTask).sort((a, b) => (byTask[a].t.due || "9999").localeCompare(byTask[b].t.due || "9999"));
-  $("asTasks").innerHTML = tids.length ? "<div class='card tablebox'><table><thead><tr><th>Task</th><th>Due</th><th>Points</th><th>Students</th><th>Submitted</th><th>Graded</th><th></th></tr></thead><tbody>" +
-    tids.map((tid) => { const b = byTask[tid]; return "<tr><td><div class='n'>" + esc(b.t.title) + "</div>" + (b.t.level ? "<div class='e'>Level " + esc(b.t.level) + "</div>" : "") + "</td><td style='white-space:nowrap'>" + (b.t.due ? esc(fmtDate(b.t.due)) : "—") + "</td><td class='num'>" + esc(b.t.points) + "</td><td class='num'>" + b.uids.length + "</td><td class='num'>" + b.sub + "</td><td class='num'>" + b.graded + "</td><td><button type='button' class='btn small' data-deltask='" + esc(tid) + "'>Remove</button></td></tr>"; }).join("") +
-    "</tbody></table></div>" : "<div class='empty'>No tasks assigned yet.</div>";
+  const box2 = $("asTasks");
+  if (!tids.length) { box2.innerHTML = "<div class='empty'>No tasks assigned yet.</div>"; return; }
+  box2.innerHTML = "<p class='muted small'>Click a task to see which students have done it.</p><div class='tasktrack'>" + tids.map((tid) => {
+    const b = byTask[tid], t = b.t; let sub = 0, graded = 0, late = 0;
+    const lines = b.rows.map((x) => {
+      const sb = (((d.students[x.uid] || {}).state || {}).subs || {})[tid], g = isGraded(x.t);
+      if (sb) sub++; if (g) graded++; if (!sb && !g && t.due && t.due < t0) late++;
+      const st = g ? "<span class='st ok'>Graded " + esc(x.t.grade) + "/" + esc(x.t.points) + "</span>" : sb ? "<span class='st wait'>Submitted " + esc(fmtDate(sb.submittedAt.slice(0, 10))) + "</span>" : (t.due && t.due < t0 ? "<span class='st' style='color:var(--warn);background:var(--amber-soft)'>Overdue</span>" : "<span class='st off'>To do</span>");
+      return "<div class='tt-row'><span class='tt-name'>" + esc(studentName(rid, x.uid)) + "</span>" + st + "<a class='btn small' href='#st/" + esc(rid) + "/" + esc(x.uid) + "'>Open</a></div>";
+    }).join("");
+    const n = b.rows.length, pct = n ? Math.round(sub / n * 100) : 0;
+    return "<details class='tt card' data-tid='" + esc(tid) + "'" + (openTasks[tid] ? " open" : "") + "><summary><span class='tt-main'><b>" + esc(t.title) + "</b><span class='muted small'>" + (t.due ? "Due " + esc(fmtLong(t.due)) : "No due date") + " · " + esc(t.points) + " points" + (t.level ? " · Level " + esc(t.level) : "") + "</span></span>" +
+      "<span class='tt-counts'><span><b>" + sub + "</b>/" + n + " submitted</span><span><b>" + graded + "</b> graded</span>" + (late ? "<span class='late'><b>" + late + "</b> overdue</span>" : "") + "</span><span class='tt-bar'><i style='width:" + pct + "%'></i></span></summary>" +
+      "<div class='tt-body'>" + lines + "<div class='row' style='padding-top:10px'><button type='button' class='btn small' data-deltask='" + esc(tid) + "'>Remove this task from everyone</button></div></div></details>";
+  }).join("") + "</div>";
 }
+const openTasks = {};
+document.addEventListener("toggle", (ev) => { const el = ev.target; if (el.matches && el.matches("details.tt")) openTasks[el.getAttribute("data-tid")] = el.open; }, true);
 function assignTask(rid) {
   const d = rmData(rid), msg = $("asMsg");
   const title = $("asTitle").value.trim(), pts = +$("asPoints").value;
@@ -1049,7 +1100,11 @@ function renderStudentPage(rid, uid, force) {
   const settings = ol ? normSettings(d.settings, ol) : null;
   const wkTarget = (k) => { if (!settings) return 0; let n = 0; for (let i = 0; i < 7; i++) { const x = isoD(addDays(parseISO(k), i)); if (x >= settings.startDate && !(x in settings.holidays)) n++; } return n * settings.dailyHours; };
   const hColor = (h, k) => { const t = wkTarget(k); return (t > 0 && h >= t) ? "var(--ok)" : (h >= t * 0.7 ? "var(--ink)" : "var(--warn)"); };
-  const accBtns = a === "approved" ? "<span class='st ok'>Approved</span> <button type='button' class='btn small' data-remove='" + esc(uid) + "'>Remove</button>" : a === "waiting" ? "<span class='st wait'>Waiting for approval</span> <button type='button' class='btn primary small' data-approve='" + esc(uid) + "'>Approve</button> <button type='button' class='btn small' data-remove='" + esc(uid) + "'>Remove</button>" : "<span class='st off'>Removed</span> <button type='button' class='btn small' data-restore='" + esc(uid) + "'>Restore</button>";
+  const acc0 = access[uid] || {};
+  const accBtns = a === "approved" ? "<span class='st ok'>Active</span> <button type='button' class='btn small' id='suspendOpen'>Suspend</button> <button type='button' class='btn small' data-remove='" + esc(uid) + "'>Remove</button>" +
+      "<div class='row' id='suspendForm' hidden style='flex-basis:100%'><input type='text' id='suspendReason' placeholder='Reason (shown to the student, optional)' style='max-width:360px'><button type='button' class='btn primary small' data-suspend-confirm='" + esc(uid) + "'>Suspend access</button><button type='button' class='btn small' id='suspendCancel'>Cancel</button></div>"
+    : a === "suspended" ? "<span class='st' style='background:var(--amber-soft);color:var(--warn)'>Suspended" + (acc0.suspendedAt ? " since " + esc(fmtDate(acc0.suspendedAt.slice(0, 10))) : "") + "</span>" + (acc0.reason ? " <span class='small muted'>Reason: " + esc(acc0.reason) + "</span>" : "") + " <button type='button' class='btn primary small' data-reinstate='" + esc(uid) + "'>Reinstate</button>"
+    : a === "waiting" ? "<span class='st wait'>Waiting for approval</span> <button type='button' class='btn primary small' data-approve='" + esc(uid) + "'>Approve</button> <button type='button' class='btn small' data-remove='" + esc(uid) + "'>Remove</button>" : "<span class='st off'>Removed</span> <button type='button' class='btn small' data-restore='" + esc(uid) + "'>Restore</button>";
   const g = gradeStats(asg.tasks, subs);
   const up = (users[uid] || {}).pledge;
   const kv = [["Email", s.email || (users[uid] || {}).email], ["Pledged to finish and mentor", up ? fmtStamp(up.at) : "Not yet"], ["Signed commitment", pl.committedAt ? fmtStamp(pl.committedAt) : "Not yet"], ["Last seen", (st.resume || {}).at ? fmtStamp(st.resume.at) : ""], ["Why", pl.why], ["Accountability partner", pl.partner], ["Study group", pl.group], ["Study hours", pl.time], ["If they miss a day", pl.miss]].filter((x) => x[1]);
@@ -1084,6 +1139,8 @@ function renderStudentPage(rid, uid, force) {
     }).join("") : "<div class='empty'>No daily logs yet.</div>") +
     "<div class='section-head'><h3>Progress by level</h3></div>" +
     (prog.length ? "<div class='lvgrid'>" + prog.map((p) => "<div class='lv" + (p.complete ? " done" : "") + "'><b>Level " + p.L.n + ": " + esc(p.L.name) + "</b><span class='muted'>" + p.done + " / " + p.L.tasks.length + " milestones</span><ul>" + p.L.tasks.map((t, i) => "<li class='" + (p.td[i] ? "d" : "") + "'>" + (p.td[i] ? "✓ " : "") + esc(t) + "</li>").join("") + "</ul>" + p.L.exams.map((e, i) => "<span>" + esc(e.name.split(" (")[0].replace(" skills test", "")) + ": <b style='font-family:var(--sans);font-size:13px'>" + esc(EXST[p.es[i]] || p.es[i]) + "</b></span>").join("") + "</div>").join("") + "</div>" : "<p class='muted'>Loading the roadmap outline…</p>");
+  if ($("suspendOpen")) $("suspendOpen").onclick = () => { $("suspendForm").hidden = false; $("suspendReason").focus(); };
+  if ($("suspendCancel")) $("suspendCancel").onclick = () => { $("suspendForm").hidden = true; };
   $("nameEditBtn").onclick = () => { $("nameEdit").hidden = false; $("nameEditBtn").hidden = true; $("nameEditInput").focus(); };
   $("nameEditCancel").onclick = () => { $("nameEdit").hidden = true; $("nameEditBtn").hidden = false; render(true); };
   $("nameEditSave").onclick = () => {
@@ -1120,6 +1177,15 @@ $("stBody").addEventListener("click", (ev) => {
 document.addEventListener("click", (ev) => {
   if (!isTeacher) return;
   const inConsole = ev.target.closest("#vRoadmap, #vStudent"); if (!inConsole) return;
+  const sb = ev.target.closest("[data-suspend],[data-suspend-confirm],[data-reinstate]");
+  if (sb) {
+    const id = sb.getAttribute("data-suspend") || sb.getAttribute("data-suspend-confirm") || sb.getAttribute("data-reinstate");
+    if (sb.hasAttribute("data-suspend") && sb.getAttribute("data-armed") !== "1") { sb.setAttribute("data-armed", "1"); sb.textContent = "Click again to suspend"; return; }
+    const on = !sb.hasAttribute("data-reinstate"), reason = sb.hasAttribute("data-suspend-confirm") ? ($("suspendReason").value || "").trim() : "";
+    sb.disabled = true;
+    setSuspended(id, on, reason).then(() => render(true)).catch(() => { sb.disabled = false; sb.textContent = "Couldn’t save"; });
+    return;
+  }
   const b = ev.target.closest("[data-approve],[data-remove],[data-restore],[data-deltask]"); if (!b) return;
   if (b.hasAttribute("data-deltask")) {
     if (b.getAttribute("data-armed") !== "1") { b.setAttribute("data-armed", "1"); b.textContent = "Click again to remove from everyone"; return; }
