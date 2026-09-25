@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Roadmaps</title>
-<meta name="description" content="Structured career roadmaps with daily accountability and a teacher who follows your progress.">
+<meta name="description" content="Structured career roadmaps with daily accountability and a mentor who follows your progress.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
@@ -71,13 +71,16 @@ p{margin:0}
 .points b{display:block; font-weight:600}
 .points span{color:var(--muted); font-size:14px}
 
-.card{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow)}
+.card{background:var(--surface); border:0; border-radius:var(--radius); box-shadow:var(--shadow)}
 .authcard{padding:28px 26px; display:grid; gap:14px}
 .authcard h2{font-size:1.45rem}
 .authcard label{display:grid; gap:5px; font-size:13px; color:var(--muted)}
 input[type=email], input[type=password]{font:inherit; font-size:15px; color:var(--ink); background:var(--surface); border:1px solid var(--line); border-radius:9px; padding:10px 12px; width:100%}
 input:focus{border-color:var(--accent); outline:none; box-shadow:0 0 0 3px var(--accent-soft)}
 .gbtn{width:100%; padding:11px 16px}
+.pledge{display:grid !important; grid-template-columns:20px 1fr; gap:10px; align-items:start; font-size:13.5px !important; color:var(--ink) !important; background:var(--accent-soft); border-radius:10px; padding:12px 14px}
+.pledge input{width:18px; height:18px; margin-top:2px; accent-color:var(--accent)}
+.pledge.need{box-shadow:0 0 0 2px var(--warn)}
 .or{display:flex; align-items:center; gap:10px; color:var(--muted); font-size:12px}
 .or::before,.or::after{content:""; flex:1; height:1px; background:var(--line)}
 .row{display:flex; flex-wrap:wrap; gap:10px; align-items:center}
@@ -91,9 +94,8 @@ input:focus{border-color:var(--accent); outline:none; box-shadow:0 0 0 3px var(-
 
 /* roadmap cards */
 .grid{display:grid; grid-template-columns:repeat(auto-fill, minmax(300px, 1fr)); gap:18px}
-.rm{position:relative; padding:24px 22px 20px; display:grid; gap:12px; align-content:start; overflow:hidden}
-.rm::before{content:""; position:absolute; inset:0 0 auto 0; height:4px; background:var(--accent)}
-.rm.current{border-color:var(--accent)}
+.rm{position:relative; padding:24px 22px 20px; display:grid; gap:12px; align-content:start; overflow:hidden; border:0}
+.rm.current{box-shadow:0 0 0 2px var(--accent), var(--shadow)}
 .rm .meta{display:flex; flex-wrap:wrap; gap:6px}
 .chip{font-family:var(--mono); font-size:11px; letter-spacing:.04em; text-transform:uppercase; padding:3px 9px; border-radius:999px; background:var(--sunken); color:var(--muted); white-space:nowrap}
 .chip.cur{background:var(--accent); color:var(--accent-ink)}
@@ -136,6 +138,100 @@ input[type=text]{font:inherit; font-size:15px; color:var(--ink); background:var(
 .rmpick input{accent-color:var(--accent)}
 .chips{display:flex; flex-wrap:wrap; gap:6px}
 @media (max-width: 860px){ .tform{grid-template-columns:1fr} }
+/* console */
+.backlink{font-size:14px; text-decoration:none; font-weight:500}
+.h1{font-size:clamp(1.8rem,4vw,2.5rem)}
+.subtabs{display:flex; gap:4px; overflow-x:auto; border-bottom:1px solid var(--line); scrollbar-width:thin}
+.subtabs button{flex:none; font:inherit; font-size:14px; font-weight:500; color:var(--muted); background:none; border:0; border-bottom:2px solid transparent; padding:10px 14px; cursor:pointer; white-space:nowrap}
+.subtabs button:hover{color:var(--ink)}
+.subtabs button[aria-selected="true"]{color:var(--accent); border-bottom-color:var(--accent)}
+.rtab{display:grid; gap:18px; padding-top:6px}
+.tablebox{overflow-x:auto; -webkit-overflow-scrolling:touch}
+table{border-collapse:collapse; width:100%; font-size:14px}
+th,td{text-align:left; padding:12px 14px; border-bottom:1px solid var(--line); vertical-align:middle}
+th{font-family:var(--mono); font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); font-weight:500; white-space:nowrap; background:var(--sunken)}
+tr:last-child td{border-bottom:0}
+td.num{font-family:var(--mono); font-variant-numeric:tabular-nums; white-space:nowrap}
+td .n{font-weight:600}
+td .e{font-size:12.5px; color:var(--muted); overflow-wrap:anywhere}
+.late{color:var(--warn)}
+.st{display:inline-flex; align-items:center; gap:6px; font-size:12px; font-weight:500; padding:3px 9px; border-radius:999px; white-space:nowrap}
+.st.ok{background:var(--ok-soft); color:var(--ok)}
+.st.wait{background:var(--amber-soft); color:var(--amber)}
+.st.off{background:var(--sunken); color:var(--muted)}
+.spark{display:inline-flex; align-items:flex-end; gap:2px; height:22px}
+.spark i{display:block; width:6px; background:var(--accent); border-radius:1px; min-height:2px}
+.spark i.z{background:var(--line)}
+input[type=date], input[type=number], select, textarea{font:inherit; font-size:15px; color:var(--ink); background:var(--surface); border:1px solid var(--line); border-radius:9px; padding:9px 11px; width:100%}
+textarea{resize:vertical; min-height:80px}
+input:focus, select:focus, textarea:focus{border-color:var(--accent); outline:none; box-shadow:0 0 0 3px var(--accent-soft)}
+.fgrid{display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:14px}
+.fgrid .wide{grid-column:span 2}
+.fld{display:grid; gap:5px; font-size:13px; color:var(--muted); align-content:start}
+.fld .hint{font-size:12px}
+.recips{border:1px solid var(--line); border-radius:9px; padding:10px 14px 12px; margin:0; display:flex; flex-wrap:wrap; gap:8px 18px}
+.recips legend{font-size:12px; color:var(--muted); padding:0 4px}
+.recips label{display:inline-flex; gap:8px; align-items:center; font-size:14px; color:var(--ink)}
+.reciplist{flex-basis:100%; display:flex; flex-wrap:wrap; gap:6px 16px; padding-top:4px}
+.savebar{display:flex; flex-wrap:wrap; gap:10px; align-items:center}
+.lvtable td input{max-width:90px}
+.lvtable .dates{font-family:var(--mono); font-size:12.5px; white-space:nowrap}
+.lvtable .ex{font-size:12.5px; color:var(--muted)}
+.preview{background:var(--accent-soft); color:var(--ink); border-radius:10px; padding:14px 16px; font-size:14px}
+.cal{display:grid; grid-template-columns:repeat(7, minmax(0,1fr)); gap:5px; max-width:460px; width:100%}
+.cal-h{font-family:var(--mono); font-size:11px; color:var(--muted); text-align:center}
+.cal-d{font:inherit; font-size:13px; font-variant-numeric:tabular-nums; aspect-ratio:1; border-radius:8px; border:1px solid var(--line); background:var(--surface); color:var(--ink); cursor:pointer; padding:0}
+.cal-d:hover{border-color:var(--accent)}
+.cal-d.before{opacity:.45}
+.cal-d.today{box-shadow:inset 0 0 0 2px var(--accent)}
+.cal-d.hol{background:var(--amber-soft); border-color:var(--amber); color:var(--amber); font-weight:600}
+.hol-row{display:grid; grid-template-columns:minmax(150px,auto) minmax(0,1fr) auto; gap:12px; align-items:center; padding-block:10px; border-bottom:1px solid var(--line); font-size:14px}
+.hol-row:last-child{border-bottom:0}
+.twocol{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:24px; align-items:start}
+.kv{display:grid; grid-template-columns:max-content 1fr; gap:6px 16px; margin:0; font-size:14px}
+.kv dt{color:var(--muted)}
+.kv dd{margin:0; white-space:pre-wrap; overflow-wrap:anywhere}
+.lvgrid{display:grid; grid-template-columns:repeat(auto-fill, minmax(210px,1fr)); gap:12px}
+.lv{background:var(--sunken); border-radius:10px; padding:14px; display:grid; gap:6px; font-size:13px}
+.lv b{font-family:var(--display); font-size:15px}
+.lv.done{background:var(--ok-soft)}
+.lv ul{margin:0; padding-left:18px; display:grid; gap:2px}
+.lv li.d{color:var(--ok)}
+.task{padding:18px 20px; display:grid; gap:10px}
+.task .th{display:flex; flex-wrap:wrap; gap:6px 12px; justify-content:space-between; align-items:baseline}
+.sub{border-left:3px solid var(--accent); padding-left:12px; display:grid; gap:4px; font-size:14px}
+.sub p{white-space:pre-wrap; overflow-wrap:anywhere}
+.gradeform{display:grid; grid-template-columns:130px minmax(0,1fr) auto; gap:10px; align-items:end}
+.wk{padding:16px 18px; display:grid; gap:10px}
+.wk .wh{display:flex; flex-wrap:wrap; justify-content:space-between; gap:6px 12px; align-items:baseline}
+.days{display:grid; gap:4px; font-size:14px}
+.days div{display:grid; grid-template-columns:100px 48px minmax(0,1fr); gap:10px}
+.days .d{font-family:var(--mono); font-size:12px; color:var(--muted)}
+.wcform{display:flex; gap:8px; align-items:flex-start}
+.wcform textarea{min-height:46px}
+.statrow{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:1px; background:var(--line); border-radius:var(--radius); overflow:hidden}
+.statrow div{background:var(--surface); padding:14px 16px; display:grid; gap:2px}
+.statrow b{font-family:var(--display); font-size:1.5rem; font-variant-numeric:tabular-nums}
+.statrow span{font-size:12.5px; color:var(--muted)}
+@media (max-width: 860px){
+  .fgrid{grid-template-columns:1fr 1fr} .fgrid .wide{grid-column:1 / -1}
+  .twocol{grid-template-columns:1fr}
+  .statrow{grid-template-columns:1fr 1fr}
+  .gradeform{grid-template-columns:1fr}
+  .hol-row{grid-template-columns:1fr auto}
+  .hol-row > :nth-child(2){grid-column:1 / -1; grid-row:2}
+}
+@media (max-width: 520px){
+  .fgrid{grid-template-columns:1fr}
+  .days div{grid-template-columns:78px 40px minmax(0,1fr)}
+  .wcform{flex-direction:column; align-items:stretch}
+  .section-head{align-items:start}
+  .authcard{padding:22px 18px}
+  .kv{grid-template-columns:1fr; gap:2px}
+  .kv dd{margin-bottom:8px}
+  #whoName{display:none}
+  .pane{padding:18px}
+}
 footer{padding-block:24px 40px; border-top:1px solid var(--line); color:var(--muted); font-size:13px; display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap}
 
 @media (max-width: 860px){
@@ -163,7 +259,7 @@ footer{padding-block:24px 40px; border-top:1px solid var(--line); color:var(--mu
       <b id="brandName">Roadmaps</b>
     </a>
     <div class="who" id="who" hidden>
-      <span class="role" id="roleTag" hidden>Teacher</span>
+      <span class="role" id="roleTag" hidden>Mentor</span>
       <img id="avatar" alt="" hidden>
       <span id="whoName" class="muted"></span>
       <button type="button" class="btn small ghost" id="signOut">Sign out</button>
@@ -177,22 +273,23 @@ footer{padding-block:24px 40px; border-top:1px solid var(--line); color:var(--mu
     <section id="vLanding" hidden>
       <div class="hero">
         <div>
-          <div class="eyebrow">Career roadmaps with a teacher</div>
+          <div class="eyebrow">Career roadmaps with a mentor</div>
           <h1 id="heroTitle">Pick a career path. Climb it one level at a time.</h1>
-          <p class="lead">Each roadmap takes you from beginner to certified professional, with a daily plan, real projects and a teacher who follows your progress.</p>
+          <p class="lead">Each roadmap takes you from beginner to certified professional, with a daily plan, real projects and a mentor who follows your progress.</p>
           <ul class="points">
             <li><span class="ic" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span><div><b>A plan you commit to</b><span>Sign a commitment, then follow a dated plan: what to study, where, and which exam comes next.</span></div></li>
             <li><span class="ic" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span><div><b>A daily log</b><span>Log your hours and what you did each day, and share a progress card to show the world your climb.</span></div></li>
-            <li><span class="ic" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span><div><b>A teacher in your corner</b><span>Get assignments, grades and comments on your work, and help when you fall behind.</span></div></li>
+            <li><span class="ic" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span><div><b>A mentor in your corner</b><span>Get assignments, grades and comments on your work, and help when you fall behind.</span></div></li>
           </ul>
         </div>
         <div class="card authcard">
           <h2>Sign in or create an account</h2>
-          <p class="muted small" id="authLead">New here? Create an account, choose your roadmap, and your teacher will approve you.</p>
+          <p class="muted small" id="authLead">New here? Create an account, choose your roadmap, and your mentor will approve you.</p>
           <button type="button" class="btn gbtn" id="googleBtn"><svg width="18" height="18" viewBox="0 0 48 48" aria-hidden="true"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.4-.4-3.5z"/></svg>Continue with Google</button>
           <div class="or">or use email</div>
           <label>Email<input type="email" id="authEmail" autocomplete="email"></label>
           <div class="pwfield"><label for="authPass">Password</label><div class="pw"><input type="password" id="authPass" autocomplete="current-password"><button type="button" class="pwtoggle" id="pwToggle" aria-controls="authPass" aria-pressed="false" aria-label="Show password"><svg class="eye" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg><svg class="eyeoff" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/><path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/><path d="M14.12 14.12a3 3 0 1 1-4.24-4.24"/><path d="M1 1l22 22"/></svg><span class="pwtext">Show</span></button></div></div>
+          <label class="pledge"><input type="checkbox" id="authPledge"><span>I commit to <b>finishing my roadmap to the end</b>, and to <b>mentoring another person</b> once I finish.</span></label>
           <div class="row"><button type="button" class="btn primary" id="authSignIn">Sign in</button><button type="button" class="btn" id="authSignUp">Create account</button><button type="button" class="linkbtn" id="authReset" style="margin-left:auto">Forgot password?</button></div>
           <span class="err" id="authErr" role="alert"></span>
         </div>
@@ -229,7 +326,7 @@ footer{padding-block:24px 40px; border-top:1px solid var(--line); color:var(--mu
     <!-- teacher -->
     <section id="vTeacher" hidden>
       <div class="section" style="padding-top:24px">
-        <div style="display:grid;gap:8px"><div class="eyebrow" id="tEyebrow">Teacher</div><h2 style="font-size:clamp(1.9rem,4vw,2.5rem)" id="tTitle">Your roadmaps and students</h2></div>
+        <div style="display:grid;gap:8px"><div class="eyebrow" id="tEyebrow">Mentor</div><h2 style="font-size:clamp(1.9rem,4vw,2.5rem)" id="tTitle">Your roadmaps and students</h2></div>
         <div class="stats">
           <div class="stat"><span>Roadmaps</span><b id="tRoadmaps">0</b><span>published</span></div>
           <div class="stat"><span>Students</span><b id="tStudents">0</b><span>approved</span></div>
@@ -245,15 +342,15 @@ footer{padding-block:24px 40px; border-top:1px solid var(--line); color:var(--mu
         <div class="grid" id="tGrid"></div>
       </div>
       <div class="section" id="tTeachersSec" hidden>
-        <div class="section-head"><h2>Teachers</h2><span class="muted small">Teachers sign in with Google using the email you add here. They only see the roadmaps you assign to them.</span></div>
+        <div class="section-head"><h2>Mentors</h2><span class="muted small">Mentors sign in with Google using the email you add here. They only see the roadmaps you assign to them.</span></div>
         <div class="card pane">
-          <h3 id="tfTitle">Add a teacher</h3>
+          <h3 id="tfTitle">Add a mentor</h3>
           <div class="tform">
-            <label>Email (their Google account)<input type="email" id="tfEmail" placeholder="teacher@gmail.com"></label>
+            <label>Email (their Google account)<input type="email" id="tfEmail" placeholder="mentor@gmail.com"></label>
             <label>Name<input type="text" id="tfName" placeholder="e.g. Ngozi Adeyemi"></label>
           </div>
           <fieldset class="rmpick"><legend>Roadmaps they manage</legend><div id="tfRoadmaps" class="row"></div></fieldset>
-          <div class="row"><button type="button" class="btn primary" id="tfSave">Add teacher</button><button type="button" class="btn" id="tfCancel" hidden>Cancel editing</button><span class="small muted" id="tfMsg" role="status"></span></div>
+          <div class="row"><button type="button" class="btn primary" id="tfSave">Add mentor</button><button type="button" class="btn" id="tfCancel" hidden>Cancel editing</button><span class="small muted" id="tfMsg" role="status"></span></div>
         </div>
         <div class="card list" id="tTeachers"></div>
       </div>
@@ -261,16 +358,45 @@ footer{padding-block:24px 40px; border-top:1px solid var(--line); color:var(--mu
         <div class="card pane">
           <h3>Adding a new roadmap</h3>
           <ol class="steps">
-            <li>Create a branch for it in the <code>roadmaps</code> repository, copied from <code>dba-career-ladder</code>, and change its content.</li>
-            <li>In its <code>public/firebase-config.js</code>, give it a new <code>ROADMAP.id</code>, title and tagline.</li>
-            <li>Create a Firebase Hosting site for it: <code>firebase hosting:sites:create roadmaps-2b061-&lt;id&gt;</code>, and set that site name in its <code>firebase.json</code>.</li>
-            <li>Deploy it with <code>firebase deploy --only hosting</code>, then open it once while signed in as the teacher. It appears here and in every student’s list.</li>
+            <li>Create a branch for it in the <code>roadmaps</code> repository, copied from <code>dba-career-ladder</code>, and change its content. Run <code>node tools/export-outline.cjs</code> on that branch after changing its levels.</li>
+            <li>In that branch’s <code>public/firebase-config.js</code>, give it a new <code>ROADMAP.id</code>, title and tagline.</li>
+            <li>On <code>Master</code>, add it to <code>HUB.roadmaps</code> in <code>public/firebase-config.js</code> with its <code>branch</code> and <code>path</code>.</li>
+            <li>Run <code>npm run deploy</code> on <code>Master</code>. It publishes the hub and every roadmap together, and the new roadmap appears here and in every student’s list.</li>
           </ol>
         </div>
       </div>
       <div class="section">
         <div class="section-head"><h2>Removed students</h2></div>
         <div class="card list" id="tRemoved"></div>
+      </div>
+    </section>
+    <!-- teacher: manage one roadmap -->
+    <section id="vRoadmap" hidden>
+      <div class="section" style="padding-top:20px">
+        <a href="#" class="backlink">← All roadmaps</a>
+        <div class="section-head">
+          <div style="display:grid;gap:6px"><div class="eyebrow">Manage roadmap</div><h2 id="rmTitle" class="h1">Roadmap</h2></div>
+          <a class="btn small" id="rmSite" target="_blank" rel="noopener" href="#">Open student site ↗</a>
+        </div>
+        <div class="subtabs" role="tablist" id="rmTabs">
+          <button type="button" role="tab" data-rtab="students">Students</button>
+          <button type="button" role="tab" data-rtab="assign">Assignments</button>
+          <button type="button" role="tab" data-rtab="plan">Plan &amp; timeline</button>
+          <button type="button" role="tab" data-rtab="holidays">Holidays</button>
+        </div>
+        <p class="err" id="rmErr" hidden></p>
+        <div id="rt-students" class="rtab"></div>
+        <div id="rt-assign" class="rtab" hidden></div>
+        <div id="rt-plan" class="rtab" hidden></div>
+        <div id="rt-holidays" class="rtab" hidden></div>
+      </div>
+    </section>
+
+    <!-- teacher: one student -->
+    <section id="vStudent" hidden>
+      <div class="section" style="padding-top:20px">
+        <a class="backlink" id="stBack" href="#">← Back to students</a>
+        <div id="stBody" style="display:grid;gap:22px"></div>
       </div>
     </section>
   </main>
@@ -304,7 +430,7 @@ const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "
 const MON = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 const fmtDate = (s) => { if (!s) return ""; const d = new Date(s.length === 10 ? s + "T00:00:00" : s); return d.getDate() + " " + MON[d.getMonth()] + " " + d.getFullYear(); };
 const hoursText = (h) => (+h === 1 ? "1 hour" : (+h || 2) + " hours");
-const VIEWS = ["loading", "vLanding", "vChoose", "vWelcome", "vTeacher"];
+const VIEWS = ["loading", "vLanding", "vChoose", "vWelcome", "vTeacher", "vRoadmap", "vStudent"];
 const show = (id) => VIEWS.forEach((v) => $(v).hidden = v !== id);
 
 if (HUB && HUB.name) { $("brandName").textContent = HUB.name; $("footName").textContent = HUB.name; document.title = HUB.name; }
@@ -341,11 +467,16 @@ function rmCard(c, opts) {
 
 /* ---------- rendering ---------- */
 let pendingSwitch = null;
-function render() {
+function render(force) {
   if (redirectTimer) { clearTimeout(redirectTimer); redirectTimer = null; }
   if (user === null) { renderLanding(); return; }
   if (user === undefined) { show("loading"); return; }
-  if (isTeacher) { renderTeacher(); return; }
+  if (isTeacher) {
+    const h = location.hash.replace(/^#/, "").split("/");
+    if (h[0] === "rm" && h[1] && canManage(h[1])) { renderRoadmap(h[1], h[2] || "students", force); return; }
+    if (h[0] === "st" && h[1] && h[2] && canManage(h[1])) { renderStudentPage(h[1], h[2], force); return; }
+    renderTeacher(); return;
+  }
   if (!me) { show("loading"); return; }
   const wantSwitch = location.hash === "#switch";
   const cur = catalog.find((c) => c.id === me.currentRoadmap);
@@ -421,7 +552,9 @@ async function ensureCatalog() {
     try {
       const ref = doc(fs, "catalog", r.id);
       const snap = await getDoc(ref);
-      if (!snap.exists()) await setDoc(ref, { ...r, updatedAt: new Date().toISOString() });
+      const full = { id: r.id, title: r.title, tagline: r.tagline || "", url: new URL(r.url, location.origin).href, levels: r.levels, dailyHours: r.dailyHours, startDate: r.startDate, order: r.order || 1 };
+      if (!snap.exists()) await setDoc(ref, { ...full, updatedAt: new Date().toISOString() });
+      else if (snap.data().url !== full.url) await setDoc(ref, { ...snap.data(), url: full.url, updatedAt: new Date().toISOString() });
     } catch (e) {
       catalogError = "Couldn’t add “" + r.title + "” to the list (" + ((e && e.code) || "error") + "). Check that the security rules are deployed from the Master branch: firebase deploy --only firestore:rules";
       render();
@@ -432,8 +565,8 @@ function renderTeacher() {
   show("vTeacher");
   const mine = (rid) => isAdmin || myRoadmaps.includes(rid);
   const myCatalog = catalog.filter((c) => mine(c.id));
-  $("tEyebrow").textContent = isAdmin ? "Admin" : "Teacher";
-  $("tTitle").textContent = isAdmin ? "All roadmaps, students and teachers" : "Your roadmaps and students";
+  $("tEyebrow").textContent = isAdmin ? "Admin" : "Mentor";
+  $("tTitle").textContent = isAdmin ? "All roadmaps, students and mentors" : "Your roadmaps and students";
   $("tPendingNote").textContent = isAdmin ? "Approving a student gives them access to every roadmap." : "Students who chose one of your roadmaps.";
   $("tTeachersSec").hidden = !isAdmin; $("tNewRoadmap").hidden = !isAdmin;
   const studentIds = Object.keys(users).filter((id) => id !== user.uid && (isAdmin || mine((users[id] || {}).currentRoadmap)));
@@ -460,7 +593,7 @@ function renderTeacher() {
   $("tGrid").innerHTML = myCatalog.length ? myCatalog.map((c) => {
     const n = approved.filter((id) => (users[id] || {}).currentRoadmap === c.id).length;
     const tl = isAdmin ? teachersOf(c.id) : [];
-    return rmCard(c, { footer: "<a class='btn primary' href='" + esc(c.url) + "'>Open teacher view</a><span class='muted small'>" + n + (n === 1 ? " student" : " students") + " on it" + (isAdmin ? " · " + (tl.length ? "Teachers: " + esc(tl.join(", ")) : "No teacher assigned") : "") + "</span>" });
+    return rmCard(c, { footer: "<a class='btn primary' href='#rm/" + esc(c.id) + "/students'>Manage</a><a class='btn' href='" + esc(c.url) + "' target='_blank' rel='noopener'>Student site ↗</a><span class='muted small' style='flex-basis:100%'>" + n + (n === 1 ? " student" : " students") + " on it" + (isAdmin ? " · " + (tl.length ? "Mentors: " + esc(tl.join(", ")) : "No mentor assigned") : "") + "</span>" });
   }).join("") : (isAdmin ? (catalogError ? "<div class='empty' style='color:var(--warn)'>" + esc(catalogError) + "</div>" : "") + "<div class='empty'>No roadmaps yet. Open a roadmap site while signed in as the admin and it registers itself here.</div>" : "<div class='empty'>No roadmaps are assigned to you yet. Ask the admin to assign one.</div>");
   if (isAdmin) renderTeachers();
 }
@@ -475,12 +608,12 @@ function renderTeachers() {
     return "<div class='li'><div><div class='n'>" + esc(t.name || t.email) + "</div><div class='e'>" + esc(t.email) + "</div></div>" +
       "<div class='chips'>" + (rms.length ? rms.map((x) => "<span class='chip'>" + esc(x) + "</span>").join("") : "<span class='muted small'>No roadmaps</span>") + "</div>" +
       "<div class='row'><button type='button' class='btn small' data-tedit='" + esc(k) + "'>Edit</button><button type='button' class='btn small' data-tdel='" + esc(k) + "'>Remove</button></div></div>";
-  }).join("") : "<p class='muted' style='padding-block:14px'>No other teachers yet. You manage all roadmaps.</p>";
+  }).join("") : "<p class='muted' style='padding-block:14px'>No other mentors yet. You manage all roadmaps.</p>";
 }
 function resetTeacherForm() {
   editingTeacher = null; delete $("tfRoadmaps").dataset.loaded;
   $("tfEmail").value = ""; $("tfName").value = ""; $("tfEmail").disabled = false;
-  $("tfTitle").textContent = "Add a teacher"; $("tfSave").textContent = "Add teacher"; $("tfCancel").hidden = true;
+  $("tfTitle").textContent = "Add a mentor"; $("tfSave").textContent = "Add mentor"; $("tfCancel").hidden = true;
   $("tfRoadmaps").querySelectorAll("input").forEach((i) => i.checked = false);
 }
 $("tfCancel").addEventListener("click", () => { resetTeacherForm(); $("tfMsg").textContent = ""; });
@@ -514,6 +647,7 @@ document.addEventListener("click", (ev) => {
   }
 });
 document.addEventListener("click", (ev) => {
+  if (ev.target.closest("#vRoadmap, #vStudent")) return;
   const b = ev.target.closest("[data-approve],[data-remove],[data-restore]"); if (!b || !isTeacher) return;
   const id = b.getAttribute("data-approve") || b.getAttribute("data-remove") || b.getAttribute("data-restore");
   const rm = b.hasAttribute("data-remove");
@@ -521,6 +655,418 @@ document.addEventListener("click", (ev) => {
   b.disabled = true;
   setDoc(doc(fs, "access", id), { approved: !rm, removed: rm, at: new Date().toISOString() }).catch(() => { b.disabled = false; b.textContent = "Couldn’t save"; });
 });
+
+/* ============ teacher console: manage one roadmap ============ */
+const DOW = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+const MONF = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+const parseISO = (s) => { const p = s.split("-"); return new Date(+p[0], +p[1] - 1, +p[2]); };
+const isoD = (d) => d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+const addDays = (d, n) => { const x = new Date(d); x.setDate(x.getDate() + n); return x; };
+const dBetween = (a, b) => Math.round((parseISO(b) - parseISO(a)) / 864e5);
+const todayISO = () => isoD(new Date());
+const weekStart = (d) => addDays(new Date(d.getFullYear(), d.getMonth(), d.getDate()), -d.getDay());
+const fmtLong = (s) => { const d = parseISO(s); return DOW[d.getDay()] + " " + d.getDate() + " " + MON[d.getMonth()] + " " + d.getFullYear(); };
+const fmtStamp = (s) => { if (!s) return ""; const d = new Date(s); return d.getDate() + " " + MON[d.getMonth()] + " " + d.getFullYear() + ", " + String(d.getHours()).padStart(2, "0") + ":" + String(d.getMinutes()).padStart(2, "0"); };
+const fmtRange = (a, b) => { const x = parseISO(a), y = parseISO(b); if (x.getFullYear() !== y.getFullYear()) return fmtDate(a) + " – " + fmtDate(b); return x.getDate() + " " + MON[x.getMonth()] + " – " + y.getDate() + " " + MON[y.getMonth()] + " " + y.getFullYear(); };
+const clone = (o) => JSON.parse(JSON.stringify(o == null ? {} : o));
+const safeUrl = (u) => (/^https?:\/\//i.test(String(u || "").trim()) ? String(u).trim() : "");
+const RATING = { "5": "Great", "4": "Good", "3": "OK", "2": "Weak", "1": "Missed" };
+const EXST = { "": "Not booked", booked: "Booked", passed: "Passed", retake: "Retake needed" };
+const canManage = (rid) => isAdmin || myRoadmaps.includes(rid);
+
+/* schedule: same maths as the roadmap site */
+function normSettings(o, ol) {
+  o = o || {};
+  let h = +o.dailyHours; if (!(h >= 0.5 && h <= 8)) h = (ol && ol.defaultHours) || 2;
+  const start = /^\d{4}-\d{2}-\d{2}$/.test(o.startDate || "") ? o.startDate : ((ol && ol.defaultStart) || todayISO());
+  const hol = {}; Object.keys(o.holidays || {}).forEach((k) => { if (/^\d{4}-\d{2}-\d{2}$/.test(k)) hol[k] = String(o.holidays[k] || ""); });
+  const lw = {}; Object.keys(o.levelWeeks || {}).forEach((k) => { const w = Math.round(+o.levelWeeks[k]); if (/^\d+$/.test(k) && w >= 1 && w <= 104) lw[k] = w; });
+  return { dailyHours: h, startDate: start, holidays: hol, levelWeeks: lw };
+}
+function schedule(ol, st) {
+  const DS = ol.defaultStart, DH = ol.defaultHours || 2, scale = DH / st.dailyHours;
+  let acc = 0;
+  const segs = ol.levels.map((L) => { const os = dBetween(DS, L.start), olen = dBetween(L.start, L.end) + 1, w = +(st.levelWeeks[L.n] || 0); return { os, ol: olen, nl: w > 0 ? w * 7 : olen }; });
+  segs.forEach((g) => { g.ns = acc; acc += g.nl; });
+  const remap = (x) => { for (let i = 0; i < segs.length; i++) { const g = segs[i]; if (x < g.os + g.ol || i === segs.length - 1) return g.ns + (x - g.os) * g.nl / g.ol; } return x; };
+  const need = Math.ceil(acc * scale) + 40, days = []; let d = parseISO(st.startDate), guard = 0;
+  while (days.length < need && guard < need * 4) { const k = isoD(d); if (!st.holidays[k]) days.push(k); d = addDays(d, 1); guard++; }
+  const map = (o) => days[Math.min(Math.max(0, Math.round(remap(dBetween(DS, o)) * scale)), days.length - 1)];
+  const mapEnd = (o) => isoD(addDays(parseISO(map(isoD(addDays(parseISO(o), 1)))), -1));
+  const levels = ol.levels.map((L, i) => {
+    const start = map(L.start), end = mapEnd(L.end);
+    return { n: L.n, name: L.name, start, end, defWeeks: Math.round(segs[i].ol / 7), weeks: st.levelWeeks[L.n] || "", exams: L.exams.map((e) => { const dd = map(e.date); return { ...e, date: dd > end ? end : dd }; }) };
+  });
+  return { levels, end: levels.length ? levels[levels.length - 1].end : st.startDate, days };
+}
+
+/* data per roadmap */
+const RM = {};
+function rmData(rid) {
+  if (RM[rid]) return RM[rid];
+  const d = RM[rid] = { students: {}, assigned: {}, settings: null, settingsLoaded: false, outline: null, outlineState: "", weeks: {}, weeksUnsub: null, weeksFor: null, chains: {} };
+  onSnapshot(collection(fs, "r", rid, "students"), (qs) => { d.students = {}; qs.docs.forEach((x) => d.students[x.id] = x.data()); refresh(); }, (e) => showRmErr(e));
+  onSnapshot(collection(fs, "r", rid, "assigned"), (qs) => { d.assigned = {}; qs.docs.forEach((x) => d.assigned[x.id] = x.data()); refresh(); }, () => {});
+  onSnapshot(doc(fs, "r", rid, "settings", "plan"), (sn) => { d.settings = sn.exists() ? sn.data() : null; d.settingsLoaded = true; refresh(true); }, () => {});
+  return d;
+}
+function loadOutline(rid) {
+  const d = rmData(rid), c = catalog.find((x) => x.id === rid);
+  if (!c || d.outlineState) return;
+  d.outlineState = "loading";
+  fetch(new URL("roadmap.json", new URL(c.url, location.href))).then((r) => r.ok ? r.json() : Promise.reject(r.status))
+    .then((o) => { d.outline = o; d.outlineState = "ok"; refresh(true); })
+    .catch(() => { d.outlineState = "error"; refresh(true); });
+}
+function showRmErr(e) { const el = $("rmErr"); el.hidden = false; el.textContent = "Couldn’t load this roadmap’s data (" + ((e && e.code) || "error") + "). Check that the security rules are deployed."; }
+let refreshTimer = null;
+function refresh(force) { clearTimeout(refreshTimer); refreshTimer = setTimeout(() => render(force), 30); }
+function assignedPatch(rid, uid, mutate) {
+  const d = rmData(rid), next = clone(d.assigned[uid]); mutate(next); d.assigned[uid] = next;
+  const key = rid + "/" + uid;
+  d.chains[key] = (d.chains[key] || Promise.resolve()).catch(() => {}).then(() => setDoc(doc(fs, "r", rid, "assigned", uid), next));
+  return d.chains[key];
+}
+function setAccess(uid, approve) { return setDoc(doc(fs, "access", uid), { approved: approve, removed: !approve, at: new Date().toISOString() }); }
+
+function progressOf(ol, state) {
+  const done = (state && state.done) || {}, ex = (state && state.exams) || {};
+  return (ol ? ol.levels : []).map((L) => {
+    const td = L.tasks.map((t, i) => !!done["l" + L.n + "t" + i]);
+    const es = L.exams.map((e) => (ex[e.id] || {}).status || "");
+    return { L, td, es, done: td.filter(Boolean).length, complete: td.every(Boolean) && es.every((x) => x === "passed") };
+  });
+}
+function workingOn(ol, state) { const p = progressOf(ol, state); for (const x of p) if (!x.complete) return x.L; return p.length ? p[p.length - 1].L : null; }
+const isGraded = (t) => t && t.grade != null && t.grade !== "";
+function gradeStats(tasks, subs) {
+  tasks = tasks || {}; subs = subs || {}; const t = todayISO();
+  let s = 0, g = 0, pct = 0, over = 0;
+  Object.keys(tasks).forEach((id) => { const k = tasks[id]; if (subs[id]) s++; if (isGraded(k)) { g++; pct += (+k.grade) / (+k.points || 1); } else if (!subs[id] && k.due && k.due < t) over++; });
+  return { assigned: Object.keys(tasks).length, submitted: s, graded: g, avg: g ? Math.round(pct / g * 100) : null, overdue: over };
+}
+function spark(daily) {
+  const t = new Date(); let out = "", tip = [];
+  for (let i = 6; i >= 0; i--) { const d = isoD(addDays(t, -i)), h = +((daily || {})[d]) || 0; out += "<i class='" + (h ? "" : "z") + "' style='height:" + Math.max(2, Math.min(22, h / 3 * 22)) + "px'></i>"; tip.push(DOW[parseISO(d).getDay()] + " " + h + "h"); }
+  return "<span class='spark' title='" + esc(tip.join(" · ")) + "' aria-label='Last 7 days: " + esc(tip.join(", ")) + "'>" + out + "</span>";
+}
+const studentName = (rid, uid) => { const s = rmData(rid).students[uid] || {}, p = ((s.state || {}).pledge || {}); return (p.name || "").trim() || (users[uid] || {}).name || "No name yet"; };
+const accessOf = (uid) => { const a = access[uid] || {}; return a.removed ? "removed" : (a.approved ? "approved" : "waiting"); };
+
+let rmMounted = {};
+function renderRoadmap(rid, tab, force) {
+  show("vRoadmap");
+  const c = catalog.find((x) => x.id === rid);
+  const d = rmData(rid); loadOutline(rid);
+  $("rmTitle").textContent = c ? c.title : rid;
+  $("rmSite").href = c ? c.url : "#";
+  document.querySelectorAll("#rmTabs [data-rtab]").forEach((b) => b.setAttribute("aria-selected", b.getAttribute("data-rtab") === tab ? "true" : "false"));
+  ["students", "assign", "plan", "holidays"].forEach((t) => $("rt-" + t).hidden = t !== tab);
+  if (tab === "students") renderStudentsTab(rid);
+  if (tab === "assign") renderAssignTab(rid);
+  if (tab === "plan") renderPlanTab(rid, force);
+  if (tab === "holidays") renderHolidaysTab(rid, force);
+}
+document.getElementById("rmTabs").addEventListener("click", (ev) => {
+  const b = ev.target.closest("[data-rtab]"); if (!b) return;
+  const h = location.hash.replace(/^#/, "").split("/"); location.hash = "rm/" + h[1] + "/" + b.getAttribute("data-rtab");
+});
+
+/* --- students tab --- */
+function renderStudentsTab(rid) {
+  const d = rmData(rid), ol = d.outline, box = $("rt-students");
+  const ids = Object.keys(d.students).filter((id) => id !== user.uid);
+  if (!ids.length) { box.innerHTML = "<div class='empty'>No students on this roadmap yet. They appear here after they choose it and open it.</div>"; return; }
+  const order = { waiting: 0, approved: 1, removed: 2 };
+  ids.sort((a, b) => order[accessOf(a)] - order[accessOf(b)] || studentName(rid, a).localeCompare(studentName(rid, b)));
+  const thisWeek = isoD(weekStart(new Date())), late = isoD(addDays(parseISO(thisWeek), -14));
+  const counts = { approved: 0, waiting: 0, removed: 0 }; ids.forEach((id) => counts[accessOf(id)]++);
+  box.innerHTML = "<div class='statrow'><div><span>Approved</span><b>" + counts.approved + "</b></div><div><span>Waiting</span><b>" + counts.waiting + "</b></div><div><span>Removed</span><b>" + counts.removed + "</b></div><div><span>Total</span><b>" + ids.length + "</b></div></div>" +
+    "<div class='card tablebox'><table><thead><tr><th>Student</th><th>Access</th><th>Working on</th><th>Last 7 days</th><th>Hours</th><th>Last check-in</th><th>Assignments</th><th>Avg grade</th><th></th></tr></thead><tbody>" +
+    ids.map((id) => {
+      const s = d.students[id] || {}, sm = s.summary || {}, st = s.state || {}, a = accessOf(id);
+      const g = gradeStats((d.assigned[id] || {}).tasks, st.subs);
+      const L = ol ? workingOn(ol, st) : null;
+      const lastOk = sm.lastWeek && sm.lastWeek >= late;
+      const acc = a === "approved" ? "<span class='st ok'>Approved</span>" : a === "waiting"
+        ? "<span class='st wait'>Waiting</span> <button type='button' class='btn primary small' data-approve='" + esc(id) + "'>Approve</button> <button type='button' class='btn small' data-remove='" + esc(id) + "'>Remove</button>"
+        : "<span class='st off'>Removed</span> <button type='button' class='btn small' data-restore='" + esc(id) + "'>Restore</button>";
+      return "<tr><td><div class='n'>" + esc(studentName(rid, id)) + "</div><div class='e'>" + esc(s.email || (users[id] || {}).email || "") + "</div></td>" +
+        "<td style='white-space:nowrap'>" + acc + "</td>" +
+        "<td>" + (L ? "Level " + L.n : "—") + "</td>" +
+        "<td>" + spark(sm.daily) + "</td>" +
+        "<td class='num'>" + (sm.hours || 0) + "</td>" +
+        "<td class='" + (lastOk ? "" : "late") + "' style='white-space:nowrap'>" + (sm.lastWeek ? esc(fmtDate(sm.lastWeek)) + (sm.lastRating ? " · " + RATING[sm.lastRating] : "") : "Not yet") + "</td>" +
+        "<td class='num'>" + g.submitted + " / " + g.assigned + (g.overdue ? " <span class='late'>(" + g.overdue + " late)</span>" : "") + "</td>" +
+        "<td class='num'>" + (g.avg == null ? "—" : g.avg + "%") + "</td>" +
+        "<td><a class='btn small' href='#st/" + esc(rid) + "/" + esc(id) + "'>View</a></td></tr>";
+    }).join("") + "</tbody></table></div>";
+}
+
+/* --- assignments tab --- */
+function renderAssignTab(rid) {
+  const d = rmData(rid), box = $("rt-assign"), ol = d.outline;
+  if (rmMounted.assign !== rid) {
+    rmMounted.assign = rid;
+    box.innerHTML = "<div class='card pane'><h3>Assign a task</h3>" +
+      "<div class='fgrid'><label class='fld wide'>Title<input type='text' id='asTitle' placeholder='e.g. Finish CS50 SQL Problem Set 2'></label>" +
+      "<label class='fld'>Due date<input type='date' id='asDue'></label><label class='fld'>Points<input type='number' id='asPoints' min='1' step='1' value='10'></label>" +
+      "<label class='fld wide'>Level<select id='asLevel'><option value=''>Any level</option></select></label></div>" +
+      "<label class='fld'>Instructions<textarea id='asDetails' placeholder='What to do, and what to submit (for example a GitHub link)'></textarea></label>" +
+      "<fieldset class='recips'><legend>Assign to</legend><label><input type='radio' name='asTo' value='all' checked> All approved students</label><label><input type='radio' name='asTo' value='some'> Selected students</label><div class='reciplist' id='asList' hidden></div></fieldset>" +
+      "<div class='savebar'><button type='button' class='btn primary' id='asGo'>Assign task</button><span class='small muted' id='asMsg' role='status'></span></div></div>" +
+      "<div class='section-head'><h3>Tasks on this roadmap</h3></div><div id='asTasks'></div>";
+    box.querySelectorAll("input[name=asTo]").forEach((r) => r.addEventListener("change", () => $("asList").hidden = box.querySelector("input[name=asTo]:checked").value !== "some"));
+    $("asGo").addEventListener("click", () => assignTask(rid));
+  }
+  const sel = $("asLevel"), cur = sel.value;
+  if (ol && sel.options.length <= 1) { ol.levels.forEach((L) => { const o = document.createElement("option"); o.value = L.n; o.textContent = "Level " + L.n + ": " + L.name; sel.appendChild(o); }); sel.value = cur; }
+  const approved = Object.keys(d.students).filter((id) => id !== user.uid && accessOf(id) === "approved");
+  const list = $("asList"), checked = new Set(Array.from(list.querySelectorAll("input:checked")).map((i) => i.value));
+  list.innerHTML = approved.length ? approved.map((id) => "<label><input type='checkbox' value='" + esc(id) + "'" + (checked.has(id) ? " checked" : "") + "> " + esc(studentName(rid, id)) + "</label>").join("") : "<span class='muted small'>No approved students yet.</span>";
+  const byTask = {};
+  Object.keys(d.assigned).forEach((uid) => { const tasks = (d.assigned[uid] || {}).tasks || {}; Object.keys(tasks).forEach((tid) => { const t = tasks[tid]; const b = byTask[tid] = byTask[tid] || { t, uids: [], sub: 0, graded: 0 }; b.uids.push(uid); if ((((d.students[uid] || {}).state || {}).subs || {})[tid]) b.sub++; if (isGraded(t)) b.graded++; }); });
+  const tids = Object.keys(byTask).sort((a, b) => (byTask[a].t.due || "9999").localeCompare(byTask[b].t.due || "9999"));
+  $("asTasks").innerHTML = tids.length ? "<div class='card tablebox'><table><thead><tr><th>Task</th><th>Due</th><th>Points</th><th>Students</th><th>Submitted</th><th>Graded</th><th></th></tr></thead><tbody>" +
+    tids.map((tid) => { const b = byTask[tid]; return "<tr><td><div class='n'>" + esc(b.t.title) + "</div>" + (b.t.level ? "<div class='e'>Level " + esc(b.t.level) + "</div>" : "") + "</td><td style='white-space:nowrap'>" + (b.t.due ? esc(fmtDate(b.t.due)) : "—") + "</td><td class='num'>" + esc(b.t.points) + "</td><td class='num'>" + b.uids.length + "</td><td class='num'>" + b.sub + "</td><td class='num'>" + b.graded + "</td><td><button type='button' class='btn small' data-deltask='" + esc(tid) + "'>Remove</button></td></tr>"; }).join("") +
+    "</tbody></table></div>" : "<div class='empty'>No tasks assigned yet.</div>";
+}
+function assignTask(rid) {
+  const d = rmData(rid), msg = $("asMsg");
+  const title = $("asTitle").value.trim(), pts = +$("asPoints").value;
+  if (!title) { msg.textContent = "Give the task a title."; return; }
+  if (!(pts > 0)) { msg.textContent = "Points must be more than 0."; return; }
+  const all = document.querySelector("input[name=asTo]:checked").value === "all";
+  const approved = Object.keys(d.students).filter((id) => id !== user.uid && accessOf(id) === "approved");
+  const recips = all ? approved : Array.from($("asList").querySelectorAll("input:checked")).map((i) => i.value);
+  if (!recips.length) { msg.textContent = all ? "No approved students on this roadmap yet." : "Pick at least one student."; return; }
+  const id = "t" + Date.now().toString(36);
+  const task = { title, details: $("asDetails").value.trim(), due: $("asDue").value, points: pts, level: $("asLevel").value, createdAt: new Date().toISOString() };
+  msg.textContent = "Assigning…";
+  Promise.all(recips.map((uid) => assignedPatch(rid, uid, (x) => { x.tasks = x.tasks || {}; x.tasks[id] = clone(task); })))
+    .then(() => { msg.textContent = "Assigned to " + recips.length + (recips.length === 1 ? " student." : " students."); ["asTitle", "asDetails", "asDue"].forEach((k) => $(k).value = ""); })
+    .catch(() => { msg.textContent = "Some assignments didn’t save. Try again."; });
+}
+
+/* --- plan & timeline tab --- */
+let planDraft = null, planDirty = false;
+function renderPlanTab(rid, force) {
+  const d = rmData(rid), box = $("rt-plan"), ol = d.outline;
+  if (!ol) { box.innerHTML = d.outlineState === "error" ? "<div class='empty'>Couldn’t load this roadmap’s outline (roadmap.json). Deploy the roadmap again, then reload.</div>" : "<p class='muted'>Loading the roadmap outline…</p>"; rmMounted.plan = null; return; }
+  if (!d.settingsLoaded) { box.innerHTML = "<p class='muted'>Loading settings…</p>"; rmMounted.plan = null; return; }
+  if (rmMounted.plan !== rid || (force && !planDirty)) {
+    rmMounted.plan = rid; planDirty = false;
+    planDraft = normSettings(d.settings, ol);
+    box.innerHTML = "<div class='card pane'><h3>Daily time and start date</h3><p class='muted small'>Changes apply to every student on this roadmap as soon as you save. Level and exam dates move to fit.</p>" +
+      "<div class='fgrid'><label class='fld'>Daily study time (hours)<input type='number' id='plHours' min='0.5' max='8' step='0.5'></label><label class='fld'>Start date<input type='date' id='plStart'></label></div></div>" +
+      "<div class='card pane'><h3>Timeline</h3><p class='muted small'>Set how many weeks each level takes. Leave a box empty to use the default. The plan keeps the same total study hours per level when you change the daily time.</p>" +
+      "<div class='tablebox'><table class='lvtable'><thead><tr><th>Level</th><th>Weeks</th><th>Dates</th><th>Exams</th></tr></thead><tbody id='plLevels'></tbody></table></div></div>" +
+      "<div class='preview' id='plPreview'></div>" +
+      "<div class='savebar'><button type='button' class='btn primary' id='plSave'>Save and apply to all students</button><button type='button' class='btn' id='plReset'>Discard changes</button><span class='small muted' id='plMsg' role='status'></span></div>";
+    $("plHours").value = planDraft.dailyHours; $("plStart").value = planDraft.startDate;
+    $("plHours").addEventListener("input", (e) => { planDraft.dailyHours = +e.target.value; planDirty = true; planPreview(rid); });
+    $("plStart").addEventListener("input", (e) => { if (e.target.value) { planDraft.startDate = e.target.value; planDirty = true; planPreview(rid); } });
+    $("plLevels").addEventListener("input", (e) => { const n = e.target.getAttribute("data-lw"); if (!n) return; const v = Math.round(+e.target.value); if (v >= 1 && v <= 104) planDraft.levelWeeks[n] = v; else delete planDraft.levelWeeks[n]; planDirty = true; planPreview(rid, n); });
+    $("plReset").addEventListener("click", () => { planDirty = false; rmMounted.plan = null; renderPlanTab(rid); $("plMsg").textContent = "Changes discarded."; });
+    $("plSave").addEventListener("click", () => savePlan(rid));
+    planPreview(rid);
+  }
+}
+function planPreview(rid, keepFocusN) {
+  const d = rmData(rid), ol = d.outline, st = normSettings(planDraft, ol);
+  st.holidays = normSettings(d.settings, ol).holidays;
+  const sch = schedule(ol, st), cur = schedule(ol, normSettings(d.settings, ol));
+  const tb = $("plLevels");
+  if (!keepFocusN) {
+    tb.innerHTML = sch.levels.map((L) => "<tr><td><div class='n'>Level " + L.n + "</div><div class='e'>" + esc(L.name) + "</div></td>" +
+      "<td><input type='number' min='1' max='104' step='1' data-lw='" + L.n + "' value='" + (L.weeks || "") + "' placeholder='" + L.defWeeks + "' aria-label='Weeks for level " + L.n + "'></td>" +
+      "<td class='dates' data-dates='" + L.n + "'></td><td class='ex' data-ex='" + L.n + "'></td></tr>").join("");
+  }
+  sch.levels.forEach((L) => {
+    const dc = tb.querySelector("[data-dates='" + L.n + "']"), ec = tb.querySelector("[data-ex='" + L.n + "']");
+    if (dc) dc.textContent = fmtRange(L.start, L.end) + " · " + Math.round((dBetween(L.start, L.end) + 1) / 7) + " wk";
+    if (ec) ec.innerHTML = L.exams.map((e) => esc(e.name.split(" (")[0].replace(" skills test", "")) + ": " + esc(fmtDate(e.date))).join("<br>");
+  });
+  $("plPreview").textContent = "With these settings: " + hoursText(st.dailyHours) + " a day from " + fmtLong(st.startDate) + ". The plan ends on " + fmtLong(sch.end) + (sch.end !== cur.end ? " (currently " + fmtLong(cur.end) + ")" : "") + ".";
+}
+function savePlan(rid) {
+  const d = rmData(rid), msg = $("plMsg"), h = +planDraft.dailyHours;
+  if (!(h >= 0.5 && h <= 8)) { msg.textContent = "Daily time must be between 0.5 and 8 hours."; return; }
+  const base = normSettings(d.settings, d.outline);
+  const out = { ...base, dailyHours: h, startDate: planDraft.startDate, levelWeeks: planDraft.levelWeeks, updatedAt: new Date().toISOString() };
+  msg.textContent = "Saving…";
+  setDoc(doc(fs, "r", rid, "settings", "plan"), out).then(() => {
+    planDirty = false; msg.textContent = "Saved. Every student on this roadmap now follows these dates.";
+    const c = catalog.find((x) => x.id === rid); if (c) setDoc(doc(fs, "catalog", rid), { ...c, dailyHours: h, startDate: out.startDate, updatedAt: out.updatedAt }).catch(() => {});
+  }).catch((e) => { msg.textContent = "Couldn’t save (" + ((e && e.code) || "error") + ")."; });
+}
+
+/* --- holidays tab --- */
+let holDraft = null, holOrig = null, holDirty = false, calMonth = null;
+function renderHolidaysTab(rid, force) {
+  const d = rmData(rid), box = $("rt-holidays");
+  if (!d.settingsLoaded) { box.innerHTML = "<p class='muted'>Loading settings…</p>"; rmMounted.hol = null; return; }
+  if (rmMounted.hol !== rid || (force && !holDirty)) {
+    rmMounted.hol = rid; holDirty = false;
+    const st = normSettings(d.settings, d.outline);
+    holOrig = clone(st.holidays); holDraft = clone(st.holidays);
+    const t = new Date(), s0 = parseISO(st.startDate), b0 = t > s0 ? t : s0; calMonth = new Date(b0.getFullYear(), b0.getMonth(), 1);
+    box.innerHTML = "<div class='twocol'><div class='card pane'><h3>Calendar</h3><p class='muted small'>Click days to mark or unmark them as holidays. On holidays no study is expected, and the plan moves later to make up the time.</p>" +
+      "<div class='savebar'><button type='button' class='btn small' id='calPrev' aria-label='Previous month'>←</button><b id='calLabel' style='min-width:150px;text-align:center'></b><button type='button' class='btn small' id='calNext' aria-label='Next month'>→</button></div><div class='cal' id='cal'></div></div>" +
+      "<div class='card pane'><h3>Add a range</h3><div class='fgrid' style='grid-template-columns:1fr 1fr'><label class='fld'>From<input type='date' id='hFrom'></label><label class='fld'>To (optional)<input type='date' id='hTo'></label><label class='fld wide'>Name (optional)<input type='text' id='hName' placeholder='e.g. Christmas break, Eid, Independence Day'></label></div>" +
+      "<div class='savebar'><button type='button' class='btn' id='hAdd'>Add days</button><span class='small muted' id='hAddMsg'></span></div></div></div>" +
+      "<div class='card pane'><h3>Holidays</h3><div id='holList'></div></div>" +
+      "<fieldset class='recips'><legend>Apply changes to</legend><label><input type='radio' name='holScope' value='one' checked> This roadmap only</label><label><input type='radio' name='holScope' value='all'> All roadmaps (public holidays)</label></fieldset>" +
+      "<div class='savebar'><button type='button' class='btn primary' id='holSave'>Save holidays</button><button type='button' class='btn' id='holReset'>Discard changes</button><span class='small muted' id='holMsg' role='status'></span></div>";
+    $("calPrev").addEventListener("click", () => { calMonth = new Date(calMonth.getFullYear(), calMonth.getMonth() - 1, 1); drawHol(rid); });
+    $("calNext").addEventListener("click", () => { calMonth = new Date(calMonth.getFullYear(), calMonth.getMonth() + 1, 1); drawHol(rid); });
+    $("cal").addEventListener("click", (ev) => { const b = ev.target.closest("[data-cal]"); if (!b) return; const k = b.getAttribute("data-cal"); if (k in holDraft) delete holDraft[k]; else holDraft[k] = $("hName").value.trim(); holDirty = true; drawHol(rid); });
+    $("hAdd").addEventListener("click", () => {
+      const f = $("hFrom").value, t2 = $("hTo").value || f, name = $("hName").value.trim(), m = $("hAddMsg");
+      if (!f) { m.textContent = "Pick a start date."; return; } if (t2 < f) { m.textContent = "The end is before the start."; return; } if (dBetween(f, t2) > 120) { m.textContent = "That’s over 120 days; add it in smaller ranges."; return; }
+      for (let x = parseISO(f); isoD(x) <= t2; x = addDays(x, 1)) holDraft[isoD(x)] = name;
+      m.textContent = "Added " + (dBetween(f, t2) + 1) + (f === t2 ? " day." : " days."); $("hFrom").value = ""; $("hTo").value = "";
+      calMonth = new Date(parseISO(f).getFullYear(), parseISO(f).getMonth(), 1); holDirty = true; drawHol(rid);
+    });
+    $("holList").addEventListener("click", (ev) => { const b = ev.target.closest("[data-holdel]"); if (!b) return; const g = holGroups(holDraft)[+b.getAttribute("data-holdel")]; if (g) { g.days.forEach((k) => delete holDraft[k]); holDirty = true; drawHol(rid); } });
+    $("holReset").addEventListener("click", () => { rmMounted.hol = null; renderHolidaysTab(rid); $("holMsg").textContent = "Changes discarded."; });
+    $("holSave").addEventListener("click", () => saveHolidays(rid));
+    drawHol(rid);
+  }
+}
+function holGroups(hol) {
+  const groups = [];
+  Object.keys(hol).sort().forEach((k) => { const g = groups[groups.length - 1]; if (g && isoD(addDays(parseISO(g.to), 1)) === k && (hol[k] || "") === g.name) { g.to = k; g.days.push(k); } else groups.push({ from: k, to: k, name: hol[k] || "", days: [k] }); });
+  return groups;
+}
+function drawHol(rid) {
+  const st = normSettings(rmData(rid).settings, rmData(rid).outline);
+  const y = calMonth.getFullYear(), mo = calMonth.getMonth(), first = new Date(y, mo, 1), n = new Date(y, mo + 1, 0).getDate(), t = todayISO();
+  $("calLabel").textContent = MONF[mo] + " " + y;
+  let html = DOW.map((x) => "<span class='cal-h'>" + x.slice(0, 2) + "</span>").join("");
+  for (let i = 0; i < first.getDay(); i++) html += "<span></span>";
+  for (let dd = 1; dd <= n; dd++) { const k = isoD(new Date(y, mo, dd)), hol = k in holDraft; html += "<button type='button' class='cal-d" + (hol ? " hol" : "") + (k < st.startDate ? " before" : "") + (k === t ? " today" : "") + "' data-cal='" + k + "' aria-pressed='" + hol + "' title='" + (hol ? esc(holDraft[k] || "Holiday") : "Mark as holiday") + "'>" + dd + "</button>"; }
+  $("cal").innerHTML = html;
+  const groups = holGroups(holDraft);
+  $("holList").innerHTML = groups.length ? groups.map((g, i) => "<div class='hol-row'><span class='num' style='font-family:var(--mono);font-size:13px'>" + esc(g.from === g.to ? fmtDate(g.from) : fmtRange(g.from, g.to)) + "</span><span>" + esc(g.name || "Holiday") + " · " + g.days.length + (g.days.length === 1 ? " day" : " days") + "</span><button type='button' class='btn small' data-holdel='" + i + "'>Remove</button></div>").join("") : "<p class='muted'>No holidays set.</p>";
+  $("holMsg").textContent = holDirty ? "Unsaved changes" : "";
+}
+async function saveHolidays(rid) {
+  const msg = $("holMsg"), all = document.querySelector("input[name=holScope]:checked").value === "all";
+  const added = {}, removed = [];
+  Object.keys(holDraft).forEach((k) => { if (!(k in holOrig) || holOrig[k] !== holDraft[k]) added[k] = holDraft[k]; });
+  Object.keys(holOrig).forEach((k) => { if (!(k in holDraft)) removed.push(k); });
+  const targets = all ? catalog.map((c) => c.id).filter(canManage) : [rid];
+  msg.textContent = "Saving…";
+  let ok = 0, fail = 0;
+  for (const id of targets) {
+    try {
+      const ref = doc(fs, "r", id, "settings", "plan");
+      const sn = await getDoc(ref);
+      const c = catalog.find((x) => x.id === id) || {};
+      const base = sn.exists() ? sn.data() : { dailyHours: c.dailyHours || 2, startDate: c.startDate || todayISO(), holidays: {}, levelWeeks: {} };
+      const hol = id === rid ? clone(holDraft) : { ...(base.holidays || {}), ...added };
+      if (id !== rid) removed.forEach((k) => delete hol[k]);
+      await setDoc(ref, { ...base, holidays: hol, updatedAt: new Date().toISOString() });
+      ok++;
+    } catch (e) { fail++; }
+  }
+  holDirty = false; holOrig = clone(holDraft);
+  msg.textContent = fail ? "Saved on " + ok + " roadmap(s); " + fail + " failed." : (all ? "Saved on all " + ok + " roadmaps." : "Saved.");
+}
+
+/* ============ teacher console: one student ============ */
+let stPending = false;
+function renderStudentPage(rid, uid, force) {
+  show("vStudent");
+  const d = rmData(rid); loadOutline(rid);
+  $("stBack").href = "#rm/" + rid + "/students";
+  if (d.weeksFor !== uid) {
+    if (d.weeksUnsub) d.weeksUnsub();
+    d.weeks = {}; d.weeksFor = uid;
+    d.weeksUnsub = onSnapshot(collection(fs, "r", rid, "students", uid, "weeks"), (qs) => { d.weeks = {}; qs.docs.forEach((x) => d.weeks[x.id] = x.data()); refresh(); }, () => {});
+  }
+  const body = $("stBody");
+  if (!force && body.contains(document.activeElement) && document.activeElement !== body) { stPending = true; return; }
+  stPending = false;
+  const s = d.students[uid];
+  if (!s) { body.innerHTML = "<div class='empty'>This student hasn’t opened this roadmap yet.</div>"; return; }
+  const st = s.state || {}, pl = st.pledge || {}, sm = s.summary || {}, asg = d.assigned[uid] || {}, subs = st.subs || {}, ol = d.outline, a = accessOf(uid);
+  const settings = ol ? normSettings(d.settings, ol) : null;
+  const wkTarget = (k) => { if (!settings) return 0; let n = 0; for (let i = 0; i < 7; i++) { const x = isoD(addDays(parseISO(k), i)); if (x >= settings.startDate && !(x in settings.holidays)) n++; } return n * settings.dailyHours; };
+  const hColor = (h, k) => { const t = wkTarget(k); return (t > 0 && h >= t) ? "var(--ok)" : (h >= t * 0.7 ? "var(--ink)" : "var(--warn)"); };
+  const accBtns = a === "approved" ? "<span class='st ok'>Approved</span> <button type='button' class='btn small' data-remove='" + esc(uid) + "'>Remove</button>" : a === "waiting" ? "<span class='st wait'>Waiting for approval</span> <button type='button' class='btn primary small' data-approve='" + esc(uid) + "'>Approve</button> <button type='button' class='btn small' data-remove='" + esc(uid) + "'>Remove</button>" : "<span class='st off'>Removed</span> <button type='button' class='btn small' data-restore='" + esc(uid) + "'>Restore</button>";
+  const g = gradeStats(asg.tasks, subs);
+  const up = (users[uid] || {}).pledge;
+  const kv = [["Email", s.email || (users[uid] || {}).email], ["Pledged to finish and mentor", up ? fmtStamp(up.at) : "Not yet"], ["Signed commitment", pl.committedAt ? fmtStamp(pl.committedAt) : "Not yet"], ["Last seen", (st.resume || {}).at ? fmtStamp(st.resume.at) : ""], ["Why", pl.why], ["Accountability partner", pl.partner], ["Study group", pl.group], ["Study hours", pl.time], ["If they miss a day", pl.miss]].filter((x) => x[1]);
+  const prog = ol ? progressOf(ol, st) : [];
+  const tids = Object.keys(asg.tasks || {}).sort((x, y) => ((asg.tasks[x].due || "9999").localeCompare(asg.tasks[y].due || "9999")));
+  const wks = Object.keys(d.weeks).filter((k) => { const w = d.weeks[k]; return (w.hours || []).some((h) => +h > 0) || w.did || w.blocked || w.next || (w.notes || []).some(Boolean); }).sort().reverse();
+  const wc = asg.weekComments || {};
+  body.innerHTML =
+    "<div class='section-head'><div style='display:grid;gap:6px'><div class='eyebrow'>Student</div><h2 class='h1'>" + esc(studentName(rid, uid)) + "</h2></div><div class='row'>" + accBtns + "</div></div>" +
+    "<div class='statrow'><div><span>Hours logged</span><b>" + (sm.hours || 0) + "</b></div><div><span>Weeks on target</span><b>" + (sm.weeksOnTarget || 0) + "</b></div><div><span>Milestones</span><b>" + (sm.tasksDone || 0) + "</b></div><div><span>Avg grade</span><b>" + (g.avg == null ? "—" : g.avg + "%") + "</b></div></div>" +
+    "<div class='twocol'><div class='card pane'><h3>Commitment</h3><dl class='kv'>" + kv.map((x) => "<dt>" + esc(x[0]) + "</dt><dd>" + esc(x[1]) + "</dd>").join("") + "</dl></div>" +
+    "<div class='card pane'><h3>General feedback</h3><p class='muted small'>Shown at the top of the student’s overview.</p><textarea id='fbText'>" + esc((asg.feedback || {}).text || "") + "</textarea><div class='savebar'><button type='button' class='btn primary' id='fbSave'>Send feedback</button><span class='small muted' id='fbMsg'>" + ((asg.feedback || {}).at ? "Last sent " + esc(fmtStamp(asg.feedback.at)) : "") + "</span></div></div></div>" +
+    "<div class='section-head'><h3>Assignments and grades</h3></div>" +
+    (tids.length ? tids.map((tid) => {
+      const t = asg.tasks[tid], sb = subs[tid], link = sb ? safeUrl(sb.link) : "";
+      const stc = isGraded(t) ? "<span class='st ok'>Graded</span>" : sb ? "<span class='st wait'>Submitted</span>" : (t.due && t.due < todayISO() ? "<span class='st' style='color:var(--warn)'>Overdue</span>" : "<span class='st off'>To do</span>");
+      return "<div class='card task'><div class='th'><b>" + esc(t.title) + "</b>" + stc + "</div><div class='muted small'>" + (t.due ? "Due " + esc(fmtLong(t.due)) : "No due date") + " · " + esc(t.points) + " points" + (t.level ? " · Level " + esc(t.level) : "") + "</div>" +
+        (t.details ? "<p class='small' style='white-space:pre-wrap'>" + esc(t.details) + "</p>" : "") +
+        (sb ? "<div class='sub'><span class='eyebrow'>Submitted " + esc(fmtStamp(sb.submittedAt)) + "</span>" + (sb.text ? "<p>" + esc(sb.text) + "</p>" : "") + (link ? "<a href='" + esc(link) + "' target='_blank' rel='noopener'>" + esc(link) + " ↗</a>" : "") + "</div>" : "<p class='muted small'>Not submitted yet.</p>") +
+        "<div class='gradeform'><label class='fld'>Grade (out of " + esc(t.points) + ")<input type='number' min='0' max='" + esc(t.points) + "' step='0.5' id='gr_" + tid + "' value='" + (isGraded(t) ? esc(t.grade) : "") + "'></label><label class='fld'>Comment<textarea id='cm_" + tid + "' style='min-height:46px'>" + esc(t.comment || "") + "</textarea></label><div class='row'><button type='button' class='btn primary small' data-grade='" + tid + "'>Save</button><button type='button' class='btn small' data-untask='" + tid + "'>Remove</button></div></div>" +
+        "<span class='small muted' id='gm_" + tid + "'>" + (t.gradedAt ? "Last marked " + esc(fmtStamp(t.gradedAt)) : "") + "</span></div>";
+    }).join("") : "<div class='empty'>No tasks assigned to this student yet. Use the Assignments tab.</div>") +
+    "<div class='section-head'><h3>Daily log</h3></div>" +
+    (wks.length ? wks.map((k) => {
+      const w = d.weeks[k], h = (w.hours || []).reduce((x, y) => x + (+y || 0), 0); let days = "";
+      for (let i = 0; i < 7; i++) { const dh = (w.hours || [])[i], note = (w.notes || [])[i]; if (+dh > 0 || note) { const x = addDays(parseISO(k), i); days += "<div><span class='d'>" + DOW[i] + " " + x.getDate() + " " + MON[x.getMonth()] + "</span><span style='font-family:var(--mono)'>" + esc(dh || 0) + "h</span><span>" + esc(note || "—") + "</span></div>"; } }
+      return "<div class='card wk'><div class='wh'><b>Week of " + esc(fmtDate(k)) + "</b><span style='font-family:var(--mono);color:" + hColor(h, k) + "'>" + (Math.round(h * 10) / 10) + " h" + (wkTarget(k) ? " / " + wkTarget(k) : "") + (w.rating ? " · " + RATING[w.rating] : "") + "</span></div>" +
+        "<div class='days'>" + (days || "<span class='muted'>No daily entries.</span>") + "</div>" +
+        ((w.did || w.blocked || w.next) ? "<dl class='kv'>" + (w.did ? "<dt>Finished</dt><dd>" + esc(w.did) + "</dd>" : "") + (w.blocked ? "<dt>Got in the way</dt><dd>" + esc(w.blocked) + "</dd>" : "") + (w.next ? "<dt>Next week</dt><dd>" + esc(w.next) + "</dd>" : "") + "</dl>" : "") +
+        "<div class='wcform'><textarea id='wc_" + k + "' placeholder='Comment on this week'>" + esc((wc[k] || {}).text || "") + "</textarea><button type='button' class='btn small' data-wc='" + k + "'>Save</button></div><span class='small muted' id='wm_" + k + "'>" + ((wc[k] || {}).at ? "Commented " + esc(fmtStamp(wc[k].at)) : "") + "</span></div>";
+    }).join("") : "<div class='empty'>No daily logs yet.</div>") +
+    "<div class='section-head'><h3>Progress by level</h3></div>" +
+    (prog.length ? "<div class='lvgrid'>" + prog.map((p) => "<div class='lv" + (p.complete ? " done" : "") + "'><b>Level " + p.L.n + ": " + esc(p.L.name) + "</b><span class='muted'>" + p.done + " / " + p.L.tasks.length + " milestones</span><ul>" + p.L.tasks.map((t, i) => "<li class='" + (p.td[i] ? "d" : "") + "'>" + (p.td[i] ? "✓ " : "") + esc(t) + "</li>").join("") + "</ul>" + p.L.exams.map((e, i) => "<span>" + esc(e.name.split(" (")[0].replace(" skills test", "")) + ": <b style='font-family:var(--sans);font-size:13px'>" + esc(EXST[p.es[i]] || p.es[i]) + "</b></span>").join("") + "</div>").join("") + "</div>" : "<p class='muted'>Loading the roadmap outline…</p>");
+  $("fbSave").onclick = () => { const txt = $("fbText").value.trim(); $("fbMsg").textContent = "Sending…"; assignedPatch(rid, uid, (x) => { if (txt) x.feedback = { text: txt, at: new Date().toISOString() }; else delete x.feedback; }).then(() => $("fbMsg").textContent = txt ? "Sent." : "Feedback cleared.").catch(() => $("fbMsg").textContent = "Couldn’t send."); };
+}
+$("stBody").addEventListener("focusout", () => setTimeout(() => { if (stPending && !$("stBody").contains(document.activeElement)) render(); }, 0));
+$("stBody").addEventListener("click", (ev) => {
+  const h = location.hash.replace(/^#/, "").split("/"), rid = h[1], uid = h[2]; if (h[0] !== "st") return;
+  let b;
+  if ((b = ev.target.closest("[data-grade]"))) {
+    const tid = b.getAttribute("data-grade"), t = ((rmData(rid).assigned[uid] || {}).tasks || {})[tid]; if (!t) return;
+    const gv = $("gr_" + tid).value.trim(), cm = $("cm_" + tid).value.trim(), m = $("gm_" + tid);
+    if (gv !== "" && (isNaN(+gv) || +gv < 0 || +gv > +t.points)) { m.textContent = "Grade must be between 0 and " + t.points + "."; return; }
+    m.textContent = "Saving…";
+    assignedPatch(rid, uid, (x) => { const k = x.tasks[tid]; k.grade = gv === "" ? "" : +gv; k.comment = cm; k.gradedAt = new Date().toISOString(); }).then(() => m.textContent = "Saved. The student can see it.").catch(() => m.textContent = "Couldn’t save.");
+  } else if ((b = ev.target.closest("[data-untask]"))) {
+    if (b.getAttribute("data-armed") !== "1") { b.setAttribute("data-armed", "1"); b.textContent = "Click again to remove"; return; }
+    const tid = b.getAttribute("data-untask"); assignedPatch(rid, uid, (x) => { if (x.tasks) delete x.tasks[tid]; }).then(() => render(true));
+  } else if ((b = ev.target.closest("[data-wc]"))) {
+    const wk = b.getAttribute("data-wc"), txt = $("wc_" + wk).value.trim(), m = $("wm_" + wk); m.textContent = "Saving…";
+    assignedPatch(rid, uid, (x) => { x.weekComments = x.weekComments || {}; if (txt) x.weekComments[wk] = { text: txt, at: new Date().toISOString() }; else delete x.weekComments[wk]; }).then(() => m.textContent = txt ? "Saved. The student sees it on that week." : "Comment removed.").catch(() => m.textContent = "Couldn’t save.");
+  }
+});
+/* approve / remove / restore and task removal from anywhere in the console */
+document.addEventListener("click", (ev) => {
+  if (!isTeacher) return;
+  const inConsole = ev.target.closest("#vRoadmap, #vStudent"); if (!inConsole) return;
+  const b = ev.target.closest("[data-approve],[data-remove],[data-restore],[data-deltask]"); if (!b) return;
+  if (b.hasAttribute("data-deltask")) {
+    if (b.getAttribute("data-armed") !== "1") { b.setAttribute("data-armed", "1"); b.textContent = "Click again to remove from everyone"; return; }
+    const rid = location.hash.split("/")[1], tid = b.getAttribute("data-deltask"), d = rmData(rid);
+    b.disabled = true;
+    Promise.all(Object.keys(d.assigned).filter((u) => ((d.assigned[u] || {}).tasks || {})[tid]).map((u) => assignedPatch(rid, u, (x) => { delete x.tasks[tid]; })));
+    return;
+  }
+  const id = b.getAttribute("data-approve") || b.getAttribute("data-remove") || b.getAttribute("data-restore");
+  const rm = b.hasAttribute("data-remove");
+  if (rm && b.getAttribute("data-armed") !== "1") { b.setAttribute("data-armed", "1"); b.textContent = "Click again to remove"; return; }
+  b.disabled = true;
+  setAccess(id, !rm).catch(() => { b.disabled = false; b.textContent = "Couldn’t save"; });
+}, true);
 
 /* ---------- auth ---------- */
 user = undefined; render();
@@ -535,7 +1081,7 @@ onAuthStateChanged(auth, async (u) => {
   }
   $("who").hidden = false;
   $("whoName").textContent = u.displayName || u.email || "";
-  $("roleTag").hidden = !isTeacher; $("roleTag").textContent = isAdmin ? "Admin" : "Teacher";
+  $("roleTag").hidden = !isTeacher; $("roleTag").textContent = isAdmin ? "Admin" : "Mentor";
   if (u.photoURL) { $("avatar").src = u.photoURL; $("avatar").hidden = false; }
   if (isTeacher) {
     onSnapshot(collection(fs, "users"), (qs) => { users = {}; qs.docs.forEach((d) => users[d.id] = d.data()); render(); }, () => {});
@@ -550,8 +1096,13 @@ onAuthStateChanged(auth, async (u) => {
   try {
     const snap = await getDoc(meRef);
     me = snap.exists() ? snap.data() : {};
+    let pledgedAt = null; try { pledgedAt = sessionStorage.getItem("pledged"); } catch (e) {}
     if (!snap.exists()) {
       me = { email: u.email || "", name: u.displayName || "", started: {}, createdAt: new Date().toISOString(), updatedAt: new Date().toISOString() };
+      if (pledgedAt) me.pledge = { finish: true, mentor: true, at: pledgedAt };
+      await setDoc(meRef, me).catch(() => {});
+    } else if (pledgedAt && !me.pledge) {
+      me = { ...me, pledge: { finish: true, mentor: true, at: pledgedAt }, updatedAt: new Date().toISOString() };
       await setDoc(meRef, me).catch(() => {});
     }
   } catch (e) { me = {}; }
@@ -570,9 +1121,15 @@ const friendly = (e) => {
   if (c.includes("too-many-requests")) return "Too many attempts. Wait a few minutes and try again.";
   return "Something went wrong. Try again.";
 };
-$("googleBtn").addEventListener("click", () => { err.textContent = ""; signInWithPopup(auth, new GoogleAuthProvider()).catch((e) => err.textContent = friendly(e)); });
+const needPledge = () => {
+  if ($("authPledge").checked) { try { sessionStorage.setItem("pledged", new Date().toISOString()); } catch (e) {} return true; }
+  err.textContent = "To create your account, tick the commitment to finish your roadmap and mentor another person.";
+  const p = $("authPledge").closest(".pledge"); p.classList.add("need"); $("authPledge").focus(); return false;
+};
+$("authPledge").addEventListener("change", () => { $("authPledge").closest(".pledge").classList.remove("need"); err.textContent = ""; });
+$("googleBtn").addEventListener("click", () => { err.textContent = ""; if (!needPledge()) return; signInWithPopup(auth, new GoogleAuthProvider()).catch((e) => err.textContent = friendly(e)); });
 $("authSignIn").addEventListener("click", () => { err.textContent = ""; signInWithEmailAndPassword(auth, $("authEmail").value.trim(), $("authPass").value).catch((e) => err.textContent = friendly(e)); });
-$("authSignUp").addEventListener("click", () => { err.textContent = ""; createUserWithEmailAndPassword(auth, $("authEmail").value.trim(), $("authPass").value).catch((e) => err.textContent = friendly(e)); });
+$("authSignUp").addEventListener("click", () => { err.textContent = ""; if (!needPledge()) return; createUserWithEmailAndPassword(auth, $("authEmail").value.trim(), $("authPass").value).catch((e) => err.textContent = friendly(e)); });
 $("authReset").addEventListener("click", () => {
   const em = $("authEmail").value.trim();
   if (!em) { err.textContent = "Type your email above first."; return; }

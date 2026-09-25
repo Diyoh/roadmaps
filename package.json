@@ -1,0 +1,9 @@
+{
+  "name": "roadmaps",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node tools/build.js",
+    "deploy": "node tools/build.js && firebase deploy --only hosting,firestore:rules"
+  }
+}
