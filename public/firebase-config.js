@@ -15,5 +15,19 @@ export const ADMIN_EMAIL = "diyohshiloh4@gmail.com";
 
 // Name shown in the hub's header, browser tab and footer.
 export const HUB = {
-  name: "Roadmaps"
+  name: "Roadmaps",
+  // Every roadmap site. When the admin opens the hub, any roadmap missing from the list is
+  // added automatically. Add an entry here for each new roadmap.
+  roadmaps: [
+    {
+      id: "dba",
+      title: "DBA Career Ladder",
+      tagline: "Seven levels from your first SQL query to a professional database administration certification.",
+      url: "https://roadmaps-2b061-dba.web.app/",
+      levels: 7,
+      dailyHours: 2,
+      startDate: "2026-11-01",
+      order: 1
+    }
+  ]
 };
