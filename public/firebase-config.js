@@ -12,6 +12,17 @@ export const firebaseConfig = {
   measurementId: "G-EY6LZ5KXL0"
 };
 
-// The teacher's Google account. Whoever signs in with this email (using "Continue with Google")
-// gets the teacher pages. It must match the email in firestore.rules.
-export const TEACHER_EMAIL = "diyohshiloh4@gmail.com";
+// The admin's Google account: manages every roadmap. Other teachers are added from the hub
+// (Teachers section) and get teacher pages only on the roadmaps assigned to them.
+// Security rules live on the Master branch (firestore.rules).
+export const ADMIN_EMAIL = "diyohshiloh4@gmail.com";
+
+// This roadmap. The id must be unique across all roadmaps (it names this roadmap's data in the
+// database). hubUrl is the main site where students choose a roadmap.
+export const ROADMAP = {
+  id: "dba",
+  title: "DBA Career Ladder",
+  tagline: "Seven levels from your first SQL query to a professional database administration certification.",
+  order: 1,
+  hubUrl: "https://roadmaps-2b061.web.app/"
+};
