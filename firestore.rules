@@ -1,0 +1,83 @@
+rules_version = '2';
+
+// Security rules for the whole Roadmaps platform: the hub (this branch) and every
+// roadmap site (one branch each). All sites share this one Firebase project, so these
+// rules are deployed from the Master branch only.
+//
+// Roles
+// - Admin: the email below, signed in with Google. Sees and manages everything,
+//   adds teachers and assigns roadmaps to them.
+// - Teacher: has a document in /teachers/{their email} listing the roadmap ids they
+//   manage. Must sign in with Google (verified email). Manages only those roadmaps.
+// - Student: anyone else who signs in. Reads and writes only their own data.
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function signedIn() { return request.auth != null; }
+    function verified() { return signedIn() && request.auth.token.email_verified == true; }
+    function myEmail() { return request.auth.token.email.lower(); }
+    function isAdmin() { return verified() && myEmail() == "diyohshiloh4@gmail.com"; }
+    function teacherPath() { return /databases/$(database)/documents/teachers/$(myEmail()); }
+    function isAnyTeacher() { return isAdmin() || (verified() && exists(teacherPath())); }
+    function isTeacherOf(rid) {
+      return isAdmin() || (verified() && exists(teacherPath()) && rid in get(teacherPath()).data.roadmaps);
+    }
+    function isSelf(uid) { return signedIn() && request.auth.uid == uid; }
+    function studentRoadmap(uid) { return get(/databases/$(database)/documents/users/$(uid)).data.currentRoadmap; }
+
+    // List of published roadmaps. Public, so the landing page can show them.
+    match /catalog/{rid} {
+      allow read: if true;
+      allow write: if isTeacherOf(rid);
+    }
+
+    // Teachers and the roadmaps they manage. Only the admin changes this.
+    match /teachers/{email} {
+      allow read: if isAdmin() || (verified() && myEmail() == email);
+      allow write: if isAdmin();
+    }
+
+    // Each person's profile: current roadmap and which roadmaps they have started.
+    match /users/{uid} {
+      allow read: if isSelf(uid) || isAnyTeacher();
+      allow create, update: if isSelf(uid);
+      allow delete: if isAdmin();
+    }
+
+    // Approval. Admin approves anyone; a teacher approves students on their roadmaps.
+    match /access/{uid} {
+      allow read: if isSelf(uid) || isAnyTeacher();
+      allow write: if isAdmin() || (isAnyTeacher() && isTeacherOf(studentRoadmap(uid)));
+    }
+
+    // Per-roadmap data.
+    match /r/{rid} {
+      // Daily hours, start date, holidays.
+      match /settings/{docId} {
+        allow read: if signedIn();
+        allow write: if isTeacherOf(rid);
+      }
+      // A student's plan on this roadmap and their daily logs.
+      match /students/{uid} {
+        allow read: if isSelf(uid) || isTeacherOf(rid);
+        allow create, update: if isSelf(uid) && request.resource.size() < 200000;
+        allow delete: if isTeacherOf(rid);
+        match /weeks/{weekId} {
+          allow read: if isSelf(uid) || isTeacherOf(rid);
+          allow write: if isSelf(uid);
+        }
+      }
+      // Assignments, grades and comments: written by the roadmap's teachers only.
+      match /assigned/{uid} {
+        allow read: if isSelf(uid) || isTeacherOf(rid);
+        allow write: if isTeacherOf(rid);
+      }
+    }
+
+    // Everything else is closed.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
