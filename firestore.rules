@@ -41,7 +41,9 @@ service cloud.firestore {
     // Each person's profile: current roadmap and which roadmaps they have started.
     match /users/{uid} {
       allow read: if isSelf(uid) || isAnyTeacher();
-      allow create, update: if isSelf(uid);
+      allow create: if isSelf(uid);
+      // Mentors of the student's roadmap (and the admin) may correct a student's name.
+      allow update: if isSelf(uid) || isAdmin() || (isAnyTeacher() && isTeacherOf(resource.data.currentRoadmap));
       allow delete: if isAdmin();
     }
 
@@ -61,7 +63,9 @@ service cloud.firestore {
       // A student's plan on this roadmap and their daily logs.
       match /students/{uid} {
         allow read: if isSelf(uid) || isTeacherOf(rid);
-        allow create, update: if isSelf(uid) && request.resource.size() < 200000;
+        allow create: if isSelf(uid);
+        // The student, or a mentor of this roadmap (to correct the student's name).
+        allow update: if isSelf(uid) || isTeacherOf(rid);
         allow delete: if isTeacherOf(rid);
         match /weeks/{weekId} {
           allow read: if isSelf(uid) || isTeacherOf(rid);
