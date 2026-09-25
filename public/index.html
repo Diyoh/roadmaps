@@ -431,6 +431,73 @@ th{background:var(--sunken)}
   .assign-grid{grid-template-columns:1fr}
   .assign-grid.hol-grid{grid-template-columns:1fr 1fr}
 }
+
+/* ---- ladder: step navigation ---- */
+.lnav{display:grid; grid-template-columns:repeat(7, minmax(132px, 1fr)); gap:8px; overflow-x:auto; scroll-snap-type:x proximity; padding:4px 2px 10px; position:sticky; top:0; z-index:4; background:var(--bg); scrollbar-width:thin}
+.lstep{position:relative; overflow:hidden; scroll-snap-align:start; display:grid; grid-template-columns:26px minmax(0,1fr); gap:4px 8px; align-items:start; text-align:left; font:inherit; color:var(--ink); background:var(--surface); border:0; border-radius:12px; padding:12px 12px 14px; box-shadow:var(--shadow); cursor:pointer}
+.lstep:hover{box-shadow:0 0 0 1px var(--accent), var(--shadow)}
+.lstep.sel{box-shadow:0 0 0 2px var(--accent), var(--shadow)}
+.lnum{width:26px; height:26px; border-radius:50%; display:grid; place-items:center; font-family:var(--display); font-weight:700; font-size:14px; background:var(--sunken); color:var(--muted)}
+.lstep.cur .lnum{background:var(--accent-soft); color:var(--accent); box-shadow:inset 0 0 0 2px var(--accent)}
+.lstep.sel .lnum{background:var(--accent); color:var(--surface); box-shadow:none}
+.lstep.done .lnum{background:var(--ok-soft); color:var(--ok); box-shadow:none}
+.ltxt{display:grid; gap:1px; min-width:0}
+.ltxt b{font-size:13px; font-weight:600}
+.lname{font-size:12.5px; line-height:1.3; color:var(--muted); display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; min-height:2.6em}
+.ldates{font-family:var(--mono); font-size:11px; color:var(--muted); white-space:nowrap}
+.lbar{position:absolute; left:0; right:0; bottom:0; height:4px; background:var(--sunken)}
+.lbar i{display:block; height:100%; background:var(--accent)}
+.lstep.done .lbar i{background:var(--ok)}
+#ladderList .level{grid-template-columns:1fr}
+#ladderList .rail{display:none}
+#ladderList .card{margin-bottom:0}
+.lpager{display:flex; flex-wrap:wrap; gap:10px; justify-content:space-between; border-top:1px solid var(--line); padding-top:16px}
+@media (min-width: 1000px){
+  .lnav{grid-template-columns:repeat(7, minmax(0,1fr)); overflow:visible}
+  .lstep{grid-template-columns:1fr; padding:12px 10px 14px}
+  .ldates{white-space:normal}
+}
+@media (max-width: 720px){
+  .lnav{grid-template-columns:repeat(7, 150px); margin-inline:-16px; padding-inline:16px}
+  .lpager{flex-direction:column}
+  .lpager .btn{width:100%; justify-content:center; white-space:normal; text-align:center}
+}
+
+/* ---- class table: fits without sideways scrolling; cards on phones ---- */
+.classtable th, .classtable td{padding:10px 10px; font-size:13.5px}
+.classtable .sname{font-weight:600; display:flex; flex-wrap:wrap; gap:6px; align-items:center}
+.classtable .ssub{font-size:12px; color:var(--muted)}
+.classtable .acts{white-space:nowrap}
+.classtable .acts .btn{margin-right:4px}
+.classtable .spark i{width:5px}
+@media (max-width: 1180px){
+  .cardtable thead{display:none}
+  .cardtable, .cardtable tbody{display:block}
+  .cardtable tr{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:10px 14px; padding:16px; border-bottom:1px solid var(--line)}
+  .cardtable tr:last-child{border-bottom:0}
+  .cardtable td{border:0; padding:0; min-width:0}
+  .cardtable td.full{grid-column:1 / -1}
+  .cardtable td[data-l]::before{content:attr(data-l); display:block; font-family:var(--mono); font-size:10.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); margin-bottom:2px}
+}
+@media (max-width: 520px){ .cardtable tr{grid-template-columns:1fr 1fr} }
+
+/* ---- task tracking ---- */
+.tasktrack{display:grid; gap:10px}
+.tt{background:var(--surface); border-radius:var(--radius); box-shadow:var(--shadow); overflow:hidden}
+.tt summary{list-style:none; cursor:pointer; display:grid; grid-template-columns:minmax(0,1fr) auto; gap:6px 16px; align-items:center; padding:16px 18px; position:relative}
+.tt summary::-webkit-details-marker{display:none}
+.tt summary::after{content:"▾"; position:absolute; right:14px; top:14px; color:var(--muted); transition:transform .15s}
+.tt[open] summary::after{transform:rotate(180deg)}
+.tt-main{display:grid; gap:2px; min-width:0; padding-right:18px}
+.tt-counts{display:flex; flex-wrap:wrap; gap:4px 14px; font-size:13px; color:var(--muted); padding-right:22px}
+.tt-counts b{color:var(--ink)}
+.tt-bar{grid-column:1 / -1; height:4px; border-radius:2px; background:var(--sunken); overflow:hidden}
+.tt-bar i{display:block; height:100%; background:var(--ok)}
+.tt-body{border-top:1px solid var(--line); padding:6px 18px 10px}
+.tt-row{display:grid; grid-template-columns:minmax(0,1fr) auto auto; gap:10px; align-items:center; padding-block:8px; border-bottom:1px solid var(--line); font-size:14px}
+.tt-row:last-child{border-bottom:0}
+.tt-name{overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+@media (max-width: 560px){ .tt summary{grid-template-columns:1fr} .tt-counts{padding-right:0} }
 </style>
 </head>
 <body>
@@ -608,6 +675,7 @@ th{background:var(--sunken)}
   <section class="page" id="p-ladder" hidden>
     <h2>The ladder</h2>
     <p class="muted">Start at Level 1 and climb. Finish each level before moving up. If you fall behind, push the dates back rather than skipping the exam. Tick milestones as you finish them.</p>
+    <nav class="lnav" id="ladderNav" aria-label="Levels"></nav>
     <div class="ladder" id="ladderList"></div>
   </section>
 
@@ -634,8 +702,8 @@ th{background:var(--sunken)}
     <h2>Class</h2>
     <div class="panel pending" id="pendingBox" hidden></div>
     <p class="muted">Approved students, with the date they signed their commitment. Select <b>View</b> to open a student’s daily log, submissions and grades.</p>
-    <div class="tablebox"><table>
-      <thead><tr><th>Student</th><th>Signed</th><th>Working on</th><th>Last 7 days</th><th>Total hours</th><th>Last check-in</th><th>Assignments</th><th>Avg grade</th><th>Exams</th><th></th></tr></thead>
+    <div class="tablebox"><table class="cardtable classtable">
+      <thead><tr><th>Student</th><th>Level</th><th>Last 7 days</th><th>Hours</th><th>Check-in</th><th>Work · grade</th><th>Exams</th><th></th></tr></thead>
       <tbody id="classBody"><tr><td colspan="10" class="muted">Loading your class…</td></tr></tbody>
     </table></div>
     <div class="panel invite">
@@ -666,6 +734,9 @@ th{background:var(--sunken)}
       </fieldset>
       <div class="weekbar"><button type="button" class="btn primary" id="as_go">Assign task</button><span class="muted" id="as_status" style="font-size:13px"></span></div>
     </div>
+    <h2 style="font-size:1.4rem">Tasks you’ve assigned</h2>
+    <p class="muted small" style="margin:0">Click a task to see which students have done it.</p>
+    <div id="taskTrack" class="tasktrack"></div>
   </section>
 
   <section class="page" id="p-settings" hidden>
@@ -1016,9 +1087,11 @@ function renderLadder(){
         "<div class='cols'><div style='display:grid;gap:12px;align-content:start'><div class='eyebrow'>The work: what, when, where</div><div class='phases'>"+phases+"</div>"+(L.note?"<p class='note'>"+fillTokens(esc(L.note))+"</p>":"")+"</div>"+
         "<div class='side'>"+exams+quals+comm+"</div></div>"+
         "<div class='checklist'><div class='ch-head'><span class='eyebrow'>Milestones</span><span class='mono muted' style='font-size:12px' id='prog"+L.n+"'>0/"+L.tasks.length+"</span></div>"+tasks+"</div>"+
+        "<div class='lpager'>"+(L.n>1?"<button type='button' class='btn' data-lsel='"+(L.n-1)+"'>← Level "+(L.n-1)+": "+esc(LEVELS[L.n-2].name)+"</button>":"<span></span>")+(L.n<LEVELS.length?"<button type='button' class='btn primary' data-lsel='"+(L.n+1)+"'>Level "+(L.n+1)+": "+esc(LEVELS[L.n].name)+" →</button>":"")+"</div>"+
       "</div></article>";
   }).join("");
   document.getElementById("ladderList").innerHTML = html;
+  renderLadderNav();
 }
 
 /* ---------- apply state to inputs ---------- */
@@ -1083,6 +1156,29 @@ var ICONS={
   settings:ICO("<circle cx='12' cy='12' r='3'/><path d='M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z'/>")
 };
 
+/* ---------- ladder: one level at a time, chosen from a row of steps ---------- */
+var ladderSel=null;
+function defaultLevel(){ var t=iso(today()), byDate=levelFor(t), w=workingOn(store.state); return t<PLAN_START ? 1 : (byDate ? Math.min(byDate.n, w.n) : w.n); }
+function renderLadderNav(){
+  var nav=document.getElementById("ladderNav"); if(!nav || !LEVELS[0].start) return;
+  if(ladderSel==null) ladderSel=defaultLevel();
+  var lp=levelProgress(store.state), cur=workingOn(store.state).n;
+  nav.innerHTML=lp.map(function(p){
+    var n=p.L.n, frac=p.complete?1:(p.done/p.L.tasks.length), sel=n===ladderSel;
+    return "<button type='button' class='lstep"+(p.complete?" done":"")+(n===cur?" cur":"")+(sel?" sel":"")+"' data-lsel='"+n+"' aria-pressed='"+sel+"' aria-controls='level"+n+"'>"+
+      "<span class='lnum' aria-hidden='true'>"+(p.complete?"✓":n)+"</span>"+
+      "<span class='ltxt'><b>Level "+n+"</b><span class='lname'>"+esc(p.L.name)+"</span><span class='ldates'>"+esc(fmtRange(p.L.start,p.L.end))+"</span></span>"+
+      "<span class='lbar'><i style='width:"+Math.round(frac*100)+"%'></i></span></button>";
+  }).join("");
+  document.querySelectorAll("#ladderList .level").forEach(function(a){ a.hidden = +a.getAttribute("data-level")!==ladderSel; });
+  var btn=nav.querySelector(".sel"); if(btn && nav.scrollWidth>nav.clientWidth){ nav.scrollLeft = btn.offsetLeft - nav.clientWidth/2 + btn.offsetWidth/2; }
+}
+document.addEventListener("click", function(ev){
+  var b=ev.target.closest("[data-lsel]"); if(!b) return;
+  ladderSel=+b.getAttribute("data-lsel"); renderLadderNav();
+  if(b.closest("#p-ladder")){ var nav=document.getElementById("ladderNav"); var top=nav.getBoundingClientRect().top+window.scrollY-12; if(window.scrollY>top) window.scrollTo({top:top, behavior:"smooth"}); }
+});
+
 /* ---------- overview hero: ring, level strip, main call to action ---------- */
 function renderHero(){
   var s=store.state, lp=levelProgress(s), cur=workingOn(s), t=today(), tISO=iso(t);
@@ -1107,7 +1203,7 @@ function renderHero(){
   var strip=document.getElementById("ovStrip");
   if(strip) strip.innerHTML=lp.map(function(p){
     var frac=p.complete?1:(p.done/p.L.tasks.length), isCur=p.L.n===cur.n;
-    return "<a href='#ladder' class='rung-s"+(p.complete?" done":"")+(isCur?" cur":"")+"' title='Level "+p.L.n+": "+esc(p.L.name)+"'><span class='rung-fill' style='width:"+Math.round(frac*100)+"%'></span><span class='rung-n'>L"+p.L.n+"</span><span class='rung-name'>"+esc(p.L.name)+"</span></a>";
+    return "<a href='#ladder' data-lsel='"+p.L.n+"' class='rung-s"+(p.complete?" done":"")+(isCur?" cur":"")+"' title='Level "+p.L.n+": "+esc(p.L.name)+"'><span class='rung-fill' style='width:"+Math.round(frac*100)+"%'></span><span class='rung-n'>L"+p.L.n+"</span><span class='rung-name'>"+esc(p.L.name)+"</span></a>";
   }).join("");
 }
 var PAGES_STUDENT=[["overview","Overview"],["log","Daily log"],["work","My assignments"],["ladder","The ladder"],["exams","Exam calendar"],["routine","Daily routine"],["commit","My commitment"]];
@@ -1115,8 +1211,8 @@ var PAGES_TEACHER=[["class","Class"],["assign","Assign a task"],["settings","Pla
 var PAGE_NAMES={overview:"your overview", log:"your daily log", work:"your assignments", ladder:"the ladder", exams:"the exam calendar", routine:"the daily routine", commit:"your commitment"};
 var role=null, entered=false, ready=false;
 var RP = window.APP_ROADMAP ? "r/"+window.APP_ROADMAP.id+"/" : "";
-var NEEDS_APPROVAL = window.APP_NEEDS_APPROVAL===true, approved=!NEEDS_APPROVAL, removedFlag=false;
-function blocked(){ return NEEDS_APPROVAL && (!approved || removedFlag); }
+var NEEDS_APPROVAL = window.APP_NEEDS_APPROVAL===true, approved=!NEEDS_APPROVAL, removedFlag=false, suspendedFlag=false, suspendReason="";
+function blocked(){ return NEEDS_APPROVAL && (!approved || removedFlag || suspendedFlag); }
 function hasPage(list,p){ return list.some(function(x){ return x[0]===p; }); }
 function signed(){ var pl=store.state.pledge||{}; return !!(pl.committedAt && (pl.name||"").trim()); }
 function resumePage(){ var p=(store.state.resume||{}).page; return hasPage(PAGES_STUDENT,p)?p:"overview"; }
@@ -1146,9 +1242,9 @@ function showPage(){
   if(p==="start") renderStart();
   if(p==="wait"){
     var wn=document.getElementById("waitNameInput"); if(wn && document.activeElement!==wn) wn.value=(store.state.pledge||{}).name||"";
-    document.getElementById("waitName").hidden = removedFlag;
-    document.getElementById("waitTitle").textContent = removedFlag ? "Your access has been removed" : "Waiting for your mentor";
-    document.getElementById("waitText").textContent = removedFlag ? "Your mentor has removed you from this class. If you think this is a mistake, contact your mentor." : "You’ve signed your commitment. Your mentor now needs to approve you before you can start. This page opens your plan automatically as soon as you’re approved.";
+    document.getElementById("waitName").hidden = removedFlag || suspendedFlag;
+    document.getElementById("waitTitle").textContent = suspendedFlag ? "Your access is suspended" : removedFlag ? "Your access has been removed" : "Waiting for your mentor";
+    document.getElementById("waitText").textContent = suspendedFlag ? "Your mentor has suspended your access to this roadmap, so you can’t continue the classes for now."+(suspendReason?" Reason: "+suspendReason:"")+" Your work so far is saved. Contact your mentor to discuss it." : removedFlag ? "Your mentor has removed you from this class. If you think this is a mistake, contact your mentor." : "You’ve signed your commitment. Your mentor now needs to approve you before you can start. This page opens your plan automatically as soon as you’re approved.";
   }
   if(p==="overview") renderNext();
   if(p==="settings" && !setDirty) loadSettingsForm();
@@ -1228,6 +1324,7 @@ function updateStats(){
   });
   document.getElementById("stTasks").textContent = doneCount;
   renderHero();
+  renderLadderNav();
   document.getElementById("stTasksSub").textContent = "of "+ALL_TASKS.length+" across 7 levels";
   var passed = ALL_EXAMS.filter(function(e){ return (s.exams[e.id]||{}).status==="passed"; }).length;
   document.getElementById("stExams").textContent = passed;
@@ -1400,6 +1497,16 @@ function ownerPatch(sid, mutate){
   return ownerChains[path];
 }
 function isApproved(id){ if(!NEEDS_APPROVAL) return true; var a=classAccess[id]||{}; return a.approved===true && !a.removed; }
+function isSuspended(id){ return NEEDS_APPROVAL && (classAccess[id]||{}).suspended===true; }
+function isActive(id){ return isApproved(id) && !isSuspended(id); }
+document.getElementById("classBody").addEventListener("click", function(ev){
+  var b=ev.target.closest("[data-suspend],[data-reinstate]"); if(!b) return;
+  var id=b.getAttribute("data-suspend")||b.getAttribute("data-reinstate"), susp=b.hasAttribute("data-suspend");
+  if(susp && b.getAttribute("data-armed")!=="1"){ b.setAttribute("data-armed","1"); b.textContent="Click again to suspend"; return; }
+  b.disabled=true;
+  var cur=clone(classAccess[id]||{}); cur.approved=true; cur.removed=false; cur.suspended=susp; cur.at=new Date().toISOString(); if(susp) cur.suspendedAt=cur.at; else { delete cur.reason; delete cur.suspendedAt; }
+  accessSet(id, cur).then(function(){ renderClass(); }).catch(function(){ b.disabled=false; b.textContent="Couldn’t save"; });
+});
 function renderPending(ps){
   var box=document.getElementById("pendingBox"); if(!box) return;
   if(!NEEDS_APPROVAL){ box.hidden=true; return; }
@@ -1439,10 +1546,11 @@ function renderClass(){
   var ids=classRows.map(function(r){ return r.id; });
   profilesFor(ids).then(function(ps){
     renderRecipients(ps);
+    renderTaskTrack(ps);
     var body=document.getElementById("classBody");
     renderPending(ps);
     var others=classRows.filter(function(r){ return r.id!==uid && isApproved(r.id); });
-    if(!others.length){ body.innerHTML="<tr><td colspan='10' class='muted'>No approved students yet. New students appear under “Waiting for approval” after they sign in and sign their commitment.</td></tr>"; return; }
+    if(!others.length){ body.innerHTML="<tr><td colspan='8' class='muted'>No approved students yet. New students appear under “Waiting for approval” after they sign in and sign their commitment.</td></tr>"; return; }
     var rows=others.slice().sort(function(a,b){ return studentName(a,ps).toLowerCase()<studentName(b,ps).toLowerCase()?-1:1; });
     var thisWeek=iso(weekStart(today())), lateCutoff=iso(addDays(parseISO(thisWeek),-14));
     body.innerHTML = rows.map(function(r){
@@ -1451,25 +1559,55 @@ function renderClass(){
       var last = sm.lastWeek ? weekLabel(sm.lastWeek)+(sm.lastRating?" · "+RATING_LABEL[sm.lastRating]:"") : "Not yet";
       var late = thisWeek>PLAN_START && (!sm.lastWeek || sm.lastWeek<lateCutoff);
       var pl=((r.data.state||{}).pledge||{});
+      var susp=isSuspended(r.id);
       return "<tr data-id='"+esc(r.id)+"'"+(r.id===selId?" class='sel'":"")+">"+
-        "<td><div class='who'>"+(p.avatarUrl?"<img alt='' src='"+esc(p.avatarUrl)+"'>":"")+"<span>"+esc(studentName(r,ps))+"</span></div></td>"+
-        "<td"+(pl.committedAt?"":" class='late'")+">"+(pl.committedAt?esc(fmtShort(pl.committedAt.slice(0,10))):"Not yet")+"</td>"+
-        "<td>Level "+L.n+"</td>"+
-        "<td>"+spark(sm.daily)+"</td>"+
-        "<td class='mono'>"+(sm.hours||0)+"</td>"+
-        "<td"+(late?" class='late'":"")+">"+esc(last)+"</td>"+
-        "<td class='mono'>"+g.submitted+" / "+g.assigned+(g.overdue?" <span class='late'>("+g.overdue+" late)</span>":"")+"</td>"+
-        "<td class='mono'>"+(g.avg==null?"—":g.avg+"%")+"</td>"+
-        "<td class='mono'>"+(sm.examsPassed||0)+" / "+ALL_EXAMS.length+"</td>"+
-        "<td><button type='button' class='btn small' data-view='"+esc(r.id)+"'>View</button></td></tr>";
+        "<td class='full'><div class='sname'>"+esc(studentName(r,ps))+(susp?" <span class='chip over'>Suspended</span>":"")+"</div><div class='ssub'>"+(pl.committedAt?"Signed "+esc(fmtShort(pl.committedAt.slice(0,10))):"<span class='late'>Not signed</span>")+"</div></td>"+
+        "<td data-l='Level'>L"+L.n+"</td>"+
+        "<td data-l='Last 7 days'>"+spark(sm.daily)+"</td>"+
+        "<td data-l='Hours' class='mono'>"+(sm.hours||0)+"</td>"+
+        "<td data-l='Check-in'"+(late?" class='late'":"")+">"+esc(last)+"</td>"+
+        "<td data-l='Work · grade' class='mono'>"+g.submitted+"/"+g.assigned+(g.overdue?" <span class='late'>("+g.overdue+" late)</span>":"")+" · "+(g.avg==null?"—":g.avg+"%")+"</td>"+
+        "<td data-l='Exams' class='mono'>"+(sm.examsPassed||0)+"/"+ALL_EXAMS.length+"</td>"+
+        "<td class='full acts'><button type='button' class='btn small' data-view='"+esc(r.id)+"'>View</button>"+(susp?"<button type='button' class='btn small' data-reinstate='"+esc(r.id)+"'>Reinstate</button>":"<button type='button' class='btn small' data-suspend='"+esc(r.id)+"'>Suspend</button>")+"</td></tr>";
     }).join("");
   });
 }
+/* ---------- mentor: track assigned tasks ---------- */
+var openTasks={};
+function renderTaskTrack(ps){
+  var box=document.getElementById("taskTrack"); if(!box) return;
+  var byTask={}, t0=iso(today());
+  Object.keys(classAssigned).forEach(function(sid){
+    var tasks=(classAssigned[sid]||{}).tasks||{};
+    Object.keys(tasks).forEach(function(tid){ var b=byTask[tid]=byTask[tid]||{t:tasks[tid], rows:[]}; b.rows.push({sid:sid, t:tasks[tid]}); });
+  });
+  var tids=Object.keys(byTask).sort(function(a,b){ return (byTask[a].t.due||"9999")<(byTask[b].t.due||"9999")?-1:1; });
+  if(!tids.length){ box.innerHTML="<p class='empty'>No tasks assigned yet. Tasks you assign above appear here.</p>"; return; }
+  var rowOf=function(sid){ var r=null; classRows.forEach(function(x){ if(x.id===sid) r=x; }); return r; };
+  box.innerHTML=tids.map(function(tid){
+    var b=byTask[tid], t=b.t, sub=0, graded=0, late=0;
+    var lines=b.rows.map(function(x){
+      var r=rowOf(x.sid), subs=r?(((r.data||{}).state||{}).subs||{}):{}, sb=subs[tid], g=isGraded(x.t);
+      if(sb) sub++; if(g) graded++; if(!sb && !g && t.due && t.due<t0) late++;
+      var st = g ? "<span class='chip graded'>Graded "+esc(x.t.grade)+"/"+esc(x.t.points)+"</span>" : sb ? "<span class='chip sub'>Submitted "+esc(fmtShort(sb.submittedAt.slice(0,10)))+"</span>" : (t.due && t.due<t0 ? "<span class='chip over'>Overdue</span>" : "<span class='chip'>To do</span>");
+      var name = r ? studentName(r, ps||{}) : "Former student";
+      return "<div class='tt-row'><span class='tt-name'>"+esc(name)+"</span>"+st+(r?"<button type='button' class='btn small' data-view='"+esc(x.sid)+"'>Open</button>":"<span></span>")+"</div>";
+    }).join("");
+    var n=b.rows.length, pct=n?Math.round(sub/n*100):0;
+    return "<details class='tt' data-tid='"+esc(tid)+"'"+(openTasks[tid]?" open":"")+"><summary>"+
+      "<span class='tt-main'><b>"+esc(t.title)+"</b><span class='muted small'>"+(t.due?"Due "+esc(fmt(t.due)):"No due date")+" · "+esc(t.points)+" points"+(t.level?" · Level "+esc(t.level):"")+"</span></span>"+
+      "<span class='tt-counts'><span><b>"+sub+"</b>/"+n+" submitted</span><span><b>"+graded+"</b> graded</span>"+(late?"<span class='late'><b>"+late+"</b> overdue</span>":"")+"</span>"+
+      "<span class='tt-bar'><i style='width:"+pct+"%'></i></span></summary><div class='tt-body'>"+lines+"</div></details>";
+  }).join("");
+}
+document.getElementById("taskTrack").addEventListener("toggle", function(ev){ var d=ev.target; if(d.matches && d.matches("details.tt")) openTasks[d.getAttribute("data-tid")]=d.open; }, true);
+document.getElementById("taskTrack").addEventListener("click", function(ev){ var b=ev.target.closest("[data-view]"); if(b) selectStudent(b.getAttribute("data-view")); });
+
 function renderRecipients(ps){
   var box=document.getElementById("as_list");
   var checked={}; box.querySelectorAll("input:checked").forEach(function(i){ checked[i.value]=true; });
   box.textContent="";
-  var others=classRows.filter(function(r){ return r.id!==uid && isApproved(r.id); });
+  var others=classRows.filter(function(r){ return r.id!==uid && isActive(r.id); });
   if(!others.length){ var e=document.createElement("span"); e.className="muted"; e.textContent="No students yet."; box.appendChild(e); return; }
   others.forEach(function(r){
     var l=document.createElement("label"); l.className="inline";
@@ -1486,7 +1624,7 @@ document.getElementById("as_go").addEventListener("click", function(){
   if(!title){ st.textContent="Give the task a title."; return; }
   if(!(pts>0)){ st.textContent="Points must be more than 0."; return; }
   var all=document.querySelector("input[name='as_to']:checked").value==="all";
-  var recips = all ? classRows.filter(function(r){ return r.id!==uid && isApproved(r.id); }).map(function(r){ return r.id; }) : Array.prototype.map.call(document.querySelectorAll("#as_list input:checked"), function(i){ return i.value; });
+  var recips = all ? classRows.filter(function(r){ return r.id!==uid && isActive(r.id); }).map(function(r){ return r.id; }) : Array.prototype.map.call(document.querySelectorAll("#as_list input:checked"), function(i){ return i.value; });
   if(!recips.length){ st.textContent = all ? "No students have joined yet." : "Pick at least one student."; return; }
   var id="t"+Date.now().toString(36);
   var task={title:title, details:document.getElementById("as_details").value.trim(), due:document.getElementById("as_due").value, points:pts, level:document.getElementById("as_level").value, createdAt:new Date().toISOString()};
@@ -2109,7 +2247,7 @@ Promise.all([C?C.use("db"):null, C?C.use("user"):null]).then(function(r){
     }, function(){ if(firstAsg){ firstAsg=false; initLeft--; if(initLeft<=0) readyAs("student", myName); } });
     if(NEEDS_APPROVAL) db.doc("access/"+uid).onSnapshot(function(snap){
       var a = snap.exists ? (snap.data()||{}) : {};
-      approved = a.approved===true; removedFlag = a.removed===true;
+      approved = a.approved===true; removedFlag = a.removed===true; suspendedFlag = a.suspended===true; suspendReason = a.reason||"";
       if(firstAcc){ firstAcc=false; initLeft--; if(initLeft<=0) readyAs("student", myName); }
       else if(ready && role==="student"){ renderTabs(); showPage(); }
     }, function(){ if(firstAcc){ firstAcc=false; initLeft--; if(initLeft<=0) readyAs("student", myName); } });
