@@ -270,6 +270,12 @@ img{max-width:100%}
 .or{display:flex; align-items:center; gap:10px; color:var(--muted); font-size:12px}
 .or::before,.or::after{content:""; flex:1; height:1px; background:var(--line)}
 .linkbtn{all:unset; cursor:pointer; color:var(--accent); font-size:13px; text-decoration:underline; text-underline-offset:2px}
+a.btn{text-decoration:none; display:inline-flex; align-items:center}
+.panel, .card, .taskcard, .tablebox, .stats, .pledge-note{box-shadow:0 1px 2px rgba(21,32,44,.05), 0 8px 24px rgba(21,32,44,.05)}
+.btn.primary:hover{filter:brightness(1.07)}
+.weekbar button, .btn{border-radius:8px; font-weight:500}
+input:focus, select:focus, textarea:focus{border-color:var(--accent); outline:none; box-shadow:0 0 0 3px var(--accent-soft)}
+.authbox{box-shadow:0 1px 2px rgba(21,32,44,.05), 0 12px 32px rgba(21,32,44,.08)}
 </style>
 </head>
 <body>
@@ -289,8 +295,8 @@ img{max-width:100%}
 </div>
 <div class="wrap" id="appRoot" hidden>
   <header class="topbar">
-    <div class="brand"><b>DBA Career Ladder</b><span class="muted" id="hello"></span></div>
-    <span style="display:flex;gap:12px;align-items:baseline"><span id="saveState">Opening…</span><button type="button" class="btn small" id="signOutBtn">Sign out</button></span>
+    <div class="brand"><svg width="26" height="26" viewBox="0 0 30 30" aria-hidden="true" style="align-self:center;flex:none"><rect x="1" y="1" width="28" height="28" rx="8" fill="var(--accent)"/><path d="M9 22V8M21 22V8M9 18h12M9 13h12" stroke="var(--surface)" stroke-width="2.2" stroke-linecap="round"/></svg><b>DBA Career Ladder</b><span class="muted" id="hello"></span></div>
+    <span style="display:flex;gap:12px;align-items:baseline"><span id="saveState">Opening…</span><a class="btn small" id="hubLink" hidden href="#">Switch roadmap</a><button type="button" class="btn small" id="signOutBtn">Sign out</button></span>
   </header>
   <nav class="tabs" id="tabs" aria-label="Pages" hidden></nav>
 
@@ -321,6 +327,16 @@ img{max-width:100%}
           <p class="muted small" style="margin:0">Your plan is linked to the account you signed in with, so everything you’ve done is saved when you come back.</p>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="page" id="p-elsewhere" hidden>
+    <div class="gate">
+      <div class="eyebrow">Your roadmap</div>
+      <h1>You’re on a different roadmap</h1>
+      <p id="elText" style="margin:0;max-width:60ch">You’re currently studying another roadmap. Your progress there is saved.</p>
+      <div class="weekbar"><a class="btn primary" id="elGo" href="#">Continue my current roadmap</a><button type="button" class="btn" id="elSwitch">Switch to <span id="elSwitchName">this roadmap</span></button></div>
+      <p class="muted small" style="margin:0">Switching keeps everything you’ve done so far. You can switch back at any time from “Switch roadmap”.</p>
     </div>
   </section>
 
@@ -885,6 +901,7 @@ var PAGES_STUDENT=[["overview","Overview"],["log","Daily log"],["work","My assig
 var PAGES_TEACHER=[["class","Class"],["assign","Assign a task"],["settings","Plan settings"],["ladder","The ladder"],["exams","Exam calendar"],["routine","Daily routine"]];
 var PAGE_NAMES={overview:"your overview", log:"your daily log", work:"your assignments", ladder:"the ladder", exams:"the exam calendar", routine:"the daily routine", commit:"your commitment"};
 var role=null, entered=false, ready=false;
+var RP = window.APP_ROADMAP ? "r/"+window.APP_ROADMAP.id+"/" : "";
 var NEEDS_APPROVAL = window.APP_NEEDS_APPROVAL===true, approved=!NEEDS_APPROVAL, removedFlag=false;
 function blocked(){ return NEEDS_APPROVAL && (!approved || removedFlag); }
 function hasPage(list,p){ return list.some(function(x){ return x[0]===p; }); }
@@ -1137,27 +1154,39 @@ var classRows=[], classAssigned={}, selId=null, selUnsub=null, selWeeks={}, deta
 function startClass(){
   var sel=document.getElementById("as_level");
   LEVELS.forEach(function(L){ var o=document.createElement("option"); o.value=L.n; o.textContent="Level "+L.n+": "+L.name; sel.appendChild(o); });
-  db.collection("students").onSnapshot(function(qs){
+  db.collection(RP+"students").onSnapshot(function(qs){
     classRows = qs.docs.map(function(d){ return {id:d.id, data:clone(d.data())}; });
     renderClass(); if(selId) renderDetail();
   }, function(){ document.getElementById("classBody").innerHTML="<tr><td colspan='10' class='muted'>The class list stopped updating. Reload the page to reconnect.</td></tr>"; });
-  db.collection("assigned").onSnapshot(function(qs){
+  db.collection(RP+"assigned").onSnapshot(function(qs){
     var m={}; qs.docs.forEach(function(d){ m[d.id]=clone(d.data()); });
     classAssigned=m; renderClass(); if(selId) renderDetail();
   }, function(){});
+  if(NEEDS_APPROVAL) db.collection("access").onSnapshot(function(qs){
+    var m={}; qs.docs.forEach(function(d){ m[d.id]=clone(d.data()); });
+    classAccess=m; renderClass();
+  }, function(){});
+  registerRoadmap();
 }
+var classAccess={};
+function registerRoadmap(){
+  var R=window.APP_ROADMAP; if(!R || !db) return;
+  var entry={id:R.id, title:R.title, tagline:R.tagline||"", url:location.origin+location.pathname, levels:LEVELS.length, dailyHours:settings.dailyHours, startDate:settings.startDate, order:R.order||1, updatedAt:new Date().toISOString()};
+  db.doc("catalog/"+R.id).set(entry).catch(function(){});
+}
+function accessSet(id, v){ classAccess[id]=v; return db.doc("access/"+id).set(v); }
 function ownerPatch(sid, mutate){
-  var path="assigned/"+sid;
+  var path=RP+"assigned/"+sid;
   var next=clone(classAssigned[sid]); mutate(next); classAssigned[sid]=next;
   ownerChains[path]=(ownerChains[path]||Promise.resolve()).catch(function(){}).then(function(){ return db.doc(path).set(next); });
   return ownerChains[path];
 }
-function isApproved(id){ if(!NEEDS_APPROVAL) return true; var a=classAssigned[id]||{}; return a.approved===true && !a.removed; }
+function isApproved(id){ if(!NEEDS_APPROVAL) return true; var a=classAccess[id]||{}; return a.approved===true && !a.removed; }
 function renderPending(ps){
   var box=document.getElementById("pendingBox"); if(!box) return;
   if(!NEEDS_APPROVAL){ box.hidden=true; return; }
-  var pend=classRows.filter(function(r){ var a=classAssigned[r.id]||{}; return r.id!==uid && a.approved!==true && !a.removed; });
-  var rem=classRows.filter(function(r){ var a=classAssigned[r.id]||{}; return r.id!==uid && a.removed; });
+  var pend=classRows.filter(function(r){ var a=classAccess[r.id]||{}; return r.id!==uid && a.approved!==true && !a.removed; });
+  var rem=classRows.filter(function(r){ var a=classAccess[r.id]||{}; return r.id!==uid && a.removed; });
   if(!pend.length && !rem.length){ box.hidden=true; return; }
   var row=function(r, btns){ var pl=((r.data.state||{}).pledge||{});
     return "<div class='hol-row'><span><b>"+esc(studentName(r,ps))+"</b><br><span class='muted small'>"+esc(r.data.email||"")+"</span></span><span class='muted small'>"+(pl.committedAt?"Signed "+esc(fmtStamp(pl.committedAt)):"Hasn’t signed the commitment yet")+"</span><span style='display:flex;gap:6px'>"+btns+"</span></div>"; };
@@ -1170,7 +1199,8 @@ document.getElementById("pendingBox").addEventListener("click", function(ev){
   var id=b.getAttribute("data-approve")||b.getAttribute("data-remove")||b.getAttribute("data-restore");
   if(b.hasAttribute("data-remove") && b.getAttribute("data-armed")!=="1"){ b.setAttribute("data-armed","1"); b.textContent="Click again to remove"; return; }
   b.disabled=true;
-  ownerPatch(id, function(d){ if(b.hasAttribute("data-remove")){ d.removed=true; d.approved=false; } else { d.approved=true; d.removed=false; } }).then(function(){ renderClass(); });
+  var rm=b.hasAttribute("data-remove");
+  accessSet(id, {approved:!rm, removed:rm, at:new Date().toISOString()}).then(function(){ renderClass(); }).catch(function(){ b.disabled=false; b.textContent="Couldn’t save. Try again"; });
 });
 function profilesFor(ids){ return (user && ids.length) ? user.profiles(ids) : Promise.resolve({}); }
 function studentName(r, ps){
@@ -1256,7 +1286,7 @@ function selectStudent(id){
   document.getElementById("fbStatus").textContent="";
   document.getElementById("fbInput").value=((classAssigned[id]||{}).feedback||{}).text||"";
   detailPending=false; renderDetail(true); renderClass();
-  selUnsub = db.collection("students/"+id+"/weeks").onSnapshot(function(qs){
+  selUnsub = db.collection(RP+"students/"+id+"/weeks").onSnapshot(function(qs){
     selWeeks={}; qs.docs.forEach(function(d){ selWeeks[d.id]=clone(d.data()); });
     renderDetail();
   }, function(){});
@@ -1543,7 +1573,7 @@ document.getElementById("set_save").addEventListener("click", function(){
   if(!db){ st.textContent="Not connected. Check your internet connection and reload."; return; }
   var out=normSettings(setDraft); out.updatedAt=new Date().toISOString();
   st.textContent="Saving…";
-  db.doc("settings/plan").set(out).then(function(){ setDirty=false; st.textContent="Saved. Every student’s plan now uses these settings."; applySettings(out); })
+  db.doc(RP+"settings/plan").set(out).then(function(){ setDirty=false; st.textContent="Saved. Every student’s plan now uses these settings."; applySettings(out); })
     .catch(function(){ st.textContent="Couldn’t save. Try again."; });
 });
 document.getElementById("set_reset").addEventListener("click", function(){ loadSettingsForm(); document.getElementById("set_status").textContent="Changes discarded."; });
@@ -1673,6 +1703,47 @@ document.getElementById("cardCopy").addEventListener("click", function(){
   catch(e){ ta.select(); st.textContent="Press Ctrl+C (or long-press) to copy."; }
 });
 
+/* ---------- roadmap choice (shared across all roadmap sites) ---------- */
+function showHubLink(teacher){
+  var a=document.getElementById("hubLink"), R=window.APP_ROADMAP;
+  if(!a || !R || !R.hubUrl) return;
+  a.href = R.hubUrl + (teacher ? "" : "#switch");
+  a.textContent = teacher ? "All roadmaps" : "Switch roadmap";
+  a.hidden=false;
+}
+function checkRoadmap(id, name){
+  var R=window.APP_ROADMAP;
+  if(!R || !db) return Promise.resolve(true);
+  var ref=db.doc("users/"+id);
+  return ref.get().then(function(snap){
+    var u = snap.exists ? clone(snap.data()) : {};
+    if(u.currentRoadmap && u.currentRoadmap!==R.id) { showElsewhere(u, ref); return false; }
+    if(u.currentRoadmap===R.id) return true;
+    u.currentRoadmap=R.id; u.started=u.started||{}; if(!u.started[R.id]) u.started[R.id]=new Date().toISOString();
+    u.email=window.APP_USER_EMAIL||u.email||""; u.updatedAt=new Date().toISOString();
+    return ref.set(u).then(function(){ return true; }, function(){ return true; });
+  }, function(){ return true; });
+}
+function showElsewhere(u, ref){
+  var R=window.APP_ROADMAP;
+  ready=true; role="student";
+  document.querySelectorAll(".page").forEach(function(p){ p.hidden = p.id!=="p-elsewhere"; });
+  document.getElementById("tabs").hidden=true;
+  setStatus("");
+  var go=document.getElementById("elGo"), sw=document.getElementById("elSwitch"), msg=document.getElementById("elText");
+  go.href=R.hubUrl; go.textContent="Continue my current roadmap";
+  db.doc("catalog/"+u.currentRoadmap).get().then(function(c){
+    var cat = c.exists ? c.data() : null;
+    if(cat){ msg.textContent="You’re currently studying “"+cat.title+"”. Your progress there is saved. You can go back to it, or switch to "+R.title+" instead."; go.href=cat.url; go.textContent="Continue "+cat.title; }
+  }).catch(function(){});
+  document.getElementById("elSwitchName").textContent=R.title;
+  sw.onclick=function(){
+    sw.disabled=true;
+    u.currentRoadmap=R.id; u.started=u.started||{}; if(!u.started[R.id]) u.started[R.id]=new Date().toISOString(); u.updatedAt=new Date().toISOString();
+    ref.set(u).then(function(){ location.reload(); }, function(){ sw.disabled=false; msg.textContent="Couldn’t switch just now. Try again."; });
+  };
+}
+
 /* ---------- boot ---------- */
 applySchedule();
 renderPlanLines();
@@ -1699,7 +1770,7 @@ function readyAs(r,name){ clearTimeout(fallback); becomeReady(r,name); }
 var C = (window.claude && typeof window.claude.use==="function") ? window.claude : null;
 Promise.all([C?C.use("db"):null, C?C.use("user"):null]).then(function(r){
   db=r[0]; user=r[1];
-  if(db) db.doc("settings/plan").onSnapshot(function(snap){ if(snap.exists) applySettings(clone(snap.data())); }, function(){});
+  if(db) db.doc(RP+"settings/plan").onSnapshot(function(snap){ if(snap.exists) applySettings(clone(snap.data())); }, function(){});
   var idP = user ? Promise.all([user.id(), user.isOwner(), user.me()]) : Promise.resolve([null,false,null]);
   return idP.then(function(x){
     uid=x[0]; isOwner=!!x[1];
@@ -1707,14 +1778,18 @@ Promise.all([C?C.use("db"):null, C?C.use("user"):null]).then(function(r){
     if(isOwner){
       if(db){ startClass(); setStatus("Connected: your class updates live"); }
       else setStatus("Not connected. Check your internet connection and reload.");
+      showHubLink(true);
       readyAs("teacher", myName); return;
     }
     if(!db || !uid){
       if(db && !uid) localMsg="This page can’t identify your account, so progress is kept in this browser only. Sign out and sign in again.";
       setStatus(localMsg); readyAs("student", myName); return;
     }
-    myPath="students/"+uid; mode="db"; setStatus("Connected: your progress saves to this page");
-    var first=true, initLeft=2, firstAsg=true;
+    showHubLink(false);
+    checkRoadmap(uid, myName).then(function(ok){ if(ok) startStudent(); });
+    function startStudent(){
+    myPath=RP+"students/"+uid; mode="db"; setStatus("Connected: your progress saves to this page");
+    var first=true, initLeft=NEEDS_APPROVAL?3:2, firstAsg=true, firstAcc=true;
     db.doc(myPath).onSnapshot(function(snap){
       if(timers[myPath]) return;
       if(snap.exists){
@@ -1737,13 +1812,18 @@ Promise.all([C?C.use("db"):null, C?C.use("user"):null]).then(function(r){
       var weeks={}; qs.docs.forEach(function(doc){ weeks[doc.id]=clone(doc.data()); });
       store.weeks=weeks; saveLocal(); loadWeek(false); updateStats(); renderNext();
     }, function(){ setStatus("Live sync paused. Reload the page to reconnect."); });
-    db.doc("assigned/"+uid).onSnapshot(function(snap){
+    db.doc(RP+"assigned/"+uid).onSnapshot(function(snap){
       myAssigned = snap.exists ? clone(snap.data()) : {};
-      if(NEEDS_APPROVAL){ approved = myAssigned.approved===true; removedFlag = myAssigned.removed===true; }
       renderMyAssigned();
       if(firstAsg){ firstAsg=false; initLeft--; if(initLeft<=0) readyAs("student", myName); }
-      else if(ready && role==="student"){ renderTabs(); showPage(); }
     }, function(){ if(firstAsg){ firstAsg=false; initLeft--; if(initLeft<=0) readyAs("student", myName); } });
+    if(NEEDS_APPROVAL) db.doc("access/"+uid).onSnapshot(function(snap){
+      var a = snap.exists ? (snap.data()||{}) : {};
+      approved = a.approved===true; removedFlag = a.removed===true;
+      if(firstAcc){ firstAcc=false; initLeft--; if(initLeft<=0) readyAs("student", myName); }
+      else if(ready && role==="student"){ renderTabs(); showPage(); }
+    }, function(){ if(firstAcc){ firstAcc=false; initLeft--; if(initLeft<=0) readyAs("student", myName); } });
+    }
   });
 }).catch(function(){ readyAs("student",""); });
 };
@@ -1753,7 +1833,7 @@ Promise.all([C?C.use("db"):null, C?C.use("user"):null]).then(function(r){
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import { getAuth, onAuthStateChanged, GoogleAuthProvider, signInWithPopup, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 import { getFirestore, doc, collection, getDoc, setDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-import { firebaseConfig, TEACHER_EMAIL } from "./firebase-config.js";
+import { firebaseConfig, ADMIN_EMAIL, ROADMAP } from "./firebase-config.js";
 
 const $ = (id) => document.getElementById(id);
 const authBox = $("auth"), appBox = $("appRoot"), err = $("authErr");
@@ -1798,11 +1878,15 @@ if (!firebaseConfig || !firebaseConfig.apiKey || firebaseConfig.apiKey.startsWit
   };
 
   let started = false;
-  onAuthStateChanged(auth, (u) => {
+  onAuthStateChanged(auth, async (u) => {
     if (!u) { if (started) { location.reload(); return; } authBox.hidden = false; appBox.hidden = true; return; }
     if (started) return;
     started = true;
-    const isTeacher = !!(u.email && TEACHER_EMAIL && u.email.toLowerCase() === TEACHER_EMAIL.toLowerCase() && u.emailVerified);
+    const emailL = (u.email || "").toLowerCase();
+    let isTeacher = !!(emailL && ADMIN_EMAIL && emailL === ADMIN_EMAIL.toLowerCase() && u.emailVerified);
+    if (!isTeacher && emailL && u.emailVerified) {
+      try { const t = await getDoc(doc(fs, "teachers", emailL)); if (t.exists() && (t.data().roadmaps || []).includes(ROADMAP.id)) isTeacher = true; } catch (e) {}
+    }
     const userAdapter = {
       id: () => Promise.resolve(u.uid),
       isOwner: () => Promise.resolve(isTeacher),
@@ -1811,6 +1895,7 @@ if (!firebaseConfig || !firebaseConfig.apiKey || firebaseConfig.apiKey.startsWit
     };
     window.claude = { use: (n) => Promise.resolve(n === "db" ? dbAdapter : n === "user" ? userAdapter : n === "downloads" ? downloadsAdapter : null) };
     window.APP_NEEDS_APPROVAL = true;
+    window.APP_ROADMAP = ROADMAP;
     window.APP_USER_EMAIL = u.email || "";
     authBox.hidden = true; appBox.hidden = false;
     window.startApp();
