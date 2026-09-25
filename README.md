@@ -53,7 +53,7 @@ git checkout dba-career-ladder
 firebase deploy --only hosting,firestore:rules
 ```
 
-The site is then live at `https://<your-project-id>.web.app`.
+The site is then live at `https://roadmaps-2b061.web.app`.
 
 After this, every time the code changes, run `git pull` and `firebase deploy --only hosting,firestore:rules` again.
 
