@@ -1,199 +1,151 @@
 {
-  "id": "dba",
-  "title": "DBA Career Ladder",
-  "defaultStart": "2026-11-01",
+  "id": "ai",
+  "title": "AI Engineer Roadmap",
+  "defaultStart": "2026-09-04",
   "defaultHours": 2,
   "levels": [
     {
       "n": 1,
-      "name": "SQL foundations",
-      "tag": "Ground level",
-      "start": "2026-11-01",
-      "end": "2027-01-02",
-      "hours": 126,
+      "name": "Machine learning foundations",
+      "tag": "Foundations",
+      "start": "2026-09-04",
+      "end": "2026-12-20",
+      "hours": 216,
       "tasks": [
-        "Study group formed and first call held",
-        "PostgreSQL and DBeaver installed; dba-journey repo created",
-        "CS50 SQL Problem Sets 0–6 submitted",
-        "LeetCode SQL 50 completed",
-        "HackerRank SQL (Basic) passed",
-        "CS50 SQL final project submitted"
+        "Registered for the ML Zoomcamp and joined the course Slack",
+        "Coursera Financial Aid approved for the Machine Learning Specialization",
+        "GitHub, Kaggle and Hugging Face profiles set up; Day 1 post published",
+        "Zoomcamp homework submitted every week",
+        "Flagship 1 deployed with README, tests and a live link (midterm submitted)",
+        "Three midterm projects peer-reviewed",
+        "One public Kaggle notebook",
+        "Blog post 1 published",
+        "Machine Learning Specialization certificate earned"
       ],
       "exams": [
         {
-          "id": "hr_basic",
-          "name": "HackerRank SQL (Basic) skills test",
-          "date": "2026-12-19",
+          "id": "zoom_mid",
+          "name": "ML Zoomcamp midterm project (Flagship 1)",
+          "date": "2026-11-16",
           "cost": "Free",
-          "earn": "HackerRank SQL (Basic) certificate"
+          "earn": "Midterm credit toward the ML Zoomcamp certificate"
         },
         {
-          "id": "cs50",
-          "name": "CS50 SQL problem sets + final project",
-          "date": "2027-01-02",
-          "cost": "Free",
-          "earn": "CS50 SQL certificate (Harvard)"
+          "id": "mlspec",
+          "name": "Machine Learning Specialization (Stanford / DeepLearning.AI, 3 courses)",
+          "date": "2026-12-20",
+          "cost": "Free with Coursera Financial Aid",
+          "earn": "Machine Learning Specialization certificate"
         }
       ]
     },
     {
       "n": 2,
-      "name": "Linux and PostgreSQL at the command line",
-      "tag": "Hands-on",
-      "start": "2027-01-03",
-      "end": "2027-02-27",
-      "hours": 112,
+      "name": "Deep learning and applications",
+      "tag": "Deep learning",
+      "start": "2026-12-21",
+      "end": "2027-03-21",
+      "hours": 182,
       "tasks": [
-        "All freeCodeCamp certification projects passed",
-        "Using psql every day instead of a GUI",
-        "Lab: three roles (admin, app, read-only) tested with GRANT/REVOKE",
-        "Lab: backup with pg_dump, drop the database, restore it",
-        "HackerRank SQL (Intermediate) passed"
+        "Flagship 2 data explored by hand (100 examples)",
+        "Karpathy micrograd and makemore completed",
+        "First fine-tuning run tracked in Weights & Biases",
+        "A second run beats the first after error analysis",
+        "Flagship 2 live on Hugging Face Spaces with a model card",
+        "Blog post 2 published and shared with the community",
+        "Deep Learning Specialization certificate earned"
       ],
       "exams": [
         {
-          "id": "fcc",
-          "name": "freeCodeCamp Relational Database certification projects",
-          "date": "2027-02-06",
+          "id": "zoom_cert",
+          "name": "ML Zoomcamp certificate (midterm and capstone projects)",
+          "date": "2027-02-28",
           "cost": "Free",
-          "earn": "freeCodeCamp Relational Database Certification"
+          "earn": "ML Zoomcamp certificate"
         },
         {
-          "id": "hr_int",
-          "name": "HackerRank SQL (Intermediate) skills test",
-          "date": "2027-02-27",
-          "cost": "Free",
-          "earn": "HackerRank SQL (Intermediate) certificate"
+          "id": "dlspec",
+          "name": "Deep Learning Specialization (DeepLearning.AI, 5 courses)",
+          "date": "2027-03-21",
+          "cost": "Free with Coursera Financial Aid",
+          "earn": "Deep Learning Specialization certificate"
         }
       ]
     },
     {
       "n": 3,
-      "name": "Oracle Database Administrator, Associate",
-      "tag": "First vendor certification",
-      "start": "2027-02-28",
-      "end": "2027-06-26",
-      "hours": 238,
+      "name": "LLMs, RAG and agents",
+      "tag": "Generative AI",
+      "start": "2027-03-22",
+      "end": "2027-06-27",
+      "hours": 196,
       "tasks": [
-        "Oracle AI Database Free and SQL Developer installed",
-        "Architecture notes written in your repo",
-        "Part 1 topics practised hands-on",
-        "Part 2 topics practised hands-on",
-        "Exam booked on Pearson VUE",
-        "Practice scores at 80% or higher",
-        "1Z0-182 passed"
+        "An open model running locally with Ollama",
+        "Naive RAG prototype over a real document set",
+        "50-question evaluation set with hit-rate and MRR measured",
+        "Hybrid search and reranking added and measured again",
+        "Generative AI with LLMs certificate",
+        "Hugging Face Agents Course certificate",
+        "IBM Generative AI Engineering certificate",
+        "Flagship 3 deployed with evaluation report and monitoring",
+        "Applying to five roles a week"
       ],
       "exams": [
         {
-          "id": "ora182",
-          "name": "Oracle AI Database Administration Associate (1Z0-182)",
-          "date": "2027-06-26",
-          "cost": "≈ US$245",
-          "earn": "Oracle AI Database Administration Associate"
+          "id": "genai",
+          "name": "Generative AI with Large Language Models (DeepLearning.AI + AWS)",
+          "date": "2027-04-25",
+          "cost": "Free with Coursera Financial Aid",
+          "earn": "Generative AI with LLMs certificate"
+        },
+        {
+          "id": "hfagents",
+          "name": "Hugging Face Agents Course",
+          "date": "2027-05-30",
+          "cost": "Free",
+          "earn": "Hugging Face Agents Course certificate"
+        },
+        {
+          "id": "ibm",
+          "name": "IBM Generative AI Engineering with LLMs",
+          "date": "2027-06-20",
+          "cost": "Free with Coursera Financial Aid",
+          "earn": "IBM Generative AI Engineering with LLMs certificate"
         }
       ]
     },
     {
       "n": 4,
-      "name": "PostgreSQL DBA and first job applications",
-      "tag": "Second platform",
-      "start": "2027-06-27",
-      "end": "2027-09-25",
-      "hours": 182,
+      "name": "MLOps and work-ready",
+      "tag": "Top of the ladder",
+      "start": "2027-06-28",
+      "end": "2027-09-30",
+      "hours": 190,
       "tasks": [
-        "Point-in-time recovery runbook tested and on GitHub",
-        "Replication and failover lab done",
-        "Tuning case study with before/after numbers",
-        "CV and LinkedIn updated",
-        "10 job applications sent",
-        "EDB Essentials for PostgreSQL passed"
+        "MLflow tracking and model registry on Flagship 1",
+        "Scheduled retraining pipeline (Prefect or Airflow)",
+        "Drift monitoring with alerts (Evidently)",
+        "Tests and GitHub Actions CI/CD deploying on merge",
+        "Flagship 4 write-up published (blog post 4)",
+        "English test taken",
+        "Portfolio README with four live projects",
+        "Applied to ten roles or programmes",
+        "Year-in-review post published"
       ],
       "exams": [
         {
-          "id": "edb",
-          "name": "EDB Essentials for PostgreSQL",
-          "date": "2027-09-25",
-          "cost": "Check EDB portal (≈ US$200)",
-          "earn": "EDB Essentials for PostgreSQL"
-        }
-      ]
-    },
-    {
-      "n": 5,
-      "name": "How databases work inside",
-      "tag": "World-class",
-      "start": "2027-09-26",
-      "end": "2028-01-08",
-      "hours": 210,
-      "tasks": [
-        "C++ refresher done (if needed)",
-        "All lectures up to buffer pool watched",
-        "Project 0 passes the autograder",
-        "Project 1 passes the autograder",
-        "HackerRank SQL (Advanced) passed",
-        "Blog post published"
-      ],
-      "exams": [
-        {
-          "id": "hr_adv",
-          "name": "HackerRank SQL (Advanced) skills test",
-          "date": "2027-12-18",
-          "cost": "Free",
-          "earn": "HackerRank SQL (Advanced) certificate"
+          "id": "english",
+          "name": "English test: IELTS Academic or Duolingo English Test",
+          "date": "2027-07-25",
+          "cost": "≈ US$65 (Duolingo) to ≈ US$250 (IELTS)",
+          "earn": "English proof for master’s and visa applications"
         },
         {
-          "id": "cmu",
-          "name": "CMU 15-445 projects on the Gradescope autograder",
-          "date": "2028-01-08",
+          "id": "mlops",
+          "name": "MLOps Zoomcamp project (Flagship 4, final project)",
+          "date": "2027-08-29",
           "cost": "Free",
-          "earn": "Autograder scores (portfolio proof, no certificate)"
-        }
-      ]
-    },
-    {
-      "n": 6,
-      "name": "Learn in a global cohort",
-      "tag": "With other students",
-      "start": "2028-01-09",
-      "end": "2028-04-29",
-      "hours": 224,
-      "tasks": [
-        "Registered for the 2028 cohort",
-        "All weekly homework submitted",
-        "Final project submitted",
-        "Peer reviews completed",
-        "Certificate received"
-      ],
-      "exams": [
-        {
-          "id": "zoomcamp",
-          "name": "Zoomcamp final project + peer reviews",
-          "date": "2028-04-29",
-          "cost": "Free",
-          "earn": "Data Engineering Zoomcamp certificate"
-        }
-      ]
-    },
-    {
-      "n": 7,
-      "name": "Professional DBA certification",
-      "tag": "Top of the ladder",
-      "start": "2028-04-30",
-      "end": "2028-09-23",
-      "hours": 294,
-      "tasks": [
-        "20 job adverts reviewed and platform chosen",
-        "Exam(s) booked",
-        "Practice scores at 80% or higher",
-        "Professional exam passed"
-      ],
-      "exams": [
-        {
-          "id": "pro",
-          "name": "Your chosen professional exam (final exam)",
-          "date": "2028-09-23",
-          "cost": "Depends on option",
-          "earn": "Professional DBA certification"
+          "earn": "MLOps Zoomcamp certificate"
         }
       ]
     }

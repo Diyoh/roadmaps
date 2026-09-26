@@ -21,9 +21,9 @@ export const ADMIN_EMAIL = "diyohshiloh4@gmail.com";
 // database). hubUrl is the hub where students choose a roadmap; this roadmap is published at /dba/
 // on the same address, so one sign-in covers the hub and every roadmap.
 export const ROADMAP = {
-  id: "dba",
-  title: "DBA Career Ladder",
-  tagline: "Seven levels from your first SQL query to a professional database administration certification.",
-  order: 1,
+  id: "ai",
+  title: "AI Engineer Roadmap",
+  tagline: "Four levels from your first machine learning model to deployed LLM systems and an AI engineering portfolio.",
+  order: 2,
   hubUrl: "/"
 };
