@@ -400,7 +400,7 @@ footer{padding-block:24px 40px; border-top:1px solid var(--line); color:var(--mu
         <div class="card pane">
           <h3>Adding a new roadmap</h3>
           <ol class="steps">
-            <li>Create a branch for it in the <code>roadmaps</code> repository, copied from <code>dba-career-ladder</code>, and change its content. Run <code>node tools/export-outline.cjs</code> on that branch after changing its levels.</li>
+            <li>Create a branch for it in the <code>roadmaps</code> repository, copied from <code>ai-engineer</code> or <code>dba-career-ladder</code>, and change its content (<code>LEVELS</code>, <code>COPY</code>, <code>COMMITMENT</code>, <code>PHASE_RANGES</code>). Run <code>node tools/export-outline.cjs</code> on that branch after changing its levels.</li>
             <li>In that branch’s <code>public/firebase-config.js</code>, give it a new <code>ROADMAP.id</code>, title and tagline.</li>
             <li>On <code>Master</code>, add it to <code>HUB.roadmaps</code> in <code>public/firebase-config.js</code> with its <code>branch</code> and <code>path</code>.</li>
             <li>Run <code>npm run deploy</code> on <code>Master</code>. It publishes the hub and every roadmap together, and the new roadmap appears here and in every student’s list.</li>
@@ -900,7 +900,7 @@ function renderAssignTab(rid) {
   if (rmMounted.assign !== rid) {
     rmMounted.assign = rid;
     box.innerHTML = "<div class='card pane'><h3>Assign a task</h3>" +
-      "<div class='fgrid'><label class='fld wide'>Title<input type='text' id='asTitle' placeholder='e.g. Finish CS50 SQL Problem Set 2'></label>" +
+      "<div class='fgrid'><label class='fld wide'>Title<input type='text' id='asTitle' placeholder='e.g. Submit this week’s homework with a link to your work'></label>" +
       "<label class='fld'>Due date<input type='date' id='asDue'></label><label class='fld'>Points<input type='number' id='asPoints' min='1' step='1' value='10'></label>" +
       "<label class='fld wide'>Level<select id='asLevel'><option value=''>Any level</option></select></label></div>" +
       "<label class='fld'>Instructions<textarea id='asDetails' placeholder='What to do, and what to submit (for example a GitHub link)'></textarea></label>" +
