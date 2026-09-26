@@ -813,6 +813,19 @@ window.startApp=function(){
 var PLAN_START = "2026-11-01";
 var WEEK_TARGET = 14;
 
+/* Wording that differs between roadmaps (the rest of the app is shared by every roadmap branch). */
+var COPY = {
+  cardLabel: "DBA CAREER LADDER",
+  journey: "database administration journey",
+  hashtags: ["#DBAJourney", "#LearnInPublic", "#SQL"],
+  studentWord: "DBA student",
+  practice: "SQL practice: LeetCode, HackerRank or Oracle Dev Gym",
+  beforeStart: "Get PostgreSQL and DBeaver installed before then.",
+  sample: { name: "Chiamaka Obi", note: "Finished CS50 SQL Lecture 2 and wrote 8 JOIN queries on my bookstore database." },
+  filePrefix: "dba-journey",
+  storageKey: "dba"
+};
+
 var LEVELS = [
  { n:1, name:"SQL foundations", tag:"Ground level", start:"2026-11-01", end:"2027-01-02", hours:126,
    goal:"Write correct SQL without looking things up, and design a small, well-structured (normalised) database.",
@@ -978,7 +991,7 @@ LEVELS.forEach(function(L){
 var store = { state:{done:{}, exams:{}, pledge:{}, subs:{}}, weeks:{} };
 var db = null, user = null, uid = null, isOwner = false, mode = "local", myPath = null;
 var myAssigned = {};
-var LS_KEY = "dba-ladder-v3";
+var LS_KEY = COPY.storageKey==="dba" ? "dba-ladder-v3" : COPY.storageKey+"-roadmap-v1";
 var localMsg = "Saved in this browser only";
 var STATUS_LABEL = {"":"Not booked", booked:"Booked", passed:"Passed", retake:"Retake needed"};
 var RATING_LABEL = {"5":"Great","4":"Good","3":"OK","2":"Weak","1":"Missed"};
@@ -1297,7 +1310,7 @@ function renderStart(){
 function norm(n){ return String(n||"").trim().replace(/\s+/g," ").toLowerCase(); }
 function enter(){
   entered=true;
-  try{ sessionStorage.setItem("dba-entered-"+(uid||"local"),"1"); }catch(e){}
+  try{ sessionStorage.setItem(COPY.storageKey+"-entered-"+(uid||"local"),"1"); }catch(e){}
   renderTabs(); go(resumePage());
 }
 document.getElementById("g_sign").addEventListener("click", function(){
@@ -1328,7 +1341,7 @@ function renderNext(){
     if(isHoliday(tISO)) items.push(["Today", "Holiday"+(settings.holidays[tISO]?": "+settings.holidays[tISO]:"")+". No study expected today.", "log", "Open log"]);
     else items.push(["Today", logged ? "Today’s log is done. Make your progress card and post it." : "Log today’s hours and what you did, then post your progress card.", "log", logged?"Make card":"Log today"]);
   } else {
-    items.push(["Start date", "Your plan starts on "+startText()+". Get PostgreSQL and DBeaver installed before then.", "ladder", "See Level 1"]);
+    items.push(["Start date", "Your plan starts on "+startText()+". "+COPY.beforeStart, "ladder", "See Level 1"]);
   }
   var L=workingOn(s), nextM=null;
   L.tasks.forEach(function(x,i){ if(!nextM && !s.done["l"+L.n+"t"+i]) nextM=x; });
@@ -1897,7 +1910,7 @@ function renderRoutine(){
   document.getElementById("routineTitle").textContent="Daily routine: "+hoursText(settings.dailyHours)+" a day";
   var post="<b>"+minsText(soc)+"</b> post your progress card on social media";
   document.getElementById("routineBody").innerHTML=
-    "<tr><td class='date'>Mon – Fri</td><td><b>"+minsText(main)+"</b> main track: the lesson, reading or lab for this week’s phase</td><td><b>"+minsText(practice)+"</b> SQL practice: LeetCode, HackerRank or Oracle Dev Gym</td><td>"+post+"</td></tr>"+
+    "<tr><td class='date'>Mon – Fri</td><td><b>"+minsText(main)+"</b> main track: the lesson, reading or lab for this week’s phase</td><td><b>"+minsText(practice)+"</b> "+esc(COPY.practice)+"</td><td>"+post+"</td></tr>"+
     "<tr><td class='date'>Saturday</td><td colspan='2'><b>"+minsText(lab)+"</b> hands-on lab: build it, break it, fix it, and write down what happened</td><td>"+post+"</td></tr>"+
     "<tr><td class='date'>Sunday</td><td><b>"+minsText(review)+"</b> review the week and push notes to your GitHub repo</td><td><b>"+minsText(call)+"</b> study-group call · <b>"+minsText(refl)+"</b> weekly reflection in your daily log</td><td>"+post+"</td></tr>"+
     "<tr><td class='date'>Holidays</td><td colspan='3'>No study expected. Holidays set by your mentor are marked in your daily log, and your plan dates move later to make up for them.</td></tr>";
@@ -2029,7 +2042,7 @@ function wrapLines(ctx, text, maxW, maxLines){
 }
 function drawCard(d, S){
   var W=1080, H=1350, c=document.createElement("canvas"); c.width=W; c.height=H;
-  var x=c.getContext("2d"), s=S?S.state:store.state, e=S?{hours:S.hours, note:S.note}:dayEntry(d), name=S?S.name:((s.pledge.name||"").trim()||"DBA student");
+  var x=c.getContext("2d"), s=S?S.state:store.state, e=S?{hours:S.hours, note:S.note}:dayEntry(d), name=S?S.name:((s.pledge.name||"").trim()||COPY.studentWord);
   var lp=levelProgress(s), cur=workingOn(s), sum=S?S.sum:computeSummary(), dayN=S?S.dayN:planDayNumber(d), streak=S?S.streak:streakTo(d);
   var DISP="'Bricolage Grotesque', 'Segoe UI', sans-serif", SANS="'IBM Plex Sans', 'Segoe UI', sans-serif", MONO="'IBM Plex Mono', monospace";
   var ink="#0D1826", blue="#86B8EE", amber="#F1AB4E", green="#6FCC98", white="#F2F5F9", muted="#93A1B2";
@@ -2040,10 +2053,10 @@ function drawCard(d, S){
   x.fillStyle=blue; x.fillRect(0,0,W,10);
   var P=80;
   x.textBaseline="alphabetic";
-  x.fillStyle=blue; x.font="500 26px "+MONO; x.fillText("DBA CAREER LADDER", P, 100);
+  x.fillStyle=blue; x.font="500 26px "+MONO; x.fillText(COPY.cardLabel, P, 100);
   x.fillStyle=muted; x.textAlign="right"; x.fillText(fmt(d).toUpperCase(), W-P, 100); x.textAlign="left";
   x.fillStyle=white; x.font="700 170px "+DISP; x.fillText("Day "+dayN, P-6, 280);
-  x.fillStyle=muted; x.font="400 38px "+SANS; x.fillText("of my database administration journey", P, 372);
+  x.fillStyle=muted; x.font="400 38px "+SANS; x.fillText("of my "+COPY.journey, P, 372);
   x.fillStyle=white; x.font="600 46px "+SANS; x.fillText(name.slice(0,40), P, 440);
   var soc=mentorSocialLine();
   if(MENTORS.length){ x.fillStyle=amber; x.font="500 24px "+MONO; x.fillText(((MENTORS.length>1?"MENTORS: ":"MENTOR: ")+mentorText()).toUpperCase().slice(0,52), P, 484); }
@@ -2080,15 +2093,15 @@ function drawCard(d, S){
     x.fillStyle=white; x.font="500 32px "+SANS;
     x.fillText((nx.name.split(" (")[0].replace(" skills test","").slice(0,40))+" · "+(left>0?"in "+left+" days":(left===0?"today":fmtShort(nx.date))), P+190, 1182);
   }
-  x.fillStyle=blue; x.font="500 28px "+MONO; x.fillText("#DBAJourney  #LearnInPublic  #SQL", P, 1270);
+  x.fillStyle=blue; x.font="500 28px "+MONO; x.fillText(COPY.hashtags.join("  "), P, 1270);
   return c;
 }
 function roundRect(x,a,b,w,h,r){ x.beginPath(); x.moveTo(a+r,b); x.arcTo(a+w,b,a+w,b+h,r); x.arcTo(a+w,b+h,a,b+h,r); x.arcTo(a,b+h,a,b,r); x.arcTo(a,b,a+w,b,r); x.closePath(); }
 function cardCaption(d){
   var e=dayEntry(d), s=store.state, cur=workingOn(s), sum=computeSummary();
-  return "Day "+planDayNumber(d)+" of my database administration journey. "+
+  return "Day "+planDayNumber(d)+" of my "+COPY.journey+". "+
     "Today I studied "+(Math.round(e.hours*10)/10)+"h"+(e.note?": "+e.note.replace(/\s+/g," ").trim()+(/[.!?]$/.test(e.note.trim())?"":"."):".")+
-    " Now on Level "+cur.n+" ("+cur.name+"), "+sum.hours+" hours so far."+(MENTORS.length?" Mentored by "+mentorText()+(MENTOR_PROFILES[0]&&safeSocial(MENTOR_PROFILES[0].instagram)?" (@"+socialHandle(MENTOR_PROFILES[0].instagram)+")":"")+".":"")+" #DBAJourney #LearnInPublic #SQL";
+    " Now on Level "+cur.n+" ("+cur.name+"), "+sum.hours+" hours so far."+(MENTORS.length?" Mentored by "+mentorText()+(MENTOR_PROFILES[0]&&safeSocial(MENTOR_PROFILES[0].instagram)?" (@"+socialHandle(MENTOR_PROFILES[0].instagram)+")":"")+".":"")+" "+COPY.hashtags.join(" ");
 }
 function fontsReady(){
   if(!document.fonts || !document.fonts.load) return Promise.resolve();
@@ -2098,11 +2111,11 @@ document.getElementById("cardPreviewBtn").addEventListener("click", function(){
   var msg=document.getElementById("cardPreviewMsg"); msg.textContent="Drawing…";
   var d=iso(today()) < PLAN_START ? PLAN_START : iso(today());
   var done={}; LEVELS[0].tasks.forEach(function(t,i){ if(i<3) done["l1t"+i]=true; });
-  var sample={ name:"Chiamaka Obi", hours:2, note:"Finished CS50 SQL Lecture 2 and wrote 8 JOIN queries on my bookstore database.", dayN:12, streak:6,
+  var sample={ name:COPY.sample.name, hours:2, note:COPY.sample.note, dayN:12, streak:6,
     state:{done:done, exams:{}, pledge:{}, subs:{}}, sum:{hours:23.5, tasksDone:3, examsPassed:0} };
   fontsReady().then(function(){
     var c=drawCard(d, sample), img=document.getElementById("cardPreviewImg");
-    img.src=c.toDataURL("image/jpeg",0.92); img.hidden=false; msg.textContent="Sample only: Chiamaka Obi is not a real student.";
+    img.src=c.toDataURL("image/jpeg",0.92); img.hidden=false; msg.textContent="Sample only: "+COPY.sample.name+" is not a real student.";
   });
 });
 document.getElementById("cardMake").addEventListener("click", function(){
@@ -2114,7 +2127,7 @@ document.getElementById("cardMake").addEventListener("click", function(){
     var c=drawCard(d);
     document.getElementById("cardImg").src=c.toDataURL("image/jpeg",0.92);
     document.getElementById("cardCaption").value=cardCaption(d);
-    cardName="dba-journey-day-"+planDayNumber(d)+".jpg";
+    cardName=COPY.filePrefix+"-day-"+planDayNumber(d)+".jpg";
     c.toBlob(function(b){ cardBlob=b; }, "image/jpeg", 0.92);
     document.getElementById("cardOut").hidden=false;
     st.textContent="";
@@ -2248,7 +2261,7 @@ function becomeReady(r, name){
   role=r; ready=true;
   document.getElementById("p-loading").hidden=true;
   document.getElementById("hello").textContent = r==="teacher" ? "Mentor view"+(name?" · "+name:"") : (name?"Signed in as "+name:"");
-  if(r==="student"){ try{ if(signed() && sessionStorage.getItem("dba-entered-"+(uid||"local"))==="1") entered=true; }catch(e){} }
+  if(r==="student"){ try{ if(signed() && sessionStorage.getItem(COPY.storageKey+"-entered-"+(uid||"local"))==="1") entered=true; }catch(e){} }
   renderTabs(); showPage();
 }
 var fallback=setTimeout(function(){ becomeReady("student",""); }, 12000);
