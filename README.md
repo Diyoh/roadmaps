@@ -2,27 +2,24 @@
 
 One roadmap on the Roadmaps platform: seven levels from your first SQL query to a professional database administration certification.
 
-- **Live site:** https://roadmaps-2b061-dba.web.app
+- **Live site:** https://roadmaps-2b061.web.app/dba/ (the old address roadmaps-2b061-dba.web.app redirects there)
 - **Hub, security rules and full documentation:** the `Master` branch of this repository.
 
 ## What's here
 
 | File | What it does |
 |---|---|
-| `public/index.html` | The roadmap: levels, phases, exams, commitment, daily log, assignments, grading, plan settings, progress card |
-| `public/firebase-config.js` | Firebase settings, admin email, and this roadmap's id, title and hub link |
-| `firebase.json` | Publishes to the `roadmaps-2b061-dba` hosting site |
+| `public/index.html` | The roadmap app. The content is in `LEVELS`, `COPY`, `COMMITMENT` and `PHASE_RANGES`; the rest is shared with the other roadmap branches. |
+| `public/firebase-config.js` | Firebase settings, admin email, and this roadmap's id (`dba`), title and hub link |
+| `public/roadmap.json` | Outline read by the hub. Regenerate after changing `LEVELS`: `node tools/export-outline.cjs` |
+| `firebase.json` | Only redirects the old `roadmaps-2b061-dba` site to `/dba/` |
 
 ## Deploy
 
+This branch is published from `Master`, together with the hub and every other roadmap:
+
 ```bash
-git checkout dba-career-ladder
+git checkout Master
 git pull
-firebase deploy --only hosting
+npm run deploy
 ```
-
-Security rules are deployed from `Master` only (`firebase deploy --only firestore:rules`).
-
-## Use this branch as a template
-
-To create a new roadmap, branch from here, change the content in `public/index.html`, and give it a new `ROADMAP.id` in `public/firebase-config.js`. The full steps are in the `Master` README.
