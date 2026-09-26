@@ -39,6 +39,18 @@ export const HUB = {
       dailyHours: 2,
       startDate: "2026-11-01",
       order: 1
+    },
+    {
+      id: "ai",
+      branch: "ai-engineer",
+      path: "ai",
+      title: "AI Engineer Roadmap",
+      tagline: "Four levels from your first machine learning model to deployed LLM systems and an AI engineering portfolio.",
+      url: "/ai/",
+      levels: 4,
+      dailyHours: 2,
+      startDate: "2026-09-04",
+      order: 2
     }
   ]
 };
