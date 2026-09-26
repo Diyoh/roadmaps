@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>DBA Career Ladder</title>
+<title>AI Engineer Roadmap</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
@@ -523,8 +523,8 @@ th{background:var(--sunken)}
 <body>
 <div id="auth" hidden>
   <div class="authbox">
-    <div class="eyebrow">Database administration roadmap</div>
-    <h1>DBA Career Ladder</h1>
+    <div class="eyebrow">AI engineering roadmap</div>
+    <h1>AI Engineer Roadmap</h1>
     <p class="muted" style="margin:0" id="authLead">Sign in to open your plan.</p>
     <button type="button" class="gbtn" id="googleBtn"><svg width="18" height="18" viewBox="0 0 48 48" aria-hidden="true"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.4-.4-3.5z"/></svg>Continue with Google</button>
     <div class="or">or use email</div>
@@ -537,7 +537,7 @@ th{background:var(--sunken)}
 </div>
 <div class="wrap" id="appRoot" hidden>
   <header class="topbar">
-    <div class="brand"><svg width="26" height="26" viewBox="0 0 30 30" aria-hidden="true" style="align-self:center;flex:none"><rect x="1" y="1" width="28" height="28" rx="8" fill="var(--accent)"/><path d="M9 22V8M21 22V8M9 18h12M9 13h12" stroke="var(--surface)" stroke-width="2.2" stroke-linecap="round"/></svg><b>DBA Career Ladder</b><span class="muted" id="hello"></span></div>
+    <div class="brand"><svg width="26" height="26" viewBox="0 0 30 30" aria-hidden="true" style="align-self:center;flex:none"><rect x="1" y="1" width="28" height="28" rx="8" fill="var(--accent)"/><path d="M9 22V8M21 22V8M9 18h12M9 13h12" stroke="var(--surface)" stroke-width="2.2" stroke-linecap="round"/></svg><b>AI Engineer Roadmap</b><span class="muted" id="hello"></span></div>
     <span style="display:flex;gap:12px;align-items:baseline"><span id="saveState">Opening…</span><a class="btn small" id="hubLink" hidden href="#">Switch roadmap</a><button type="button" class="btn small" id="signOutBtn">Sign out</button></span>
   </header>
   <nav class="tabs" id="tabs" aria-label="Pages" hidden></nav>
@@ -549,7 +549,7 @@ th{background:var(--sunken)}
   <section class="page" id="p-start" hidden>
     <div class="gate">
       <div class="eyebrow" data-planline></div>
-      <h1>DBA Career Ladder</h1>
+      <h1>AI Engineer Roadmap</h1>
       <div id="gateNew" style="display:grid;gap:18px">
         <div class="pledge-note" data-commitment></div>
         <div class="gateform">
@@ -603,7 +603,7 @@ th{background:var(--sunken)}
         <div class="hero-eyebrow" data-planline></div>
         <h1 id="ovTitle">Your plan</h1>
         <div class="hero-mentor" id="ovMentor" hidden></div>
-        <p class="hero-sub" id="ovSub">Seven levels, from your first SQL query to a professional DBA certification.</p>
+        <p class="hero-sub" id="ovSub">Four levels, from your first machine learning model to deployed LLM systems and an AI engineering portfolio.</p>
         <div class="hero-cta"><a class="btn primary lg" href="#log" id="ovCta">Log today</a><a class="btn hero-ghost lg" href="#ladder">View the ladder</a></div>
       </div>
       <div class="ring" id="ovRing" aria-label="Overall progress"></div>
@@ -640,7 +640,7 @@ th{background:var(--sunken)}
       <div class="dayrows" id="daysBox"></div>
       <div class="weektotal"><span class="mono" id="weekTotal">0 / 14 h</span><div class="bar"><i id="weekBar"></i></div></div>
       <div class="feedback weekcomment" id="weekComment" hidden></div>
-      <label>What I finished this week<textarea id="w_did" data-week="did" placeholder="e.g. CS50 SQL Lecture 2 and Problem Set 2, 8 SQL 50 problems"></textarea></label>
+      <label>What I finished this week<textarea id="w_did" data-week="did" placeholder="e.g. ML Zoomcamp module 3 and homework 3, Flagship 1 baseline trained"></textarea></label>
       <label>What got in the way<textarea id="w_blocked" data-week="blocked" placeholder="Be honest: power cuts, work, lost focus…"></textarea></label>
       <label>Next week I will<textarea id="w_next" data-week="next" placeholder="One or two specific goals"></textarea></label>
       <label>How did this week go?
@@ -684,7 +684,7 @@ th{background:var(--sunken)}
     <div class="panel">
       <h3>My plan details</h3>
       <label>Full name (your mentor sees this)<input type="text" id="p_name" data-pledge="name" placeholder="Your full name"></label>
-      <label>Why I’m doing this<textarea id="p_why" data-pledge="why" placeholder="e.g. To be working as a DBA by end of 2027 and support my family"></textarea></label>
+      <label>Why I’m doing this<textarea id="p_why" data-pledge="why" placeholder="e.g. To be working as an AI engineer by the end of 2027 and support my family"></textarea></label>
       <label>Accountability partner (name and how to reach them)<input type="text" id="p_partner" data-pledge="partner" placeholder="Someone who checks on you every week"></label>
       <label>Study group members<input type="text" id="p_group" data-pledge="group" placeholder="3–5 people aiming at the same exams"></label>
       <label>My daily study hours<input type="text" id="p_time" data-pledge="time" placeholder="e.g. 5:00–7:00 am"></label>
@@ -742,7 +742,7 @@ th{background:var(--sunken)}
     <p class="muted">Tasks appear on each chosen student’s “My assignments” page. Grade them from the student’s page in Class.</p>
     <div class="panel" id="assignPanel">
       <div class="assign-grid">
-        <label>Title<input type="text" id="as_title" placeholder="e.g. Finish CS50 SQL Problem Set 2"></label>
+        <label>Title<input type="text" id="as_title" placeholder="e.g. Submit ML Zoomcamp homework 3 with your notebook link"></label>
         <label>Due date<input type="date" id="as_due"></label>
         <label>Points<input type="number" id="as_points" min="1" step="1" value="10"></label>
         <label>Level<select id="as_level"><option value="">Any</option></select></label>
@@ -799,7 +799,7 @@ th{background:var(--sunken)}
       <div id="detailBody"></div>
       <div class="fbform">
         <label for="fbInput">General feedback to this student (shown on their Overview page)</label>
-        <textarea id="fbInput" placeholder="e.g. Good week. Finish Problem Set 3 before starting Lecture 4."></textarea>
+        <textarea id="fbInput" placeholder="e.g. Good week. Deploy the baseline before you tune the model."></textarea>
         <div class="weekbar"><button type="button" class="btn primary" id="fbSend">Send feedback</button><span class="muted" id="fbStatus" style="font-size:13px"></span></div>
       </div>
     </div>
@@ -810,161 +810,107 @@ th{background:var(--sunken)}
 <script>
 window.startApp=function(){
 "use strict";
-var PLAN_START = "2026-11-01";
+var PLAN_START = "2026-09-04";
 var WEEK_TARGET = 14;
 
 /* Wording that differs between roadmaps (the rest of the app is shared by every roadmap branch). */
 var COPY = {
-  cardLabel: "DBA CAREER LADDER",
-  journey: "database administration journey",
-  hashtags: ["#DBAJourney", "#LearnInPublic", "#SQL"],
-  studentWord: "DBA student",
-  practice: "SQL practice: LeetCode, HackerRank or Oracle Dev Gym",
-  beforeStart: "Get PostgreSQL and DBeaver installed before then.",
-  sample: { name: "Chiamaka Obi", note: "Finished CS50 SQL Lecture 2 and wrote 8 JOIN queries on my bookstore database." },
-  filePrefix: "dba-journey",
-  storageKey: "dba"
+  cardLabel: "AI ENGINEER ROADMAP",
+  journey: "AI engineering journey",
+  hashtags: ["#AIEngineer", "#BuildInPublic", "#MachineLearning"],
+  studentWord: "AI engineering student",
+  practice: "Flagship project",
+  beforeStart: "Register for the ML Zoomcamp and apply for Coursera Financial Aid before then.",
+  sample: { name: "Chiamaka Obi", note: "Finished ML Zoomcamp module 2 and trained my first regression model on Douala housing prices." },
+  filePrefix: "ai-journey",
+  storageKey: "ai"
 };
 
 var LEVELS = [
- { n:1, name:"SQL foundations", tag:"Ground level", start:"2026-11-01", end:"2027-01-02", hours:126,
-   goal:"Write correct SQL without looking things up, and design a small, well-structured (normalised) database.",
+ { n:1, name:"Machine learning foundations", tag:"Foundations", start:"2026-09-04", end:"2026-12-20", hours:216,
+   goal:"Train, evaluate and deploy classical machine learning models, and ship your first project behind a live URL.",
    phases:[
-    {when:"1 – 7 Nov", what:"Set up. Install PostgreSQL and DBeaver. Create GitHub, HackerRank and LeetCode accounts and a GitHub repo called dba-journey for your notes. Watch CS50 SQL Lecture 0 (Querying) and do Problem Set 0.",
-     links:[["PostgreSQL download","https://www.postgresql.org/download/"],["DBeaver","https://dbeaver.io/download/"],["CS50 SQL","https://cs50.harvard.edu/sql/"],["GitHub","https://github.com/"]]},
-    {when:"8 Nov – 12 Dec", what:"CS50 SQL Lectures 1–6 (Relating, Designing, Writing, Viewing, Optimizing, Scaling), one a week, with each problem set. Re-run every query in your own PostgreSQL as well.",
-     links:[["CS50 SQL","https://cs50.harvard.edu/sql/"]]},
-    {when:"Every weekday", what:"30 minutes of LeetCode’s SQL 50 study plan. Aim to finish all 50 by {exam:hr_basic}.",
-     links:[["LeetCode SQL 50","https://leetcode.com/studyplan/top-sql-50/"]]},
-    {when:"13 – 19 Dec", what:"Review joins, GROUP BY, subqueries and window functions. Take the HackerRank SQL (Basic) test on {exam:hr_basic}.",
-     links:[["HackerRank SQL (Basic)","https://www.hackerrank.com/skills-verification/sql_basic"]]},
-    {when:"20 Dec – 2 Jan", what:"CS50 SQL final project: design and build your own database with its design document. A lighter holiday pace is fine.",
-     links:[["CS50 SQL","https://cs50.harvard.edu/sql/"]]}
+    {when:"4 – 13 Sep", what:"Set up before the cohort. Register for the ML Zoomcamp (the live cohort starts Monday 14 September, with homework due on Mondays), join the DataTalksClub Slack, and fork the course repo: you will work in your fork all year. Apply for Coursera Financial Aid on course 1 of the Machine Learning Specialization (about 15 days to approve; audit it free while you wait, and save the essay to reuse). Set up GitHub, Kaggle (verify your phone for free GPU) and Hugging Face. Do the Kaggle Python and Pandas micro-courses. Ask two lecturers for recommendation letters, request certified transcripts, and post your Day 1 on LinkedIn and X.",
+     links:[["ML Zoomcamp registration","https://courses.datatalks.club/register/ml-zoomcamp/"],["ML Zoomcamp repo","https://github.com/DataTalksClub/machine-learning-zoomcamp"],["DataTalksClub Slack","https://datatalks.club/slack.html"],["Coursera Financial Aid","https://www.coursera.org/about/financial-aid"],["Kaggle Learn","https://www.kaggle.com/learn"],["Hugging Face","https://huggingface.co/"]]},
+    {when:"14 Sep – 4 Oct", what:"ML Zoomcamp modules 1–2: introduction, environment, NumPy and pandas, then regression. Submit each homework and commit the notebook. Machine Learning Specialization course 1, weeks 1–2. Choose the dataset for Flagship 1 (a tabular problem from your own context: crop yield, housing prices, mobile-money fraud or national health survey data) and write a first exploration notebook.",
+     links:[["ML Zoomcamp","https://github.com/DataTalksClub/machine-learning-zoomcamp"],["Machine Learning Specialization","https://www.coursera.org/specializations/machine-learning-introduction"],["DHS Program data","https://dhsprogram.com/"]]},
+    {when:"5 Oct – 1 Nov", what:"ML Zoomcamp module 3 (classification), module 4 (evaluation: ROC, cross-validation) and module 5 (deployment: a model behind FastAPI in Docker, deployed to Render). Finish Machine Learning Specialization course 1 and apply for aid on course 2. Flagship 1: a baseline model trained and deployed behind an API, even if it is still weak. Post the first live URL: “I shipped a model” beats “I finished a module”.",
+     links:[["ML Zoomcamp","https://github.com/DataTalksClub/machine-learning-zoomcamp"],["FastAPI","https://fastapi.tiangolo.com/"],["Render","https://render.com/"]]},
+    {when:"2 – 29 Nov", what:"ML Zoomcamp module 6: decision trees and gradient boosting (XGBoost). Replace the Flagship 1 baseline with a tuned, cross-validated boosted model and a results table. Finish Flagship 1 (README, tests, Dockerfile, live link) and submit it as the Zoomcamp midterm by {exam:zoom_mid}. Peer-review three other midterm projects. Machine Learning Specialization course 2. Enter one Kaggle Playground competition with a public notebook. Blog post 1 on Flagship 1, linked from the README.",
+     links:[["Kaggle competitions","https://www.kaggle.com/competitions"],["Medium","https://medium.com/"],["dev.to","https://dev.to/"]]},
+    {when:"30 Nov – 20 Dec", what:"ML Zoomcamp modules 7–8: neural networks and an introduction to deep learning. Finish Machine Learning Specialization courses 2 and 3: certificate by {exam:mlspec}. Application season opens: shortlist master's programmes and scholarships, email two possible supervisors, and start the forms. Choose the Flagship 2 dataset.",
+     links:[["Machine Learning Specialization","https://www.coursera.org/specializations/machine-learning-introduction"],["AIMS AI for Science master's","https://ai.aims.ac.za/apply"],["Erasmus Mundus catalogue","https://www.eacea.ec.europa.eu/scholarships/erasmus-mundus-catalogue_en"]]}
    ],
-   note:"Check CS50’s notice about what happens to work submitted near the end of the year, so your progress carries into 2027.",
+   note:"Weekly rhythm: Monday and Tuesday for the course module, Wednesday for homework, Thursday for a book chapter or paper, Friday and Saturday for the flagship project, and Sunday for publishing. Everything here is free or covered by Coursera Financial Aid: apply for aid about 15 days before you need each course.",
    exams:[
-    {id:"hr_basic", name:"HackerRank SQL (Basic) skills test", date:"2026-12-19", cost:"Free", format:"Online, timed, take it any time", link:"https://www.hackerrank.com/skills-verification/sql_basic", earn:"HackerRank SQL (Basic) certificate"},
-    {id:"cs50", name:"CS50 SQL problem sets + final project", date:"2027-01-02", cost:"Free", format:"Submitted online and auto-graded", link:"https://cs50.harvard.edu/sql/", earn:"CS50 SQL certificate (Harvard)"}
+    {id:"zoom_mid", name:"ML Zoomcamp midterm project (Flagship 1)", date:"2026-11-16", cost:"Free", format:"Project submitted on the DataTalksClub course platform and peer-reviewed by three students", link:"https://github.com/DataTalksClub/machine-learning-zoomcamp", earn:"Midterm credit toward the ML Zoomcamp certificate"},
+    {id:"mlspec", name:"Machine Learning Specialization (Stanford / DeepLearning.AI, 3 courses)", date:"2026-12-20", cost:"Free with Coursera Financial Aid", format:"Online graded quizzes and labs on Coursera", link:"https://www.coursera.org/specializations/machine-learning-introduction", earn:"Machine Learning Specialization certificate"}
    ],
-   quals:["HackerRank SQL (Basic) certificate","CS50’s Introduction to Databases with SQL certificate from Harvard (free)"],
-   community:[["Form a study group of 3–5 people before your start date",""],["CS50 online communities","https://cs50.harvard.edu/sql/"]],
-   tasks:["Study group formed and first call held","PostgreSQL and DBeaver installed; dba-journey repo created","CS50 SQL Problem Sets 0–6 submitted","LeetCode SQL 50 completed","HackerRank SQL (Basic) passed","CS50 SQL final project submitted"]
+   quals:["Machine Learning Specialization certificate (Coursera)","A deployed machine learning project (Flagship 1) with a live URL, README and tests"],
+   community:[["ML Zoomcamp cohort on the DataTalksClub Slack","https://datatalks.club/slack.html"],["Kaggle Playground competitions","https://www.kaggle.com/competitions"],["Peer-review three midterm projects",""]],
+   tasks:["Registered for the ML Zoomcamp and joined the course Slack","Coursera Financial Aid approved for the Machine Learning Specialization","GitHub, Kaggle and Hugging Face profiles set up; Day 1 post published","Zoomcamp homework submitted every week","Flagship 1 deployed with README, tests and a live link (midterm submitted)","Three midterm projects peer-reviewed","One public Kaggle notebook","Blog post 1 published","Machine Learning Specialization certificate earned"]
  },
- { n:2, name:"Linux and PostgreSQL at the command line", tag:"Hands-on", start:"2027-01-03", end:"2027-02-27", hours:112,
-   goal:"Work like a real DBA: in a Linux terminal, with psql, Bash scripts and Git, managing users and backups yourself.",
+ { n:2, name:"Deep learning and applications", tag:"Deep learning", start:"2026-12-21", end:"2027-03-21", hours:182,
+   goal:"Train and fine-tune neural networks in PyTorch, and ship a model built on regional data with a public demo and a model card.",
    phases:[
-    {when:"3 Jan – 6 Feb", what:"freeCodeCamp Relational Database certification: Bash, PostgreSQL in the terminal and Git. Build and submit the certification projects.",
-     links:[["freeCodeCamp Relational Database","https://www.freecodecamp.org/learn/relational-database/"]]},
-    {when:"7 – 20 Feb", what:"PostgreSQL admin basics on your own install: psql commands, roles and GRANT, pg_dump and pg_restore, postgresql.conf and pg_hba.conf. Follow the Server Administration part of the manual.",
-     links:[["PostgreSQL: Server Administration","https://www.postgresql.org/docs/current/admin.html"]]},
-    {when:"21 – 27 Feb", what:"Review. Take HackerRank SQL (Intermediate) on {exam:hr_int}.",
-     links:[["HackerRank SQL (Intermediate)","https://www.hackerrank.com/skills-verification/sql_intermediate"]]}
+    {when:"21 Dec – 3 Jan", what:"Apply for aid on course 1 of the Deep Learning Specialization. Download the Flagship 2 data and look at 100 examples by hand. Computer-vision route: the cassava leaf disease dataset. Language route: Cameroonian Pidgin or another African language with Masakhane data. Write the training-script skeleton. A lighter holiday pace is fine.",
+     links:[["Deep Learning Specialization","https://www.coursera.org/specializations/deep-learning"],["Cassava Leaf Disease data","https://www.kaggle.com/competitions/cassava-leaf-disease-classification"],["Masakhane","https://www.masakhane.io/"]]},
+    {when:"4 – 31 Jan", what:"Deep Learning Specialization courses 1–2 (neural networks, hyperparameters), or fast.ai lessons 1–4 if aid is slow. Karpathy’s Zero to Hero on Thursdays: micrograd, then makemore parts 1–2. Flagship 2 version 1: a pretrained ResNet or ViT (or AfroXLMR for text) fine-tuned in PyTorch, with every run tracked in Weights & Biases. Post your training curves and what surprised you.",
+     links:[["fast.ai","https://course.fast.ai/"],["Neural Networks: Zero to Hero","https://karpathy.ai/zero-to-hero.html"],["Weights & Biases","https://wandb.ai/"]]},
+    {when:"1 – 28 Feb", what:"Deep Learning Specialization courses 3–4 (ML strategy, CNNs) or fast.ai lessons 5–8; Karpathy makemore parts 3–5. Flagship 2: error analysis, data augmentation, and a second run that beats the first. Deploy it as a Gradio app on Hugging Face Spaces with a model card (data, metrics, limitations). Submit it as the Zoomcamp capstone by {exam:zoom_cert}. Blog post 2, shared with the Masakhane community.",
+     links:[["Hugging Face Spaces","https://huggingface.co/spaces"],["Gradio","https://www.gradio.app/"]]},
+    {when:"1 – 21 Mar", what:"Deep Learning Specialization course 5 (sequence models and transformers): certificate by {exam:dlspec}. Karpathy’s “Let’s build GPT”. Optional, if you are ahead: train nanoGPT on a small local-language corpus and report perplexity. Post a thread explaining transformers in your own words.",
+     links:[["Deep Learning Specialization","https://www.coursera.org/specializations/deep-learning"],["karpathy/nanoGPT","https://github.com/karpathy/nanoGPT"],["rasbt/LLMs-from-scratch","https://github.com/rasbt/LLMs-from-scratch"]]}
    ],
-   note:"freeCodeCamp’s own estimate for this certification is generous; with Level 1 behind you it usually goes faster. If you’re still on the projects when the admin-basics phase begins, finish them first and move the admin basics later.",
+   note:"Most master’s and scholarship programmes (AIMS, Erasmus Mundus, university scholarships) close between December and March. Keep one folder with your CV, transcripts, degree certificate, two reference letters, motivation letter and passport scan, and confirm every deadline on the official page.",
    exams:[
-    {id:"fcc", name:"freeCodeCamp Relational Database certification projects", date:"2027-02-06", cost:"Free", format:"Projects checked by automated tests", link:"https://www.freecodecamp.org/learn/relational-database/", earn:"freeCodeCamp Relational Database Certification"},
-    {id:"hr_int", name:"HackerRank SQL (Intermediate) skills test", date:"2027-02-27", cost:"Free", format:"Online, timed", link:"https://www.hackerrank.com/skills-verification/sql_intermediate", earn:"HackerRank SQL (Intermediate) certificate"}
+    {id:"zoom_cert", name:"ML Zoomcamp certificate (midterm and capstone projects)", date:"2027-02-28", cost:"Free", format:"Projects submitted on the DataTalksClub course platform and peer-reviewed", link:"https://github.com/DataTalksClub/machine-learning-zoomcamp", earn:"ML Zoomcamp certificate"},
+    {id:"dlspec", name:"Deep Learning Specialization (DeepLearning.AI, 5 courses)", date:"2027-03-21", cost:"Free with Coursera Financial Aid", format:"Online graded quizzes and programming assignments on Coursera", link:"https://www.coursera.org/specializations/deep-learning", earn:"Deep Learning Specialization certificate"}
    ],
-   quals:["freeCodeCamp Relational Database Certification","HackerRank SQL (Intermediate) certificate"],
-   community:[["freeCodeCamp forum: post your projects for feedback","https://forum.freecodecamp.org/"]],
-   tasks:["All freeCodeCamp certification projects passed","Using psql every day instead of a GUI","Lab: three roles (admin, app, read-only) tested with GRANT/REVOKE","Lab: backup with pg_dump, drop the database, restore it","HackerRank SQL (Intermediate) passed"]
+   quals:["Deep Learning Specialization certificate","ML Zoomcamp certificate","Flagship 2 live on Hugging Face Spaces with a model card"],
+   community:[["Masakhane: African-language NLP","https://www.masakhane.io/"],["Hugging Face community","https://huggingface.co/join/discord"],["Capstone peer reviews on the DataTalksClub Slack","https://datatalks.club/slack.html"]],
+   tasks:["Flagship 2 data explored by hand (100 examples)","Karpathy micrograd and makemore completed","First fine-tuning run tracked in Weights & Biases","A second run beats the first after error analysis","Flagship 2 live on Hugging Face Spaces with a model card","Blog post 2 published and shared with the community","Deep Learning Specialization certificate earned"]
  },
- { n:3, name:"Oracle Database Administrator, Associate", tag:"First vendor certification", start:"2027-02-28", end:"2027-06-26", hours:238,
-   goal:"Install, run and look after an Oracle database, and pass Oracle’s associate DBA exam. Oracle is used heavily by Nigerian banks, telecoms and government.",
+ { n:3, name:"LLMs, RAG and agents", tag:"Generative AI", start:"2027-03-22", end:"2027-06-27", hours:196,
+   goal:"Build LLM applications the way companies do: retrieval, agents, evaluation with real numbers, monitoring and cost tracking.",
    phases:[
-    {when:"28 Feb – 27 Mar", what:"Install Oracle AI Database Free (VirtualBox appliance or container) and SQL Developer. Learn the architecture: instance vs database, memory (SGA/PGA), background processes, container and pluggable databases. Practise Oracle SQL in Live SQL.",
-     links:[["Oracle Database Free","https://www.oracle.com/database/free/"],["SQL Developer","https://www.oracle.com/database/sqldeveloper/"],["Oracle Live SQL","https://livesql.oracle.com/"]]},
-    {when:"28 Mar – 1 May", what:"Exam topics, part 1: starting and stopping instances, parameters, users/roles/privileges, tablespaces and datafiles, storage and undo, pluggable databases, Oracle Net and the listener. Do every task in your own install.",
-     links:[["Oracle Database documentation","https://docs.oracle.com/en/database/"],["1Z0-182 exam topics","https://mylearn.oracle.com/ou/exam/oracle-database-23ai-administration-associate-1z0-182/38560/138639/219333"]]},
-    {when:"2 May – 5 Jun", what:"Exam topics, part 2: moving data (Data Pump, SQL*Loader), auditing, maintenance, database tools and performance basics. Book the exam on Pearson VUE at least three weeks before {exam:ora182}.",
-     links:[["Pearson VUE (Oracle)","https://home.pearsonvue.com/oracle"]]},
-    {when:"6 – 26 Jun", what:"Practice questions, then weak topics, then practice again. Aim for 80%+ before exam day. Exam on {exam:ora182}.",
-     links:[["Oracle Dev Gym","https://devgym.oracle.com/"]]}
+    {when:"22 – 28 Mar", what:"Start mlabonne’s LLM Course (LLM Engineer track, section 1). Apply for aid on Generative AI with LLMs. Apply for the Udacity / AWS AI & ML Scholars programme and a Deep Learning Indaba travel grant when their calls open.",
+     links:[["mlabonne/llm-course","https://github.com/mlabonne/llm-course"],["Udacity scholarships","https://www.udacity.com/scholarships"],["Deep Learning Indaba","https://deeplearningindaba.com/"]]},
+    {when:"29 Mar – 2 May", what:"Run an open model locally with Ollama and through a free API. Hugging Face LLM Course chapters 1–3. Embeddings and a vector store, then a naive RAG over 20 documents; compare chunking strategies. Generative AI with LLMs (fine-tuning, PEFT, RLHF), finished by {exam:genai}. Flagship 3: collect a real, messy document set (university regulations, the labour code, or a client’s documents) and build a prototype. Post a demo GIF.",
+     links:[["Ollama","https://ollama.com/"],["Hugging Face LLM Course","https://huggingface.co/learn/llm-course"],["Generative AI with LLMs","https://www.coursera.org/learn/generative-ai-with-llms"]]},
+    {when:"3 – 30 May", what:"Hugging Face Agents Course units 1–3: certificate by {exam:hfagents}. Microsoft’s AI Agents for Beginners, lessons 1–10. IBM Generative AI Engineering, first three courses. Flagship 3: a 50-question evaluation set; measure retrieval hit-rate and MRR; add hybrid search and reranking and measure again; LLM-as-judge for answers. Post your evaluation table. Start applying to five remote junior ML or freelance roles a week.",
+     links:[["Hugging Face Agents Course","https://huggingface.co/learn/agents-course"],["AI Agents for Beginners","https://github.com/microsoft/ai-agents-for-beginners"],["IBM Generative AI Engineering","https://www.coursera.org/specializations/generative-ai-engineering-with-llms"]]},
+    {when:"31 May – 27 Jun", what:"LLM Zoomcamp cohort (starts early June): RAG, vector search, evaluation and monitoring. Finish IBM Generative AI Engineering and its capstone by {exam:ibm}. Flagship 3: a monitoring dashboard (Streamlit or Grafana), cost per query tracked, deployed with Docker Compose, with an evaluation report; submit it as the LLM Zoomcamp project. Blog post 3, technical, with your numbers.",
+     links:[["LLM Zoomcamp","https://github.com/DataTalksClub/llm-zoomcamp"],["Streamlit","https://streamlit.io/"]]}
    ],
-   note:"Start saving for the exam fee now. At about US$245, setting aside a little each month from your start date covers it.",
+   note:"This is what “AI engineer” means in job adverts today. Your evaluation numbers are what separate your project from tutorial copies, so measure before and after every change.",
    exams:[
-    {id:"ora182", name:"Oracle AI Database Administration Associate (1Z0-182)", date:"2027-06-26", cost:"≈ US$245", format:"60 questions · 120 min · pass mark 65% · Pearson VUE online or test centre", link:"https://mylearn.oracle.com/ou/exam/oracle-database-23ai-administration-associate-1z0-182/38560/138639/219333", earn:"Oracle AI Database Administration Associate"}
+    {id:"genai", name:"Generative AI with Large Language Models (DeepLearning.AI + AWS)", date:"2027-04-25", cost:"Free with Coursera Financial Aid", format:"Three weeks of graded quizzes and labs on Coursera", link:"https://www.coursera.org/learn/generative-ai-with-llms", earn:"Generative AI with LLMs certificate"},
+    {id:"hfagents", name:"Hugging Face Agents Course", date:"2027-05-30", cost:"Free", format:"Online units with a final hands-on assignment", link:"https://huggingface.co/learn/agents-course", earn:"Hugging Face Agents Course certificate"},
+    {id:"ibm", name:"IBM Generative AI Engineering with LLMs", date:"2027-06-20", cost:"Free with Coursera Financial Aid", format:"Online courses with graded labs and a RAG capstone on Coursera", link:"https://www.coursera.org/specializations/generative-ai-engineering-with-llms", earn:"IBM Generative AI Engineering with LLMs certificate"}
    ],
-   quals:["Oracle AI Database Administration Associate (Oracle certification)","From here you can apply for junior DBA and database support roles"],
-   community:[["Oracle Dev Gym: weekly SQL quizzes and tournaments with rankings","https://devgym.oracle.com/"],["Oracle forums","https://forums.oracle.com/"]],
-   tasks:["Oracle AI Database Free and SQL Developer installed","Architecture notes written in your repo","Part 1 topics practised hands-on","Part 2 topics practised hands-on","Exam booked on Pearson VUE","Practice scores at 80% or higher","1Z0-182 passed"]
+   quals:["Generative AI with LLMs, Hugging Face Agents and IBM Generative AI Engineering certificates","Flagship 3: a deployed RAG assistant with an evaluation report and monitoring","From here you can apply for junior ML, AI engineer and freelance roles"],
+   community:[["LLM Zoomcamp cohort (DataTalksClub)","https://github.com/DataTalksClub/llm-zoomcamp"],["Hugging Face community","https://huggingface.co/join/discord"],["Deep Learning Indaba","https://deeplearningindaba.com/"]],
+   tasks:["An open model running locally with Ollama","Naive RAG prototype over a real document set","50-question evaluation set with hit-rate and MRR measured","Hybrid search and reranking added and measured again","Generative AI with LLMs certificate","Hugging Face Agents Course certificate","IBM Generative AI Engineering certificate","Flagship 3 deployed with evaluation report and monitoring","Applying to five roles a week"]
  },
- { n:4, name:"PostgreSQL DBA and first job applications", tag:"Second platform", start:"2027-06-27", end:"2027-09-25", hours:182,
-   goal:"Handle the real DBA jobs on PostgreSQL: backup and recovery, replication, tuning and security. Turn that work into a portfolio and start applying for jobs.",
+ { n:4, name:"MLOps and work-ready", tag:"Top of the ladder", start:"2027-06-28", end:"2027-09-30", hours:190,
+   goal:"Run models in production (tracking, orchestration, monitoring, CI/CD) and turn four deployed projects into interviews, job offers or a funded master’s place.",
    phases:[
-    {when:"27 Jun – 24 Jul", what:"Backup and recovery: pg_dump vs pg_basebackup, WAL archiving, point-in-time recovery. Write a runbook and prove it works by restoring to a chosen time.",
-     links:[["PostgreSQL: Backup and Restore","https://www.postgresql.org/docs/current/backup.html"]]},
-    {when:"25 Jul – 21 Aug", what:"High availability and maintenance: streaming replication between two VMs or containers, a failover test, VACUUM and autovacuum, monitoring with pg_stat_statements.",
-     links:[["PostgreSQL: High Availability","https://www.postgresql.org/docs/current/high-availability.html"]]},
-    {when:"22 Aug – 11 Sep", what:"Performance and security: EXPLAIN ANALYZE, index types, memory settings, pg_hba.conf, SSL, roles. Write a tuning case study with before-and-after timings.",
-     links:[["PostgreSQL: Performance Tips","https://www.postgresql.org/docs/current/performance-tips.html"]]},
-    {when:"12 – 25 Sep", what:"EDB exam preparation using the topics on the exam page. Exam on {exam:edb}.",
-     links:[["EDB certification exams","https://www.enterprisedb.com/training/certification-exams"]]},
-    {when:"All level", what:"Put each lab on GitHub. Add your Oracle certification to your CV and LinkedIn, and apply for junior DBA and database support jobs.",
-     links:[]}
+    {when:"28 Jun – 1 Aug", what:"MLOps Zoomcamp modules 1–4: MLflow experiment tracking and model registry added to Flagship 1, a retraining pipeline in Prefect or Airflow, and deployment patterns (batch and online). Made-With-ML design and data sections on Thursdays. Take your English test by {exam:english} (check which test each school accepts). Post the MLflow screenshot: “my model now retrains itself”.",
+     links:[["MLOps Zoomcamp","https://github.com/DataTalksClub/mlops-zoomcamp"],["Made-With-ML","https://github.com/GokuMohandas/Made-With-ML"],["MLflow","https://mlflow.org/"]]},
+    {when:"2 – 29 Aug", what:"MLOps Zoomcamp module 5 (monitoring with Evidently: drift, performance and alerts) and module 6 (unit and integration tests, GitHub Actions deploying on merge, infrastructure as code). Deep Learning Indaba if you are attending: present Flagship 2 or 3 as a poster. Flagship 4 final: architecture diagram, README and write-up, submitted as the MLOps Zoomcamp project by {exam:mlops}. Blog post 4.",
+     links:[["Evidently","https://www.evidentlyai.com/"],["GitHub Actions","https://docs.github.com/actions"]]},
+    {when:"30 Aug – 30 Sep", what:"Portfolio README listing all four flagship projects with live links. Three questions a day from the ML interviews book, and mock interviews with a peer from the course Slack. Apply to ten roles. With a master’s offer, prepare the visa file; without one, finalise the next round of scholarship applications (many DAAD deadlines fall around 15 October). Year-in-review post with your total hours, four projects and certificates.",
+     links:[["ML interviews book","https://github.com/chiphuyen/ml-interviews-book"],["AI Engineering book resources","https://github.com/chiphuyen/aie-book"],["DAAD scholarship database","https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/"]]}
    ],
-   note:"Pick the newest version of EDB Essentials for PostgreSQL (v18 at the time of writing). Earlier EDB PostgreSQL exams were about US$200; check the current price on EDB’s portal.",
+   note:"Visa and scholarship rules change. Confirm every route on the official pages (Make it in Germany, DAAD, Canada’s Express Entry, EducationUSA) before planning around it.",
    exams:[
-    {id:"edb", name:"EDB Essentials for PostgreSQL", date:"2027-09-25", cost:"Check EDB portal (≈ US$200)", format:"Online, scheduled at your convenience", link:"https://www.enterprisedb.com/training/certification-exams", earn:"EDB Essentials for PostgreSQL"}
+    {id:"english", name:"English test: IELTS Academic or Duolingo English Test", date:"2027-07-25", cost:"≈ US$65 (Duolingo) to ≈ US$250 (IELTS)", format:"Duolingo online at home; IELTS at a test centre. Check which one each school accepts", link:"https://englishtest.duolingo.com/", earn:"English proof for master’s and visa applications"},
+    {id:"mlops", name:"MLOps Zoomcamp project (Flagship 4, final project)", date:"2027-08-29", cost:"Free", format:"Project submitted on the DataTalksClub course platform and peer-reviewed", link:"https://github.com/DataTalksClub/mlops-zoomcamp", earn:"MLOps Zoomcamp certificate"}
    ],
-   quals:["EDB Essentials for PostgreSQL certification","Three portfolio projects: recovery runbook, replication lab, tuning case study"],
-   community:[["PostgreSQL community: Slack, mailing lists, online PGDay events","https://www.postgresql.org/community/"]],
-   tasks:["Point-in-time recovery runbook tested and on GitHub","Replication and failover lab done","Tuning case study with before/after numbers","CV and LinkedIn updated","10 job applications sent","EDB Essentials for PostgreSQL passed"]
- },
- { n:5, name:"How databases work inside", tag:"World-class", start:"2027-09-26", end:"2028-01-08", hours:210,
-   goal:"Understand what happens inside the engine (storage, buffer pools, indexes, query execution) by building parts of one. Few DBAs anywhere can say they’ve done this.",
-   phases:[
-    {when:"26 Sep – 5 Dec", what:"Carnegie Mellon 15-445 (Prof. Andy Pavlo): two lectures a week from the current course page. Do Project 0 (C++ primer), then Project 1 (buffer pool). Submit to the public Gradescope autograder (entry code 5R4XPZ, school: Carnegie Mellon University). It opens after CMU’s own deadline.",
-     links:[["CMU 15-445","https://15445.courses.cs.cmu.edu/"],["BusTub (project code)","https://github.com/cmu-db/bustub"]]},
-    {when:"6 – 18 Dec", what:"Advanced SQL: window functions, recursive CTEs, reading query plans. Take HackerRank SQL (Advanced) on {exam:hr_adv}.",
-     links:[["HackerRank SQL (Advanced)","https://www.hackerrank.com/skills-verification/sql_advanced"]]},
-    {when:"19 Dec – 8 Jan", what:"Project 2 (indexes) if you’re on track; otherwise polish Projects 0–1. Write a blog post explaining how a buffer pool works.",
-     links:[]}
-   ],
-   note:"This is a hard university course in C++. If C++ is new to you, spend the first two weeks on a C++ refresher. Course rule: don’t publish your project code publicly.",
-   exams:[
-    {id:"hr_adv", name:"HackerRank SQL (Advanced) skills test", date:"2027-12-18", cost:"Free", format:"Online, timed", link:"https://www.hackerrank.com/skills-verification/sql_advanced", earn:"HackerRank SQL (Advanced) certificate"},
-    {id:"cmu", name:"CMU 15-445 projects on the Gradescope autograder", date:"2028-01-08", cost:"Free", format:"Automated tests score your code", link:"https://15445.courses.cs.cmu.edu/", earn:"Autograder scores (portfolio proof, no certificate)"}
-   ],
-   quals:["HackerRank SQL (Advanced) certificate","CMU 15-445 project scores, to show in interviews (no certificate is issued)"],
-   community:[["CMU 15-445 unofficial Discord for outside students (linked from the course FAQ)","https://15445.courses.cs.cmu.edu/"]],
-   tasks:["C++ refresher done (if needed)","All lectures up to buffer pool watched","Project 0 passes the autograder","Project 1 passes the autograder","HackerRank SQL (Advanced) passed","Blog post published"]
- },
- { n:6, name:"Learn in a global cohort", tag:"With other students", start:"2028-01-09", end:"2028-04-29", hours:224,
-   goal:"Study alongside thousands of students worldwide, with scored homework, a public leaderboard and peer-reviewed projects, while learning the data platform around databases.",
-   phases:[
-    {when:"Jan – Mar", what:"DataTalksClub Data Engineering Zoomcamp (2028 cohort): Docker with PostgreSQL, workflow orchestration, data warehouses, batch and streaming. Submit the weekly homework, which is scored and ranked on the leaderboard.",
-     links:[["Data Engineering Zoomcamp","https://github.com/DataTalksClub/data-engineering-zoomcamp"]]},
-    {when:"Mar – Apr", what:"Final project, then peer-review other students’ projects.",
-     links:[]}
-   ],
-   note:"The cohort usually starts in January. Check the repo for the 2028 start date and register early. If the date is different, move this level to match.",
-   exams:[
-    {id:"zoomcamp", name:"Zoomcamp final project + peer reviews", date:"2028-04-29", cost:"Free", format:"Project reviewed by other students", link:"https://github.com/DataTalksClub/data-engineering-zoomcamp", earn:"Data Engineering Zoomcamp certificate"}
-   ],
-   quals:["DataTalksClub Data Engineering Zoomcamp certificate"],
-   community:[["DataTalksClub Slack community","https://datatalks.club/slack.html"]],
-   tasks:["Registered for the 2028 cohort","All weekly homework submitted","Final project submitted","Peer reviews completed","Certificate received"]
- },
- { n:7, name:"Professional DBA certification", tag:"Top of the ladder", start:"2028-04-30", end:"2028-09-23", hours:294,
-   goal:"Earn a professional-level certification on the platform your target employers use most.",
-   phases:[
-    {when:"30 Apr – 13 May", what:"Decide using real job adverts: note which platform (Oracle, SQL Server/Azure or PostgreSQL) appears most in 20 adverts for the jobs you want.",
-     links:[]},
-    {when:"Option A · Oracle", what:"Oracle Database Administration 2019 Certified Professional (19c OCP). Two exams: 1Z0-082 (Admin I, overlaps with your Level 3 study) about two months before your final exam, then 1Z0-083 (Admin II: RMAN backup and recovery, multitenant, upgrades) on {exam:pro}.",
-     links:[["1Z0-082","https://education.oracle.com/oracle-database-administration-i/pexam_1Z0-082"],["1Z0-083","https://education.oracle.com/oracle-database-administration-i/pexam_1Z0-083"]]},
-    {when:"Option B · Microsoft", what:"Azure Database Administrator Associate (DP-300). Free Microsoft Learn path and practice assessment, with labs on an Azure free account.",
-     links:[["DP-300 on Microsoft Learn","https://learn.microsoft.com/en-us/credentials/certifications/azure-database-administrator/"]]},
-    {when:"Option C · PostgreSQL", what:"EDB Advanced for PostgreSQL, building on your Level 4 certification.",
-     links:[["EDB certification exams","https://www.enterprisedb.com/training/certification-exams"]]}
-   ],
-   note:"Budget: Oracle ≈ US$245 per exam (two exams). Microsoft prices DP-300 by country, often well below the US price. Check EDB on its portal.",
-   exams:[
-    {id:"pro", name:"Your chosen professional exam (final exam)", date:"2028-09-23", cost:"Depends on option", format:"Proctored online or at a test centre", link:"https://education.oracle.com/", earn:"Professional DBA certification"}
-   ],
-   quals:["One of: Oracle Database Administration 2019 Certified Professional · Microsoft Certified: Azure Database Administrator Associate · EDB Advanced for PostgreSQL"],
-   community:[["Teach: run sessions for your study group and answer beginners’ questions in the forums you used",""]],
-   tasks:["20 job adverts reviewed and platform chosen","Exam(s) booked","Practice scores at 80% or higher","Professional exam passed"]
+   quals:["Five certificates: Machine Learning, Deep Learning, Generative AI with LLMs, Hugging Face Agents and IBM Generative AI Engineering","ML Zoomcamp and MLOps Zoomcamp certificates","A portfolio of four deployed projects with write-ups, ready for AI engineer roles and funded master’s applications"],
+   community:[["Mock interviews with a peer from the DataTalksClub Slack","https://datatalks.club/slack.html"],["Deep Learning Indaba","https://deeplearningindaba.com/"],["Teach: help the students one level below you",""]],
+   tasks:["MLflow tracking and model registry on Flagship 1","Scheduled retraining pipeline (Prefect or Airflow)","Drift monitoring with alerts (Evidently)","Tests and GitHub Actions CI/CD deploying on merge","Flagship 4 write-up published (blog post 4)","English test taken","Portfolio README with four live projects","Applied to ten roles or programmes","Year-in-review post published"]
  }
 ];
 
@@ -1157,7 +1103,7 @@ function updateNameCard(){
 
 /* ---------- commitment note ---------- */
 var COMMITMENT = {
-  intro:"I am starting a climb from my first SQL query to a professional database administration certification. I understand that certificates alone won’t make me a DBA; practice will.",
+  intro:"I am starting a climb from my first machine learning model to working as an AI engineer. I understand that certificates alone won’t make me an AI engineer; building and shipping real projects will.",
   points:[
     "{STUDY}",
     "I will log my hours and what I did every day, honestly, including the days I miss.",
@@ -1814,18 +1760,15 @@ document.getElementById("wkPrev").addEventListener("click", function(){ var d=ad
 document.getElementById("wkNext").addEventListener("click", function(){ curWeek=iso(addDays(parseISO(curWeek),7)); renderDaysBox(); loadWeek(true); });
 
 /* ---------- plan settings (set by the mentor, read by everyone) ---------- */
-var DEFAULT_START="2026-11-01", DEFAULT_HOURS=2;
+var DEFAULT_START="2026-09-04", DEFAULT_HOURS=2;
 var settings={dailyHours:DEFAULT_HOURS, startDate:DEFAULT_START, holidays:{}, levelWeeks:{}};
 var studyDays=[];
 LEVELS.forEach(function(L){ L.ostart=L.start; L.oend=L.end; L.exams.forEach(function(e){ e.odate=e.date; }); });
 var PHASE_RANGES = {
-"1|1 – 7 Nov":["2026-11-01","2026-11-07"], "1|8 Nov – 12 Dec":["2026-11-08","2026-12-12"], "1|13 – 19 Dec":["2026-12-13","2026-12-19"], "1|20 Dec – 2 Jan":["2026-12-20","2027-01-02"],
-"2|3 Jan – 6 Feb":["2027-01-03","2027-02-06"], "2|7 – 20 Feb":["2027-02-07","2027-02-20"], "2|21 – 27 Feb":["2027-02-21","2027-02-27"],
-"3|28 Feb – 27 Mar":["2027-02-28","2027-03-27"], "3|28 Mar – 1 May":["2027-03-28","2027-05-01"], "3|2 May – 5 Jun":["2027-05-02","2027-06-05"], "3|6 – 26 Jun":["2027-06-06","2027-06-26"],
-"4|27 Jun – 24 Jul":["2027-06-27","2027-07-24"], "4|25 Jul – 21 Aug":["2027-07-25","2027-08-21"], "4|22 Aug – 11 Sep":["2027-08-22","2027-09-11"], "4|12 – 25 Sep":["2027-09-12","2027-09-25"],
-"5|26 Sep – 5 Dec":["2027-09-26","2027-12-05"], "5|6 – 18 Dec":["2027-12-06","2027-12-18"], "5|19 Dec – 8 Jan":["2027-12-19","2028-01-08"],
-"6|Jan – Mar":["2028-01-09","2028-03-11"], "6|Mar – Apr":["2028-03-12","2028-04-29"],
-"7|30 Apr – 13 May":["2028-04-30","2028-05-13"]
+"1|4 – 13 Sep":["2026-09-04","2026-09-13"], "1|14 Sep – 4 Oct":["2026-09-14","2026-10-04"], "1|5 Oct – 1 Nov":["2026-10-05","2026-11-01"], "1|2 – 29 Nov":["2026-11-02","2026-11-29"], "1|30 Nov – 20 Dec":["2026-11-30","2026-12-20"],
+"2|21 Dec – 3 Jan":["2026-12-21","2027-01-03"], "2|4 – 31 Jan":["2027-01-04","2027-01-31"], "2|1 – 28 Feb":["2027-02-01","2027-02-28"], "2|1 – 21 Mar":["2027-03-01","2027-03-21"],
+"3|22 – 28 Mar":["2027-03-22","2027-03-28"], "3|29 Mar – 2 May":["2027-03-29","2027-05-02"], "3|3 – 30 May":["2027-05-03","2027-05-30"], "3|31 May – 27 Jun":["2027-05-31","2027-06-27"],
+"4|28 Jun – 1 Aug":["2027-06-28","2027-08-01"], "4|2 – 29 Aug":["2027-08-02","2027-08-29"], "4|30 Aug – 30 Sep":["2027-08-30","2027-09-30"]
 };
 function daysBetween(a,b){ return Math.round((parseISO(b)-parseISO(a))/864e5); }
 function normSettings(o){
@@ -1903,16 +1846,16 @@ var MON_FULL=["January","February","March","April","May","June","July","August",
 function startText(){ var s=parseISO(PLAN_START); return DOW_FULL[s.getDay()]+" "+s.getDate()+" "+MON_FULL[s.getMonth()]+" "+s.getFullYear(); }
 
 function renderRoutine(){
-  var D=settings.dailyHours*60, soc=socialMins();
-  var practice=round5(D*0.25), main=Math.max(5, D-soc-practice);
-  var lab=Math.max(5, D-soc);
-  var review=round5(D*0.35), call=round5(D*0.25), refl=Math.max(5, D-soc-review-call);
+  var D=settings.dailyHours*60, soc=socialMins(), work=Math.max(5, D-soc);
+  var notes=round5(work*0.3), rest=Math.max(5, work-notes);
   document.getElementById("routineTitle").textContent="Daily routine: "+hoursText(settings.dailyHours)+" a day";
   var post="<b>"+minsText(soc)+"</b> post your progress card on social media";
   document.getElementById("routineBody").innerHTML=
-    "<tr><td class='date'>Mon – Fri</td><td><b>"+minsText(main)+"</b> main track: the lesson, reading or lab for this week’s phase</td><td><b>"+minsText(practice)+"</b> "+esc(COPY.practice)+"</td><td>"+post+"</td></tr>"+
-    "<tr><td class='date'>Saturday</td><td colspan='2'><b>"+minsText(lab)+"</b> hands-on lab: build it, break it, fix it, and write down what happened</td><td>"+post+"</td></tr>"+
-    "<tr><td class='date'>Sunday</td><td><b>"+minsText(review)+"</b> review the week and push notes to your GitHub repo</td><td><b>"+minsText(call)+"</b> study-group call · <b>"+minsText(refl)+"</b> weekly reflection in your daily log</td><td>"+post+"</td></tr>"+
+    "<tr><td class='date'>Mon – Tue</td><td><b>"+minsText(rest)+"</b> course: watch this week’s module and start the homework</td><td><b>"+minsText(notes)+"</b> notes in your own words, committed to GitHub</td><td>"+post+"</td></tr>"+
+    "<tr><td class='date'>Wednesday</td><td colspan='2'><b>"+minsText(work)+"</b> homework: finish it, submit it and commit the notebook</td><td>"+post+"</td></tr>"+
+    "<tr><td class='date'>Thursday</td><td colspan='2'><b>"+minsText(work)+"</b> depth: one book chapter, paper or Karpathy lesson, with the exercises</td><td>"+post+"</td></tr>"+
+    "<tr><td class='date'>Fri – Sat</td><td colspan='2'><b>"+minsText(work)+"</b> "+esc(COPY.practice)+": real data, real deployment, end with a working commit</td><td>"+post+"</td></tr>"+
+    "<tr><td class='date'>Sunday</td><td><b>"+minsText(rest)+"</b> publish: update the README and write the week’s long post</td><td><b>"+minsText(notes)+"</b> weekly reflection in your daily log</td><td>"+post+"</td></tr>"+
     "<tr><td class='date'>Holidays</td><td colspan='3'>No study expected. Holidays set by your mentor are marked in your daily log, and your plan dates move later to make up for them.</td></tr>";
 }
 function rerenderPlan(){
