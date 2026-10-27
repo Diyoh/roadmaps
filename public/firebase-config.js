@@ -75,6 +75,18 @@ export const HUB = {
       dailyHours: 2,
       startDate: "2026-11-02",
       order: 4
+    },
+    {
+      id: "devops",
+      branch: "devops-engineer",
+      path: "devops",
+      title: "DevOps Engineer",
+      tagline: "Ten levels from Linux and Git to CI/CD, Terraform, Kubernetes, GitOps, observability and DevSecOps, with the Kubestronaut certificates and a platform you can show, and a free route and a paid route at every step.",
+      url: "/devops/",
+      levels: 10,
+      dailyHours: 2,
+      startDate: "2026-11-02",
+      order: 5
     }
   ]
 };
