@@ -72,6 +72,28 @@ service cloud.firestore {
           allow write: if isSelf(uid);
         }
       }
+      // Tracks: which track a student chose and which extra tracks they asked for or were given.
+      // A student sets their own choice once and may ask for extras, but only the admin can approve,
+      // decline or change a track. Mentors of the roadmap can read.
+      match /tracks/{uid} {
+        function ids() { return ['graphics', 'video', 'web', 'biz']; }
+        function okShape() {
+          return request.resource.data.keys().hasOnly(['chosen', 'requested', 'approved', 'declined', 'updatedAt'])
+            && request.resource.data.get('requested', []).hasOnly(ids())
+            && request.resource.data.get('approved', []).hasOnly(ids())
+            && request.resource.data.get('declined', []).hasOnly(ids())
+            && request.resource.data.get('chosen', '') in ([''] + ids());
+        }
+        allow read: if isSelf(uid) || isTeacherOf(rid);
+        allow create: if isAdmin() || (isSelf(uid) && okShape()
+          && request.resource.data.get('approved', []).size() == 0
+          && request.resource.data.get('declined', []).size() == 0);
+        allow update: if isAdmin() || (isSelf(uid) && okShape()
+          && request.resource.data.get('approved', []) == resource.data.get('approved', [])
+          && request.resource.data.get('declined', []) == resource.data.get('declined', [])
+          && (resource.data.get('chosen', '') == '' || request.resource.data.get('chosen', '') == resource.data.get('chosen', '')));
+        allow delete: if isAdmin();
+      }
       // Assignments, grades and comments: written by the roadmap's teachers only.
       match /assigned/{uid} {
         allow read: if isSelf(uid) || isTeacherOf(rid);

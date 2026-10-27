@@ -57,9 +57,9 @@ export const HUB = {
       branch: "ai-everyday-work",
       path: "everyday",
       title: "AI for Everyday Work",
-      tagline: "Six levels from your first everyday AI tasks to video, design, websites, ads and a first paid client, with a free route and a paid route at every step.",
+      tagline: "Everyone starts with AI foundations, then picks a track (graphics and writing, video and voice, websites and automation, or business and ads) and finishes with a Launch level for a first paid client. Free route and paid route at every step.",
       url: "/everyday/",
-      levels: 6,
+      levels: 3,
       dailyHours: 2,
       startDate: "2026-11-02",
       order: 3
