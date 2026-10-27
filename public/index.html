@@ -693,6 +693,16 @@ th{background:var(--sunken)}
   </section>
 
   <!-- ============ SHARED PLAN PAGES ============ -->
+  <section class="page" id="p-tracks" hidden>
+    <h2>My track</h2>
+    <p class="muted">Level 1 and the Launch level are for everyone. In between, you follow <b>one track</b>. Your plan’s dates are personal: they run Level 1, then your track, then Launch. If you want more tracks, request them here. The admin decides, and approved tracks are added to your plan after Launch.</p>
+    <div id="trackBox"></div>
+  </section>
+  <section class="page" id="p-trackreq" hidden>
+    <h2>Tracks</h2>
+    <p class="muted">Each student follows Level 1, one track and the Launch level. Extra track requests need the admin’s approval; approved tracks are added after Launch. Mentors can see choices and requests; only the admin can approve, decline or change a track.</p>
+    <div id="trackReqBox"></div>
+  </section>
   <section class="page" id="p-ladder" hidden>
     <h2>The ladder</h2>
     <p class="muted">Start at Level 1 and climb. Finish each level before moving up. If you fall behind, push the dates back rather than skipping the exam. Tick milestones as you finish them.</p>
@@ -827,8 +837,8 @@ var COPY = {
 };
 
 var LEVELS = [
- { n:1, name:"AI foundations and your free toolkit", tag:"Foundations", start:"2026-11-02", end:"2026-11-29", hours:56,
-   goal:"Use an AI assistant well every day, build a safe free toolkit, know every tool’s free limits, and choose one venture project to carry through all six levels.",
+ { n:1, cid:1, core:true, name:"AI foundations and your free toolkit", tag:"Foundations", start:"2026-11-02", end:"2026-11-29", hours:56,
+   goal:"Use an AI assistant well every day, build a safe free toolkit, know every tool’s free limits, and choose one venture project to carry through every level of your plan.",
    phases:[
     {when:"2 – 8 Nov", what:"Set up. Free route: open free accounts on ChatGPT, Gemini and Claude and use all three for a week. Their free limits differ: ChatGPT offers everyday text chat and limited image generation; Claude resets its allowance every 5 hours and has no image generation; Gemini also refreshes every 5 hours and includes image generation and Deep Research. Add GitHub, a Google account, Canva Free and NotebookLM. Start a prompt log (a Google Doc or sheet) and learn one prompt pattern: role, goal, context, format, a worked example, then a check. Paid route: pay for nothing this week. Write down every time you hit a limit; that list shows what is worth buying. Cheapest upgrades: Gemini AI Plus US$4.99 a month, ChatGPT Go US$8, or about US$20 for ChatGPT Plus, Claude Pro or Gemini AI Pro.",
      links:[["ChatGPT","https://chatgpt.com/"],["Gemini","https://gemini.google.com/"],["Claude","https://claude.ai/"],["NotebookLM","https://notebooklm.google.com/"],["Canva","https://www.canva.com/"],["GitHub","https://github.com/"]]},
@@ -836,7 +846,7 @@ var LEVELS = [
      links:[["OpenAI Academy","https://academy.openai.com/"],["Google AI Studio","https://aistudio.google.com/"],["NotebookLM","https://notebooklm.google.com/"],["Elements of AI","https://www.elementsofai.com/"]]},
     {when:"16 – 22 Nov", what:"Safety, limits and costs. Never paste passwords, client secrets, ID numbers or private customer data into a free chat tool, and check each tool’s data-use setting. Free plans often come with licence rules: ElevenLabs’ free plan is non-commercial, Vercel’s Hobby plan is for personal use only, and Luma’s free use is non-commercial, so read the licence before client work. Build your tool sheet (a spreadsheet): tool, free limit, when it resets, watermark, commercial rights, paid price, date checked. Free route: run a small open model on your own computer with Ollama if it has about 16 GB of RAM; otherwise skip. Paid route: pay-per-token APIs only when something you build needs one. Free API tiers exist (Google AI Studio; DeepSeek and Z.ai have offered free tokens), but limits change, so check them.",
      links:[["Ollama","https://ollama.com/"],["Google AI Studio","https://aistudio.google.com/"],["DeepSeek platform","https://platform.deepseek.com/"],["Z.ai","https://z.ai/"]]},
-    {when:"23 – 29 Nov", what:"Choose your venture project. Pick one real or realistic small business to carry through all six levels: your own idea, a family shop, a local business or a niche service. Write a one-page brief with AI as a sparring partner (who it serves, what it sells, the price, why people would care), then talk to three real people to test it, because AI cannot replace real customers. Finish the Google Skills path Introduction to Generative AI (about 2 hours, free badge) by {exam:gs_genai}. Free route: everything in this level costs nothing. Paid route: not needed. Post your Day 1 story and share your tool sheet with your study group.",
+    {when:"23 – 29 Nov", what:"Choose your venture project. Pick one real or realistic small business to carry through every level of your plan: your own idea, a family shop, a local business or a niche service. Write a one-page brief with AI as a sparring partner (who it serves, what it sells, the price, why people would care), then talk to three real people to test it, because AI cannot replace real customers. Finish the Google Skills path Introduction to Generative AI (about 2 hours, free badge) by {exam:gs_genai}. Free route: everything in this level costs nothing. Paid route: not needed. Post your Day 1 story and share your tool sheet with your study group. Before this level ends, open My track in the app and choose your track: Graphics, brand and writing; Video, voice and short-form content; Websites, apps and automation; or Business operations, ads and sales. You can ask the admin to add more tracks later.",
      links:[["Google Skills: Introduction to Generative AI","https://www.skills.google/paths/118"],["Lean Canvas","https://leanstack.com/lean-canvas"],["Coursera Financial Aid","https://www.coursera.org/about/financial-aid"]]}
    ],
    note:"Weekly rhythm: Monday and Tuesday to learn (course or tool tutorial), Wednesday for a practice drill, Thursday to compare one task in two tools, Friday and Saturday for the venture project, Sunday to publish and review. Budget routes used throughout: Route A US$0 (free tiers only); Route B about US$10–25 a month (one assistant plan plus one specialist tool); Route C about US$40–70 a month (adds a builder or automation plan); Route D US$100 and up, only once clients pay for it. Free limits quoted in this roadmap come from third-party roundups checked in October 2026 and change often, so confirm each one on the vendor’s own page before relying on it.",
@@ -848,7 +858,7 @@ var LEVELS = [
    community:[["Indie Hackers","https://www.indiehackers.com/"],["Hugging Face community","https://huggingface.co/join/discord"],["Your study group: agree a weekly 30-minute call",""]],
    tasks:["Free accounts open on ChatGPT, Gemini and Claude, and a prompt log started","Tool sheet started: free limits, resets, licences and prices","OpenAI Academy AI Foundations certificate earned","Ten everyday tasks done with AI and fact-checked","Privacy and licence rules written in your own words","Google Skills generative AI badge earned","Venture brief written and tested with three real people","Day 1 post published"]
  },
- { n:2, name:"Graphics, brand and writing", tag:"Design and words", start:"2026-11-30", end:"2027-01-03", hours:70,
+ { n:2, cid:2, track:"graphics", name:"Graphics, brand and writing", tag:"Design and words", start:"2026-11-30", end:"2027-01-03", hours:70,
    goal:"Design a complete brand and a month of content with free tools, learn which paid design tools are worth buying, and publish your first portfolio set.",
    phases:[
     {when:"30 Nov – 6 Dec", what:"Design basics and brand kit. Learn contrast, hierarchy, spacing, two fonts and a small colour palette, then build a brand kit for your venture: logo, colours, fonts and voice. Free route: Canva Free (its AI tools include a shared monthly pool of roughly 200 standard or 20 premium uses, plus background remover and Magic Write), Adobe Express’s free tier and Autodraw for quick icons. One review says free Canva AI images carry commercial rights and another says they do not, so read Canva’s current licence before client work. Paid route: Canva Pro, about US$12 a month (US$144 a year), or Adobe Express or Firefly from US$9.99 a month. Stay on Canva Free until a real limit stops you.",
@@ -861,13 +871,13 @@ var LEVELS = [
    note:"Designs sell through clarity, not novelty. Free tiers reset daily or monthly, so generate in batches on the days your credits refresh and write down which prompts worked. Free AI images may carry licence limits or watermarks: record them in the tool sheet before anything goes to a client.",
    exams:[
     {id:"gai_ess", name:"Google AI Essentials (Google on Coursera, about 5–10 hours)", date:"2026-12-27", cost:"Audit free; certificate about US$49 a month after a 7-day trial, or Coursera Financial Aid if offered", format:"Self-paced video lessons and short graded activities", link:"https://grow.google/ai/", earn:"Google AI Essentials certificate (optional)"},
-    {id:"brand_cp", name:"Checkpoint 2: brand kit and 12 posts reviewed by your mentor or study group", date:"2027-01-03", cost:"Free", format:"Share a link to your brand kit, 12 designed posts and your voice guide for written feedback", link:"", earn:"Sign-off on a portfolio-ready brand kit"}
+    {id:"brand_cp", name:"Track checkpoint: brand kit and 12 posts reviewed by your mentor or study group", date:"2027-01-03", cost:"Free", format:"Share a link to your brand kit, 12 designed posts and your voice guide for written feedback", link:"", earn:"Sign-off on a portfolio-ready brand kit"}
    ],
    quals:["Google AI Essentials (certificate optional)","A complete brand kit and 12 designed posts for your venture","Images you may use commercially, with each licence noted in your tool sheet"],
    community:[["Canva Design School","https://www.canva.com/designschool/"],["Product Hunt","https://www.producthunt.com/"],["Peer feedback in your study group",""]],
    tasks:["Brand kit built in Canva Free (logo, colours, fonts, voice)","Ten images generated and their licences noted","Logo concept rebuilt cleanly as a vector or Canva design","12-post social calendar written and designed","Welcome email, flyer and five-slide pitch finished","Google AI Essentials completed","Portfolio page published with the brand kit","Post or thread: what AI did well and badly for your brand"]
  },
- { n:3, name:"Video, voice and short-form content", tag:"Video", start:"2027-01-04", end:"2027-02-14", hours:84,
+ { n:3, cid:3, track:"video", name:"Video, voice and short-form content", tag:"Video", start:"2027-01-04", end:"2027-02-14", hours:84,
    goal:"Script, record, edit and publish short videos with free tools, add AI voice and clips only where they help, and know which paid tool earns its monthly fee.",
    phases:[
     {when:"4 – 17 Jan", what:"Script to edit. Learn the pipeline: a hook in the first 3 seconds, one idea, captions and a call to action. Write scripts with a free assistant, film on your phone, then edit. Free route: CapCut (free, 1080p export; auto-captions are capped at 10 minutes per video), DaVinci Resolve (free, no watermark, up to 4K UHD; the Studio upgrade is a one-time US$295) and Clipchamp (free, 1080p, no watermark). Paid route: Descript Hobbyist at US$24 a month for transcript-style editing (its free plan is one watermarked 720p video a month), or Opus Clip at US$15 a month to cut long videos into clips. Skip both until you edit every week.",
@@ -879,13 +889,13 @@ var LEVELS = [
    ],
    note:"Video is the most expensive thing to generate and the easiest to waste. Use one hero idea a week, reuse it across formats, and treat paid video credits as the last thing you buy.",
    exams:[
-    {id:"video_cp", name:"Checkpoint 3: eight published short videos reviewed by your mentor or study group", date:"2027-02-14", cost:"Free", format:"Share links to a 30-second product ad, a voice-over explainer and six shorts, with the tools and prompts used", link:"", earn:"Sign-off on a video portfolio"}
+    {id:"video_cp", name:"Track checkpoint: eight published short videos reviewed by your mentor or study group", date:"2027-02-14", cost:"Free", format:"Share links to a 30-second product ad, a voice-over explainer and six shorts, with the tools and prompts used", link:"", earn:"Sign-off on a video portfolio"}
    ],
    quals:["Eight published short videos with captions","A 30-second product ad and a voice-over explainer","A one-page note on which video and voice tools passed your licence check"],
    community:[["CapCut","https://www.capcut.com/"],["DaVinci Resolve training","https://www.blackmagicdesign.com/products/davinciresolve/training"],["Study-group watch party: review each other’s hooks",""]],
    tasks:["Three hook-and-script drafts written and tested","Edited 60-second vertical video with captions","Voice-over recorded or generated under a licence you can use","30-second product ad published","Five AI clips tested, with watermark and licence rules recorded","Eight short videos published","Cost per video worked out (time plus credits)","Post or thread: my free video stack"]
  },
- { n:4, name:"Websites, apps and automation", tag:"Build", start:"2027-02-15", end:"2027-04-11", hours:112,
+ { n:4, cid:4, track:"web", name:"Websites, apps and automation", tag:"Build", start:"2027-02-15", end:"2027-04-11", hours:112,
    goal:"Ship a real website for your venture with AI help, add forms, payments or a chatbot, and run three automations that save you hours every week.",
    phases:[
     {when:"15 – 28 Feb", what:"Web basics with an AI tutor. Learn how a page works (HTML, CSS and a little JavaScript), what a domain, hosting and a repository are, and how to read the code an AI writes before you trust it. Work through freeCodeCamp’s free web design lessons beside an assistant that explains each error. Free route: VS Code with GitHub Copilot Free (about 2,000 completions and 50 chat requests a month), Cursor Hobby (about 2,000 tab completions and 50 premium requests a month), Windsurf (25 Cascade credits a month) or Gemini CLI (reported at 1,000 requests a day, but Google has been moving individual users to Antigravity, so check). Paid route: a US$20 assistant plan, or Replit Core at about US$20–25 a month, once free limits block you every week.",
@@ -901,13 +911,13 @@ var LEVELS = [
    exams:[
     {id:"anth_acad", name:"Anthropic Academy: a course of your choice (for builders, the Claude API course)", date:"2027-04-04", cost:"Free", format:"Self-paced video lessons; the Claude API course is 84 lessons and 8+ hours of video", link:"https://anthropic.skilljar.com/", earn:"Anthropic Academy completion certificate"},
     {id:"oa_agents", name:"OpenAI Academy: Agents and Workflows", date:"2027-04-09", cost:"Free", format:"Self-paced course with a final assessment", link:"https://academy.openai.com/", earn:"OpenAI Academy completion certificate and Credly badge"},
-    {id:"site_cp", name:"Checkpoint 4: live website and three running automations", date:"2027-04-11", cost:"Free", format:"Share the live URL, the GitHub repository and a short screen recording of each automation running", link:"", earn:"Sign-off on a deployed site and working automations"}
+    {id:"site_cp", name:"Track checkpoint: live website and three running automations", date:"2027-04-11", cost:"Free", format:"Share the live URL, the GitHub repository and a short screen recording of each automation running", link:"", earn:"Sign-off on a deployed site and working automations"}
    ],
    quals:["A live website on a free or low-cost host, with the code in GitHub","Three automations running","Anthropic Academy and OpenAI Academy Agents and Workflows certificates","A written checklist for reviewing AI-generated code"],
    community:[["freeCodeCamp forum","https://forum.freecodecamp.org/"],["n8n community","https://community.n8n.io/"],["Make community","https://community.make.com/"]],
    tasks:["Basic HTML and CSS page built and explained in your own words","Coding assistant set up and its free limits recorded","Venture website live on a free host with the code in GitHub","Contact form and analytics working","Payment link or booking set up (test mode first)","AI chat helper answering from your FAQ","Three automations running","Security checklist completed (no keys in the repository)","Anthropic Academy certificate earned","OpenAI Academy Agents and Workflows certificate earned"]
  },
- { n:5, name:"Business operations, ads and sales", tag:"Business", start:"2027-04-12", end:"2027-05-23", hours:84,
+ { n:5, cid:5, track:"biz", name:"Business operations, ads and sales", tag:"Business", start:"2027-04-12", end:"2027-05-23", hours:84,
    goal:"Run the business side of your venture with free tools, create and test ads with discipline, and earn the free marketing certificates that clients recognise.",
    phases:[
     {when:"12 – 25 Apr", what:"Operations. Turn the venture brief into a lean canvas, then set up the systems that stop work falling through the cracks. Free route: HubSpot’s free CRM for contacts and deals; Google Sheets as your dashboard; invoicing with Zoho Invoice (free, unlimited), Wave’s free Starter plan, Invoice Ninja’s free plan (5 clients) or Stripe Invoicing; email with the free plans of Brevo (300 emails a day), MailerLite (1,000 subscribers) or Mailchimp (500 contacts); and a free support chatbot. Use AI to draft SOPs, proposals and contracts, then have a local expert check anything legal or tax-related. Paid route: Wave Pro US$19 a month, Invoice Ninja Pro US$14, Make Core US$9, or a business assistant plan from about US$20. Finish OpenAI Academy’s Applied AI Foundations by {exam:oa_applied}.",
@@ -928,10 +938,10 @@ var LEVELS = [
    community:[["Meta Ad Library (free research)","https://www.facebook.com/ads/library/"],["Google Ads Transparency Center","https://adstransparency.google.com/"],["Local business owners: ask three for feedback",""]],
    tasks:["Lean canvas finished and tested","CRM, invoicing and email list set up","Three SOPs written with AI and checked by a person","Ad research notebook: 20 competitor ads analysed","Three offers, nine hooks and a landing page ready, with tracking","OpenAI Academy Applied AI Foundations certificate earned","HubSpot Digital Marketing certification earned","Google Ads certification earned","Campaign test run or campaign pack delivered, with results written up"]
  },
- { n:6, name:"Launch: portfolio, clients and first income", tag:"Top of the ladder", start:"2027-05-24", end:"2027-07-04", hours:84,
+ { n:6, cid:6, core:true, name:"Launch: portfolio, clients and first income", tag:"Top of the ladder", start:"2027-05-24", end:"2027-07-04", hours:84,
    goal:"Package what you can now do into two or three priced offers, win your first paying customers, and decide with data which tools to pay for.",
    phases:[
-    {when:"24 May – 6 Jun", what:"Package your offers. Choose two or three things you can deliver reliably: a social-content pack, a landing page in five days, ad creatives and setup, or business automation. Price each by the hours it takes and the value it gives, set a scope, a turnaround time and a revision limit, and write a simple agreement. Build a portfolio site (reuse Level 4) with six case studies: the problem, the tools used, the time and cost saved, and the result. Show your process honestly, including what AI did and what you checked. Free route: your Level 4 site, Canva, Google Docs and Stripe or a local payment method. Paid route: a custom domain and one assistant plan. Submit Checkpoint 5 by {exam:portfolio_cp}.",
+    {when:"24 May – 6 Jun", what:"Package your offers. Choose two or three things you can deliver reliably: a social-content pack, a landing page in five days, ad creatives and setup, or business automation. Price each by the hours it takes and the value it gives, set a scope, a turnaround time and a revision limit, and write a simple agreement. Build a portfolio site (reuse your best work from your track, for example a live site) with six case studies: the problem, the tools used, the time and cost saved, and the result. Show your process honestly, including what AI did and what you checked. Free route: the best work from your track (a design kit, videos, a live site or an automation), Canva, Google Docs and Stripe or a local payment method. Paid route: a custom domain and one assistant plan. Submit the portfolio checkpoint by {exam:portfolio_cp}.",
      links:[["Stripe","https://stripe.com/"],["Cloudflare Pages","https://pages.cloudflare.com/"],["Canva","https://www.canva.com/"]]},
     {when:"7 – 20 Jun", what:"Find first customers. Pre-sell before you build: message five local businesses or niche communities a day with a 60-second demo video, not a long pitch. Offer your first one or two projects at a discount or free in exchange for a testimonial. Use AI to personalise messages, never to spam or to claim results you have not delivered. Apply for startup support by {exam:credits}: AWS Activate Founders, Microsoft for Startups, NVIDIA Inception, Anthropic’s Claude for Startups and Google for Startups. All are free to apply to, but eligibility varies (some need an incorporated company or investors) and credits are not guaranteed. Watch Devpost for hackathons that give free API credits.",
      links:[["AWS Activate","https://aws.amazon.com/activate/"],["Microsoft for Startups","https://www.microsoft.com/startups"],["NVIDIA Inception","https://www.nvidia.com/en-us/startups/"],["Claude for Startups","https://claude.com/programs/startups"],["Google for Startups Cloud","https://cloud.google.com/startup"],["Devpost hackathons","https://devpost.com/hackathons"]]},
@@ -940,9 +950,9 @@ var LEVELS = [
    ],
    note:"Income takes longer than skill. Most people need many conversations before the first yes, so count conversations, not only sales. Confirm tax, licence and payment rules where you live before you invoice anyone.",
    exams:[
-    {id:"portfolio_cp", name:"Checkpoint 5: portfolio site with six case studies", date:"2027-06-06", cost:"Free", format:"Share the live portfolio link and the two or three priced offers for written feedback", link:"", earn:"Sign-off on a client-ready portfolio"},
+    {id:"portfolio_cp", name:"Launch checkpoint: portfolio site with six case studies", date:"2027-06-06", cost:"Free", format:"Share the live portfolio link and the two or three priced offers for written feedback", link:"", earn:"Sign-off on a client-ready portfolio"},
     {id:"credits", name:"Startup credit applications sent (AWS Activate Founders, Microsoft for Startups, NVIDIA Inception, Anthropic, Google for Startups)", date:"2027-06-13", cost:"Free to apply", format:"Online applications; most want a business name, a website and a short description, and some need an incorporated company or investor backing", link:"https://aws.amazon.com/activate/", earn:"Possible cloud and AI credits (AWS Activate Founders and Microsoft for Startups start at about US$1,000); not guaranteed"},
-    {id:"first_paid", name:"Checkpoint 6: first paid project delivered", date:"2027-07-04", cost:"Free", format:"Signed scope, invoice, delivered work and a written testimonial", link:"", earn:"First income and a client testimonial"}
+    {id:"first_paid", name:"Launch checkpoint: first paid project delivered", date:"2027-07-04", cost:"Free", format:"Signed scope, invoice, delivered work and a written testimonial", link:"", earn:"First income and a client testimonial"}
    ],
    quals:["A portfolio with six case studies","Two or three priced offers with a written scope and agreement","Applications submitted to startup credit programmes","One paid project delivered, with a testimonial"],
    community:[["Indie Hackers","https://www.indiehackers.com/"],["Devpost hackathons","https://devpost.com/hackathons"],["Teach: help the students one level below you",""]],
@@ -963,11 +973,53 @@ function weekStart(d){ return addDays(new Date(d.getFullYear(), d.getMonth(), d.
 function today(){ var n=new Date(); return new Date(n.getFullYear(), n.getMonth(), n.getDate()); }
 function levelFor(dateStr){ for(var i=0;i<LEVELS.length;i++){ if(dateStr>=LEVELS[i].start && dateStr<=LEVELS[i].end) return LEVELS[i]; } return null; }
 
-var ALL_TASKS=[], ALL_EXAMS=[];
-LEVELS.forEach(function(L){
-  L.tasks.forEach(function(t,i){ ALL_TASKS.push({id:"l"+L.n+"t"+i, level:L.n}); });
-  L.exams.forEach(function(e){ e.level=L.n; ALL_EXAMS.push(e); });
+/* ---------- tracks: Level 1 and Launch are for everyone, in between each student follows one chosen track ---------- */
+var CATALOG = LEVELS.slice(), CAT = {}, CAT_TRACK = {}, TRACK_IDS = [];
+CATALOG.forEach(function(L){
+  CAT[L.cid]=L; if(L.track){ CAT_TRACK[L.track]=L; TRACK_IDS.push(L.track); }
+  L.cstart=L.start; L.cend=L.end; L.exams.forEach(function(e){ e.codate=e.date; });
 });
+var CORE_FIRST = CATALOG.filter(function(L){ return L.core; })[0], CORE_LAST = CATALOG.filter(function(L){ return L.core; }).slice(-1)[0];
+var TRACKS = {chosen:"", requested:[], approved:[], declined:[]};
+var classTracks = {};
+function normTracks(o){
+  o=o||{};
+  function lst(a){ var r=[]; (Array.isArray(a)?a:[]).forEach(function(t){ if(TRACK_IDS.indexOf(t)>=0 && r.indexOf(t)<0) r.push(t); }); return r; }
+  return {chosen:TRACK_IDS.indexOf(o.chosen)>=0?o.chosen:"", requested:lst(o.requested), approved:lst(o.approved), declined:lst(o.declined), updatedAt:o.updatedAt||""};
+}
+/* The levels one student follows, in order: Level 1, their track, Launch, then extra tracks the admin approved. */
+function activeFor(tr){
+  tr=normTracks(tr);
+  var out=[CORE_FIRST];
+  if(tr.chosen){
+    out.push(CAT_TRACK[tr.chosen]); out.push(CORE_LAST);
+    tr.approved.forEach(function(t){ if(t!==tr.chosen) out.push(CAT_TRACK[t]); });
+  }
+  return out;
+}
+function addISO(d,n){ return iso(addDays(parseISO(d),n)); }
+var ALL_TASKS=[], ALL_EXAMS=[];
+/* Mentors and the admin see the whole programme in catalogue order; a student sees their own personal sequence. */
+function rebuildActive(){
+  var list = isOwner ? CATALOG.slice() : activeFor(TRACKS), pos=0;
+  list.forEach(function(L,i){
+    L.n=i+1;
+    var len=daysBetween(L.cstart,L.cend)+1;
+    L.ostart=addISO(DEFAULT_START,pos); L.oend=addISO(DEFAULT_START,pos+len-1); L.shift=daysBetween(L.cstart,L.ostart); pos+=len;
+    L.start=L.ostart; L.end=L.oend;
+    L.exams.forEach(function(e){ e.odate=addISO(e.codate,L.shift); e.date=e.odate; e.level=L.cid; });
+  });
+  LEVELS=list; ALL_TASKS=[]; ALL_EXAMS=[];
+  list.forEach(function(L){
+    L.tasks.forEach(function(t,i){ ALL_TASKS.push({id:"l"+L.cid+"t"+i, level:L.cid}); });
+    L.exams.forEach(function(e){ ALL_EXAMS.push(e); });
+  });
+  if(ladderSel!=null && ladderSel>LEVELS.length) ladderSel=null;
+}
+function trOf(id){ return classTracks[id]||{}; }
+function examCountFor(tr){ var n=0; activeFor(tr).forEach(function(L){ n+=L.exams.length; }); return n; }
+function isAdminUser(){ return window.APP_IS_ADMIN===true; }
+function trackName(id){ var L=CAT_TRACK[id]; return L?L.name:id; }
 
 /* ---------- state ---------- */
 var store = { state:{done:{}, exams:{}, pledge:{}, subs:{}}, weeks:{} };
@@ -1039,15 +1091,15 @@ function saveWeek(id){
 }
 
 /* ---------- progress helpers ---------- */
-function levelProgress(state){
+function levelProgress(state, tr){
   var done=(state&&state.done)||{}, ex=(state&&state.exams)||{};
-  return LEVELS.map(function(L){
-    var d=0; L.tasks.forEach(function(t,i){ if(done["l"+L.n+"t"+i]) d++; });
+  return (tr ? activeFor(tr) : LEVELS).map(function(L){
+    var d=0; L.tasks.forEach(function(t,i){ if(done["l"+L.cid+"t"+i]) d++; });
     var st=L.exams.map(function(e){ return (ex[e.id]||{}).status||""; });
     return {L:L, done:d, exams:st, complete: d===L.tasks.length && st.every(function(x){ return x==="passed"; })};
   });
 }
-function workingOn(state){ var lp=levelProgress(state); for(var i=0;i<lp.length;i++){ if(!lp[i].complete) return lp[i].L; } return LEVELS[LEVELS.length-1]; }
+function workingOn(state, tr){ var lp=levelProgress(state, tr); for(var i=0;i<lp.length;i++){ if(!lp[i].complete) return lp[i].L; } return lp[lp.length-1].L; }
 function weekLabel(k){ var s=parseISO(k); return s.getDate()+" "+MON[s.getMonth()]+" "+s.getFullYear(); }
 function isGraded(t){ return t && t.grade!=null && t.grade!==""; }
 function taskStatus(t, sub){
@@ -1097,7 +1149,7 @@ function renderLadder(){
     var quals = "<div class='qual'><div class='label'>Qualification you should hold</div><ul>"+L.quals.map(function(q){return "<li>"+esc(q)+"</li>";}).join("")+"</ul></div>";
     var comm = "<div class='community'><div class='label'>Learn with others</div><ul>"+L.community.map(function(c){ return "<li>"+(c[1]?"<a href='"+esc(c[1])+"' target='_blank' rel='noopener'>"+esc(c[0])+"</a>":esc(c[0]))+"</li>"; }).join("")+"</ul></div>";
     var tasks = L.tasks.map(function(t,i){
-      var id="l"+L.n+"t"+i;
+      var id="l"+L.cid+"t"+i;
       return "<label><input type='checkbox' id='"+id+"' data-task='"+id+"'><span>"+esc(t)+"</span></label>";
     }).join("");
     return "<article class='level' id='level"+L.n+"' data-level='"+L.n+"'>"+
@@ -1176,6 +1228,8 @@ var ICONS={
   routine:ICO("<circle cx='12' cy='12' r='9'/><path d='M12 7v5l3 3'/>"),
   commit:ICO("<path d='M12 20h9'/><path d='M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z'/>"),
   class:ICO("<path d='M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2'/><circle cx='9' cy='7' r='4'/><path d='M23 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8'/>"),
+  tracks:ICO("<path d='M6 3v12'/><circle cx='6' cy='18' r='3'/><circle cx='18' cy='6' r='3'/><path d='M18 9a9 9 0 0 1-9 9'/>"),
+  trackreq:ICO("<path d='M6 3v12'/><circle cx='6' cy='18' r='3'/><circle cx='18' cy='6' r='3'/><path d='M18 9a9 9 0 0 1-9 9'/>"),
   assign:ICO("<path d='M12 5v14M5 12h14'/>"),
   settings:ICO("<circle cx='12' cy='12' r='3'/><path d='M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z'/>")
 };
@@ -1230,9 +1284,9 @@ function renderHero(){
     return "<a href='#ladder' data-lsel='"+p.L.n+"' class='rung-s"+(p.complete?" done":"")+(isCur?" cur":"")+"' title='Level "+p.L.n+": "+esc(p.L.name)+"'><span class='rung-fill' style='width:"+Math.round(frac*100)+"%'></span><span class='rung-n'>L"+p.L.n+"</span><span class='rung-name'>"+esc(p.L.name)+"</span></a>";
   }).join("");
 }
-var PAGES_STUDENT=[["overview","Overview"],["log","Daily log"],["work","My assignments"],["ladder","The ladder"],["exams","Exam calendar"],["routine","Daily routine"],["commit","My commitment"]];
-var PAGES_TEACHER=[["class","Class"],["assign","Assign a task"],["settings","Plan settings"],["ladder","The ladder"],["exams","Exam calendar"],["routine","Daily routine"]];
-var PAGE_NAMES={overview:"your overview", log:"your daily log", work:"your assignments", ladder:"the ladder", exams:"the exam calendar", routine:"the daily routine", commit:"your commitment"};
+var PAGES_STUDENT=[["overview","Overview"],["log","Daily log"],["work","My assignments"],["tracks","My track"],["ladder","The ladder"],["exams","Exam calendar"],["routine","Daily routine"],["commit","My commitment"]];
+var PAGES_TEACHER=[["class","Class"],["assign","Assign a task"],["trackreq","Tracks"],["settings","Plan settings"],["ladder","The ladder"],["exams","Exam calendar"],["routine","Daily routine"]];
+var PAGE_NAMES={tracks:"your track", trackreq:"the tracks page", overview:"your overview", log:"your daily log", work:"your assignments", ladder:"the ladder", exams:"the exam calendar", routine:"the daily routine", commit:"your commitment"};
 var role=null, entered=false, ready=false;
 var RP = window.APP_ROADMAP ? "r/"+window.APP_ROADMAP.id+"/" : "";
 var NEEDS_APPROVAL = window.APP_NEEDS_APPROVAL===true, approved=!NEEDS_APPROVAL, removedFlag=false, suspendedFlag=false, suspendReason="";
@@ -1252,7 +1306,7 @@ function renderTabs(){
   if(!role || (role==="student" && (!entered || blocked()))){ nav.hidden=true; document.querySelector(".wrap").classList.remove("shell"); return; }
   var list = role==="teacher" ? PAGES_TEACHER : PAGES_STUDENT;
   nav.innerHTML = (role==="teacher"?"<span class='role'>Mentor</span>":"") + list.map(function(x,i){
-    return (role==="teacher" && i===3 ? "<span class='sep' aria-hidden='true'></span>" : "")+"<a href='#"+x[0]+"' data-page='"+x[0]+"'>"+(ICONS[x[0]]||"")+"<span>"+esc(x[1])+"</span></a>";
+    return (role==="teacher" && i===4 ? "<span class='sep' aria-hidden='true'></span>" : "")+"<a href='#"+x[0]+"' data-page='"+x[0]+"'>"+(ICONS[x[0]]||"")+"<span>"+esc(x[1])+"</span></a>";
   }).join("");
   nav.hidden=false;
   document.querySelector(".wrap").classList.add("shell");
@@ -1271,6 +1325,8 @@ function showPage(){
     document.getElementById("waitText").textContent = suspendedFlag ? "Your mentor has suspended your access to this roadmap, so you can’t continue the classes for now."+(suspendReason?" Reason: "+suspendReason:"")+" Your work so far is saved. Contact your mentor to discuss it." : removedFlag ? "Your mentor has removed you from this class. If you think this is a mistake, contact your mentor." : "You’ve signed your commitment. Your mentor now needs to approve you before you can start. This page opens your plan automatically as soon as you’re approved.";
   }
   if(p==="overview") renderNext();
+  if(p==="tracks") renderTracksPage();
+  if(p==="trackreq") renderTrackReq();
   if(p==="settings" && !setDirty) loadSettingsForm();
   window.scrollTo(0,0);
   if(role==="student" && entered && !blocked() && hasPage(PAGES_STUDENT,p) && (store.state.resume||{}).page!==p){
@@ -1313,11 +1369,117 @@ document.getElementById("g_enter").addEventListener("click", function(){
 });
 ["g_name","g_back"].forEach(function(id){ document.getElementById(id).addEventListener("keydown", function(e){ if(e.key==="Enter") document.getElementById(id==="g_name"?"g_sign":"g_enter").click(); }); });
 
+/* ---------- tracks: student page ---------- */
+var pendingPick=null, trackMsg="";
+function saveTracks(){
+  TRACKS.updatedAt=new Date().toISOString(); store.tracks=clone(TRACKS); saveLocal();
+  if(mode==="db" && uid){
+    setStatus("Saving…");
+    var path=RP+"tracks/"+uid; timers[path]=1;
+    db.doc(path).set(clone(TRACKS)).then(function(){ delete timers[path]; setStatus("All changes saved"); })
+      .catch(function(){ delete timers[path]; setStatus("Couldn’t save your track just now. Try again."); trackMsg="Couldn’t save. Check your connection and try again."; renderTracksPage(); });
+  } else setStatus(localMsg);
+  rerenderPlan(); renderTracksPage(); renderNext();
+}
+function trackWeeks(L){ return Math.round((daysBetween(L.cstart,L.cend)+1)/7); }
+function trackCard(L, st){
+  var exams=L.exams.map(function(e){ return esc(e.name.split(" (")[0].replace(/^Track checkpoint: /,"Checkpoint: ")); }).join("; ");
+  var badge="", acts="";
+  if(st==="chosen") badge="<span class='pill'>Your track</span>";
+  else if(st==="approved") badge="<span class='chip'>Added after Launch</span>";
+  else if(st==="requested"){ badge="<span class='chip'>Waiting for the admin</span>"; acts="<button type='button' class='btn small' data-trk-withdraw='"+L.track+"'>Withdraw request</button>"; }
+  else if(st==="declined"){ badge="<span class='chip over'>Declined by the admin</span>"; acts="<button type='button' class='btn small' data-trk-request='"+L.track+"'>Request again</button>"; }
+  else if(!TRACKS.chosen){
+    acts = pendingPick===L.track
+      ? "<button type='button' class='btn primary small' data-trk-confirm='"+L.track+"'>Confirm: this is my track</button> <button type='button' class='btn small' data-trk-cancel='1'>Cancel</button>"
+      : "<button type='button' class='btn primary small' data-trk-pick='"+L.track+"'>Choose this track</button>";
+  } else acts="<button type='button' class='btn small' data-trk-request='"+L.track+"'>Request as an extra track</button>";
+  return "<article class='card' style='margin:0 0 14px'><div class='card-head'><div><div class='eyebrow'>Track · about "+trackWeeks(L)+" weeks · "+Math.round((daysBetween(L.cstart,L.cend)+1)*2)+" hours</div><h3 style='font-size:1.25rem;margin-top:4px'>"+esc(L.name)+"</h3></div><div>"+badge+"</div></div>"+
+    "<p>"+esc(L.goal)+"</p><p class='muted' style='margin:0 0 10px'>Exams and checkpoints: "+exams+"</p>"+(acts?"<div class='acts'>"+acts+"</div>":"")+"</article>";
+}
+function renderTracksPage(){
+  var box=document.getElementById("trackBox"); if(!box || isOwner) { if(box) box.innerHTML="<p class='empty'>Mentors and the admin manage tracks on the Tracks page.</p>"; return; }
+  var html="";
+  if(!TRACKS.chosen) html+="<div class='panel'><b>Choose your track.</b> You can’t change it later without the admin, so pick the one closest to the work you want to be paid for. Level 1 comes first for everyone, so you have until it ends.</div>";
+  else html+="<div class='panel'>Your plan: <b>Level 1</b> → <b>"+esc(trackName(TRACKS.chosen))+"</b> → <b>Launch</b>"+TRACKS.approved.filter(function(t){ return t!==TRACKS.chosen; }).map(function(t){ return " → <b>"+esc(trackName(t))+"</b>"; }).join("")+".</div>";
+  if(trackMsg) html+="<p class='late'>"+esc(trackMsg)+"</p>";
+  TRACK_IDS.forEach(function(id){
+    var L=CAT_TRACK[id], st="";
+    if(TRACKS.chosen===id) st="chosen"; else if(TRACKS.approved.indexOf(id)>=0) st="approved"; else if(TRACKS.requested.indexOf(id)>=0) st="requested"; else if(TRACKS.declined.indexOf(id)>=0) st="declined";
+    html+=trackCard(L, st);
+  });
+  box.innerHTML=html;
+}
+document.addEventListener("click", function(ev){
+  var b=ev.target.closest("[data-trk-pick],[data-trk-confirm],[data-trk-cancel],[data-trk-request],[data-trk-withdraw]"); if(!b || isOwner) return;
+  trackMsg="";
+  if(b.hasAttribute("data-trk-pick")){ pendingPick=b.getAttribute("data-trk-pick"); renderTracksPage(); return; }
+  if(b.hasAttribute("data-trk-cancel")){ pendingPick=null; renderTracksPage(); return; }
+  if(b.hasAttribute("data-trk-confirm")){
+    var id=b.getAttribute("data-trk-confirm"); if(TRACKS.chosen || TRACK_IDS.indexOf(id)<0) return;
+    TRACKS.chosen=id; TRACKS.requested=TRACKS.requested.filter(function(t){ return t!==id; }); pendingPick=null; saveTracks(); return;
+  }
+  if(b.hasAttribute("data-trk-request")){
+    var r=b.getAttribute("data-trk-request"); if(!TRACKS.chosen || TRACK_IDS.indexOf(r)<0 || r===TRACKS.chosen) return;
+    TRACKS.declined=TRACKS.declined.filter(function(t){ return t!==r; });
+    if(TRACKS.requested.indexOf(r)<0) TRACKS.requested.push(r);
+    saveTracks(); return;
+  }
+  if(b.hasAttribute("data-trk-withdraw")){
+    var w=b.getAttribute("data-trk-withdraw"); TRACKS.requested=TRACKS.requested.filter(function(t){ return t!==w; }); saveTracks(); return;
+  }
+});
+
+/* ---------- tracks: mentor and admin page ---------- */
+function trackWrite(sid, mutate){
+  var cur=normTracks(classTracks[sid]); mutate(cur); cur.updatedAt=new Date().toISOString();
+  classTracks[sid]=cur;
+  return db.doc(RP+"tracks/"+sid).set(clone(cur)).then(function(){ renderTrackReq(); renderClass(); }).catch(function(){ var m=document.getElementById("trackReqMsg"); if(m) m.textContent="Couldn’t save. Only the admin can change tracks."; });
+}
+function renderTrackReq(){
+  var box=document.getElementById("trackReqBox"); if(!box) return;
+  if(!isOwner){ box.innerHTML=""; return; }
+  var admin=isAdminUser(), rows=classRows.filter(function(r){ return r.id!==uid; });
+  var pend=[], html="";
+  rows.forEach(function(r){ var t=trOf(r.id); (t.requested||[]).forEach(function(x){ pend.push({id:r.id, track:x}); }); });
+  html+="<p id='trackReqMsg' class='late'></p>";
+  html+="<h3>Waiting for approval ("+pend.length+")</h3>";
+  if(!pend.length) html+="<p class='empty'>No extra track requests.</p>";
+  else html+="<div class='tablebox'><table><thead><tr><th>Student</th><th>Wants to add</th><th></th></tr></thead><tbody>"+pend.map(function(q){
+    var r=rows.filter(function(x){ return x.id===q.id; })[0];
+    return "<tr><td>"+esc(studentName(r,{}))+"</td><td>"+esc(trackName(q.track))+"</td><td>"+(admin?"<button type='button' class='btn primary small' data-tr-ok='"+esc(q.id)+"|"+q.track+"'>Approve</button> <button type='button' class='btn small' data-tr-no='"+esc(q.id)+"|"+q.track+"'>Decline</button>":"<span class='muted'>Admin decides</span>")+"</td></tr>";
+  }).join("")+"</tbody></table></div>";
+  html+="<h3 style='margin-top:22px'>Every student’s plan</h3>";
+  if(!rows.length) html+="<p class='empty'>No students yet.</p>";
+  else html+="<div class='tablebox'><table><thead><tr><th>Student</th><th>Chosen track</th><th>Approved extras</th></tr></thead><tbody>"+rows.map(function(r){
+    var t=trOf(r.id), sel="";
+    if(admin){
+      sel="<select data-tr-set='"+esc(r.id)+"'><option value=''>Not chosen yet</option>"+TRACK_IDS.map(function(id){ return "<option value='"+id+"'"+(t.chosen===id?" selected":"")+">"+esc(trackName(id))+"</option>"; }).join("")+"</select>";
+    } else sel=t.chosen?esc(trackName(t.chosen)):"<span class='muted'>Not chosen yet</span>";
+    var ex=(t.approved||[]).filter(function(x){ return x!==t.chosen; }).map(function(x){ return esc(trackName(x))+(admin?" <button type='button' class='btn small' data-tr-rm='"+esc(r.id)+"|"+x+"'>Remove</button>":""); }).join("<br>")||"<span class='muted'>None</span>";
+    return "<tr><td>"+esc(studentName(r,{}))+"</td><td>"+sel+"</td><td>"+ex+"</td></tr>";
+  }).join("")+"</tbody></table></div>";
+  box.innerHTML=html;
+}
+document.addEventListener("click", function(ev){
+  var b=ev.target.closest("[data-tr-ok],[data-tr-no],[data-tr-rm]"); if(!b || !isOwner || !isAdminUser() || !db) return;
+  var a=(b.getAttribute("data-tr-ok")||b.getAttribute("data-tr-no")||b.getAttribute("data-tr-rm")).split("|"), sid=a[0], tk=a[1];
+  if(b.hasAttribute("data-tr-ok")) trackWrite(sid, function(t){ t.requested=t.requested.filter(function(x){ return x!==tk; }); t.declined=t.declined.filter(function(x){ return x!==tk; }); if(t.approved.indexOf(tk)<0) t.approved.push(tk); });
+  else if(b.hasAttribute("data-tr-no")) trackWrite(sid, function(t){ t.requested=t.requested.filter(function(x){ return x!==tk; }); if(t.declined.indexOf(tk)<0) t.declined.push(tk); });
+  else trackWrite(sid, function(t){ t.approved=t.approved.filter(function(x){ return x!==tk; }); });
+});
+document.addEventListener("change", function(ev){
+  var s=ev.target.closest("[data-tr-set]"); if(!s || !isOwner || !isAdminUser() || !db) return;
+  var sid=s.getAttribute("data-tr-set"), v=s.value;
+  trackWrite(sid, function(t){ t.chosen=v; if(v){ t.requested=t.requested.filter(function(x){ return x!==v; }); t.approved=t.approved.filter(function(x){ return x!==v; }); } });
+});
+
 /* ---------- overview: what to do next ---------- */
 function renderNext(){
   var ul=document.getElementById("nextList"); if(!ul) return;
   var items=[], t=today(), tISO=iso(t), s=store.state;
   var rp=(s.resume||{});
+  if(role==="student" && !TRACKS.chosen) items.push(["Choose your track", "Level 1 is for everyone. Pick the track that fits your venture: graphics and writing, video and voice, websites and automation, or business operations and ads. Your personal plan dates are built from it.", "tracks", "Choose"]);
   if(rp.at) items.push(["Last time", "You were on "+(PAGE_NAMES[rp.page]||"your overview")+" on "+fmtStamp(rp.at)+".", rp.page||"overview", "Go back"]);
   if(tISO>=PLAN_START){
     var w=store.weeks[iso(weekStart(t))], di=t.getDay();
@@ -1328,7 +1490,7 @@ function renderNext(){
     items.push(["Start date", "Your plan starts on "+startText()+". "+COPY.beforeStart, "ladder", "See Level 1"]);
   }
   var L=workingOn(s), nextM=null;
-  L.tasks.forEach(function(x,i){ if(!nextM && !s.done["l"+L.n+"t"+i]) nextM=x; });
+  L.tasks.forEach(function(x,i){ if(!nextM && !s.done["l"+L.cid+"t"+i]) nextM=x; });
   if(nextM) items.push(["Next milestone", nextM+" (Level "+L.n+")", "ladder", "Open ladder"]);
   var tasks=myAssigned.tasks||{}, open=sortedTaskIds(tasks).filter(function(id){ return !(s.subs||{})[id] && !isGraded(tasks[id]); });
   if(open.length){ var k=tasks[open[0]]; items.push(["Assignment", k.title+(k.due?" · due "+fmtShort(k.due):"")+(open.length>1?" (+"+(open.length-1)+" more)":""), "work", "Open"]); }
@@ -1351,7 +1513,7 @@ function updateStats(){
   document.getElementById("stTasks").textContent = doneCount;
   renderHero();
   renderLadderNav();
-  document.getElementById("stTasksSub").textContent = "of "+ALL_TASKS.length+" across 7 levels";
+  document.getElementById("stTasksSub").textContent = "of "+ALL_TASKS.length+" across "+LEVELS.length+(LEVELS.length===1?" level":" levels");
   var passed = ALL_EXAMS.filter(function(e){ return (s.exams[e.id]||{}).status==="passed"; }).length;
   document.getElementById("stExams").textContent = passed;
   var next = ALL_EXAMS.filter(function(e){ return (s.exams[e.id]||{}).status!=="passed"; }).sort(function(a,b){return a.date<b.date?-1:1;})[0];
@@ -1518,6 +1680,10 @@ function startClass(){
     classRows = qs.docs.map(function(d){ return {id:d.id, data:clone(d.data())}; });
     renderClass(); if(selId) renderDetail();
   }, function(){ document.getElementById("classBody").innerHTML="<tr><td colspan='10' class='muted'>The class list stopped updating. Reload the page to reconnect.</td></tr>"; });
+  db.collection(RP+"tracks").onSnapshot(function(qs){
+    var m={}; qs.docs.forEach(function(d){ m[d.id]=normTracks(clone(d.data())); });
+    classTracks=m; renderClass(); renderTrackReq(); if(selId) renderDetail();
+  }, function(){});
   db.collection(RP+"assigned").onSnapshot(function(qs){
     var m={}; qs.docs.forEach(function(d){ m[d.id]=clone(d.data()); });
     classAssigned=m; renderClass(); if(selId) renderDetail();
@@ -1531,7 +1697,7 @@ function startClass(){
 var classAccess={};
 function registerRoadmap(){
   var R=window.APP_ROADMAP; if(!R || !db) return;
-  var entry={id:R.id, title:R.title, tagline:R.tagline||"", url:location.origin+location.pathname, levels:LEVELS.length, dailyHours:settings.dailyHours, startDate:settings.startDate, order:R.order||1, updatedAt:new Date().toISOString()};
+  var entry={id:R.id, title:R.title, tagline:R.tagline||"", url:location.origin+location.pathname, levels:(CATALOG.length-TRACK_IDS.length+1), dailyHours:settings.dailyHours, startDate:settings.startDate, order:R.order||1, updatedAt:new Date().toISOString()};
   var ref=db.doc("catalog/"+R.id);
   ref.get().then(function(snap){ var cur=snap.exists?clone(snap.data()):{}; Object.keys(entry).forEach(function(k){ cur[k]=entry[k]; }); return ref.set(cur); }).catch(function(){});
 }
@@ -1600,7 +1766,7 @@ function renderClass(){
     var rows=others.slice().sort(function(a,b){ return studentName(a,ps).toLowerCase()<studentName(b,ps).toLowerCase()?-1:1; });
     var thisWeek=iso(weekStart(today())), lateCutoff=iso(addDays(parseISO(thisWeek),-14));
     body.innerHTML = rows.map(function(r){
-      var sm=r.data.summary||{}, p=ps[r.id]||{}, L=workingOn(r.data.state);
+      var sm=r.data.summary||{}, p=ps[r.id]||{}, L=workingOn(r.data.state, trOf(r.id));
       var g=gradeStats((classAssigned[r.id]||{}).tasks, (r.data.state||{}).subs);
       var last = sm.lastWeek ? weekLabel(sm.lastWeek)+(sm.lastRating?" · "+RATING_LABEL[sm.lastRating]:"") : "Not yet";
       var late = thisWeek>PLAN_START && (!sm.lastWeek || sm.lastWeek<lateCutoff);
@@ -1608,12 +1774,12 @@ function renderClass(){
       var susp=isSuspended(r.id);
       return "<tr data-id='"+esc(r.id)+"'"+(r.id===selId?" class='sel'":"")+">"+
         "<td class='full'><div class='sname'>"+esc(studentName(r,ps))+(susp?" <span class='chip over'>Suspended</span>":"")+"</div><div class='ssub'>"+(pl.committedAt?"Signed "+esc(fmtShort(pl.committedAt.slice(0,10))):"<span class='late'>Not signed</span>")+"</div></td>"+
-        "<td data-l='Level'>L"+L.n+"</td>"+
+        "<td data-l='Level'>"+esc(L.core?("L"+L.cid):trackName(L.track))+"</td>"+
         "<td data-l='Last 7 days'>"+spark(sm.daily)+"</td>"+
         "<td data-l='Hours' class='mono'>"+(sm.hours||0)+"</td>"+
         "<td data-l='Check-in'"+(late?" class='late'":"")+">"+esc(last)+"</td>"+
         "<td data-l='Work · grade' class='mono'>"+g.submitted+"/"+g.assigned+(g.overdue?" <span class='late'>("+g.overdue+" late)</span>":"")+" · "+(g.avg==null?"—":g.avg+"%")+"</td>"+
-        "<td data-l='Exams' class='mono'>"+(sm.examsPassed||0)+"/"+ALL_EXAMS.length+"</td>"+
+        "<td data-l='Exams' class='mono'>"+(sm.examsPassed||0)+"/"+examCountFor(trOf(r.id))+"</td>"+
         "<td class='full acts'><button type='button' class='btn small' data-view='"+esc(r.id)+"'>View</button>"+(susp?"<button type='button' class='btn small' data-reinstate='"+esc(r.id)+"'>Reinstate</button>":"<button type='button' class='btn small' data-suspend='"+esc(r.id)+"'>Suspend</button>")+"</td></tr>";
     }).join("");
   });
@@ -1704,12 +1870,12 @@ function renderDetail(force){
   profilesFor([sid]).then(function(ps){
     if(sid!==selId) return;
     if(!force && body.contains(document.activeElement)){ detailPending=true; return; }
-    var st=r.data.state||{}, pl=st.pledge||{}, lp=levelProgress(st), asg=classAssigned[sid]||{}, subs=st.subs||{}, p=ps[sid]||{};
+    var st=r.data.state||{}, pl=st.pledge||{}, lp=levelProgress(st, trOf(sid)), asg=classAssigned[sid]||{}, subs=st.subs||{}, p=ps[sid]||{};
     var pledge=[["Signed commitment",pl.committedAt?fmtStamp(pl.committedAt):"Not signed yet"],["Last seen on",(st.resume||{}).at?(PAGE_NAMES[(st.resume||{}).page]||"")+" · "+fmtStamp(st.resume.at):""],["Why",pl.why],["Partner",pl.partner],["Study group",pl.group],["Study hours",pl.time],["If they miss a day",pl.miss]]
       .filter(function(x){ return x[1]; }).map(function(x){ return "<dt>"+esc(x[0])+"</dt><dd>"+esc(x[1])+"</dd>"; }).join("");
     var levels=lp.map(function(q){
       var ex=q.L.exams.map(function(e,i){ return esc(e.name.split(" (")[0].replace(" skills test",""))+": <b>"+esc(STATUS_LABEL[q.exams[i]]||q.exams[i])+"</b>"; }).join("<br>");
-      return "<div class='lvlcell"+(q.complete?" done":"")+"'><b>Level "+q.L.n+"</b><span class='muted'>"+esc(q.L.name)+"</span><span class='mono'>"+q.done+"/"+q.L.tasks.length+" milestones</span><span>"+ex+"</span></div>";
+      return "<div class='lvlcell"+(q.complete?" done":"")+"'><b>"+esc(q.L.core?("Level "+q.L.cid):"Track")+"</b><span class='muted'>"+esc(q.L.name)+"</span><span class='mono'>"+q.done+"/"+q.L.tasks.length+" milestones</span><span>"+ex+"</span></div>";
     }).join("");
     var tids=sortedTaskIds(asg.tasks);
     var tasksHtml = tids.length ? tids.map(function(tid){
@@ -1801,7 +1967,7 @@ document.getElementById("wkNext").addEventListener("click", function(){ curWeek=
 var DEFAULT_START="2026-11-02", DEFAULT_HOURS=2;
 var settings={dailyHours:DEFAULT_HOURS, startDate:DEFAULT_START, holidays:{}, levelWeeks:{}};
 var studyDays=[];
-LEVELS.forEach(function(L){ L.ostart=L.start; L.oend=L.end; L.exams.forEach(function(e){ e.odate=e.date; }); });
+rebuildActive();
 var PHASE_RANGES = {
 "1|2 – 8 Nov":["2026-11-02","2026-11-08"], "1|9 – 15 Nov":["2026-11-09","2026-11-15"], "1|16 – 22 Nov":["2026-11-16","2026-11-22"], "1|23 – 29 Nov":["2026-11-23","2026-11-29"],
 "2|30 Nov – 6 Dec":["2026-11-30","2026-12-06"], "2|7 – 20 Dec":["2026-12-07","2026-12-20"], "2|21 Dec – 3 Jan":["2026-12-21","2027-01-03"],
@@ -1823,7 +1989,7 @@ function normSettings(o){
    stretched or squeezed level by level, then scaled for daily hours and holidays. */
 function segmentsFor(st){
   var acc=0, segs=LEVELS.map(function(L){
-    var os=daysBetween(DEFAULT_START,L.ostart), ol=daysBetween(L.ostart,L.oend)+1, w=+((st.levelWeeks||{})[L.n]);
+    var os=daysBetween(DEFAULT_START,L.ostart), ol=daysBetween(L.ostart,L.oend)+1, w=+((st.levelWeeks||{})[L.cid]);
     return {os:os, ol:ol, nl:(w>0?w*7:ol)};
   });
   segs.forEach(function(g){ g.ns=acc; acc+=g.nl; }); segs.total=acc; return segs;
@@ -1852,7 +2018,11 @@ function applySchedule(){
     L.exams.forEach(function(e){ var d=m.map(e.odate); e.date = d>L.end ? L.end : d; });
   });
   PHASE_MAP={};
-  Object.keys(PHASE_RANGES).forEach(function(k){ var r=PHASE_RANGES[k]; PHASE_MAP[k]=[m.map(r[0]), m.mapEnd(r[1])]; });
+  Object.keys(PHASE_RANGES).forEach(function(k){
+    var r=PHASE_RANGES[k], cid=+k.split("|")[0], L=null; LEVELS.forEach(function(x){ if(x.cid===cid) L=x; });
+    if(!L) return;
+    PHASE_MAP[k]=[m.map(addISO(r[0],L.shift)), m.mapEnd(addISO(r[1],L.shift))];
+  });
 }
 var PHASE_MAP={};
 function fmtRange(a,b){
@@ -1862,7 +2032,7 @@ function fmtRange(a,b){
   if(x.getMonth()===y.getMonth()) return x.getDate()+" – "+y.getDate()+" "+MON[y.getMonth()];
   return x.getDate()+" "+MON[x.getMonth()]+" – "+y.getDate()+" "+MON[y.getMonth()];
 }
-function phaseWhen(L,p){ var r=PHASE_MAP[L.n+"|"+p.when]; return r ? fmtRange(r[0],r[1]) : p.when; }
+function phaseWhen(L,p){ var r=PHASE_MAP[L.cid+"|"+p.when]; return r ? fmtRange(r[0],r[1]) : p.when; }
 function examById(id){ var f=null; ALL_EXAMS.forEach(function(e){ if(e.id===id) f=e; }); return f; }
 function fillTokens(escaped){ return escaped.replace(/\{exam:([a-z0-9_]+)\}/g, function(_,id){ var e=examById(id); return e?esc(fmt(e.date)):""; }); }
 function hoursText(h){ h=+h; return (h===1?"1 hour":(h+" hours")); }
@@ -1899,6 +2069,7 @@ function renderRoutine(){
     "<tr><td class='date'>Holidays</td><td colspan='3'>No study expected. Holidays set by your mentor are marked in your daily log, and your plan dates move later to make up for them.</td></tr>";
 }
 function rerenderPlan(){
+  rebuildActive();
   applySchedule();
   renderPlanLines(); renderRoutine(); renderExamTable(); renderLadder(); applyState();
   var minW=iso(weekStart(parseISO(PLAN_START))); if(curWeek<minW) curWeek=minW;
@@ -2235,13 +2406,15 @@ renderExamTable();
 renderLadder();
 renderDaysBox();
 loadLocal();
-applyState();
-loadWeek(true);
+TRACKS=normTracks(store.tracks);
+rerenderPlan();
+renderTracksPage();
 setStatus(localMsg);
 
 function becomeReady(r, name){
   if(ready) return;
   role=r; ready=true;
+  if(r==="teacher"){ try{ rerenderPlan(); }catch(e){} }
   document.getElementById("p-loading").hidden=true;
   document.getElementById("hello").textContent = r==="teacher" ? "Mentor view"+(name?" · "+name:"") : (name?"Signed in as "+name:"");
   if(r==="student"){ try{ if(signed() && sessionStorage.getItem(COPY.storageKey+"-entered-"+(uid||"local"))==="1") entered=true; }catch(e){} }
@@ -2257,7 +2430,7 @@ Promise.all([C?C.use("db"):null, C?C.use("user"):null]).then(function(r){
   if(db) db.doc(RP+"settings/plan").onSnapshot(function(snap){ if(snap.exists) applySettings(clone(snap.data())); }, function(){});
   var idP = user ? Promise.all([user.id(), user.isOwner(), user.me()]) : Promise.resolve([null,false,null]);
   return idP.then(function(x){
-    uid=x[0]; isOwner=!!x[1];
+    uid=x[0]; isOwner=!!x[1]; if(isOwner) rebuildActive();
     var me=x[2], myName=(me&&me.name)||"";
     if(isOwner){
       if(db){ startClass(); setStatus("Connected: your class updates live"); }
@@ -2296,6 +2469,12 @@ Promise.all([C?C.use("db"):null, C?C.use("user"):null]).then(function(r){
       var weeks={}; qs.docs.forEach(function(doc){ weeks[doc.id]=clone(doc.data()); });
       store.weeks=weeks; saveLocal(); loadWeek(false); updateStats(); renderNext();
     }, function(){ setStatus("Live sync paused. Reload the page to reconnect."); });
+    db.doc(RP+"tracks/"+uid).onSnapshot(function(snap){
+      if(timers[RP+"tracks/"+uid]) return;
+      TRACKS = normTracks(snap.exists ? clone(snap.data()) : null);
+      store.tracks=clone(TRACKS); saveLocal();
+      rerenderPlan(); renderTracksPage(); renderNext();
+    }, function(){});
     db.doc(RP+"assigned/"+uid).onSnapshot(function(snap){
       myAssigned = snap.exists ? clone(snap.data()) : {};
       renderMyAssigned();
@@ -2394,6 +2573,7 @@ if (!firebaseConfig || !firebaseConfig.apiKey || firebaseConfig.apiKey.startsWit
     };
     window.claude = { use: (n) => Promise.resolve(n === "db" ? dbAdapter : n === "user" ? userAdapter : n === "downloads" ? downloadsAdapter : null) };
     window.APP_NEEDS_APPROVAL = true;
+    window.APP_IS_ADMIN = !!(emailL && ADMIN_EMAIL && emailL === ADMIN_EMAIL.toLowerCase() && u.emailVerified);
     window.APP_ROADMAP = ROADMAP;
     window.APP_USER_EMAIL = u.email || "";
     authBox.hidden = true; appBox.hidden = false;

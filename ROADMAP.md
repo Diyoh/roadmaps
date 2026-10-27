@@ -1,6 +1,6 @@
 # AI for Everyday Work: a free-first roadmap
 
-Six levels, about 490 hours at 2 hours a day, from **2 Nov 2026** to **4 Jul 2027**. It teaches you to use AI for writing, graphics, video, websites, business operations and ads, and to turn that into paid work. Every phase has a **free route** (US$0) and a **paid route** (what to buy, in what order, and when it is worth it).
+A roadmap with **Level 1 for everyone, one track of your choice, and the Launch level for everyone**. The whole catalogue is 490 hours at 2 hours a day, but each student follows only their own path (Level 1, one track, Launch), which is **210 to 252 hours** depending on the track. It teaches you to use AI for writing, graphics, video, websites, business operations and ads, and to turn that into paid work. Every phase has a **free route** (US$0) and a **paid route** (what to buy, in what order, and when it is worth it).
 
 It follows the format of the `ai-engineer` roadmap on the Roadmaps platform: levels, dated phases, "exams" (here: free certificates and mentor-reviewed checkpoints), qualifications, community and a milestone checklist. The same content is in `public/index.html`.
 
@@ -15,20 +15,22 @@ It follows the format of the `ai-engineer` roadmap on the Roadmaps platform: lev
 
 **Rule of thumb:** stay on route A until a real job is blocked by a free limit, move to B for one tool at a time, and upgrade only when the tool saves at least its cost within two months or lets you deliver paid work.
 
-## The six levels
+## Levels and tracks
 
-| Level | Dates | Hours | Focus |
+Dates below are the full catalogue laid end to end, as mentors see it. A student's own plan starts at Level 1, then runs their chosen track, then Launch, so their dates are personal. Extra tracks the admin approves are added after Launch.
+
+| Level | Dates (catalogue) | Hours | Focus |
 |---|---|---|---|
-| 1. AI foundations and your free toolkit | 2 Nov 2026 – 29 Nov 2026 | 56 | Use an AI assistant well every day, build a safe free toolkit, know every tool’s free limits, and choose one venture project to carry through all six levels. |
-| 2. Graphics, brand and writing | 30 Nov 2026 – 3 Jan 2027 | 70 | Design a complete brand and a month of content with free tools, learn which paid design tools are worth buying, and publish your first portfolio set. |
-| 3. Video, voice and short-form content | 4 Jan 2027 – 14 Feb 2027 | 84 | Script, record, edit and publish short videos with free tools, add AI voice and clips only where they help, and know which paid tool earns its monthly fee. |
-| 4. Websites, apps and automation | 15 Feb 2027 – 11 Apr 2027 | 112 | Ship a real website for your venture with AI help, add forms, payments or a chatbot, and run three automations that save you hours every week. |
-| 5. Business operations, ads and sales | 12 Apr 2027 – 23 May 2027 | 84 | Run the business side of your venture with free tools, create and test ads with discipline, and earn the free marketing certificates that clients recognise. |
-| 6. Launch: portfolio, clients and first income | 24 May 2027 – 4 Jul 2027 | 84 | Package what you can now do into two or three priced offers, win your first paying customers, and decide with data which tools to pay for. |
+| 1. AI foundations and your free toolkit (everyone) | 2 Nov 2026 – 29 Nov 2026 | 56 | Use an AI assistant well every day, build a safe free toolkit, know every tool’s free limits, and choose one venture project to carry through every level of your plan. |
+| 2. Graphics, brand and writing (track) | 30 Nov 2026 – 3 Jan 2027 | 70 | Design a complete brand and a month of content with free tools, learn which paid design tools are worth buying, and publish your first portfolio set. |
+| 3. Video, voice and short-form content (track) | 4 Jan 2027 – 14 Feb 2027 | 84 | Script, record, edit and publish short videos with free tools, add AI voice and clips only where they help, and know which paid tool earns its monthly fee. |
+| 4. Websites, apps and automation (track) | 15 Feb 2027 – 11 Apr 2027 | 112 | Ship a real website for your venture with AI help, add forms, payments or a chatbot, and run three automations that save you hours every week. |
+| 5. Business operations, ads and sales (track) | 12 Apr 2027 – 23 May 2027 | 84 | Run the business side of your venture with free tools, create and test ads with discipline, and earn the free marketing certificates that clients recognise. |
+| 6. Launch: portfolio, clients and first income (everyone) | 24 May 2027 – 4 Jul 2027 | 84 | Package what you can now do into two or three priced offers, win your first paying customers, and decide with data which tools to pay for. |
 
 ## Level 1: AI foundations and your free toolkit
 
-**2 Nov 2026 – 29 Nov 2026 · 56 hours.** Use an AI assistant well every day, build a safe free toolkit, know every tool’s free limits, and choose one venture project to carry through all six levels.
+**2 Nov 2026 – 29 Nov 2026 · 56 hours.** Use an AI assistant well every day, build a safe free toolkit, know every tool’s free limits, and choose one venture project to carry through every level of your plan.
 
 ### 2 – 8 Nov
 
@@ -50,7 +52,7 @@ Safety, limits and costs. Never paste passwords, client secrets, ID numbers or p
 
 ### 23 – 29 Nov
 
-Choose your venture project. Pick one real or realistic small business to carry through all six levels: your own idea, a family shop, a local business or a niche service. Write a one-page brief with AI as a sparring partner (who it serves, what it sells, the price, why people would care), then talk to three real people to test it, because AI cannot replace real customers. Finish the Google Skills path Introduction to Generative AI (about 2 hours, free badge) by 29 Nov 2026. Free route: everything in this level costs nothing. Paid route: not needed. Post your Day 1 story and share your tool sheet with your study group.
+Choose your venture project. Pick one real or realistic small business to carry through every level of your plan: your own idea, a family shop, a local business or a niche service. Write a one-page brief with AI as a sparring partner (who it serves, what it sells, the price, why people would care), then talk to three real people to test it, because AI cannot replace real customers. Finish the Google Skills path Introduction to Generative AI (about 2 hours, free badge) by 29 Nov 2026. Free route: everything in this level costs nothing. Paid route: not needed. Post your Day 1 story and share your tool sheet with your study group. Before this level ends, open My track in the app and choose your track: Graphics, brand and writing; Video, voice and short-form content; Websites, apps and automation; or Business operations, ads and sales. You can ask the admin to add more tracks later.
 
 [Google Skills: Introduction to Generative AI](https://www.skills.google/paths/118) · [Lean Canvas](https://leanstack.com/lean-canvas) · [Coursera Financial Aid](https://www.coursera.org/about/financial-aid)
 
@@ -105,7 +107,7 @@ Writing and brand voice. A lighter holiday pace is fine. Write a brand voice gui
 | Date | Name | Cost | You earn |
 |---|---|---|---|
 | 27 Dec 2026 | [Google AI Essentials (Google on Coursera, about 5–10 hours)](https://grow.google/ai/) | Audit free; certificate about US$49 a month after a 7-day trial, or Coursera Financial Aid if offered | Google AI Essentials certificate (optional) |
-| 3 Jan 2027 | Checkpoint 2: brand kit and 12 posts reviewed by your mentor or study group | Free | Sign-off on a portfolio-ready brand kit |
+| 3 Jan 2027 | Track checkpoint: brand kit and 12 posts reviewed by your mentor or study group | Free | Sign-off on a portfolio-ready brand kit |
 
 **You should hold:** Google AI Essentials (certificate optional); A complete brand kit and 12 designed posts for your venture; Images you may use commercially, with each licence noted in your tool sheet.
 
@@ -148,7 +150,7 @@ AI video clips, used sparingly. Free route: tools that renew free credits, such 
 
 | Date | Name | Cost | You earn |
 |---|---|---|---|
-| 14 Feb 2027 | Checkpoint 3: eight published short videos reviewed by your mentor or study group | Free | Sign-off on a video portfolio |
+| 14 Feb 2027 | Track checkpoint: eight published short videos reviewed by your mentor or study group | Free | Sign-off on a video portfolio |
 
 **You should hold:** Eight published short videos with captions; A 30-second product ad and a voice-over explainer; A one-page note on which video and voice tools passed your licence check.
 
@@ -199,7 +201,7 @@ Automation. Free route: Make’s free plan (1,000 operations a month), Zapier’
 |---|---|---|---|
 | 4 Apr 2027 | [Anthropic Academy: a course of your choice (for builders, the Claude API course)](https://anthropic.skilljar.com/) | Free | Anthropic Academy completion certificate |
 | 9 Apr 2027 | [OpenAI Academy: Agents and Workflows](https://academy.openai.com/) | Free | OpenAI Academy completion certificate and Credly badge |
-| 11 Apr 2027 | Checkpoint 4: live website and three running automations | Free | Sign-off on a deployed site and working automations |
+| 11 Apr 2027 | Track checkpoint: live website and three running automations | Free | Sign-off on a deployed site and working automations |
 
 **You should hold:** A live website on a free or low-cost host, with the code in GitHub; Three automations running; Anthropic Academy and OpenAI Academy Agents and Workflows certificates; A written checklist for reviewing AI-generated code.
 
@@ -269,7 +271,7 @@ Run a controlled test. If you have a budget, spend a small learning amount on on
 
 ### 24 May – 6 Jun
 
-Package your offers. Choose two or three things you can deliver reliably: a social-content pack, a landing page in five days, ad creatives and setup, or business automation. Price each by the hours it takes and the value it gives, set a scope, a turnaround time and a revision limit, and write a simple agreement. Build a portfolio site (reuse Level 4) with six case studies: the problem, the tools used, the time and cost saved, and the result. Show your process honestly, including what AI did and what you checked. Free route: your Level 4 site, Canva, Google Docs and Stripe or a local payment method. Paid route: a custom domain and one assistant plan. Submit Checkpoint 5 by 6 Jun 2027.
+Package your offers. Choose two or three things you can deliver reliably: a social-content pack, a landing page in five days, ad creatives and setup, or business automation. Price each by the hours it takes and the value it gives, set a scope, a turnaround time and a revision limit, and write a simple agreement. Build a portfolio site (reuse your best work from your track, for example a live site) with six case studies: the problem, the tools used, the time and cost saved, and the result. Show your process honestly, including what AI did and what you checked. Free route: the best work from your track (a design kit, videos, a live site or an automation), Canva, Google Docs and Stripe or a local payment method. Paid route: a custom domain and one assistant plan. Submit the portfolio checkpoint by 6 Jun 2027.
 
 [Stripe](https://stripe.com/) · [Cloudflare Pages](https://pages.cloudflare.com/) · [Canva](https://www.canva.com/)
 
@@ -291,9 +293,9 @@ Run it like a lean startup. Each week: one thing built, one thing measured, one 
 
 | Date | Name | Cost | You earn |
 |---|---|---|---|
-| 6 Jun 2027 | Checkpoint 5: portfolio site with six case studies | Free | Sign-off on a client-ready portfolio |
+| 6 Jun 2027 | Launch checkpoint: portfolio site with six case studies | Free | Sign-off on a client-ready portfolio |
 | 13 Jun 2027 | [Startup credit applications sent (AWS Activate Founders, Microsoft for Startups, NVIDIA Inception, Anthropic, Google for Startups)](https://aws.amazon.com/activate/) | Free to apply | Possible cloud and AI credits (AWS Activate Founders and Microsoft for Startups start at about US$1,000); not guaranteed |
-| 4 Jul 2027 | Checkpoint 6: first paid project delivered | Free | First income and a client testimonial |
+| 4 Jul 2027 | Launch checkpoint: first paid project delivered | Free | First income and a client testimonial |
 
 **You should hold:** A portfolio with six case studies; Two or three priced offers with a written scope and agreement; Applications submitted to startup credit programmes; One paid project delivered, with a testimonial.
 

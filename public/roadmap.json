@@ -65,7 +65,7 @@
         },
         {
           "id": "brand_cp",
-          "name": "Checkpoint 2: brand kit and 12 posts reviewed by your mentor or study group",
+          "name": "Track checkpoint: brand kit and 12 posts reviewed by your mentor or study group",
           "date": "2027-01-03",
           "cost": "Free",
           "earn": "Sign-off on a portfolio-ready brand kit"
@@ -92,7 +92,7 @@
       "exams": [
         {
           "id": "video_cp",
-          "name": "Checkpoint 3: eight published short videos reviewed by your mentor or study group",
+          "name": "Track checkpoint: eight published short videos reviewed by your mentor or study group",
           "date": "2027-02-14",
           "cost": "Free",
           "earn": "Sign-off on a video portfolio"
@@ -135,7 +135,7 @@
         },
         {
           "id": "site_cp",
-          "name": "Checkpoint 4: live website and three running automations",
+          "name": "Track checkpoint: live website and three running automations",
           "date": "2027-04-11",
           "cost": "Free",
           "earn": "Sign-off on a deployed site and working automations"
@@ -212,7 +212,7 @@
       "exams": [
         {
           "id": "portfolio_cp",
-          "name": "Checkpoint 5: portfolio site with six case studies",
+          "name": "Launch checkpoint: portfolio site with six case studies",
           "date": "2027-06-06",
           "cost": "Free",
           "earn": "Sign-off on a client-ready portfolio"
@@ -226,7 +226,7 @@
         },
         {
           "id": "first_paid",
-          "name": "Checkpoint 6: first paid project delivered",
+          "name": "Launch checkpoint: first paid project delivered",
           "date": "2027-07-04",
           "cost": "Free",
           "earn": "First income and a client testimonial"

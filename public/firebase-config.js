@@ -23,7 +23,7 @@ export const ADMIN_EMAIL = "diyohshiloh4@gmail.com";
 export const ROADMAP = {
   id: "everyday",
   title: "AI for Everyday Work",
-  tagline: "Six levels from your first everyday AI tasks to video, design, websites, ads and a first paid client, with a free route and a paid route at every step.",
+  tagline: "Everyone starts with AI foundations, then picks a track (graphics and writing, video and voice, websites and automation, or business and ads) and finishes with a Launch level for a first paid client. Free route and paid route at every step.",
   order: 3,
   hubUrl: "/"
 };
