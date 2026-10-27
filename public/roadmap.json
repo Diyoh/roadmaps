@@ -1,151 +1,291 @@
 {
-  "id": "ai",
-  "title": "AI Engineer Roadmap",
-  "defaultStart": "2026-09-04",
+  "id": "devops",
+  "title": "DevOps Engineer",
+  "defaultStart": "2026-11-02",
   "defaultHours": 2,
   "levels": [
     {
       "n": 1,
-      "name": "Machine learning foundations",
-      "tag": "Foundations",
-      "start": "2026-09-04",
-      "end": "2026-12-20",
-      "hours": 216,
+      "name": "Foundations: Linux, networking, Git and scripting",
+      "tag": "Ground level",
+      "start": "2026-11-02",
+      "end": "2026-12-13",
+      "hours": 84,
       "tasks": [
-        "Registered for the ML Zoomcamp and joined the course Slack",
-        "Coursera Financial Aid approved for the Machine Learning Specialization",
-        "GitHub, Kaggle and Hugging Face profiles set up; Day 1 post published",
-        "Zoomcamp homework submitted every week",
-        "Flagship 1 deployed with README, tests and a live link (midterm submitted)",
-        "Three midterm projects peer-reviewed",
-        "One public Kaggle notebook",
-        "Blog post 1 published",
-        "Machine Learning Specialization certificate earned"
+        "Study group formed and first call held",
+        "Linux VM running and snapshotted",
+        "OverTheWire Bandit to level 15",
+        "Can subnet a /24 into four networks without a calculator",
+        "devops-journey repo created and used daily",
+        "Checkpoint 1 signed off"
       ],
       "exams": [
         {
-          "id": "zoom_mid",
-          "name": "ML Zoomcamp midterm project (Flagship 1)",
-          "date": "2026-11-16",
+          "id": "l1_cp",
+          "name": "Checkpoint 1: a Linux server built from a script, with a tested backup",
+          "date": "2026-12-13",
           "cost": "Free",
-          "earn": "Midterm credit toward the ML Zoomcamp certificate"
-        },
-        {
-          "id": "mlspec",
-          "name": "Machine Learning Specialization (Stanford / DeepLearning.AI, 3 courses)",
-          "date": "2026-12-20",
-          "cost": "Free with Coursera Financial Aid",
-          "earn": "Machine Learning Specialization certificate"
+          "earn": "Foundations checkpoint signed off by your mentor"
         }
       ]
     },
     {
       "n": 2,
-      "name": "Deep learning and applications",
-      "tag": "Deep learning",
-      "start": "2026-12-21",
-      "end": "2027-03-21",
-      "hours": 182,
+      "name": "CI/CD with GitHub Actions, and containers with Docker",
+      "tag": "Automate delivery",
+      "start": "2026-12-14",
+      "end": "2027-01-24",
+      "hours": 84,
       "tasks": [
-        "Flagship 2 data explored by hand (100 examples)",
-        "Karpathy micrograd and makemore completed",
-        "First fine-tuning run tracked in Weights & Biases",
-        "A second run beats the first after error analysis",
-        "Flagship 2 live on Hugging Face Spaces with a model card",
-        "Blog post 2 published and shared with the community",
-        "Deep Learning Specialization certificate earned"
+        "Capstone app running in Docker Compose",
+        "Image scanned with Trivy and the findings triaged",
+        "Pipeline runs on every pull request",
+        "Reusable workflow written and used twice",
+        "Secrets and environments configured with an approval step",
+        "GitHub Actions exam passed"
       ],
       "exams": [
         {
-          "id": "zoom_cert",
-          "name": "ML Zoomcamp certificate (midterm and capstone projects)",
-          "date": "2027-02-28",
-          "cost": "Free",
-          "earn": "ML Zoomcamp certificate"
-        },
-        {
-          "id": "dlspec",
-          "name": "Deep Learning Specialization (DeepLearning.AI, 5 courses)",
-          "date": "2027-03-21",
-          "cost": "Free with Coursera Financial Aid",
-          "earn": "Deep Learning Specialization certificate"
+          "id": "gh200",
+          "name": "GitHub Actions certification (GH-200)",
+          "date": "2027-01-23",
+          "cost": "About US$99 (confirm)",
+          "earn": "GitHub Actions certification (valid about 2 years)"
         }
       ]
     },
     {
       "n": 3,
-      "name": "LLMs, RAG and agents",
-      "tag": "Generative AI",
-      "start": "2027-03-22",
-      "end": "2027-06-27",
-      "hours": 196,
+      "name": "Cloud for DevOps: AWS Solutions Architect Associate",
+      "tag": "Cloud base",
+      "start": "2027-01-25",
+      "end": "2027-03-21",
+      "hours": 112,
       "tasks": [
-        "An open model running locally with Ollama",
-        "Naive RAG prototype over a real document set",
-        "50-question evaluation set with hit-rate and MRR measured",
-        "Hybrid search and reranking added and measured again",
-        "Generative AI with LLMs certificate",
-        "Hugging Face Agents Course certificate",
-        "IBM Generative AI Engineering certificate",
-        "Flagship 3 deployed with evaluation report and monitoring",
-        "Applying to five roles a week"
+        "AWS account secured with MFA and a budget alarm",
+        "VPC built from scratch",
+        "Capstone deployed by hand with every step written down",
+        "85% on practice exams three times",
+        "Solutions Architect Associate passed",
+        "All lab resources deleted and the bill checked"
       ],
       "exams": [
         {
-          "id": "genai",
-          "name": "Generative AI with Large Language Models (DeepLearning.AI + AWS)",
-          "date": "2027-04-25",
-          "cost": "Free with Coursera Financial Aid",
-          "earn": "Generative AI with LLMs certificate"
-        },
-        {
-          "id": "hfagents",
-          "name": "Hugging Face Agents Course",
-          "date": "2027-05-30",
-          "cost": "Free",
-          "earn": "Hugging Face Agents Course certificate"
-        },
-        {
-          "id": "ibm",
-          "name": "IBM Generative AI Engineering with LLMs",
-          "date": "2027-06-20",
-          "cost": "Free with Coursera Financial Aid",
-          "earn": "IBM Generative AI Engineering with LLMs certificate"
+          "id": "saa",
+          "name": "AWS Certified Solutions Architect – Associate (SAA-C03)",
+          "date": "2027-03-20",
+          "cost": "US$150 plus tax",
+          "earn": "AWS Certified Solutions Architect – Associate (valid 3 years)"
         }
       ]
     },
     {
       "n": 4,
-      "name": "MLOps and work-ready",
-      "tag": "Top of the ladder",
-      "start": "2027-06-28",
-      "end": "2027-09-30",
-      "hours": 190,
+      "name": "Infrastructure as code and configuration management",
+      "tag": "Everything as code",
+      "start": "2027-03-22",
+      "end": "2027-05-02",
+      "hours": 84,
       "tasks": [
-        "MLflow tracking and model registry on Flagship 1",
-        "Scheduled retraining pipeline (Prefect or Airflow)",
-        "Drift monitoring with alerts (Evidently)",
-        "Tests and GitHub Actions CI/CD deploying on merge",
-        "Flagship 4 write-up published (blog post 4)",
-        "English test taken",
-        "Portfolio README with four live projects",
-        "Applied to ten roles or programmes",
-        "Year-in-review post published"
+        "Capstone infrastructure destroyed and recreated from Terraform",
+        "Remote state with locking configured",
+        "Pull requests run plan and a security scan",
+        "Ansible role runs twice with no changes the second time",
+        "Module written and reused",
+        "Terraform Associate passed"
       ],
       "exams": [
         {
-          "id": "english",
-          "name": "English test: IELTS Academic or Duolingo English Test",
-          "date": "2027-07-25",
-          "cost": "≈ US$65 (Duolingo) to ≈ US$250 (IELTS)",
-          "earn": "English proof for master’s and visa applications"
+          "id": "tf",
+          "name": "HashiCorp Certified: Terraform Associate",
+          "date": "2027-05-01",
+          "cost": "About US$70.50 plus taxes (confirm)",
+          "earn": "HashiCorp Certified: Terraform Associate (valid about 2 years)"
+        }
+      ]
+    },
+    {
+      "n": 5,
+      "name": "Kubernetes: KCNA, CKA and CKAD",
+      "tag": "Orchestration",
+      "start": "2027-05-03",
+      "end": "2027-07-25",
+      "hours": 168,
+      "tasks": [
+        "Cluster built with kubeadm",
+        "etcd backup and restore practised",
+        "RBAC, NetworkPolicy and ingress labs done",
+        "Capstone deployed with manifests and Helm",
+        "killer.sh simulator scores above 75%",
+        "KCNA, CKA and CKAD passed"
+      ],
+      "exams": [
+        {
+          "id": "kcna",
+          "name": "Kubernetes and Cloud Native Associate (KCNA)",
+          "date": "2027-05-15",
+          "cost": "About US$250 (confirm)",
+          "earn": "Kubernetes and Cloud Native Associate (CNCF)"
         },
         {
-          "id": "mlops",
-          "name": "MLOps Zoomcamp project (Flagship 4, final project)",
-          "date": "2027-08-29",
+          "id": "cka",
+          "name": "Certified Kubernetes Administrator (CKA)",
+          "date": "2027-06-26",
+          "cost": "About US$395–445 (confirm; sales are common)",
+          "earn": "Certified Kubernetes Administrator (CNCF)"
+        },
+        {
+          "id": "ckad",
+          "name": "Certified Kubernetes Application Developer (CKAD)",
+          "date": "2027-07-24",
+          "cost": "About US$395–445 (confirm)",
+          "earn": "Certified Kubernetes Application Developer (CNCF)"
+        }
+      ]
+    },
+    {
+      "n": 6,
+      "name": "GitOps, delivery and platform engineering",
+      "tag": "Platform",
+      "start": "2027-07-26",
+      "end": "2027-09-19",
+      "hours": 112,
+      "tasks": [
+        "Argo CD (or Flux) managing the capstone from Git",
+        "Canary release with automatic rollback working",
+        "DORA metrics measured weekly",
+        "Service template built and used by someone else",
+        "Drift introduced on purpose and corrected by GitOps",
+        "GitOps Certified Associate passed"
+      ],
+      "exams": [
+        {
+          "id": "cgoa",
+          "name": "GitOps Certified Associate (CGOA)",
+          "date": "2027-09-18",
+          "cost": "About US$250 (confirm)",
+          "earn": "GitOps Certified Associate (CNCF)"
+        }
+      ]
+    },
+    {
+      "n": 7,
+      "name": "Observability and site reliability",
+      "tag": "Run it well",
+      "start": "2027-09-20",
+      "end": "2027-11-14",
+      "hours": 112,
+      "tasks": [
+        "Prometheus and Grafana monitoring the capstone",
+        "Custom application metrics added",
+        "Traces flowing through an OpenTelemetry Collector",
+        "SLOs defined with burn-rate alerts",
+        "Game day held and report published",
+        "Prometheus Certified Associate passed"
+      ],
+      "exams": [
+        {
+          "id": "pca",
+          "name": "Prometheus Certified Associate (PCA)",
+          "date": "2027-11-13",
+          "cost": "About US$250 (confirm)",
+          "earn": "Prometheus Certified Associate (CNCF)"
+        }
+      ]
+    },
+    {
+      "n": 8,
+      "name": "DevSecOps: Vault, Kubernetes security and the Kubestronaut title",
+      "tag": "Secure it",
+      "start": "2027-11-15",
+      "end": "2028-01-23",
+      "hours": 140,
+      "tasks": [
+        "Vault serving dynamic secrets to the capstone",
+        "No static secrets left in the pipeline",
+        "Images scanned and signed in the pipeline",
+        "Kyverno or Gatekeeper policies enforced on the cluster",
+        "Falco runtime rule triggered and handled",
+        "Vault Associate, KCSA and CKS passed"
+      ],
+      "exams": [
+        {
+          "id": "vault",
+          "name": "HashiCorp Certified: Vault Associate",
+          "date": "2027-12-18",
+          "cost": "About US$70.50 plus taxes (confirm)",
+          "earn": "HashiCorp Certified: Vault Associate"
+        },
+        {
+          "id": "kcsa",
+          "name": "Kubernetes and Cloud Native Security Associate (KCSA)",
+          "date": "2028-01-01",
+          "cost": "About US$250 (confirm)",
+          "earn": "Kubernetes and Cloud Native Security Associate (CNCF)"
+        },
+        {
+          "id": "cks",
+          "name": "Certified Kubernetes Security Specialist (CKS)",
+          "date": "2028-01-22",
+          "cost": "About US$395–445 (confirm)",
+          "earn": "Certified Kubernetes Security Specialist (CNCF); with KCNA, KCSA, CKA and CKAD this completes the Kubestronaut set"
+        }
+      ]
+    },
+    {
+      "n": 9,
+      "name": "Professional cloud DevOps: AWS DevOps Engineer Professional",
+      "tag": "Professional level",
+      "start": "2028-01-24",
+      "end": "2028-04-02",
+      "hours": 140,
+      "tasks": [
+        "Pipeline deploys with OIDC and automatic rollback",
+        "StackSets or CDK pipeline across two accounts",
+        "Config rule with auto-remediation working",
+        "Two-region failover tested and timed",
+        "Three full practice exams above 80%",
+        "DevOps Engineer Professional passed"
+      ],
+      "exams": [
+        {
+          "id": "dop",
+          "name": "AWS Certified DevOps Engineer – Professional (DOP-C02)",
+          "date": "2028-04-01",
+          "cost": "US$300 plus tax",
+          "earn": "AWS Certified DevOps Engineer – Professional (valid 3 years)"
+        }
+      ]
+    },
+    {
+      "n": 10,
+      "name": "Capstone, portfolio and your first DevOps role",
+      "tag": "Top of the ladder",
+      "start": "2028-04-03",
+      "end": "2028-05-28",
+      "hours": 112,
+      "tasks": [
+        "Two classmates deployed a change through your platform unaided",
+        "Architecture diagram, runbook, cost and DORA metrics published",
+        "Four engineering write-ups published",
+        "Public portfolio page with every credential live",
+        "Ten tailored applications sent",
+        "Capstone and portfolio checkpoints signed off"
+      ],
+      "exams": [
+        {
+          "id": "platform_cp",
+          "name": "Checkpoint 10: capstone platform demonstration",
+          "date": "2028-05-13",
           "cost": "Free",
-          "earn": "MLOps Zoomcamp certificate"
+          "earn": "Capstone checkpoint signed off by your mentor"
+        },
+        {
+          "id": "portfolio_cp",
+          "name": "Checkpoint 11: portfolio and application pack review",
+          "date": "2028-05-28",
+          "cost": "Free",
+          "earn": "Portfolio checkpoint signed off by your mentor"
         }
       ]
     }

@@ -1,35 +1,55 @@
-# AI Engineer Roadmap
+# DevOps Engineer
 
-One roadmap on the Roadmaps platform: four levels, from your first machine learning model to deployed LLM systems, MLOps and an AI engineering portfolio, at 2 hours a day.
+One roadmap on the Roadmaps platform: 10 levels, from Linux and Git to CI/CD, Terraform, Kubernetes, GitOps, observability, DevSecOps and AWS DevOps Professional, with the Kubestronaut certificates along the way, at 2 hours a day. Every phase names a free route and, where it helps, a paid route.
 
-- **Live site:** https://roadmaps-2b061.web.app/ai/
-- **Hub, security rules, build and full documentation:** the `Master` branch of this repository.
+- **Full readable plan:** `ROADMAP.md` in this folder. It also explains honestly what "the best" can and cannot mean.
+- **Hub, security rules, build and full documentation:** the `Master` branch of the Roadmaps repository.
 
-## The four levels
+## The levels
 
-| Level | Default dates | Certificates and projects |
+| Level | Default dates | Exams and checkpoints |
 |---|---|---|
-| 1. Machine learning foundations | 4 Sep – 20 Dec 2026 | ML Zoomcamp midterm (Flagship 1), Machine Learning Specialization |
-| 2. Deep learning and applications | 21 Dec 2026 – 21 Mar 2027 | ML Zoomcamp certificate (Flagship 2), Deep Learning Specialization |
-| 3. LLMs, RAG and agents | 22 Mar – 27 Jun 2027 | Generative AI with LLMs, Hugging Face Agents, IBM Generative AI Engineering, Flagship 3 |
-| 4. MLOps and work-ready | 28 Jun – 30 Sep 2027 | English test, MLOps Zoomcamp (Flagship 4), portfolio and applications |
+| 1. Foundations: Linux, networking, Git and scripting | 2 Nov 2026 – 13 Dec 2026 | Checkpoint 1: a Linux server built from a script, with a tested backup |
+| 2. CI/CD with GitHub Actions, and containers with Docker | 14 Dec 2026 – 24 Jan 2027 | GitHub Actions certification |
+| 3. Cloud for DevOps: AWS Solutions Architect Associate | 25 Jan 2027 – 21 Mar 2027 | AWS Certified Solutions Architect – Associate |
+| 4. Infrastructure as code and configuration management | 22 Mar 2027 – 2 May 2027 | HashiCorp Certified: Terraform Associate |
+| 5. Kubernetes: KCNA, CKA and CKAD | 3 May 2027 – 25 Jul 2027 | Kubernetes and Cloud Native Associate; Certified Kubernetes Administrator; Certified Kubernetes Application Developer |
+| 6. GitOps, delivery and platform engineering | 26 Jul 2027 – 19 Sep 2027 | GitOps Certified Associate |
+| 7. Observability and site reliability | 20 Sep 2027 – 14 Nov 2027 | Prometheus Certified Associate |
+| 8. DevSecOps: Vault, Kubernetes security and the Kubestronaut title | 15 Nov 2027 – 23 Jan 2028 | HashiCorp Certified: Vault Associate; Kubernetes and Cloud Native Security Associate; Certified Kubernetes Security Specialist |
+| 9. Professional cloud DevOps: AWS DevOps Engineer Professional | 24 Jan 2028 – 2 Apr 2028 | AWS Certified DevOps Engineer – Professional |
+| 10. Capstone, portfolio and your first DevOps role | 3 Apr 2028 – 28 May 2028 | Checkpoint 10: capstone platform demonstration; Checkpoint 11: portfolio and application pack review |
 
-Mentors can move the start date, change the daily hours, stretch or shorten each level and add holidays from the hub; every date above moves with them.
+Mentors can move the start date, change the daily hours, stretch or shorten each level and add holidays from the hub; every date moves with them.
 
 ## What's here
 
 | File | What it does |
 |---|---|
-| `public/index.html` | The roadmap app: levels, phases, exams, commitment, daily log, assignments, grading, plan settings, progress card. The content is in `LEVELS`, `COPY`, `COMMITMENT` and `PHASE_RANGES`; the rest is shared with the other roadmap branches. |
-| `public/firebase-config.js` | Firebase settings, admin email, and this roadmap's id (`ai`), title and hub link |
+| `public/index.html` | The roadmap app, copied from the `ai-engineer` branch. Only the content differs: `LEVELS`, `COPY`, `COMMITMENT`, `PHASE_RANGES`, `PLAN_START`, `DEFAULT_START`, titles and placeholders. |
+| `public/firebase-config.js` | Firebase settings, admin email, and this roadmap's id (`devops`), title and hub link |
 | `public/roadmap.json` | Outline read by the hub. Regenerate after changing `LEVELS`: `node tools/export-outline.cjs` |
+| `ROADMAP.md` | The same plan as a readable document, with costs and honest limits |
 
-## Deploy
+## Add it to the platform
 
-This branch is published from `Master`, together with the hub and every other roadmap:
+1. Create the branch from `ai-engineer`, copy these files over it, then commit without signing and push:
 
 ```bash
-git checkout Master
-git pull
-npm run deploy
+git switch -c devops-engineer origin/ai-engineer
+# copy this folder's files over the working tree, then:
+node tools/export-outline.cjs
+git add README.md ROADMAP.md public
+git -c commit.gpgsign=false commit --no-gpg-sign -m "Add the DevOps Engineer roadmap"
+git push -u origin devops-engineer
 ```
+
+2. On `Master`, add this entry to `HUB.roadmaps` in `public/firebase-config.js`:
+
+```js
+{ id: "devops", branch: "devops-engineer", path: "devops", title: "DevOps Engineer", tagline: "Ten levels from Linux and Git to CI/CD, Terraform, Kubernetes, GitOps, observability and DevSecOps, with the Kubestronaut certificates and a platform you can show, and a free route and a paid route at every step.", url: "/devops/", levels: 10, dailyHours: 2, startDate: "2026-11-02", order: 5 }
+```
+
+3. Run `npm run deploy` from `Master`, then assign a mentor in the hub.
+
+Prices, exam codes and renewal rules were read in October 2026 and change often: confirm each on the vendor's page before you book.
