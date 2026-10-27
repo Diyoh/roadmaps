@@ -18,12 +18,12 @@ export const firebaseConfig = {
 export const ADMIN_EMAIL = "diyohshiloh4@gmail.com";
 
 // This roadmap. The id must be unique across all roadmaps (it names this roadmap's data in the
-// database). hubUrl is the hub where students choose a roadmap; this roadmap is published at /dba/
+// database). hubUrl is the hub where students choose a roadmap; this roadmap is published at /everyday/
 // on the same address, so one sign-in covers the hub and every roadmap.
 export const ROADMAP = {
-  id: "ai",
-  title: "AI Engineer Roadmap",
-  tagline: "Four levels from your first machine learning model to deployed LLM systems and an AI engineering portfolio.",
-  order: 2,
+  id: "everyday",
+  title: "AI for Everyday Work",
+  tagline: "Six levels from your first everyday AI tasks to video, design, websites, ads and a first paid client, with a free route and a paid route at every step.",
+  order: 3,
   hubUrl: "/"
 };

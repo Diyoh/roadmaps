@@ -1,151 +1,235 @@
 {
-  "id": "ai",
-  "title": "AI Engineer Roadmap",
-  "defaultStart": "2026-09-04",
+  "id": "everyday",
+  "title": "AI for Everyday Work",
+  "defaultStart": "2026-11-02",
   "defaultHours": 2,
   "levels": [
     {
       "n": 1,
-      "name": "Machine learning foundations",
+      "name": "AI foundations and your free toolkit",
       "tag": "Foundations",
-      "start": "2026-09-04",
-      "end": "2026-12-20",
-      "hours": 216,
+      "start": "2026-11-02",
+      "end": "2026-11-29",
+      "hours": 56,
       "tasks": [
-        "Registered for the ML Zoomcamp and joined the course Slack",
-        "Coursera Financial Aid approved for the Machine Learning Specialization",
-        "GitHub, Kaggle and Hugging Face profiles set up; Day 1 post published",
-        "Zoomcamp homework submitted every week",
-        "Flagship 1 deployed with README, tests and a live link (midterm submitted)",
-        "Three midterm projects peer-reviewed",
-        "One public Kaggle notebook",
-        "Blog post 1 published",
-        "Machine Learning Specialization certificate earned"
+        "Free accounts open on ChatGPT, Gemini and Claude, and a prompt log started",
+        "Tool sheet started: free limits, resets, licences and prices",
+        "OpenAI Academy AI Foundations certificate earned",
+        "Ten everyday tasks done with AI and fact-checked",
+        "Privacy and licence rules written in your own words",
+        "Google Skills generative AI badge earned",
+        "Venture brief written and tested with three real people",
+        "Day 1 post published"
       ],
       "exams": [
         {
-          "id": "zoom_mid",
-          "name": "ML Zoomcamp midterm project (Flagship 1)",
-          "date": "2026-11-16",
+          "id": "oa_found",
+          "name": "OpenAI Academy: AI Foundations (self-paced)",
+          "date": "2026-11-15",
           "cost": "Free",
-          "earn": "Midterm credit toward the ML Zoomcamp certificate"
+          "earn": "OpenAI Academy completion certificate and Credly badge"
         },
         {
-          "id": "mlspec",
-          "name": "Machine Learning Specialization (Stanford / DeepLearning.AI, 3 courses)",
-          "date": "2026-12-20",
-          "cost": "Free with Coursera Financial Aid",
-          "earn": "Machine Learning Specialization certificate"
+          "id": "gs_genai",
+          "name": "Google Skills: Introduction to Generative AI learning path (about 2 hours)",
+          "date": "2026-11-29",
+          "cost": "Free",
+          "earn": "Google Skills badge"
         }
       ]
     },
     {
       "n": 2,
-      "name": "Deep learning and applications",
-      "tag": "Deep learning",
-      "start": "2026-12-21",
-      "end": "2027-03-21",
-      "hours": 182,
+      "name": "Graphics, brand and writing",
+      "tag": "Design and words",
+      "start": "2026-11-30",
+      "end": "2027-01-03",
+      "hours": 70,
       "tasks": [
-        "Flagship 2 data explored by hand (100 examples)",
-        "Karpathy micrograd and makemore completed",
-        "First fine-tuning run tracked in Weights & Biases",
-        "A second run beats the first after error analysis",
-        "Flagship 2 live on Hugging Face Spaces with a model card",
-        "Blog post 2 published and shared with the community",
-        "Deep Learning Specialization certificate earned"
+        "Brand kit built in Canva Free (logo, colours, fonts, voice)",
+        "Ten images generated and their licences noted",
+        "Logo concept rebuilt cleanly as a vector or Canva design",
+        "12-post social calendar written and designed",
+        "Welcome email, flyer and five-slide pitch finished",
+        "Google AI Essentials completed",
+        "Portfolio page published with the brand kit",
+        "Post or thread: what AI did well and badly for your brand"
       ],
       "exams": [
         {
-          "id": "zoom_cert",
-          "name": "ML Zoomcamp certificate (midterm and capstone projects)",
-          "date": "2027-02-28",
-          "cost": "Free",
-          "earn": "ML Zoomcamp certificate"
+          "id": "gai_ess",
+          "name": "Google AI Essentials (Google on Coursera, about 5–10 hours)",
+          "date": "2026-12-27",
+          "cost": "Audit free; certificate about US$49 a month after a 7-day trial, or Coursera Financial Aid if offered",
+          "earn": "Google AI Essentials certificate (optional)"
         },
         {
-          "id": "dlspec",
-          "name": "Deep Learning Specialization (DeepLearning.AI, 5 courses)",
-          "date": "2027-03-21",
-          "cost": "Free with Coursera Financial Aid",
-          "earn": "Deep Learning Specialization certificate"
+          "id": "brand_cp",
+          "name": "Checkpoint 2: brand kit and 12 posts reviewed by your mentor or study group",
+          "date": "2027-01-03",
+          "cost": "Free",
+          "earn": "Sign-off on a portfolio-ready brand kit"
         }
       ]
     },
     {
       "n": 3,
-      "name": "LLMs, RAG and agents",
-      "tag": "Generative AI",
-      "start": "2027-03-22",
-      "end": "2027-06-27",
-      "hours": 196,
+      "name": "Video, voice and short-form content",
+      "tag": "Video",
+      "start": "2027-01-04",
+      "end": "2027-02-14",
+      "hours": 84,
       "tasks": [
-        "An open model running locally with Ollama",
-        "Naive RAG prototype over a real document set",
-        "50-question evaluation set with hit-rate and MRR measured",
-        "Hybrid search and reranking added and measured again",
-        "Generative AI with LLMs certificate",
-        "Hugging Face Agents Course certificate",
-        "IBM Generative AI Engineering certificate",
-        "Flagship 3 deployed with evaluation report and monitoring",
-        "Applying to five roles a week"
+        "Three hook-and-script drafts written and tested",
+        "Edited 60-second vertical video with captions",
+        "Voice-over recorded or generated under a licence you can use",
+        "30-second product ad published",
+        "Five AI clips tested, with watermark and licence rules recorded",
+        "Eight short videos published",
+        "Cost per video worked out (time plus credits)",
+        "Post or thread: my free video stack"
       ],
       "exams": [
         {
-          "id": "genai",
-          "name": "Generative AI with Large Language Models (DeepLearning.AI + AWS)",
-          "date": "2027-04-25",
-          "cost": "Free with Coursera Financial Aid",
-          "earn": "Generative AI with LLMs certificate"
-        },
-        {
-          "id": "hfagents",
-          "name": "Hugging Face Agents Course",
-          "date": "2027-05-30",
+          "id": "video_cp",
+          "name": "Checkpoint 3: eight published short videos reviewed by your mentor or study group",
+          "date": "2027-02-14",
           "cost": "Free",
-          "earn": "Hugging Face Agents Course certificate"
-        },
-        {
-          "id": "ibm",
-          "name": "IBM Generative AI Engineering with LLMs",
-          "date": "2027-06-20",
-          "cost": "Free with Coursera Financial Aid",
-          "earn": "IBM Generative AI Engineering with LLMs certificate"
+          "earn": "Sign-off on a video portfolio"
         }
       ]
     },
     {
       "n": 4,
-      "name": "MLOps and work-ready",
-      "tag": "Top of the ladder",
-      "start": "2027-06-28",
-      "end": "2027-09-30",
-      "hours": 190,
+      "name": "Websites, apps and automation",
+      "tag": "Build",
+      "start": "2027-02-15",
+      "end": "2027-04-11",
+      "hours": 112,
       "tasks": [
-        "MLflow tracking and model registry on Flagship 1",
-        "Scheduled retraining pipeline (Prefect or Airflow)",
-        "Drift monitoring with alerts (Evidently)",
-        "Tests and GitHub Actions CI/CD deploying on merge",
-        "Flagship 4 write-up published (blog post 4)",
-        "English test taken",
-        "Portfolio README with four live projects",
-        "Applied to ten roles or programmes",
+        "Basic HTML and CSS page built and explained in your own words",
+        "Coding assistant set up and its free limits recorded",
+        "Venture website live on a free host with the code in GitHub",
+        "Contact form and analytics working",
+        "Payment link or booking set up (test mode first)",
+        "AI chat helper answering from your FAQ",
+        "Three automations running",
+        "Security checklist completed (no keys in the repository)",
+        "Anthropic Academy certificate earned",
+        "OpenAI Academy Agents and Workflows certificate earned"
+      ],
+      "exams": [
+        {
+          "id": "anth_acad",
+          "name": "Anthropic Academy: a course of your choice (for builders, the Claude API course)",
+          "date": "2027-04-04",
+          "cost": "Free",
+          "earn": "Anthropic Academy completion certificate"
+        },
+        {
+          "id": "oa_agents",
+          "name": "OpenAI Academy: Agents and Workflows",
+          "date": "2027-04-09",
+          "cost": "Free",
+          "earn": "OpenAI Academy completion certificate and Credly badge"
+        },
+        {
+          "id": "site_cp",
+          "name": "Checkpoint 4: live website and three running automations",
+          "date": "2027-04-11",
+          "cost": "Free",
+          "earn": "Sign-off on a deployed site and working automations"
+        }
+      ]
+    },
+    {
+      "n": 5,
+      "name": "Business operations, ads and sales",
+      "tag": "Business",
+      "start": "2027-04-12",
+      "end": "2027-05-23",
+      "hours": 84,
+      "tasks": [
+        "Lean canvas finished and tested",
+        "CRM, invoicing and email list set up",
+        "Three SOPs written with AI and checked by a person",
+        "Ad research notebook: 20 competitor ads analysed",
+        "Three offers, nine hooks and a landing page ready, with tracking",
+        "OpenAI Academy Applied AI Foundations certificate earned",
+        "HubSpot Digital Marketing certification earned",
+        "Google Ads certification earned",
+        "Campaign test run or campaign pack delivered, with results written up"
+      ],
+      "exams": [
+        {
+          "id": "oa_applied",
+          "name": "OpenAI Academy: Applied AI Foundations",
+          "date": "2027-04-25",
+          "cost": "Free",
+          "earn": "OpenAI Academy completion certificate and Credly badge"
+        },
+        {
+          "id": "hubspot",
+          "name": "HubSpot Academy Digital Marketing certification",
+          "date": "2027-05-09",
+          "cost": "Free",
+          "earn": "HubSpot Digital Marketing certification"
+        },
+        {
+          "id": "gads",
+          "name": "Google Ads certification (Skillshop)",
+          "date": "2027-05-16",
+          "cost": "Free",
+          "earn": "Google Ads certification"
+        },
+        {
+          "id": "meta_assoc",
+          "name": "Meta Certified Digital Marketing Associate (optional)",
+          "date": "2027-05-23",
+          "cost": "US$99 per attempt (courses and practice exams are free)",
+          "earn": "Meta Certified Digital Marketing Associate"
+        }
+      ]
+    },
+    {
+      "n": 6,
+      "name": "Launch: portfolio, clients and first income",
+      "tag": "Top of the ladder",
+      "start": "2027-05-24",
+      "end": "2027-07-04",
+      "hours": 84,
+      "tasks": [
+        "Two or three offers priced, with scope and agreement",
+        "Portfolio site live with six case studies",
+        "At least 50 outreach messages sent in two weeks",
+        "At least ten conversations held",
+        "Startup credit applications submitted",
+        "First paid project delivered and invoiced",
+        "Weekly build-measure-learn sheet kept for three weeks",
+        "Tool spending reviewed against income",
         "Year-in-review post published"
       ],
       "exams": [
         {
-          "id": "english",
-          "name": "English test: IELTS Academic or Duolingo English Test",
-          "date": "2027-07-25",
-          "cost": "≈ US$65 (Duolingo) to ≈ US$250 (IELTS)",
-          "earn": "English proof for master’s and visa applications"
+          "id": "portfolio_cp",
+          "name": "Checkpoint 5: portfolio site with six case studies",
+          "date": "2027-06-06",
+          "cost": "Free",
+          "earn": "Sign-off on a client-ready portfolio"
         },
         {
-          "id": "mlops",
-          "name": "MLOps Zoomcamp project (Flagship 4, final project)",
-          "date": "2027-08-29",
+          "id": "credits",
+          "name": "Startup credit applications sent (AWS Activate Founders, Microsoft for Startups, NVIDIA Inception, Anthropic, Google for Startups)",
+          "date": "2027-06-13",
+          "cost": "Free to apply",
+          "earn": "Possible cloud and AI credits (AWS Activate Founders and Microsoft for Startups start at about US$1,000); not guaranteed"
+        },
+        {
+          "id": "first_paid",
+          "name": "Checkpoint 6: first paid project delivered",
+          "date": "2027-07-04",
           "cost": "Free",
-          "earn": "MLOps Zoomcamp certificate"
+          "earn": "First income and a client testimonial"
         }
       ]
     }

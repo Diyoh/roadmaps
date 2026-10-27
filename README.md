@@ -1,18 +1,20 @@
-# AI Engineer Roadmap
+# AI for Everyday Work
 
-One roadmap on the Roadmaps platform: four levels, from your first machine learning model to deployed LLM systems, MLOps and an AI engineering portfolio, at 2 hours a day.
+One roadmap on the Roadmaps platform: six levels, from your first everyday AI tasks to video, design, websites, business operations, ads and a first paid client, at 2 hours a day. Every phase has a free route and a paid route.
 
-- **Live site:** https://roadmaps-2b061.web.app/ai/
-- **Hub, security rules, build and full documentation:** the `Master` branch of this repository.
+- **Full readable plan:** `ROADMAP.md` in this folder.
+- **Hub, security rules, build and full documentation:** the `Master` branch of the Roadmaps repository.
 
-## The four levels
+## The six levels
 
-| Level | Default dates | Certificates and projects |
+| Level | Default dates | Certificates and checkpoints |
 |---|---|---|
-| 1. Machine learning foundations | 4 Sep – 20 Dec 2026 | ML Zoomcamp midterm (Flagship 1), Machine Learning Specialization |
-| 2. Deep learning and applications | 21 Dec 2026 – 21 Mar 2027 | ML Zoomcamp certificate (Flagship 2), Deep Learning Specialization |
-| 3. LLMs, RAG and agents | 22 Mar – 27 Jun 2027 | Generative AI with LLMs, Hugging Face Agents, IBM Generative AI Engineering, Flagship 3 |
-| 4. MLOps and work-ready | 28 Jun – 30 Sep 2027 | English test, MLOps Zoomcamp (Flagship 4), portfolio and applications |
+| 1. AI foundations and your free toolkit | 2 Nov 2026 – 29 Nov 2026 | OpenAI Academy: AI Foundations; Google Skills: Introduction to Generative AI learning path |
+| 2. Graphics, brand and writing | 30 Nov 2026 – 3 Jan 2027 | Google AI Essentials; Checkpoint: brand kit and 12 posts reviewed by your mentor or study group |
+| 3. Video, voice and short-form content | 4 Jan 2027 – 14 Feb 2027 | Checkpoint: eight published short videos reviewed by your mentor or study group |
+| 4. Websites, apps and automation | 15 Feb 2027 – 11 Apr 2027 | Anthropic Academy: a course of your choice; OpenAI Academy: Agents and Workflows; Checkpoint: live website and three running automations |
+| 5. Business operations, ads and sales | 12 Apr 2027 – 23 May 2027 | OpenAI Academy: Applied AI Foundations; HubSpot Academy Digital Marketing certification; Google Ads certification; Meta Certified Digital Marketing Associate |
+| 6. Launch: portfolio, clients and first income | 24 May 2027 – 4 Jul 2027 | Checkpoint: portfolio site with six case studies; Startup credit applications sent; Checkpoint: first paid project delivered |
 
 Mentors can move the start date, change the daily hours, stretch or shorten each level and add holidays from the hub; every date above moves with them.
 
@@ -20,16 +22,40 @@ Mentors can move the start date, change the daily hours, stretch or shorten each
 
 | File | What it does |
 |---|---|
-| `public/index.html` | The roadmap app: levels, phases, exams, commitment, daily log, assignments, grading, plan settings, progress card. The content is in `LEVELS`, `COPY`, `COMMITMENT` and `PHASE_RANGES`; the rest is shared with the other roadmap branches. |
-| `public/firebase-config.js` | Firebase settings, admin email, and this roadmap's id (`ai`), title and hub link |
+| `public/index.html` | The roadmap app, copied from the `ai-engineer` branch. Only the content differs: `LEVELS`, `COPY`, `COMMITMENT`, `PHASE_RANGES`, `PLAN_START`, `DEFAULT_START`, the titles and placeholders, and the daily-routine wording. |
+| `public/firebase-config.js` | Firebase settings, admin email, and this roadmap's id (`everyday`), title and hub link |
 | `public/roadmap.json` | Outline read by the hub. Regenerate after changing `LEVELS`: `node tools/export-outline.cjs` |
+| `ROADMAP.md` | The same plan as a readable document, with a price and limit sheet |
 
-## Deploy
+## Add it to the platform
 
-This branch is published from `Master`, together with the hub and every other roadmap:
+1. Create the branch from this folder (commit without signing):
 
 ```bash
-git checkout Master
-git pull
-npm run deploy
+git switch --orphan ai-everyday-work     # or: git switch -c ai-everyday-work origin/ai-engineer, then copy these files over
+# copy this folder's contents in, then:
+git add -A
+git -c commit.gpgsign=false commit --no-gpg-sign -m "Add the AI for Everyday Work roadmap"
+git push -u origin ai-everyday-work
 ```
+
+2. On `Master`, add this entry to `HUB.roadmaps` in `public/firebase-config.js`:
+
+```js
+{
+  id: "everyday",
+  branch: "ai-everyday-work",
+  path: "everyday",
+  title: "AI for Everyday Work",
+  tagline: "Six levels from your first everyday AI tasks to video, design, websites, ads and a first paid client, with a free route and a paid route at every step.",
+  url: "/everyday/",
+  levels: 6,
+  dailyHours: 2,
+  startDate: "2026-11-02",
+  order: 3
+}
+```
+
+3. Run `npm run deploy` from `Master`, then assign a mentor in the hub if someone other than the admin will run it.
+
+Free limits and prices in the plan were checked against third-party sources in October 2026. They change often: confirm each on the vendor's page before relying on it.

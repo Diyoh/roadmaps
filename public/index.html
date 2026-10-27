@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>AI Engineer Roadmap</title>
+<title>AI for Everyday Work</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
@@ -523,8 +523,8 @@ th{background:var(--sunken)}
 <body>
 <div id="auth" hidden>
   <div class="authbox">
-    <div class="eyebrow">AI engineering roadmap</div>
-    <h1>AI Engineer Roadmap</h1>
+    <div class="eyebrow">AI for everyday work</div>
+    <h1>AI for Everyday Work</h1>
     <p class="muted" style="margin:0" id="authLead">Sign in to open your plan.</p>
     <button type="button" class="gbtn" id="googleBtn"><svg width="18" height="18" viewBox="0 0 48 48" aria-hidden="true"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.4-.4-3.5z"/></svg>Continue with Google</button>
     <div class="or">or use email</div>
@@ -537,7 +537,7 @@ th{background:var(--sunken)}
 </div>
 <div class="wrap" id="appRoot" hidden>
   <header class="topbar">
-    <div class="brand"><svg width="26" height="26" viewBox="0 0 30 30" aria-hidden="true" style="align-self:center;flex:none"><rect x="1" y="1" width="28" height="28" rx="8" fill="var(--accent)"/><path d="M9 22V8M21 22V8M9 18h12M9 13h12" stroke="var(--surface)" stroke-width="2.2" stroke-linecap="round"/></svg><b>AI Engineer Roadmap</b><span class="muted" id="hello"></span></div>
+    <div class="brand"><svg width="26" height="26" viewBox="0 0 30 30" aria-hidden="true" style="align-self:center;flex:none"><rect x="1" y="1" width="28" height="28" rx="8" fill="var(--accent)"/><path d="M9 22V8M21 22V8M9 18h12M9 13h12" stroke="var(--surface)" stroke-width="2.2" stroke-linecap="round"/></svg><b>AI for Everyday Work</b><span class="muted" id="hello"></span></div>
     <span style="display:flex;gap:12px;align-items:baseline"><span id="saveState">Opening…</span><a class="btn small" id="hubLink" hidden href="#">Switch roadmap</a><button type="button" class="btn small" id="signOutBtn">Sign out</button></span>
   </header>
   <nav class="tabs" id="tabs" aria-label="Pages" hidden></nav>
@@ -549,12 +549,12 @@ th{background:var(--sunken)}
   <section class="page" id="p-start" hidden>
     <div class="gate">
       <div class="eyebrow" data-planline></div>
-      <h1>AI Engineer Roadmap</h1>
+      <h1>AI for Everyday Work</h1>
       <div id="gateNew" style="display:grid;gap:18px">
         <div class="pledge-note" data-commitment></div>
         <div class="gateform">
           <label for="g_name">Your full name</label>
-          <input type="text" id="g_name" autocomplete="name" placeholder="e.g. Chiamaka Obi">
+          <input type="text" id="g_name" autocomplete="name" placeholder="e.g. Ada Mensah">
           <label class="inline"><input type="checkbox" id="g_agree"> I have read this commitment and I accept it.</label>
           <div class="weekbar"><button type="button" class="btn primary" id="g_sign">Sign and start my plan</button><span class="err" id="g_err"></span></div>
         </div>
@@ -603,7 +603,7 @@ th{background:var(--sunken)}
         <div class="hero-eyebrow" data-planline></div>
         <h1 id="ovTitle">Your plan</h1>
         <div class="hero-mentor" id="ovMentor" hidden></div>
-        <p class="hero-sub" id="ovSub">Four levels, from your first machine learning model to deployed LLM systems and an AI engineering portfolio.</p>
+        <p class="hero-sub" id="ovSub">Six levels, from your first everyday AI tasks to video, design, websites, ads and your first paid client, with a free route and a paid route at every step.</p>
         <div class="hero-cta"><a class="btn primary lg" href="#log" id="ovCta">Log today</a><a class="btn hero-ghost lg" href="#ladder">View the ladder</a></div>
       </div>
       <div class="ring" id="ovRing" aria-label="Overall progress"></div>
@@ -640,7 +640,7 @@ th{background:var(--sunken)}
       <div class="dayrows" id="daysBox"></div>
       <div class="weektotal"><span class="mono" id="weekTotal">0 / 14 h</span><div class="bar"><i id="weekBar"></i></div></div>
       <div class="feedback weekcomment" id="weekComment" hidden></div>
-      <label>What I finished this week<textarea id="w_did" data-week="did" placeholder="e.g. ML Zoomcamp module 3 and homework 3, Flagship 1 baseline trained"></textarea></label>
+      <label>What I finished this week<textarea id="w_did" data-week="did" placeholder="e.g. Built my brand kit in Canva Free and wrote 12 posts with a free assistant"></textarea></label>
       <label>What got in the way<textarea id="w_blocked" data-week="blocked" placeholder="Be honest: power cuts, work, lost focus…"></textarea></label>
       <label>Next week I will<textarea id="w_next" data-week="next" placeholder="One or two specific goals"></textarea></label>
       <label>How did this week go?
@@ -673,7 +673,7 @@ th{background:var(--sunken)}
 
   <section class="page" id="p-work" hidden>
     <h2>My assignments</h2>
-    <p class="muted">Tasks from your mentor. Submit your work before the due date: write what you did and add a link (for example your GitHub repo). Grades and comments appear here once your mentor marks it.</p>
+    <p class="muted">Tasks from your mentor. Submit your work before the due date: write what you did and add a link (for example a link to your design, video or live site). Grades and comments appear here once your mentor marks it.</p>
     <div id="workSummary" class="wsum" hidden></div>
     <div id="workList" class="tasklist"></div>
   </section>
@@ -686,7 +686,7 @@ th{background:var(--sunken)}
       <label>Full name (your mentor sees this)<input type="text" id="p_name" data-pledge="name" placeholder="Your full name"></label>
       <label>Why I’m doing this<textarea id="p_why" data-pledge="why" placeholder="e.g. To be working as an AI engineer by the end of 2027 and support my family"></textarea></label>
       <label>Accountability partner (name and how to reach them)<input type="text" id="p_partner" data-pledge="partner" placeholder="Someone who checks on you every week"></label>
-      <label>Study group members<input type="text" id="p_group" data-pledge="group" placeholder="3–5 people aiming at the same exams"></label>
+      <label>Study group members<input type="text" id="p_group" data-pledge="group" placeholder="3–5 people working through the same levels"></label>
       <label>My daily study hours<input type="text" id="p_time" data-pledge="time" placeholder="e.g. 5:00–7:00 am"></label>
       <label>If I miss a day, I will…<input type="text" id="p_miss" data-pledge="miss" placeholder="e.g. make it up on Saturday afternoon"></label>
     </div>
@@ -702,7 +702,7 @@ th{background:var(--sunken)}
 
   <section class="page" id="p-exams" hidden>
     <h2>Exam calendar</h2>
-    <p class="muted">Every test on the ladder in date order. Prices are in US dollars and can differ in Nigeria, so confirm on the exam page before you pay. Book paid exams at least three weeks ahead.</p>
+    <p class="muted">Every test on the ladder in date order. Prices are in US dollars and can differ in your country, so confirm on the exam page before you pay. Book paid exams at least three weeks ahead.</p>
     <div class="tablebox"><table>
       <thead><tr><th>Target date</th><th>Exam</th><th>Level</th><th>Cost</th><th>You earn</th></tr></thead>
       <tbody id="examTable"></tbody>
@@ -742,7 +742,7 @@ th{background:var(--sunken)}
     <p class="muted">Tasks appear on each chosen student’s “My assignments” page. Grade them from the student’s page in Class.</p>
     <div class="panel" id="assignPanel">
       <div class="assign-grid">
-        <label>Title<input type="text" id="as_title" placeholder="e.g. Submit ML Zoomcamp homework 3 with your notebook link"></label>
+        <label>Title<input type="text" id="as_title" placeholder="e.g. Share your 30-second product ad and the tools you used"></label>
         <label>Due date<input type="date" id="as_due"></label>
         <label>Points<input type="number" id="as_points" min="1" step="1" value="10"></label>
         <label>Level<select id="as_level"><option value="">Any</option></select></label>
@@ -810,107 +810,143 @@ th{background:var(--sunken)}
 <script>
 window.startApp=function(){
 "use strict";
-var PLAN_START = "2026-09-04";
+var PLAN_START = "2026-11-02";
 var WEEK_TARGET = 14;
 
 /* Wording that differs between roadmaps (the rest of the app is shared by every roadmap branch). */
 var COPY = {
-  cardLabel: "AI ENGINEER ROADMAP",
-  journey: "AI engineering journey",
-  hashtags: ["#AIEngineer", "#BuildInPublic", "#MachineLearning"],
-  studentWord: "AI engineering student",
-  practice: "Flagship project",
-  beforeStart: "Register for the ML Zoomcamp and apply for Coursera Financial Aid before then.",
-  sample: { name: "Chiamaka Obi", note: "Finished ML Zoomcamp module 2 and trained my first regression model on Douala housing prices." },
-  filePrefix: "ai-journey",
-  storageKey: "ai"
+  cardLabel: "AI FOR EVERYDAY WORK",
+  journey: "AI skills journey",
+  hashtags: ["#AIforWork", "#BuildInPublic", "#LeanStartup"],
+  studentWord: "AI builder",
+  practice: "Venture project",
+  beforeStart: "Open free accounts on one AI assistant, Canva and GitHub before then, and pick the venture you will build through all six levels.",
+  sample: { name: "Ada Mensah", note: "Made my first 30-second product ad with free tools and saved the prompts that worked." },
+  filePrefix: "everyday-ai-journey",
+  storageKey: "everyday"
 };
 
 var LEVELS = [
- { n:1, name:"Machine learning foundations", tag:"Foundations", start:"2026-09-04", end:"2026-12-20", hours:216,
-   goal:"Train, evaluate and deploy classical machine learning models, and ship your first project behind a live URL.",
+ { n:1, name:"AI foundations and your free toolkit", tag:"Foundations", start:"2026-11-02", end:"2026-11-29", hours:56,
+   goal:"Use an AI assistant well every day, build a safe free toolkit, know every tool’s free limits, and choose one venture project to carry through all six levels.",
    phases:[
-    {when:"4 – 13 Sep", what:"Set up before the cohort. Register for the ML Zoomcamp (the live cohort starts Monday 14 September, with homework due on Mondays), join the DataTalksClub Slack, and fork the course repo: you will work in your fork all year. Apply for Coursera Financial Aid on course 1 of the Machine Learning Specialization (about 15 days to approve; audit it free while you wait, and save the essay to reuse). Set up GitHub, Kaggle (verify your phone for free GPU) and Hugging Face. Do the Kaggle Python and Pandas micro-courses. Ask two lecturers for recommendation letters, request certified transcripts, and post your Day 1 on LinkedIn and X.",
-     links:[["ML Zoomcamp registration","https://courses.datatalks.club/register/ml-zoomcamp/"],["ML Zoomcamp repo","https://github.com/DataTalksClub/machine-learning-zoomcamp"],["DataTalksClub Slack","https://datatalks.club/slack.html"],["Coursera Financial Aid","https://www.coursera.org/about/financial-aid"],["Kaggle Learn","https://www.kaggle.com/learn"],["Hugging Face","https://huggingface.co/"]]},
-    {when:"14 Sep – 4 Oct", what:"ML Zoomcamp modules 1–2: introduction, environment, NumPy and pandas, then regression. Submit each homework and commit the notebook. Machine Learning Specialization course 1, weeks 1–2. Choose the dataset for Flagship 1 (a tabular problem from your own context: crop yield, housing prices, mobile-money fraud or national health survey data) and write a first exploration notebook.",
-     links:[["ML Zoomcamp","https://github.com/DataTalksClub/machine-learning-zoomcamp"],["Machine Learning Specialization","https://www.coursera.org/specializations/machine-learning-introduction"],["DHS Program data","https://dhsprogram.com/"]]},
-    {when:"5 Oct – 1 Nov", what:"ML Zoomcamp module 3 (classification), module 4 (evaluation: ROC, cross-validation) and module 5 (deployment: a model behind FastAPI in Docker, deployed to Render). Finish Machine Learning Specialization course 1 and apply for aid on course 2. Flagship 1: a baseline model trained and deployed behind an API, even if it is still weak. Post the first live URL: “I shipped a model” beats “I finished a module”.",
-     links:[["ML Zoomcamp","https://github.com/DataTalksClub/machine-learning-zoomcamp"],["FastAPI","https://fastapi.tiangolo.com/"],["Render","https://render.com/"]]},
-    {when:"2 – 29 Nov", what:"ML Zoomcamp module 6: decision trees and gradient boosting (XGBoost). Replace the Flagship 1 baseline with a tuned, cross-validated boosted model and a results table. Finish Flagship 1 (README, tests, Dockerfile, live link) and submit it as the Zoomcamp midterm by {exam:zoom_mid}. Peer-review three other midterm projects. Machine Learning Specialization course 2. Enter one Kaggle Playground competition with a public notebook. Blog post 1 on Flagship 1, linked from the README.",
-     links:[["Kaggle competitions","https://www.kaggle.com/competitions"],["Medium","https://medium.com/"],["dev.to","https://dev.to/"]]},
-    {when:"30 Nov – 20 Dec", what:"ML Zoomcamp modules 7–8: neural networks and an introduction to deep learning. Finish Machine Learning Specialization courses 2 and 3: certificate by {exam:mlspec}. Application season opens: shortlist master's programmes and scholarships, email two possible supervisors, and start the forms. Choose the Flagship 2 dataset.",
-     links:[["Machine Learning Specialization","https://www.coursera.org/specializations/machine-learning-introduction"],["AIMS AI for Science master's","https://ai.aims.ac.za/apply"],["Erasmus Mundus catalogue","https://www.eacea.ec.europa.eu/scholarships/erasmus-mundus-catalogue_en"]]}
+    {when:"2 – 8 Nov", what:"Set up. Free route: open free accounts on ChatGPT, Gemini and Claude and use all three for a week. Their free limits differ: ChatGPT offers everyday text chat and limited image generation; Claude resets its allowance every 5 hours and has no image generation; Gemini also refreshes every 5 hours and includes image generation and Deep Research. Add GitHub, a Google account, Canva Free and NotebookLM. Start a prompt log (a Google Doc or sheet) and learn one prompt pattern: role, goal, context, format, a worked example, then a check. Paid route: pay for nothing this week. Write down every time you hit a limit; that list shows what is worth buying. Cheapest upgrades: Gemini AI Plus US$4.99 a month, ChatGPT Go US$8, or about US$20 for ChatGPT Plus, Claude Pro or Gemini AI Pro.",
+     links:[["ChatGPT","https://chatgpt.com/"],["Gemini","https://gemini.google.com/"],["Claude","https://claude.ai/"],["NotebookLM","https://notebooklm.google.com/"],["Canva","https://www.canva.com/"],["GitHub","https://github.com/"]]},
+    {when:"9 – 15 Nov", what:"Everyday tasks. Use AI for jobs you already do: emails and messages, summaries of long documents, research with sources, meeting notes, translation, spreadsheet formulas, study plans and scripts. The rule: AI drafts, you decide, and you check every fact, number and link before it leaves your hands. Free route: the three free assistants, NotebookLM for questions over your own documents, and Google AI Studio for free experiments with newer models. Paid route: none yet. Take the OpenAI Academy course AI Foundations (free, with a completion certificate and badge) and finish it by {exam:oa_found}.",
+     links:[["OpenAI Academy","https://academy.openai.com/"],["Google AI Studio","https://aistudio.google.com/"],["NotebookLM","https://notebooklm.google.com/"],["Elements of AI","https://www.elementsofai.com/"]]},
+    {when:"16 – 22 Nov", what:"Safety, limits and costs. Never paste passwords, client secrets, ID numbers or private customer data into a free chat tool, and check each tool’s data-use setting. Free plans often come with licence rules: ElevenLabs’ free plan is non-commercial, Vercel’s Hobby plan is for personal use only, and Luma’s free use is non-commercial, so read the licence before client work. Build your tool sheet (a spreadsheet): tool, free limit, when it resets, watermark, commercial rights, paid price, date checked. Free route: run a small open model on your own computer with Ollama if it has about 16 GB of RAM; otherwise skip. Paid route: pay-per-token APIs only when something you build needs one. Free API tiers exist (Google AI Studio; DeepSeek and Z.ai have offered free tokens), but limits change, so check them.",
+     links:[["Ollama","https://ollama.com/"],["Google AI Studio","https://aistudio.google.com/"],["DeepSeek platform","https://platform.deepseek.com/"],["Z.ai","https://z.ai/"]]},
+    {when:"23 – 29 Nov", what:"Choose your venture project. Pick one real or realistic small business to carry through all six levels: your own idea, a family shop, a local business or a niche service. Write a one-page brief with AI as a sparring partner (who it serves, what it sells, the price, why people would care), then talk to three real people to test it, because AI cannot replace real customers. Finish the Google Skills path Introduction to Generative AI (about 2 hours, free badge) by {exam:gs_genai}. Free route: everything in this level costs nothing. Paid route: not needed. Post your Day 1 story and share your tool sheet with your study group.",
+     links:[["Google Skills: Introduction to Generative AI","https://www.skills.google/paths/118"],["Lean Canvas","https://leanstack.com/lean-canvas"],["Coursera Financial Aid","https://www.coursera.org/about/financial-aid"]]}
    ],
-   note:"Weekly rhythm: Monday and Tuesday for the course module, Wednesday for homework, Thursday for a book chapter or paper, Friday and Saturday for the flagship project, and Sunday for publishing. Everything here is free or covered by Coursera Financial Aid: apply for aid about 15 days before you need each course.",
+   note:"Weekly rhythm: Monday and Tuesday to learn (course or tool tutorial), Wednesday for a practice drill, Thursday to compare one task in two tools, Friday and Saturday for the venture project, Sunday to publish and review. Budget routes used throughout: Route A US$0 (free tiers only); Route B about US$10–25 a month (one assistant plan plus one specialist tool); Route C about US$40–70 a month (adds a builder or automation plan); Route D US$100 and up, only once clients pay for it. Free limits quoted in this roadmap come from third-party roundups checked in October 2026 and change often, so confirm each one on the vendor’s own page before relying on it.",
    exams:[
-    {id:"zoom_mid", name:"ML Zoomcamp midterm project (Flagship 1)", date:"2026-11-16", cost:"Free", format:"Project submitted on the DataTalksClub course platform and peer-reviewed by three students", link:"https://github.com/DataTalksClub/machine-learning-zoomcamp", earn:"Midterm credit toward the ML Zoomcamp certificate"},
-    {id:"mlspec", name:"Machine Learning Specialization (Stanford / DeepLearning.AI, 3 courses)", date:"2026-12-20", cost:"Free with Coursera Financial Aid", format:"Online graded quizzes and labs on Coursera", link:"https://www.coursera.org/specializations/machine-learning-introduction", earn:"Machine Learning Specialization certificate"}
+    {id:"oa_found", name:"OpenAI Academy: AI Foundations (self-paced)", date:"2026-11-15", cost:"Free", format:"Self-paced course with a final assessment; sign in with a free ChatGPT account", link:"https://academy.openai.com/", earn:"OpenAI Academy completion certificate and Credly badge"},
+    {id:"gs_genai", name:"Google Skills: Introduction to Generative AI learning path (about 2 hours)", date:"2026-11-29", cost:"Free", format:"Short online lessons and labs", link:"https://www.skills.google/paths/118", earn:"Google Skills badge"}
    ],
-   quals:["Machine Learning Specialization certificate (Coursera)","A deployed machine learning project (Flagship 1) with a live URL, README and tests"],
-   community:[["ML Zoomcamp cohort on the DataTalksClub Slack","https://datatalks.club/slack.html"],["Kaggle Playground competitions","https://www.kaggle.com/competitions"],["Peer-review three midterm projects",""]],
-   tasks:["Registered for the ML Zoomcamp and joined the course Slack","Coursera Financial Aid approved for the Machine Learning Specialization","GitHub, Kaggle and Hugging Face profiles set up; Day 1 post published","Zoomcamp homework submitted every week","Flagship 1 deployed with README, tests and a live link (midterm submitted)","Three midterm projects peer-reviewed","One public Kaggle notebook","Blog post 1 published","Machine Learning Specialization certificate earned"]
+   quals:["OpenAI Academy AI Foundations certificate","Google Skills generative AI badge","A tool sheet with free limits, licences and prices for every tool you use","A one-page venture brief tested with three real people"],
+   community:[["Indie Hackers","https://www.indiehackers.com/"],["Hugging Face community","https://huggingface.co/join/discord"],["Your study group: agree a weekly 30-minute call",""]],
+   tasks:["Free accounts open on ChatGPT, Gemini and Claude, and a prompt log started","Tool sheet started: free limits, resets, licences and prices","OpenAI Academy AI Foundations certificate earned","Ten everyday tasks done with AI and fact-checked","Privacy and licence rules written in your own words","Google Skills generative AI badge earned","Venture brief written and tested with three real people","Day 1 post published"]
  },
- { n:2, name:"Deep learning and applications", tag:"Deep learning", start:"2026-12-21", end:"2027-03-21", hours:182,
-   goal:"Train and fine-tune neural networks in PyTorch, and ship a model built on regional data with a public demo and a model card.",
+ { n:2, name:"Graphics, brand and writing", tag:"Design and words", start:"2026-11-30", end:"2027-01-03", hours:70,
+   goal:"Design a complete brand and a month of content with free tools, learn which paid design tools are worth buying, and publish your first portfolio set.",
    phases:[
-    {when:"21 Dec – 3 Jan", what:"Apply for aid on course 1 of the Deep Learning Specialization. Download the Flagship 2 data and look at 100 examples by hand. Computer-vision route: the cassava leaf disease dataset. Language route: Cameroonian Pidgin or another African language with Masakhane data. Write the training-script skeleton. A lighter holiday pace is fine.",
-     links:[["Deep Learning Specialization","https://www.coursera.org/specializations/deep-learning"],["Cassava Leaf Disease data","https://www.kaggle.com/competitions/cassava-leaf-disease-classification"],["Masakhane","https://www.masakhane.io/"]]},
-    {when:"4 – 31 Jan", what:"Deep Learning Specialization courses 1–2 (neural networks, hyperparameters), or fast.ai lessons 1–4 if aid is slow. Karpathy’s Zero to Hero on Thursdays: micrograd, then makemore parts 1–2. Flagship 2 version 1: a pretrained ResNet or ViT (or AfroXLMR for text) fine-tuned in PyTorch, with every run tracked in Weights & Biases. Post your training curves and what surprised you.",
-     links:[["fast.ai","https://course.fast.ai/"],["Neural Networks: Zero to Hero","https://karpathy.ai/zero-to-hero.html"],["Weights & Biases","https://wandb.ai/"]]},
-    {when:"1 – 28 Feb", what:"Deep Learning Specialization courses 3–4 (ML strategy, CNNs) or fast.ai lessons 5–8; Karpathy makemore parts 3–5. Flagship 2: error analysis, data augmentation, and a second run that beats the first. Deploy it as a Gradio app on Hugging Face Spaces with a model card (data, metrics, limitations). Submit it as the Zoomcamp capstone by {exam:zoom_cert}. Blog post 2, shared with the Masakhane community.",
-     links:[["Hugging Face Spaces","https://huggingface.co/spaces"],["Gradio","https://www.gradio.app/"]]},
-    {when:"1 – 21 Mar", what:"Deep Learning Specialization course 5 (sequence models and transformers): certificate by {exam:dlspec}. Karpathy’s “Let’s build GPT”. Optional, if you are ahead: train nanoGPT on a small local-language corpus and report perplexity. Post a thread explaining transformers in your own words.",
-     links:[["Deep Learning Specialization","https://www.coursera.org/specializations/deep-learning"],["karpathy/nanoGPT","https://github.com/karpathy/nanoGPT"],["rasbt/LLMs-from-scratch","https://github.com/rasbt/LLMs-from-scratch"]]}
+    {when:"30 Nov – 6 Dec", what:"Design basics and brand kit. Learn contrast, hierarchy, spacing, two fonts and a small colour palette, then build a brand kit for your venture: logo, colours, fonts and voice. Free route: Canva Free (its AI tools include a shared monthly pool of roughly 200 standard or 20 premium uses, plus background remover and Magic Write), Adobe Express’s free tier and Autodraw for quick icons. One review says free Canva AI images carry commercial rights and another says they do not, so read Canva’s current licence before client work. Paid route: Canva Pro, about US$12 a month (US$144 a year), or Adobe Express or Firefly from US$9.99 a month. Stay on Canva Free until a real limit stops you.",
+     links:[["Canva","https://www.canva.com/"],["Adobe Express","https://www.adobe.com/express/"],["Autodraw","https://www.autodraw.com/"],["Canva Design School","https://www.canva.com/designschool/"]]},
+    {when:"7 – 20 Dec", what:"AI images and logos. Free route: Gemini’s image generation (free, no fixed count), Reve (reported at 20 images a day), Leonardo (about 150 tokens a day, roughly 18–30 images), Ideogram (best at text inside images) and Recraft (vector and SVG output) all have free tiers. Check each tool’s licence and watermark rules. Practise product mock-ups, social backgrounds, icons, and a logo concept that you rebuild cleanly in Canva or Recraft. Do not imitate living artists or brands. Paid route: Ideogram from US$8 a month, Leonardo or Recraft from US$12, Midjourney from US$10 (no free tier). Buy at most one image tool, and only after the free tiers stop you finishing a real job.",
+     links:[["Gemini","https://gemini.google.com/"],["Ideogram","https://ideogram.ai/"],["Leonardo","https://leonardo.ai/"],["Recraft","https://www.recraft.ai/"],["Midjourney","https://www.midjourney.com/"]]},
+    {when:"21 Dec – 3 Jan", what:"Writing and brand voice. A lighter holiday pace is fine. Write a brand voice guide, then use AI as an editor rather than an author: product descriptions, a 12-post social calendar, a welcome email, a five-slide pitch and a one-page flyer, all in your own voice. Check for invented facts and for text that sounds like everyone else. Free route: the free assistants, NotebookLM and Canva presentations. Paid route: one US$20 assistant plan, only if you write for clients every week. Finish Google AI Essentials (about 5–10 hours; audit it free) by {exam:gai_ess}, add Google’s AI for Small Businesses lessons, and publish your first portfolio page with the brand kit and 12 posts by {exam:brand_cp}.",
+     links:[["Google AI Essentials and AI for Small Businesses","https://grow.google/ai/"],["Google Skills","https://www.skills.google/paths/2336"],["NotebookLM","https://notebooklm.google.com/"]]}
    ],
-   note:"Most master’s and scholarship programmes (AIMS, Erasmus Mundus, university scholarships) close between December and March. Keep one folder with your CV, transcripts, degree certificate, two reference letters, motivation letter and passport scan, and confirm every deadline on the official page.",
+   note:"Designs sell through clarity, not novelty. Free tiers reset daily or monthly, so generate in batches on the days your credits refresh and write down which prompts worked. Free AI images may carry licence limits or watermarks: record them in the tool sheet before anything goes to a client.",
    exams:[
-    {id:"zoom_cert", name:"ML Zoomcamp certificate (midterm and capstone projects)", date:"2027-02-28", cost:"Free", format:"Projects submitted on the DataTalksClub course platform and peer-reviewed", link:"https://github.com/DataTalksClub/machine-learning-zoomcamp", earn:"ML Zoomcamp certificate"},
-    {id:"dlspec", name:"Deep Learning Specialization (DeepLearning.AI, 5 courses)", date:"2027-03-21", cost:"Free with Coursera Financial Aid", format:"Online graded quizzes and programming assignments on Coursera", link:"https://www.coursera.org/specializations/deep-learning", earn:"Deep Learning Specialization certificate"}
+    {id:"gai_ess", name:"Google AI Essentials (Google on Coursera, about 5–10 hours)", date:"2026-12-27", cost:"Audit free; certificate about US$49 a month after a 7-day trial, or Coursera Financial Aid if offered", format:"Self-paced video lessons and short graded activities", link:"https://grow.google/ai/", earn:"Google AI Essentials certificate (optional)"},
+    {id:"brand_cp", name:"Checkpoint 2: brand kit and 12 posts reviewed by your mentor or study group", date:"2027-01-03", cost:"Free", format:"Share a link to your brand kit, 12 designed posts and your voice guide for written feedback", link:"", earn:"Sign-off on a portfolio-ready brand kit"}
    ],
-   quals:["Deep Learning Specialization certificate","ML Zoomcamp certificate","Flagship 2 live on Hugging Face Spaces with a model card"],
-   community:[["Masakhane: African-language NLP","https://www.masakhane.io/"],["Hugging Face community","https://huggingface.co/join/discord"],["Capstone peer reviews on the DataTalksClub Slack","https://datatalks.club/slack.html"]],
-   tasks:["Flagship 2 data explored by hand (100 examples)","Karpathy micrograd and makemore completed","First fine-tuning run tracked in Weights & Biases","A second run beats the first after error analysis","Flagship 2 live on Hugging Face Spaces with a model card","Blog post 2 published and shared with the community","Deep Learning Specialization certificate earned"]
+   quals:["Google AI Essentials (certificate optional)","A complete brand kit and 12 designed posts for your venture","Images you may use commercially, with each licence noted in your tool sheet"],
+   community:[["Canva Design School","https://www.canva.com/designschool/"],["Product Hunt","https://www.producthunt.com/"],["Peer feedback in your study group",""]],
+   tasks:["Brand kit built in Canva Free (logo, colours, fonts, voice)","Ten images generated and their licences noted","Logo concept rebuilt cleanly as a vector or Canva design","12-post social calendar written and designed","Welcome email, flyer and five-slide pitch finished","Google AI Essentials completed","Portfolio page published with the brand kit","Post or thread: what AI did well and badly for your brand"]
  },
- { n:3, name:"LLMs, RAG and agents", tag:"Generative AI", start:"2027-03-22", end:"2027-06-27", hours:196,
-   goal:"Build LLM applications the way companies do: retrieval, agents, evaluation with real numbers, monitoring and cost tracking.",
+ { n:3, name:"Video, voice and short-form content", tag:"Video", start:"2027-01-04", end:"2027-02-14", hours:84,
+   goal:"Script, record, edit and publish short videos with free tools, add AI voice and clips only where they help, and know which paid tool earns its monthly fee.",
    phases:[
-    {when:"22 – 28 Mar", what:"Start mlabonne’s LLM Course (LLM Engineer track, section 1). Apply for aid on Generative AI with LLMs. Apply for the Udacity / AWS AI & ML Scholars programme and a Deep Learning Indaba travel grant when their calls open.",
-     links:[["mlabonne/llm-course","https://github.com/mlabonne/llm-course"],["Udacity scholarships","https://www.udacity.com/scholarships"],["Deep Learning Indaba","https://deeplearningindaba.com/"]]},
-    {when:"29 Mar – 2 May", what:"Run an open model locally with Ollama and through a free API. Hugging Face LLM Course chapters 1–3. Embeddings and a vector store, then a naive RAG over 20 documents; compare chunking strategies. Generative AI with LLMs (fine-tuning, PEFT, RLHF), finished by {exam:genai}. Flagship 3: collect a real, messy document set (university regulations, the labour code, or a client’s documents) and build a prototype. Post a demo GIF.",
-     links:[["Ollama","https://ollama.com/"],["Hugging Face LLM Course","https://huggingface.co/learn/llm-course"],["Generative AI with LLMs","https://www.coursera.org/learn/generative-ai-with-llms"]]},
-    {when:"3 – 30 May", what:"Hugging Face Agents Course units 1–3: certificate by {exam:hfagents}. Microsoft’s AI Agents for Beginners, lessons 1–10. IBM Generative AI Engineering, first three courses. Flagship 3: a 50-question evaluation set; measure retrieval hit-rate and MRR; add hybrid search and reranking and measure again; LLM-as-judge for answers. Post your evaluation table. Start applying to five remote junior ML or freelance roles a week.",
-     links:[["Hugging Face Agents Course","https://huggingface.co/learn/agents-course"],["AI Agents for Beginners","https://github.com/microsoft/ai-agents-for-beginners"],["IBM Generative AI Engineering","https://www.coursera.org/specializations/generative-ai-engineering-with-llms"]]},
-    {when:"31 May – 27 Jun", what:"LLM Zoomcamp cohort (starts early June): RAG, vector search, evaluation and monitoring. Finish IBM Generative AI Engineering and its capstone by {exam:ibm}. Flagship 3: a monitoring dashboard (Streamlit or Grafana), cost per query tracked, deployed with Docker Compose, with an evaluation report; submit it as the LLM Zoomcamp project. Blog post 3, technical, with your numbers.",
-     links:[["LLM Zoomcamp","https://github.com/DataTalksClub/llm-zoomcamp"],["Streamlit","https://streamlit.io/"]]}
+    {when:"4 – 17 Jan", what:"Script to edit. Learn the pipeline: a hook in the first 3 seconds, one idea, captions and a call to action. Write scripts with a free assistant, film on your phone, then edit. Free route: CapCut (free, 1080p export; auto-captions are capped at 10 minutes per video), DaVinci Resolve (free, no watermark, up to 4K UHD; the Studio upgrade is a one-time US$295) and Clipchamp (free, 1080p, no watermark). Paid route: Descript Hobbyist at US$24 a month for transcript-style editing (its free plan is one watermarked 720p video a month), or Opus Clip at US$15 a month to cut long videos into clips. Skip both until you edit every week.",
+     links:[["CapCut","https://www.capcut.com/"],["DaVinci Resolve","https://www.blackmagicdesign.com/products/davinciresolve"],["Clipchamp","https://clipchamp.com/"],["Descript","https://www.descript.com/"],["Opus Clip","https://www.opus.pro/"]]},
+    {when:"18 – 31 Jan", what:"Voice and sound. Record your own voice first, with a phone microphone in a quiet room. Add AI voice-over only where you cannot record. Free route: ElevenLabs’ free plan gives 10,000 credits a month (about 10 minutes of speech), is non-commercial, requires attribution and does not roll credits over, so use it for practice only; Fish Audio has been reported to include 8,000 free credits a month. Paid route: ElevenLabs Starter at US$6 a month (US$5 billed yearly) gives about 30 minutes and commercial use for audio made while subscribed. Never clone someone’s voice without their written permission. Make a 45-second voice-over ad and a captioned explainer.",
+     links:[["ElevenLabs","https://elevenlabs.io/"],["DaVinci Resolve","https://www.blackmagicdesign.com/products/davinciresolve"]]},
+    {when:"1 – 14 Feb", what:"AI video clips, used sparingly. Free route: tools that renew free credits, such as Google Flow (about 50 credits a day), Kling (66 credits a day, roughly two watermarked 720p clips of 5 seconds), PixVerse (about 30–60 credits a day) and Krea (100 compute units a day). Runway gives a one-time 125 credits and Pika about 80 a month. Watermark and commercial rules differ, so check them before client use. Paid route: Google AI Plus at US$4.99 a month adds Flow credits; Pika Creator at US$35, Luma from US$30 and Runway from about US$15 come next. Sora has been shut down, so do not build on it. Use AI clips as B-roll or product shots, mix them with real footage and captions, and follow each platform’s rules on labelling AI-generated content. Publish eight short videos and submit Checkpoint 3 by {exam:video_cp}.",
+     links:[["Gemini","https://gemini.google.com/"],["Kling","https://klingai.com/"],["PixVerse","https://pixverse.ai/"],["Krea","https://www.krea.ai/"],["Pika","https://pika.art/"],["Runway","https://runwayml.com/"]]}
    ],
-   note:"This is what “AI engineer” means in job adverts today. Your evaluation numbers are what separate your project from tutorial copies, so measure before and after every change.",
+   note:"Video is the most expensive thing to generate and the easiest to waste. Use one hero idea a week, reuse it across formats, and treat paid video credits as the last thing you buy.",
    exams:[
-    {id:"genai", name:"Generative AI with Large Language Models (DeepLearning.AI + AWS)", date:"2027-04-25", cost:"Free with Coursera Financial Aid", format:"Three weeks of graded quizzes and labs on Coursera", link:"https://www.coursera.org/learn/generative-ai-with-llms", earn:"Generative AI with LLMs certificate"},
-    {id:"hfagents", name:"Hugging Face Agents Course", date:"2027-05-30", cost:"Free", format:"Online units with a final hands-on assignment", link:"https://huggingface.co/learn/agents-course", earn:"Hugging Face Agents Course certificate"},
-    {id:"ibm", name:"IBM Generative AI Engineering with LLMs", date:"2027-06-20", cost:"Free with Coursera Financial Aid", format:"Online courses with graded labs and a RAG capstone on Coursera", link:"https://www.coursera.org/specializations/generative-ai-engineering-with-llms", earn:"IBM Generative AI Engineering with LLMs certificate"}
+    {id:"video_cp", name:"Checkpoint 3: eight published short videos reviewed by your mentor or study group", date:"2027-02-14", cost:"Free", format:"Share links to a 30-second product ad, a voice-over explainer and six shorts, with the tools and prompts used", link:"", earn:"Sign-off on a video portfolio"}
    ],
-   quals:["Generative AI with LLMs, Hugging Face Agents and IBM Generative AI Engineering certificates","Flagship 3: a deployed RAG assistant with an evaluation report and monitoring","From here you can apply for junior ML, AI engineer and freelance roles"],
-   community:[["LLM Zoomcamp cohort (DataTalksClub)","https://github.com/DataTalksClub/llm-zoomcamp"],["Hugging Face community","https://huggingface.co/join/discord"],["Deep Learning Indaba","https://deeplearningindaba.com/"]],
-   tasks:["An open model running locally with Ollama","Naive RAG prototype over a real document set","50-question evaluation set with hit-rate and MRR measured","Hybrid search and reranking added and measured again","Generative AI with LLMs certificate","Hugging Face Agents Course certificate","IBM Generative AI Engineering certificate","Flagship 3 deployed with evaluation report and monitoring","Applying to five roles a week"]
+   quals:["Eight published short videos with captions","A 30-second product ad and a voice-over explainer","A one-page note on which video and voice tools passed your licence check"],
+   community:[["CapCut","https://www.capcut.com/"],["DaVinci Resolve training","https://www.blackmagicdesign.com/products/davinciresolve/training"],["Study-group watch party: review each other’s hooks",""]],
+   tasks:["Three hook-and-script drafts written and tested","Edited 60-second vertical video with captions","Voice-over recorded or generated under a licence you can use","30-second product ad published","Five AI clips tested, with watermark and licence rules recorded","Eight short videos published","Cost per video worked out (time plus credits)","Post or thread: my free video stack"]
  },
- { n:4, name:"MLOps and work-ready", tag:"Top of the ladder", start:"2027-06-28", end:"2027-09-30", hours:190,
-   goal:"Run models in production (tracking, orchestration, monitoring, CI/CD) and turn four deployed projects into interviews, job offers or a funded master’s place.",
+ { n:4, name:"Websites, apps and automation", tag:"Build", start:"2027-02-15", end:"2027-04-11", hours:112,
+   goal:"Ship a real website for your venture with AI help, add forms, payments or a chatbot, and run three automations that save you hours every week.",
    phases:[
-    {when:"28 Jun – 1 Aug", what:"MLOps Zoomcamp modules 1–4: MLflow experiment tracking and model registry added to Flagship 1, a retraining pipeline in Prefect or Airflow, and deployment patterns (batch and online). Made-With-ML design and data sections on Thursdays. Take your English test by {exam:english} (check which test each school accepts). Post the MLflow screenshot: “my model now retrains itself”.",
-     links:[["MLOps Zoomcamp","https://github.com/DataTalksClub/mlops-zoomcamp"],["Made-With-ML","https://github.com/GokuMohandas/Made-With-ML"],["MLflow","https://mlflow.org/"]]},
-    {when:"2 – 29 Aug", what:"MLOps Zoomcamp module 5 (monitoring with Evidently: drift, performance and alerts) and module 6 (unit and integration tests, GitHub Actions deploying on merge, infrastructure as code). Deep Learning Indaba if you are attending: present Flagship 2 or 3 as a poster. Flagship 4 final: architecture diagram, README and write-up, submitted as the MLOps Zoomcamp project by {exam:mlops}. Blog post 4.",
-     links:[["Evidently","https://www.evidentlyai.com/"],["GitHub Actions","https://docs.github.com/actions"]]},
-    {when:"30 Aug – 30 Sep", what:"Portfolio README listing all four flagship projects with live links. Three questions a day from the ML interviews book, and mock interviews with a peer from the course Slack. Apply to ten roles. With a master’s offer, prepare the visa file; without one, finalise the next round of scholarship applications (many DAAD deadlines fall around 15 October). Year-in-review post with your total hours, four projects and certificates.",
-     links:[["ML interviews book","https://github.com/chiphuyen/ml-interviews-book"],["AI Engineering book resources","https://github.com/chiphuyen/aie-book"],["DAAD scholarship database","https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/"]]}
+    {when:"15 – 28 Feb", what:"Web basics with an AI tutor. Learn how a page works (HTML, CSS and a little JavaScript), what a domain, hosting and a repository are, and how to read the code an AI writes before you trust it. Work through freeCodeCamp’s free web design lessons beside an assistant that explains each error. Free route: VS Code with GitHub Copilot Free (about 2,000 completions and 50 chat requests a month), Cursor Hobby (about 2,000 tab completions and 50 premium requests a month), Windsurf (25 Cascade credits a month) or Gemini CLI (reported at 1,000 requests a day, but Google has been moving individual users to Antigravity, so check). Paid route: a US$20 assistant plan, or Replit Core at about US$20–25 a month, once free limits block you every week.",
+     links:[["freeCodeCamp","https://www.freecodecamp.org/learn/"],["VS Code","https://code.visualstudio.com/"],["GitHub Copilot","https://github.com/features/copilot"],["Cursor","https://cursor.com/"],["Windsurf","https://windsurf.com/"],["Gemini CLI","https://github.com/google-gemini/gemini-cli"]]},
+    {when:"1 – 21 Mar", what:"Build the site. Sketch with a builder, then own the code. Free route: Lovable (5 credits a day, up to 30 a month), Bolt (about 300K tokens a day), v0 (7 messages a day), Base44 (25 message credits a month, up to 5 apps) and Google AI Studio (up to 2 apps deployed free) give you a first draft. Push it to GitHub, then refine it by hand and with a coding assistant. Host static sites on Cloudflare Pages (unlimited static bandwidth, commercial use allowed), GitHub Pages or Netlify’s free plan. Vercel’s Hobby plan is non-commercial, so do not run a business site on it. Paid route: Lovable or Bolt Pro at about US$25 a month, Replit Core, and a custom domain (usually around US$10–15 a year). Test on a phone, on slow data and in two browsers.",
+     links:[["Lovable","https://lovable.dev/"],["Bolt","https://bolt.new/"],["v0","https://v0.dev/"],["Base44","https://base44.com/"],["Cloudflare Pages","https://pages.cloudflare.com/"],["GitHub Pages","https://pages.github.com/"],["Netlify","https://www.netlify.com/"]]},
+    {when:"22 Mar – 4 Apr", what:"Add features. Add a contact form, booking or payment link, analytics, SEO basics, a simple database and sign-in (Supabase and Firebase both have free tiers; check their limits), and an AI chat helper that answers from your own FAQ (Tidio’s free plan has included 50 AI conversations a month; Chatbase and Crisp also have free plans). Take payments with a payment link or Stripe; Stripe Invoicing has included 25 free invoices. Security basics: never put API keys in your repository, review every line an AI writes for forms and payments, and add a privacy page. If you want to build with APIs, take an Anthropic Academy course (free, with completion certificates; its Claude API course is 8+ hours of video) by {exam:anth_acad}. Paid route: pay-as-you-go API credit only if your chat helper needs it.",
+     links:[["Supabase","https://supabase.com/"],["Firebase","https://firebase.google.com/"],["Tidio","https://www.tidio.com/"],["Stripe","https://stripe.com/"],["Anthropic Academy","https://anthropic.skilljar.com/"]]},
+    {when:"5 – 11 Apr", what:"Automation. Free route: Make’s free plan (1,000 operations a month), Zapier’s (100 tasks a month, 5 Zaps), Activepieces (1,000 tasks a month in the cloud, unlimited self-hosted) or self-hosted n8n (free software; a small server costs roughly US$5–20 a month). Build three automations: a form that writes a row to a sheet and emails you, a weekly summary report, and a content repurposing flow. Paid route: Make Core at US$9 a month (10,000 operations), Zapier Starter at about US$20, n8n Cloud at US$24. Finish the OpenAI Academy course Agents and Workflows by {exam:oa_agents}, then submit Checkpoint 4 by {exam:site_cp}.",
+     links:[["Make","https://www.make.com/"],["Zapier","https://zapier.com/"],["n8n","https://n8n.io/"],["Activepieces","https://www.activepieces.com/"],["OpenAI Academy","https://academy.openai.com/"]]}
    ],
-   note:"Visa and scholarship rules change. Confirm every route on the official pages (Make it in Germany, DAAD, Canada’s Express Entry, EducationUSA) before planning around it.",
+   note:"AI-written code looks right even when it is wrong. Read it, run it, test it, and keep every project in GitHub so you can undo mistakes. Free hosting tiers differ on commercial use and on what happens when you pass a limit: on some, every project on the account pauses.",
    exams:[
-    {id:"english", name:"English test: IELTS Academic or Duolingo English Test", date:"2027-07-25", cost:"≈ US$65 (Duolingo) to ≈ US$250 (IELTS)", format:"Duolingo online at home; IELTS at a test centre. Check which one each school accepts", link:"https://englishtest.duolingo.com/", earn:"English proof for master’s and visa applications"},
-    {id:"mlops", name:"MLOps Zoomcamp project (Flagship 4, final project)", date:"2027-08-29", cost:"Free", format:"Project submitted on the DataTalksClub course platform and peer-reviewed", link:"https://github.com/DataTalksClub/mlops-zoomcamp", earn:"MLOps Zoomcamp certificate"}
+    {id:"anth_acad", name:"Anthropic Academy: a course of your choice (for builders, the Claude API course)", date:"2027-04-04", cost:"Free", format:"Self-paced video lessons; the Claude API course is 84 lessons and 8+ hours of video", link:"https://anthropic.skilljar.com/", earn:"Anthropic Academy completion certificate"},
+    {id:"oa_agents", name:"OpenAI Academy: Agents and Workflows", date:"2027-04-09", cost:"Free", format:"Self-paced course with a final assessment", link:"https://academy.openai.com/", earn:"OpenAI Academy completion certificate and Credly badge"},
+    {id:"site_cp", name:"Checkpoint 4: live website and three running automations", date:"2027-04-11", cost:"Free", format:"Share the live URL, the GitHub repository and a short screen recording of each automation running", link:"", earn:"Sign-off on a deployed site and working automations"}
    ],
-   quals:["Five certificates: Machine Learning, Deep Learning, Generative AI with LLMs, Hugging Face Agents and IBM Generative AI Engineering","ML Zoomcamp and MLOps Zoomcamp certificates","A portfolio of four deployed projects with write-ups, ready for AI engineer roles and funded master’s applications"],
-   community:[["Mock interviews with a peer from the DataTalksClub Slack","https://datatalks.club/slack.html"],["Deep Learning Indaba","https://deeplearningindaba.com/"],["Teach: help the students one level below you",""]],
-   tasks:["MLflow tracking and model registry on Flagship 1","Scheduled retraining pipeline (Prefect or Airflow)","Drift monitoring with alerts (Evidently)","Tests and GitHub Actions CI/CD deploying on merge","Flagship 4 write-up published (blog post 4)","English test taken","Portfolio README with four live projects","Applied to ten roles or programmes","Year-in-review post published"]
+   quals:["A live website on a free or low-cost host, with the code in GitHub","Three automations running","Anthropic Academy and OpenAI Academy Agents and Workflows certificates","A written checklist for reviewing AI-generated code"],
+   community:[["freeCodeCamp forum","https://forum.freecodecamp.org/"],["n8n community","https://community.n8n.io/"],["Make community","https://community.make.com/"]],
+   tasks:["Basic HTML and CSS page built and explained in your own words","Coding assistant set up and its free limits recorded","Venture website live on a free host with the code in GitHub","Contact form and analytics working","Payment link or booking set up (test mode first)","AI chat helper answering from your FAQ","Three automations running","Security checklist completed (no keys in the repository)","Anthropic Academy certificate earned","OpenAI Academy Agents and Workflows certificate earned"]
+ },
+ { n:5, name:"Business operations, ads and sales", tag:"Business", start:"2027-04-12", end:"2027-05-23", hours:84,
+   goal:"Run the business side of your venture with free tools, create and test ads with discipline, and earn the free marketing certificates that clients recognise.",
+   phases:[
+    {when:"12 – 25 Apr", what:"Operations. Turn the venture brief into a lean canvas, then set up the systems that stop work falling through the cracks. Free route: HubSpot’s free CRM for contacts and deals; Google Sheets as your dashboard; invoicing with Zoho Invoice (free, unlimited), Wave’s free Starter plan, Invoice Ninja’s free plan (5 clients) or Stripe Invoicing; email with the free plans of Brevo (300 emails a day), MailerLite (1,000 subscribers) or Mailchimp (500 contacts); and a free support chatbot. Use AI to draft SOPs, proposals and contracts, then have a local expert check anything legal or tax-related. Paid route: Wave Pro US$19 a month, Invoice Ninja Pro US$14, Make Core US$9, or a business assistant plan from about US$20. Finish OpenAI Academy’s Applied AI Foundations by {exam:oa_applied}.",
+     links:[["HubSpot free CRM","https://www.hubspot.com/products/crm"],["Zoho Invoice","https://www.zoho.com/invoice/"],["Wave","https://www.waveapps.com/"],["Invoice Ninja","https://invoiceninja.com/"],["Brevo","https://www.brevo.com/"],["MailerLite","https://www.mailerlite.com/"],["OpenAI Academy","https://academy.openai.com/"]]},
+    {when:"26 Apr – 9 May", what:"Ads: research and creative. Before spending a cent, study what already works: Meta Ad Library, Google Ads Transparency Center and TikTok Top Ads are free. Free route: platform tools such as Meta’s text variations (up to 5 per ad), Google Asset Studio and TikTok Symphony Creative Studio, plus your own Canva and video skills, and free courses at Google Skillshop, Meta Blueprint and HubSpot Academy. Write three offers with three hooks each, build a landing page with one clear action, and set up Google Analytics so you can measure. Paid route: ad spend. Third-party guides suggest budgets near US$20 a day for Google’s AI Max and US$50 a day for Meta Advantage+ or TikTok’s automated campaigns, but you can test far smaller; Google’s Smart Bidding wants about 30 conversions before it can optimise. Finish the HubSpot Digital Marketing certification (free, about 3 hours) by {exam:hubspot}.",
+     links:[["Meta Ad Library","https://www.facebook.com/ads/library/"],["Google Ads Transparency Center","https://adstransparency.google.com/"],["TikTok Creative Center","https://ads.tiktok.com/business/creativecenter/"],["Google Skillshop","https://skillshop.withgoogle.com/"],["Meta Blueprint","https://www.facebook.com/business/learn"],["HubSpot Academy","https://academy.hubspot.com/"],["Google Analytics","https://analytics.google.com/"]]},
+    {when:"10 – 23 May", what:"Run a controlled test. If you have a budget, spend a small learning amount on one platform with a single objective and tracking set up first, and write down the result before you change anything. If you have no budget, build a complete campaign pack for a real local business (ad creatives, copy, landing page, tracking plan and a measurement sheet) and offer it as a free case study. Use AI to analyse results, but check the numbers yourself. Follow each platform’s rules on AI-generated content, health and finance claims, and before-and-after images. Pass the Google Ads certification at Skillshop (free exam, about 75 minutes, about 80% to pass, valid for 12 months) by {exam:gads}. Optional paid step: the Meta Certified Digital Marketing Associate exam (US$99; courses and practice exams are free) by {exam:meta_assoc}.",
+     links:[["Google Skillshop","https://skillshop.withgoogle.com/"],["Meta Blueprint","https://www.facebook.com/business/learn"],["Google Meridian (free measurement)","https://github.com/google/meridian"]]}
+   ],
+   note:"Ads multiply whatever you already have: a good offer gets better and a weak offer gets expensive. Do not spend until tracking works and the landing page loads quickly on a phone. Spend only money you can afford to lose, treat month one as paid learning, and never let an AI tool raise a budget without your approval.",
+   exams:[
+    {id:"oa_applied", name:"OpenAI Academy: Applied AI Foundations", date:"2027-04-25", cost:"Free", format:"Self-paced course; redesign a recurring task with ChatGPT", link:"https://academy.openai.com/", earn:"OpenAI Academy completion certificate and Credly badge"},
+    {id:"hubspot", name:"HubSpot Academy Digital Marketing certification", date:"2027-05-09", cost:"Free", format:"About 3 hours of lessons and an online exam", link:"https://academy.hubspot.com/", earn:"HubSpot Digital Marketing certification"},
+    {id:"gads", name:"Google Ads certification (Skillshop)", date:"2027-05-16", cost:"Free", format:"Online exam of about 75 minutes; about 80% to pass; valid for 12 months", link:"https://skillshop.withgoogle.com/", earn:"Google Ads certification"},
+    {id:"meta_assoc", name:"Meta Certified Digital Marketing Associate (optional)", date:"2027-05-23", cost:"US$99 per attempt (courses and practice exams are free)", format:"Proctored exam booked through Pearson VUE", link:"https://www.facebook.com/business/learn", earn:"Meta Certified Digital Marketing Associate"}
+   ],
+   quals:["OpenAI Academy Applied AI Foundations, HubSpot and Google Ads certificates (Meta optional)","A CRM, invoicing and email system set up for your venture","One ad campaign or a full campaign pack with measured results"],
+   community:[["Meta Ad Library (free research)","https://www.facebook.com/ads/library/"],["Google Ads Transparency Center","https://adstransparency.google.com/"],["Local business owners: ask three for feedback",""]],
+   tasks:["Lean canvas finished and tested","CRM, invoicing and email list set up","Three SOPs written with AI and checked by a person","Ad research notebook: 20 competitor ads analysed","Three offers, nine hooks and a landing page ready, with tracking","OpenAI Academy Applied AI Foundations certificate earned","HubSpot Digital Marketing certification earned","Google Ads certification earned","Campaign test run or campaign pack delivered, with results written up"]
+ },
+ { n:6, name:"Launch: portfolio, clients and first income", tag:"Top of the ladder", start:"2027-05-24", end:"2027-07-04", hours:84,
+   goal:"Package what you can now do into two or three priced offers, win your first paying customers, and decide with data which tools to pay for.",
+   phases:[
+    {when:"24 May – 6 Jun", what:"Package your offers. Choose two or three things you can deliver reliably: a social-content pack, a landing page in five days, ad creatives and setup, or business automation. Price each by the hours it takes and the value it gives, set a scope, a turnaround time and a revision limit, and write a simple agreement. Build a portfolio site (reuse Level 4) with six case studies: the problem, the tools used, the time and cost saved, and the result. Show your process honestly, including what AI did and what you checked. Free route: your Level 4 site, Canva, Google Docs and Stripe or a local payment method. Paid route: a custom domain and one assistant plan. Submit Checkpoint 5 by {exam:portfolio_cp}.",
+     links:[["Stripe","https://stripe.com/"],["Cloudflare Pages","https://pages.cloudflare.com/"],["Canva","https://www.canva.com/"]]},
+    {when:"7 – 20 Jun", what:"Find first customers. Pre-sell before you build: message five local businesses or niche communities a day with a 60-second demo video, not a long pitch. Offer your first one or two projects at a discount or free in exchange for a testimonial. Use AI to personalise messages, never to spam or to claim results you have not delivered. Apply for startup support by {exam:credits}: AWS Activate Founders, Microsoft for Startups, NVIDIA Inception, Anthropic’s Claude for Startups and Google for Startups. All are free to apply to, but eligibility varies (some need an incorporated company or investors) and credits are not guaranteed. Watch Devpost for hackathons that give free API credits.",
+     links:[["AWS Activate","https://aws.amazon.com/activate/"],["Microsoft for Startups","https://www.microsoft.com/startups"],["NVIDIA Inception","https://www.nvidia.com/en-us/startups/"],["Claude for Startups","https://claude.com/programs/startups"],["Google for Startups Cloud","https://cloud.google.com/startup"],["Devpost hackathons","https://devpost.com/hackathons"]]},
+    {when:"21 Jun – 4 Jul", what:"Run it like a lean startup. Each week: one thing built, one thing measured, one thing learned. Track hours, tool costs and revenue in one sheet. Upgrade a tool only when it saves at least what it costs within two months, or lets you deliver something a client pays for (a rule of thumb, not a law). Write SOPs for repeat work and automate anything you do more than three times. Deliver your first paid project by {exam:first_paid}, collect a testimonial, and post a year-in-review with your hours, projects, certificates, and money spent and earned. Free route: the stack you already have. Paid route: only what the sheet justifies.",
+     links:[["Indie Hackers","https://www.indiehackers.com/"],["Lean Canvas","https://leanstack.com/lean-canvas"]]}
+   ],
+   note:"Income takes longer than skill. Most people need many conversations before the first yes, so count conversations, not only sales. Confirm tax, licence and payment rules where you live before you invoice anyone.",
+   exams:[
+    {id:"portfolio_cp", name:"Checkpoint 5: portfolio site with six case studies", date:"2027-06-06", cost:"Free", format:"Share the live portfolio link and the two or three priced offers for written feedback", link:"", earn:"Sign-off on a client-ready portfolio"},
+    {id:"credits", name:"Startup credit applications sent (AWS Activate Founders, Microsoft for Startups, NVIDIA Inception, Anthropic, Google for Startups)", date:"2027-06-13", cost:"Free to apply", format:"Online applications; most want a business name, a website and a short description, and some need an incorporated company or investor backing", link:"https://aws.amazon.com/activate/", earn:"Possible cloud and AI credits (AWS Activate Founders and Microsoft for Startups start at about US$1,000); not guaranteed"},
+    {id:"first_paid", name:"Checkpoint 6: first paid project delivered", date:"2027-07-04", cost:"Free", format:"Signed scope, invoice, delivered work and a written testimonial", link:"", earn:"First income and a client testimonial"}
+   ],
+   quals:["A portfolio with six case studies","Two or three priced offers with a written scope and agreement","Applications submitted to startup credit programmes","One paid project delivered, with a testimonial"],
+   community:[["Indie Hackers","https://www.indiehackers.com/"],["Devpost hackathons","https://devpost.com/hackathons"],["Teach: help the students one level below you",""]],
+   tasks:["Two or three offers priced, with scope and agreement","Portfolio site live with six case studies","At least 50 outreach messages sent in two weeks","At least ten conversations held","Startup credit applications submitted","First paid project delivered and invoiced","Weekly build-measure-learn sheet kept for three weeks","Tool spending reviewed against income","Year-in-review post published"]
  }
 ];
 
@@ -1103,13 +1139,15 @@ function updateNameCard(){
 
 /* ---------- commitment note ---------- */
 var COMMITMENT = {
-  intro:"I am starting a climb from my first machine learning model to working as an AI engineer. I understand that certificates alone won’t make me an AI engineer; building and shipping real projects will.",
+  intro:"I am starting a climb from using AI for my first everyday tasks to delivering paid work with it. I understand that tools and prices change every month, and that certificates alone will not win clients; checking my work and shipping real projects will.",
   points:[
     "{STUDY}",
     "I will log my hours and what I did every day, honestly, including the days I miss.",
     "At the end of each study day, I will post my progress card on social media.",
     "I will submit the work my mentor assigns by the due date.",
-    "I will sit each exam on the planned date, or agree a new date with my mentor before it passes.",
+    "I will reach each checkpoint and certificate on the planned date, or agree a new date with my mentor before it passes.",
+    "I will check a tool’s current free limits, licence and data rules before I rely on it for client work, and I will keep my tool sheet up to date.",
+    "I will check every fact, number and line of code an AI gives me, and I will follow platform and copyright rules on AI-generated content.",
     "I will tell my mentor early when I fall behind, instead of going quiet.",
     "I will help the students in my study group and ask for help when I need it.",
     "I will finish this roadmap to the end.",
@@ -1760,15 +1798,17 @@ document.getElementById("wkPrev").addEventListener("click", function(){ var d=ad
 document.getElementById("wkNext").addEventListener("click", function(){ curWeek=iso(addDays(parseISO(curWeek),7)); renderDaysBox(); loadWeek(true); });
 
 /* ---------- plan settings (set by the mentor, read by everyone) ---------- */
-var DEFAULT_START="2026-09-04", DEFAULT_HOURS=2;
+var DEFAULT_START="2026-11-02", DEFAULT_HOURS=2;
 var settings={dailyHours:DEFAULT_HOURS, startDate:DEFAULT_START, holidays:{}, levelWeeks:{}};
 var studyDays=[];
 LEVELS.forEach(function(L){ L.ostart=L.start; L.oend=L.end; L.exams.forEach(function(e){ e.odate=e.date; }); });
 var PHASE_RANGES = {
-"1|4 – 13 Sep":["2026-09-04","2026-09-13"], "1|14 Sep – 4 Oct":["2026-09-14","2026-10-04"], "1|5 Oct – 1 Nov":["2026-10-05","2026-11-01"], "1|2 – 29 Nov":["2026-11-02","2026-11-29"], "1|30 Nov – 20 Dec":["2026-11-30","2026-12-20"],
-"2|21 Dec – 3 Jan":["2026-12-21","2027-01-03"], "2|4 – 31 Jan":["2027-01-04","2027-01-31"], "2|1 – 28 Feb":["2027-02-01","2027-02-28"], "2|1 – 21 Mar":["2027-03-01","2027-03-21"],
-"3|22 – 28 Mar":["2027-03-22","2027-03-28"], "3|29 Mar – 2 May":["2027-03-29","2027-05-02"], "3|3 – 30 May":["2027-05-03","2027-05-30"], "3|31 May – 27 Jun":["2027-05-31","2027-06-27"],
-"4|28 Jun – 1 Aug":["2027-06-28","2027-08-01"], "4|2 – 29 Aug":["2027-08-02","2027-08-29"], "4|30 Aug – 30 Sep":["2027-08-30","2027-09-30"]
+"1|2 – 8 Nov":["2026-11-02","2026-11-08"], "1|9 – 15 Nov":["2026-11-09","2026-11-15"], "1|16 – 22 Nov":["2026-11-16","2026-11-22"], "1|23 – 29 Nov":["2026-11-23","2026-11-29"],
+"2|30 Nov – 6 Dec":["2026-11-30","2026-12-06"], "2|7 – 20 Dec":["2026-12-07","2026-12-20"], "2|21 Dec – 3 Jan":["2026-12-21","2027-01-03"],
+"3|4 – 17 Jan":["2027-01-04","2027-01-17"], "3|18 – 31 Jan":["2027-01-18","2027-01-31"], "3|1 – 14 Feb":["2027-02-01","2027-02-14"],
+"4|15 – 28 Feb":["2027-02-15","2027-02-28"], "4|1 – 21 Mar":["2027-03-01","2027-03-21"], "4|22 Mar – 4 Apr":["2027-03-22","2027-04-04"], "4|5 – 11 Apr":["2027-04-05","2027-04-11"],
+"5|12 – 25 Apr":["2027-04-12","2027-04-25"], "5|26 Apr – 9 May":["2027-04-26","2027-05-09"], "5|10 – 23 May":["2027-05-10","2027-05-23"],
+"6|24 May – 6 Jun":["2027-05-24","2027-06-06"], "6|7 – 20 Jun":["2027-06-07","2027-06-20"], "6|21 Jun – 4 Jul":["2027-06-21","2027-07-04"]
 };
 function daysBetween(a,b){ return Math.round((parseISO(b)-parseISO(a))/864e5); }
 function normSettings(o){
@@ -1837,7 +1877,7 @@ function socialMins(){ return round5(settings.dailyHours*60/6); }
 
 function renderPlanLines(){
   var s=parseISO(PLAN_START);
-  var txt="Database administration · "+hoursText(settings.dailyHours)+" a day · starts "+DOW_FULL[s.getDay()]+" "+s.getDate()+" "+MON_FULL[s.getMonth()]+" "+s.getFullYear();
+  var txt="Everyday AI skills · "+hoursText(settings.dailyHours)+" a day · starts "+DOW_FULL[s.getDay()]+" "+s.getDate()+" "+MON_FULL[s.getMonth()]+" "+s.getFullYear();
   document.querySelectorAll("[data-planline]").forEach(function(el){ el.textContent=txt; });
   document.querySelectorAll("[data-social]").forEach(function(el){ el.textContent=minsText(socialMins()); });
 }
@@ -1851,11 +1891,11 @@ function renderRoutine(){
   document.getElementById("routineTitle").textContent="Daily routine: "+hoursText(settings.dailyHours)+" a day";
   var post="<b>"+minsText(soc)+"</b> post your progress card on social media";
   document.getElementById("routineBody").innerHTML=
-    "<tr><td class='date'>Mon – Tue</td><td><b>"+minsText(rest)+"</b> course: watch this week’s module and start the homework</td><td><b>"+minsText(notes)+"</b> notes in your own words, committed to GitHub</td><td>"+post+"</td></tr>"+
-    "<tr><td class='date'>Wednesday</td><td colspan='2'><b>"+minsText(work)+"</b> homework: finish it, submit it and commit the notebook</td><td>"+post+"</td></tr>"+
-    "<tr><td class='date'>Thursday</td><td colspan='2'><b>"+minsText(work)+"</b> depth: one book chapter, paper or Karpathy lesson, with the exercises</td><td>"+post+"</td></tr>"+
-    "<tr><td class='date'>Fri – Sat</td><td colspan='2'><b>"+minsText(work)+"</b> "+esc(COPY.practice)+": real data, real deployment, end with a working commit</td><td>"+post+"</td></tr>"+
-    "<tr><td class='date'>Sunday</td><td><b>"+minsText(rest)+"</b> publish: update the README and write the week’s long post</td><td><b>"+minsText(notes)+"</b> weekly reflection in your daily log</td><td>"+post+"</td></tr>"+
+    "<tr><td class='date'>Mon – Tue</td><td><b>"+minsText(rest)+"</b> learn: this week’s lesson or short course</td><td><b>"+minsText(notes)+"</b> notes in your own words and your best prompts saved to your prompt log</td><td>"+post+"</td></tr>"+
+    "<tr><td class='date'>Wednesday</td><td colspan='2'><b>"+minsText(work)+"</b> practice: do this week’s drill with a free tool and note its limits</td><td>"+post+"</td></tr>"+
+    "<tr><td class='date'>Thursday</td><td colspan='2'><b>"+minsText(work)+"</b> compare: do one task in two tools (a free one and a paid or rival one) and record which wins</td><td>"+post+"</td></tr>"+
+    "<tr><td class='date'>Fri – Sat</td><td colspan='2'><b>"+minsText(work)+"</b> "+esc(COPY.practice)+": real work for your venture or a client, finished and shared</td><td>"+post+"</td></tr>"+
+    "<tr><td class='date'>Sunday</td><td><b>"+minsText(rest)+"</b> publish: update your portfolio and write the week’s long post</td><td><b>"+minsText(notes)+"</b> weekly reflection in your daily log</td><td>"+post+"</td></tr>"+
     "<tr><td class='date'>Holidays</td><td colspan='3'>No study expected. Holidays set by your mentor are marked in your daily log, and your plan dates move later to make up for them.</td></tr>";
 }
 function rerenderPlan(){
