@@ -51,6 +51,18 @@ export const HUB = {
       dailyHours: 2,
       startDate: "2026-09-04",
       order: 2
+    },
+    {
+      id: "everyday",
+      branch: "ai-everyday-work",
+      path: "everyday",
+      title: "AI for Everyday Work",
+      tagline: "Six levels from your first everyday AI tasks to video, design, websites, ads and a first paid client, with a free route and a paid route at every step.",
+      url: "/everyday/",
+      levels: 6,
+      dailyHours: 2,
+      startDate: "2026-11-02",
+      order: 3
     }
   ]
 };
