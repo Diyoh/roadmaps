@@ -63,6 +63,18 @@ export const HUB = {
       dailyHours: 2,
       startDate: "2026-11-02",
       order: 3
+    },
+    {
+      id: "cloud",
+      branch: "cloud-computing-aws",
+      path: "cloud",
+      title: "Cloud Computing and AWS",
+      tagline: "Ten levels from Linux and networking to AWS Professional and Specialty certifications, Kubernetes, Terraform and a multi-cloud portfolio, with a free route and a paid route at every step.",
+      url: "/cloud/",
+      levels: 10,
+      dailyHours: 2,
+      startDate: "2026-11-02",
+      order: 4
     }
   ]
 };
