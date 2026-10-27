@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>AI Engineer Roadmap</title>
+<title>Cloud Computing and AWS</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
@@ -523,8 +523,8 @@ th{background:var(--sunken)}
 <body>
 <div id="auth" hidden>
   <div class="authbox">
-    <div class="eyebrow">AI engineering roadmap</div>
-    <h1>AI Engineer Roadmap</h1>
+    <div class="eyebrow">Cloud computing roadmap</div>
+    <h1>Cloud Computing and AWS</h1>
     <p class="muted" style="margin:0" id="authLead">Sign in to open your plan.</p>
     <button type="button" class="gbtn" id="googleBtn"><svg width="18" height="18" viewBox="0 0 48 48" aria-hidden="true"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.4-.4-3.5z"/></svg>Continue with Google</button>
     <div class="or">or use email</div>
@@ -537,7 +537,7 @@ th{background:var(--sunken)}
 </div>
 <div class="wrap" id="appRoot" hidden>
   <header class="topbar">
-    <div class="brand"><svg width="26" height="26" viewBox="0 0 30 30" aria-hidden="true" style="align-self:center;flex:none"><rect x="1" y="1" width="28" height="28" rx="8" fill="var(--accent)"/><path d="M9 22V8M21 22V8M9 18h12M9 13h12" stroke="var(--surface)" stroke-width="2.2" stroke-linecap="round"/></svg><b>AI Engineer Roadmap</b><span class="muted" id="hello"></span></div>
+    <div class="brand"><svg width="26" height="26" viewBox="0 0 30 30" aria-hidden="true" style="align-self:center;flex:none"><rect x="1" y="1" width="28" height="28" rx="8" fill="var(--accent)"/><path d="M9 22V8M21 22V8M9 18h12M9 13h12" stroke="var(--surface)" stroke-width="2.2" stroke-linecap="round"/></svg><b>Cloud Computing and AWS</b><span class="muted" id="hello"></span></div>
     <span style="display:flex;gap:12px;align-items:baseline"><span id="saveState">Opening…</span><a class="btn small" id="hubLink" hidden href="#">Switch roadmap</a><button type="button" class="btn small" id="signOutBtn">Sign out</button></span>
   </header>
   <nav class="tabs" id="tabs" aria-label="Pages" hidden></nav>
@@ -549,12 +549,12 @@ th{background:var(--sunken)}
   <section class="page" id="p-start" hidden>
     <div class="gate">
       <div class="eyebrow" data-planline></div>
-      <h1>AI Engineer Roadmap</h1>
+      <h1>Cloud Computing and AWS</h1>
       <div id="gateNew" style="display:grid;gap:18px">
         <div class="pledge-note" data-commitment></div>
         <div class="gateform">
           <label for="g_name">Your full name</label>
-          <input type="text" id="g_name" autocomplete="name" placeholder="e.g. Chiamaka Obi">
+          <input type="text" id="g_name" autocomplete="name" placeholder="e.g. Ada Mensah">
           <label class="inline"><input type="checkbox" id="g_agree"> I have read this commitment and I accept it.</label>
           <div class="weekbar"><button type="button" class="btn primary" id="g_sign">Sign and start my plan</button><span class="err" id="g_err"></span></div>
         </div>
@@ -603,7 +603,7 @@ th{background:var(--sunken)}
         <div class="hero-eyebrow" data-planline></div>
         <h1 id="ovTitle">Your plan</h1>
         <div class="hero-mentor" id="ovMentor" hidden></div>
-        <p class="hero-sub" id="ovSub">Four levels, from your first machine learning model to deployed LLM systems and an AI engineering portfolio.</p>
+        <p class="hero-sub" id="ovSub">Ten levels, from Linux and networking to AWS Professional and Specialty certifications, Kubernetes, Terraform and a multi-cloud portfolio, with a free route and a paid route at every step.</p>
         <div class="hero-cta"><a class="btn primary lg" href="#log" id="ovCta">Log today</a><a class="btn hero-ghost lg" href="#ladder">View the ladder</a></div>
       </div>
       <div class="ring" id="ovRing" aria-label="Overall progress"></div>
@@ -640,7 +640,7 @@ th{background:var(--sunken)}
       <div class="dayrows" id="daysBox"></div>
       <div class="weektotal"><span class="mono" id="weekTotal">0 / 14 h</span><div class="bar"><i id="weekBar"></i></div></div>
       <div class="feedback weekcomment" id="weekComment" hidden></div>
-      <label>What I finished this week<textarea id="w_did" data-week="did" placeholder="e.g. ML Zoomcamp module 3 and homework 3, Flagship 1 baseline trained"></textarea></label>
+      <label>What I finished this week<textarea id="w_did" data-week="did" placeholder="e.g. Built a VPC with public and private subnets and tested the route tables"></textarea></label>
       <label>What got in the way<textarea id="w_blocked" data-week="blocked" placeholder="Be honest: power cuts, work, lost focus…"></textarea></label>
       <label>Next week I will<textarea id="w_next" data-week="next" placeholder="One or two specific goals"></textarea></label>
       <label>How did this week go?
@@ -673,7 +673,7 @@ th{background:var(--sunken)}
 
   <section class="page" id="p-work" hidden>
     <h2>My assignments</h2>
-    <p class="muted">Tasks from your mentor. Submit your work before the due date: write what you did and add a link (for example your GitHub repo). Grades and comments appear here once your mentor marks it.</p>
+    <p class="muted">Tasks from your mentor. Submit your work before the due date: write what you did and add a link (for example a link to your design, video or live site). Grades and comments appear here once your mentor marks it.</p>
     <div id="workSummary" class="wsum" hidden></div>
     <div id="workList" class="tasklist"></div>
   </section>
@@ -684,9 +684,9 @@ th{background:var(--sunken)}
     <div class="panel">
       <h3>My plan details</h3>
       <label>Full name (your mentor sees this)<input type="text" id="p_name" data-pledge="name" placeholder="Your full name"></label>
-      <label>Why I’m doing this<textarea id="p_why" data-pledge="why" placeholder="e.g. To be working as an AI engineer by the end of 2027 and support my family"></textarea></label>
+      <label>Why I’m doing this<textarea id="p_why" data-pledge="why" placeholder="e.g. To be working as a cloud engineer with AWS Professional certifications by 2029 and support my family"></textarea></label>
       <label>Accountability partner (name and how to reach them)<input type="text" id="p_partner" data-pledge="partner" placeholder="Someone who checks on you every week"></label>
-      <label>Study group members<input type="text" id="p_group" data-pledge="group" placeholder="3–5 people aiming at the same exams"></label>
+      <label>Study group members<input type="text" id="p_group" data-pledge="group" placeholder="3–5 people working through the same levels"></label>
       <label>My daily study hours<input type="text" id="p_time" data-pledge="time" placeholder="e.g. 5:00–7:00 am"></label>
       <label>If I miss a day, I will…<input type="text" id="p_miss" data-pledge="miss" placeholder="e.g. make it up on Saturday afternoon"></label>
     </div>
@@ -702,7 +702,7 @@ th{background:var(--sunken)}
 
   <section class="page" id="p-exams" hidden>
     <h2>Exam calendar</h2>
-    <p class="muted">Every test on the ladder in date order. Prices are in US dollars and can differ in Nigeria, so confirm on the exam page before you pay. Book paid exams at least three weeks ahead.</p>
+    <p class="muted">Every test on the ladder in date order. Prices are in US dollars and can differ in your country, so confirm on the exam page before you pay. Book paid exams at least three weeks ahead.</p>
     <div class="tablebox"><table>
       <thead><tr><th>Target date</th><th>Exam</th><th>Level</th><th>Cost</th><th>You earn</th></tr></thead>
       <tbody id="examTable"></tbody>
@@ -742,7 +742,7 @@ th{background:var(--sunken)}
     <p class="muted">Tasks appear on each chosen student’s “My assignments” page. Grade them from the student’s page in Class.</p>
     <div class="panel" id="assignPanel">
       <div class="assign-grid">
-        <label>Title<input type="text" id="as_title" placeholder="e.g. Submit ML Zoomcamp homework 3 with your notebook link"></label>
+        <label>Title<input type="text" id="as_title" placeholder="e.g. Submit your Terraform repo link and a screenshot of the plan output"></label>
         <label>Due date<input type="date" id="as_due"></label>
         <label>Points<input type="number" id="as_points" min="1" step="1" value="10"></label>
         <label>Level<select id="as_level"><option value="">Any</option></select></label>
@@ -810,107 +810,230 @@ th{background:var(--sunken)}
 <script>
 window.startApp=function(){
 "use strict";
-var PLAN_START = "2026-09-04";
+var PLAN_START = "2026-11-02";
 var WEEK_TARGET = 14;
 
 /* Wording that differs between roadmaps (the rest of the app is shared by every roadmap branch). */
 var COPY = {
-  cardLabel: "AI ENGINEER ROADMAP",
-  journey: "AI engineering journey",
-  hashtags: ["#AIEngineer", "#BuildInPublic", "#MachineLearning"],
-  studentWord: "AI engineering student",
+  cardLabel: "CLOUD COMPUTING AND AWS",
+  journey: "Cloud journey",
+  hashtags: ["#CloudComputing", "#AWS", "#BuildInPublic"],
+  studentWord: "cloud engineer",
   practice: "Flagship project",
-  beforeStart: "Register for the ML Zoomcamp and apply for Coursera Financial Aid before then.",
-  sample: { name: "Chiamaka Obi", note: "Finished ML Zoomcamp module 2 and trained my first regression model on Douala housing prices." },
-  filePrefix: "ai-journey",
-  storageKey: "ai"
+  beforeStart: "Install VirtualBox or WSL, create a GitHub account, and pick the small web app you will rebuild and improve in every level.",
+  sample: { name: "Ada Mensah", note: "Built a VPC with public and private subnets by hand and wrote down why the NAT gateway was costing me money." },
+  filePrefix: "cloud-journey",
+  storageKey: "cloud"
 };
 
 var LEVELS = [
- { n:1, name:"Machine learning foundations", tag:"Foundations", start:"2026-09-04", end:"2026-12-20", hours:216,
-   goal:"Train, evaluate and deploy classical machine learning models, and ship your first project behind a live URL.",
+ { n:1, name:"Cloud foundations: Linux, networking, Git and scripting", tag:"Ground level", start:"2026-11-02", end:"2026-12-13", hours:84,
+   goal:"Be comfortable in a Linux terminal, understand how networks and the web work, use Git, and write small Bash and Python scripts. Every later level depends on this.",
    phases:[
-    {when:"4 – 13 Sep", what:"Set up before the cohort. Register for the ML Zoomcamp (the live cohort starts Monday 14 September, with homework due on Mondays), join the DataTalksClub Slack, and fork the course repo: you will work in your fork all year. Apply for Coursera Financial Aid on course 1 of the Machine Learning Specialization (about 15 days to approve; audit it free while you wait, and save the essay to reuse). Set up GitHub, Kaggle (verify your phone for free GPU) and Hugging Face. Do the Kaggle Python and Pandas micro-courses. Ask two lecturers for recommendation letters, request certified transcripts, and post your Day 1 on LinkedIn and X.",
-     links:[["ML Zoomcamp registration","https://courses.datatalks.club/register/ml-zoomcamp/"],["ML Zoomcamp repo","https://github.com/DataTalksClub/machine-learning-zoomcamp"],["DataTalksClub Slack","https://datatalks.club/slack.html"],["Coursera Financial Aid","https://www.coursera.org/about/financial-aid"],["Kaggle Learn","https://www.kaggle.com/learn"],["Hugging Face","https://huggingface.co/"]]},
-    {when:"14 Sep – 4 Oct", what:"ML Zoomcamp modules 1–2: introduction, environment, NumPy and pandas, then regression. Submit each homework and commit the notebook. Machine Learning Specialization course 1, weeks 1–2. Choose the dataset for Flagship 1 (a tabular problem from your own context: crop yield, housing prices, mobile-money fraud or national health survey data) and write a first exploration notebook.",
-     links:[["ML Zoomcamp","https://github.com/DataTalksClub/machine-learning-zoomcamp"],["Machine Learning Specialization","https://www.coursera.org/specializations/machine-learning-introduction"],["DHS Program data","https://dhsprogram.com/"]]},
-    {when:"5 Oct – 1 Nov", what:"ML Zoomcamp module 3 (classification), module 4 (evaluation: ROC, cross-validation) and module 5 (deployment: a model behind FastAPI in Docker, deployed to Render). Finish Machine Learning Specialization course 1 and apply for aid on course 2. Flagship 1: a baseline model trained and deployed behind an API, even if it is still weak. Post the first live URL: “I shipped a model” beats “I finished a module”.",
-     links:[["ML Zoomcamp","https://github.com/DataTalksClub/machine-learning-zoomcamp"],["FastAPI","https://fastapi.tiangolo.com/"],["Render","https://render.com/"]]},
-    {when:"2 – 29 Nov", what:"ML Zoomcamp module 6: decision trees and gradient boosting (XGBoost). Replace the Flagship 1 baseline with a tuned, cross-validated boosted model and a results table. Finish Flagship 1 (README, tests, Dockerfile, live link) and submit it as the Zoomcamp midterm by {exam:zoom_mid}. Peer-review three other midterm projects. Machine Learning Specialization course 2. Enter one Kaggle Playground competition with a public notebook. Blog post 1 on Flagship 1, linked from the README.",
-     links:[["Kaggle competitions","https://www.kaggle.com/competitions"],["Medium","https://medium.com/"],["dev.to","https://dev.to/"]]},
-    {when:"30 Nov – 20 Dec", what:"ML Zoomcamp modules 7–8: neural networks and an introduction to deep learning. Finish Machine Learning Specialization courses 2 and 3: certificate by {exam:mlspec}. Application season opens: shortlist master's programmes and scholarships, email two possible supervisors, and start the forms. Choose the Flagship 2 dataset.",
-     links:[["Machine Learning Specialization","https://www.coursera.org/specializations/machine-learning-introduction"],["AIMS AI for Science master's","https://ai.aims.ac.za/apply"],["Erasmus Mundus catalogue","https://www.eacea.ec.europa.eu/scholarships/erasmus-mundus-catalogue_en"]]}
+    {when:"2 – 15 Nov", what:"Linux first. Free route: work through Linux Journey and the OverTheWire Bandit game, and do the Linux Foundation’s free Introduction to Linux (LFS101) course in audit mode. Paid route: none needed. Set up a Linux machine you can break: a free Ubuntu virtual machine (VirtualBox) or WSL on Windows. Learn files and permissions, users, processes, systemd services, package managers, SSH keys and cron.",
+     links:[["Linux Journey","https://linuxjourney.com/"],["OverTheWire Bandit","https://overthewire.org/wargames/bandit/"],["LFS101: Introduction to Linux","https://training.linuxfoundation.org/training/introduction-to-linux/"],["The Missing Semester (MIT)","https://missing.csail.mit.edu/"]]},
+    {when:"16 – 29 Nov", what:"Networking that cloud work really uses. Free route: Professor Messer’s free networking videos and the practical networking lessons from freeCodeCamp. Learn IP addressing and CIDR subnetting, DNS, TCP vs UDP, HTTP and TLS, NAT, firewalls and load balancers. Practise with ping, traceroute, dig, curl and Wireshark. Subnetting by hand is the single most useful skill for the VPC levels that follow.",
+     links:[["Professor Messer free videos","https://www.professormesser.com/"],["freeCodeCamp","https://www.freecodecamp.org/"],["Wireshark","https://www.wireshark.org/"],["Subnetting practice","https://subnetting.org/"]]},
+    {when:"30 Nov – 6 Dec", what:"Git and GitHub. Free route: GitHub Skills courses and the Pro Git book. Branches, pull requests, merge conflicts, .gitignore, and GitHub Actions for a first automated workflow. Create the repo called cloud-journey for your notes and labs; everything you build from here goes in it.",
+     links:[["GitHub Skills","https://skills.github.com/"],["Pro Git book","https://git-scm.com/book/en/v2"],["GitHub","https://github.com/"]]},
+    {when:"7 – 13 Dec", what:"Scripting and your first deploy. Free route: Bash scripting from the Missing Semester plus CS50’s Python (CS50P) lectures 0–3 for Python basics. Write a Bash backup script and a Python script that calls a public API. Checkpoint {exam:l1_cp}: serve a small website from your Linux VM, put it behind a firewall rule, and back it up with your script.",
+     links:[["CS50P (Python)","https://cs50.harvard.edu/python/"],["Bash manual","https://www.gnu.org/software/bash/manual/"]]}
    ],
-   note:"Weekly rhythm: Monday and Tuesday for the course module, Wednesday for homework, Thursday for a book chapter or paper, Friday and Saturday for the flagship project, and Sunday for publishing. Everything here is free or covered by Coursera Financial Aid: apply for aid about 15 days before you need each course.",
+   note:"Weekly rhythm used in every level: Monday and Tuesday learn, Wednesday and Thursday hands-on lab, Friday review and practice questions, Saturday build on your flagship project (or sit an exam), Sunday publish a short note on what broke and how you fixed it. Cost in this level: US$0.",
    exams:[
-    {id:"zoom_mid", name:"ML Zoomcamp midterm project (Flagship 1)", date:"2026-11-16", cost:"Free", format:"Project submitted on the DataTalksClub course platform and peer-reviewed by three students", link:"https://github.com/DataTalksClub/machine-learning-zoomcamp", earn:"Midterm credit toward the ML Zoomcamp certificate"},
-    {id:"mlspec", name:"Machine Learning Specialization (Stanford / DeepLearning.AI, 3 courses)", date:"2026-12-20", cost:"Free with Coursera Financial Aid", format:"Online graded quizzes and labs on Coursera", link:"https://www.coursera.org/specializations/machine-learning-introduction", earn:"Machine Learning Specialization certificate"}
+    {id:"l1_cp", name:"Checkpoint 1: a hardened Linux web server with a backup script", date:"2026-12-13", cost:"Free", format:"Mentor-reviewed demo: repo link, screenshots and a 5-minute walkthrough", link:"", earn:"Foundations checkpoint signed off by your mentor"}
    ],
-   quals:["Machine Learning Specialization certificate (Coursera)","A deployed machine learning project (Flagship 1) with a live URL, README and tests"],
-   community:[["ML Zoomcamp cohort on the DataTalksClub Slack","https://datatalks.club/slack.html"],["Kaggle Playground competitions","https://www.kaggle.com/competitions"],["Peer-review three midterm projects",""]],
-   tasks:["Registered for the ML Zoomcamp and joined the course Slack","Coursera Financial Aid approved for the Machine Learning Specialization","GitHub, Kaggle and Hugging Face profiles set up; Day 1 post published","Zoomcamp homework submitted every week","Flagship 1 deployed with README, tests and a live link (midterm submitted)","Three midterm projects peer-reviewed","One public Kaggle notebook","Blog post 1 published","Machine Learning Specialization certificate earned"]
+   quals:["Comfortable in a Linux terminal and SSH","Can subnet a network by hand","Git and GitHub workflow with a public cloud-journey repo","Small Bash and Python scripts that work"],
+   community:[["Form a study group of 3–5 people before you start",""],["r/linuxadmin","https://www.reddit.com/r/linuxadmin/"],["r/aws","https://www.reddit.com/r/aws/"]],
+   tasks:["Study group formed and first call held","Linux VM running and snapshotted","OverTheWire Bandit to level 15","Can subnet a /24 into four networks without a calculator","cloud-journey repo created and used daily","Checkpoint 1 signed off"]
  },
- { n:2, name:"Deep learning and applications", tag:"Deep learning", start:"2026-12-21", end:"2027-03-21", hours:182,
-   goal:"Train and fine-tune neural networks in PyTorch, and ship a model built on regional data with a public demo and a model card.",
+ { n:2, name:"AWS Cloud Practitioner and your first safe account", tag:"First certification", start:"2026-12-14", end:"2027-01-24", hours:84,
+   goal:"Open and secure an AWS account, learn the core services and the shared responsibility model, and pass AWS Certified Cloud Practitioner.",
    phases:[
-    {when:"21 Dec – 3 Jan", what:"Apply for aid on course 1 of the Deep Learning Specialization. Download the Flagship 2 data and look at 100 examples by hand. Computer-vision route: the cassava leaf disease dataset. Language route: Cameroonian Pidgin or another African language with Masakhane data. Write the training-script skeleton. A lighter holiday pace is fine.",
-     links:[["Deep Learning Specialization","https://www.coursera.org/specializations/deep-learning"],["Cassava Leaf Disease data","https://www.kaggle.com/competitions/cassava-leaf-disease-classification"],["Masakhane","https://www.masakhane.io/"]]},
-    {when:"4 – 31 Jan", what:"Deep Learning Specialization courses 1–2 (neural networks, hyperparameters), or fast.ai lessons 1–4 if aid is slow. Karpathy’s Zero to Hero on Thursdays: micrograd, then makemore parts 1–2. Flagship 2 version 1: a pretrained ResNet or ViT (or AfroXLMR for text) fine-tuned in PyTorch, with every run tracked in Weights & Biases. Post your training curves and what surprised you.",
-     links:[["fast.ai","https://course.fast.ai/"],["Neural Networks: Zero to Hero","https://karpathy.ai/zero-to-hero.html"],["Weights & Biases","https://wandb.ai/"]]},
-    {when:"1 – 28 Feb", what:"Deep Learning Specialization courses 3–4 (ML strategy, CNNs) or fast.ai lessons 5–8; Karpathy makemore parts 3–5. Flagship 2: error analysis, data augmentation, and a second run that beats the first. Deploy it as a Gradio app on Hugging Face Spaces with a model card (data, metrics, limitations). Submit it as the Zoomcamp capstone by {exam:zoom_cert}. Blog post 2, shared with the Masakhane community.",
-     links:[["Hugging Face Spaces","https://huggingface.co/spaces"],["Gradio","https://www.gradio.app/"]]},
-    {when:"1 – 21 Mar", what:"Deep Learning Specialization course 5 (sequence models and transformers): certificate by {exam:dlspec}. Karpathy’s “Let’s build GPT”. Optional, if you are ahead: train nanoGPT on a small local-language corpus and report perplexity. Post a thread explaining transformers in your own words.",
-     links:[["Deep Learning Specialization","https://www.coursera.org/specializations/deep-learning"],["karpathy/nanoGPT","https://github.com/karpathy/nanoGPT"],["rasbt/LLMs-from-scratch","https://github.com/rasbt/LLMs-from-scratch"]]}
+    {when:"14 – 20 Dec", what:"Open your AWS account safely before anything else. Free route: new AWS accounts get a free plan with up to US$200 in credits (US$100 at sign-up, more for using services), lasting up to six months or until the credits run out, and about 30 always-free services continue afterwards. Turn on MFA for the root user, create an admin IAM Identity Center or IAM user, stop using root, and create a budget alert at US$1 and a billing alarm. Never put access keys in code or Git.",
+     links:[["AWS Free Tier","https://aws.amazon.com/free/"],["AWS Skill Builder","https://skillbuilder.aws/"],["AWS Billing and Cost Management","https://aws.amazon.com/aws-cost-management/"]]},
+    {when:"21 Dec – 10 Jan", what:"Learn the services. Free route: AWS Skill Builder’s free Cloud Practitioner Essentials and Exam Prep courses, plus freeCodeCamp’s free full course for the exam (check it covers CLF-C02, the current version). Paid route: one video course (about US$15–20 on sale) if you prefer a structured set of labs. Cover regions and availability zones, IAM, EC2, S3, VPC basics, RDS, Lambda, CloudFront, CloudWatch, pricing models and the shared responsibility model. Do one small lab per service in your own account and delete it afterwards.",
+     links:[["AWS Cloud Practitioner exam page","https://aws.amazon.com/certification/certified-cloud-practitioner/"],["AWS Skill Builder","https://skillbuilder.aws/"],["freeCodeCamp on YouTube","https://www.youtube.com/@freecodecamp"],["AWS Workshops","https://workshops.aws/"]]},
+    {when:"11 – 17 Jan", what:"Exam practice. Free route: the free official practice question set in Skill Builder, then every question you got wrong written up in your own words. Paid route: one set of third-party practice exams (about US$15). Aim for 85% on practice before you book. Book on Pearson VUE (test centre or online proctored) at least two weeks ahead. If English is not your first language, request the free ESL +30 minutes accommodation in your AWS Certification account before your first booking.",
+     links:[["AWS Certification account","https://aws.amazon.com/certification/"],["Pearson VUE (AWS)","https://home.pearsonvue.com/aws"],["Tutorials Dojo","https://tutorialsdojo.com/"]]},
+    {when:"18 – 24 Jan", what:"Sit the exam, then use the week to start the flagship project. Exam: {exam:clf} (65 questions, 90 minutes, pass at 700 out of 1000; details can change, so confirm on the exam page). After you pass, collect your AWS 50% discount voucher for the next exam from your certification account, and share your Credly badge.",
+     links:[["Credly","https://www.credly.com/"],["AWS Certification benefits","https://aws.amazon.com/certification/benefits/"]]}
    ],
-   note:"Most master’s and scholarship programmes (AIMS, Erasmus Mundus, university scholarships) close between December and March. Keep one folder with your CV, transcripts, degree certificate, two reference letters, motivation letter and passport scan, and confirm every deadline on the official page.",
+   note:"Money in this level: the exam costs about US$100 plus any local tax. The free route is study material at US$0; the optional paid route adds US$15–35 for a video course and practice exams. Start the flagship project: a small web app you will rebuild and improve in every level (a booking tool, a clinic record system or a school portal). This level: a static site on S3 behind CloudFront.",
    exams:[
-    {id:"zoom_cert", name:"ML Zoomcamp certificate (midterm and capstone projects)", date:"2027-02-28", cost:"Free", format:"Projects submitted on the DataTalksClub course platform and peer-reviewed", link:"https://github.com/DataTalksClub/machine-learning-zoomcamp", earn:"ML Zoomcamp certificate"},
-    {id:"dlspec", name:"Deep Learning Specialization (DeepLearning.AI, 5 courses)", date:"2027-03-21", cost:"Free with Coursera Financial Aid", format:"Online graded quizzes and programming assignments on Coursera", link:"https://www.coursera.org/specializations/deep-learning", earn:"Deep Learning Specialization certificate"}
+    {id:"clf", name:"AWS Certified Cloud Practitioner (CLF-C02)", date:"2027-01-16", cost:"US$100 plus tax", format:"65 questions, about 90 minutes, Pearson VUE test centre or online proctored", link:"https://aws.amazon.com/certification/certified-cloud-practitioner/", earn:"AWS Certified Cloud Practitioner (valid 3 years) and a Credly badge"}
    ],
-   quals:["Deep Learning Specialization certificate","ML Zoomcamp certificate","Flagship 2 live on Hugging Face Spaces with a model card"],
-   community:[["Masakhane: African-language NLP","https://www.masakhane.io/"],["Hugging Face community","https://huggingface.co/join/discord"],["Capstone peer reviews on the DataTalksClub Slack","https://datatalks.club/slack.html"]],
-   tasks:["Flagship 2 data explored by hand (100 examples)","Karpathy micrograd and makemore completed","First fine-tuning run tracked in Weights & Biases","A second run beats the first after error analysis","Flagship 2 live on Hugging Face Spaces with a model card","Blog post 2 published and shared with the community","Deep Learning Specialization certificate earned"]
+   quals:["AWS Certified Cloud Practitioner","A secured AWS account with MFA, budgets and no root use","A static site deployed on S3 and CloudFront"],
+   community:[["AWS Builder Center","https://builder.aws.com/"],["AWS User Groups near you","https://aws.amazon.com/developer/community/usergroups/"],["r/AWSCertifications","https://www.reddit.com/r/AWSCertifications/"]],
+   tasks:["AWS account secured: MFA, budget alert, no root use","Free Cloud Practitioner course completed in Skill Builder","One lab per core service completed and cleaned up","85% on practice questions","Cloud Practitioner exam passed","Flagship v1 (static site on S3 and CloudFront) live"]
  },
- { n:3, name:"LLMs, RAG and agents", tag:"Generative AI", start:"2027-03-22", end:"2027-06-27", hours:196,
-   goal:"Build LLM applications the way companies do: retrieval, agents, evaluation with real numbers, monitoring and cost tracking.",
+ { n:3, name:"AWS Solutions Architect Associate: design real systems", tag:"Core architecture", start:"2027-01-25", end:"2027-03-21", hours:112,
+   goal:"Design secure, resilient, cost-aware architectures on AWS, and pass AWS Certified Solutions Architect Associate. This is the most recognised cloud certificate and the base for everything that follows.",
    phases:[
-    {when:"22 – 28 Mar", what:"Start mlabonne’s LLM Course (LLM Engineer track, section 1). Apply for aid on Generative AI with LLMs. Apply for the Udacity / AWS AI & ML Scholars programme and a Deep Learning Indaba travel grant when their calls open.",
-     links:[["mlabonne/llm-course","https://github.com/mlabonne/llm-course"],["Udacity scholarships","https://www.udacity.com/scholarships"],["Deep Learning Indaba","https://deeplearningindaba.com/"]]},
-    {when:"29 Mar – 2 May", what:"Run an open model locally with Ollama and through a free API. Hugging Face LLM Course chapters 1–3. Embeddings and a vector store, then a naive RAG over 20 documents; compare chunking strategies. Generative AI with LLMs (fine-tuning, PEFT, RLHF), finished by {exam:genai}. Flagship 3: collect a real, messy document set (university regulations, the labour code, or a client’s documents) and build a prototype. Post a demo GIF.",
-     links:[["Ollama","https://ollama.com/"],["Hugging Face LLM Course","https://huggingface.co/learn/llm-course"],["Generative AI with LLMs","https://www.coursera.org/learn/generative-ai-with-llms"]]},
-    {when:"3 – 30 May", what:"Hugging Face Agents Course units 1–3: certificate by {exam:hfagents}. Microsoft’s AI Agents for Beginners, lessons 1–10. IBM Generative AI Engineering, first three courses. Flagship 3: a 50-question evaluation set; measure retrieval hit-rate and MRR; add hybrid search and reranking and measure again; LLM-as-judge for answers. Post your evaluation table. Start applying to five remote junior ML or freelance roles a week.",
-     links:[["Hugging Face Agents Course","https://huggingface.co/learn/agents-course"],["AI Agents for Beginners","https://github.com/microsoft/ai-agents-for-beginners"],["IBM Generative AI Engineering","https://www.coursera.org/specializations/generative-ai-engineering-with-llms"]]},
-    {when:"31 May – 27 Jun", what:"LLM Zoomcamp cohort (starts early June): RAG, vector search, evaluation and monitoring. Finish IBM Generative AI Engineering and its capstone by {exam:ibm}. Flagship 3: a monitoring dashboard (Streamlit or Grafana), cost per query tracked, deployed with Docker Compose, with an evaluation report; submit it as the LLM Zoomcamp project. Blog post 3, technical, with your numbers.",
-     links:[["LLM Zoomcamp","https://github.com/DataTalksClub/llm-zoomcamp"],["Streamlit","https://streamlit.io/"]]}
+    {when:"25 Jan – 7 Feb", what:"Networking and compute. Free route: AWS Skill Builder’s free Exam Prep for SAA-C03 plus AWS Workshops. Paid route: one full video course with labs (about US$20–45 on sale). Build a VPC from scratch with public and private subnets, route tables, an internet gateway, a NAT gateway and security groups vs network ACLs. Then EC2 (instance types, pricing, Auto Scaling, load balancers) and Elastic Load Balancing. Delete NAT gateways after labs: they cost money every hour.",
+     links:[["SAA-C03 exam guide","https://aws.amazon.com/certification/certified-solutions-architect-associate/"],["AWS Workshops","https://workshops.aws/"],["AWS Well-Architected Framework","https://aws.amazon.com/architecture/well-architected/"]]},
+    {when:"8 – 21 Feb", what:"Storage, databases and identity. S3 (storage classes, lifecycle, replication, encryption, bucket policies), EBS and EFS, RDS and Aurora (Multi-AZ, read replicas), DynamoDB (keys, capacity, indexes), ElastiCache. IAM deeply: policies, roles, trust policies, permission boundaries, SCPs, and how a request is evaluated. Lab: lock down an S3 bucket and prove that a role can read it while another cannot.",
+     links:[["AWS IAM documentation","https://docs.aws.amazon.com/IAM/latest/UserGuide/"],["DynamoDB documentation","https://docs.aws.amazon.com/amazondynamodb/"],["S3 documentation","https://docs.aws.amazon.com/s3/"]]},
+    {when:"22 Feb – 7 Mar", what:"Resilience, decoupling and cost. Route 53 routing policies, CloudFront, SQS, SNS, EventBridge, Lambda and API Gateway, disaster-recovery patterns (backup and restore, pilot light, warm standby, active-active), and cost tools (Cost Explorer, Budgets, Savings Plans, Spot). Flagship v2: split your app into web, app and database tiers across two availability zones, with a written design document.",
+     links:[["Route 53 documentation","https://docs.aws.amazon.com/route53/"],["AWS Architecture Center","https://aws.amazon.com/architecture/"],["AWS Pricing Calculator","https://calculator.aws/"]]},
+    {when:"8 – 21 Mar", what:"Practice and exam. Official practice questions in Skill Builder (free), then third-party practice exams (about US$15) until you score 85% repeatedly, reading every explanation. Book at least three weeks ahead; use your 50% voucher if you earned one. Exam {exam:saa} (65 questions, 130 minutes, pass at 720 out of 1000).",
+     links:[["AWS Skill Builder","https://skillbuilder.aws/"],["Tutorials Dojo","https://tutorialsdojo.com/"],["Pearson VUE (AWS)","https://home.pearsonvue.com/aws"]]}
    ],
-   note:"This is what “AI engineer” means in job adverts today. Your evaluation numbers are what separate your project from tutorial copies, so measure before and after every change.",
+   note:"Money in this level: exam about US$150 (US$75 with a voucher). Keep your lab spend near zero: delete NAT gateways, load balancers and RDS instances at the end of every lab, and check Cost Explorer every Friday. Stopping a resource is not always the same as deleting it.",
    exams:[
-    {id:"genai", name:"Generative AI with Large Language Models (DeepLearning.AI + AWS)", date:"2027-04-25", cost:"Free with Coursera Financial Aid", format:"Three weeks of graded quizzes and labs on Coursera", link:"https://www.coursera.org/learn/generative-ai-with-llms", earn:"Generative AI with LLMs certificate"},
-    {id:"hfagents", name:"Hugging Face Agents Course", date:"2027-05-30", cost:"Free", format:"Online units with a final hands-on assignment", link:"https://huggingface.co/learn/agents-course", earn:"Hugging Face Agents Course certificate"},
-    {id:"ibm", name:"IBM Generative AI Engineering with LLMs", date:"2027-06-20", cost:"Free with Coursera Financial Aid", format:"Online courses with graded labs and a RAG capstone on Coursera", link:"https://www.coursera.org/specializations/generative-ai-engineering-with-llms", earn:"IBM Generative AI Engineering with LLMs certificate"}
+    {id:"saa", name:"AWS Certified Solutions Architect – Associate (SAA-C03)", date:"2027-03-20", cost:"US$150 plus tax", format:"65 questions, about 130 minutes, Pearson VUE test centre or online proctored", link:"https://aws.amazon.com/certification/certified-solutions-architect-associate/", earn:"AWS Certified Solutions Architect – Associate (valid 3 years) and a Credly badge"}
    ],
-   quals:["Generative AI with LLMs, Hugging Face Agents and IBM Generative AI Engineering certificates","Flagship 3: a deployed RAG assistant with an evaluation report and monitoring","From here you can apply for junior ML, AI engineer and freelance roles"],
-   community:[["LLM Zoomcamp cohort (DataTalksClub)","https://github.com/DataTalksClub/llm-zoomcamp"],["Hugging Face community","https://huggingface.co/join/discord"],["Deep Learning Indaba","https://deeplearningindaba.com/"]],
-   tasks:["An open model running locally with Ollama","Naive RAG prototype over a real document set","50-question evaluation set with hit-rate and MRR measured","Hybrid search and reranking added and measured again","Generative AI with LLMs certificate","Hugging Face Agents Course certificate","IBM Generative AI Engineering certificate","Flagship 3 deployed with evaluation report and monitoring","Applying to five roles a week"]
+   quals:["AWS Certified Solutions Architect – Associate","A written, reviewed three-tier architecture across two availability zones","Hands-on VPC, IAM and S3 policy skills you can demonstrate"],
+   community:[["AWS Community Builders programme (apply once you have content to show)","https://aws.amazon.com/developer/community/community-builders/"],["AWS Well-Architected labs","https://wellarchitectedlabs.com/"]],
+   tasks:["VPC built from scratch with public and private subnets","IAM policy evaluation explained in your own words","S3 bucket policy lab proven with two roles","Flagship v2: two-AZ three-tier app with a design document","85% on practice exams three times","Solutions Architect Associate passed"]
  },
- { n:4, name:"MLOps and work-ready", tag:"Top of the ladder", start:"2027-06-28", end:"2027-09-30", hours:190,
-   goal:"Run models in production (tracking, orchestration, monitoring, CI/CD) and turn four deployed projects into interviews, job offers or a funded master’s place.",
+ { n:4, name:"Developer and CloudOps Associates: serverless, delivery and operations", tag:"Build and run", start:"2027-03-22", end:"2027-05-16", hours:112,
+   goal:"Build and run applications on AWS the way teams do: serverless code, pipelines, monitoring and incident response. Pass AWS Certified Developer – Associate and AWS Certified CloudOps Engineer – Associate.",
    phases:[
-    {when:"28 Jun – 1 Aug", what:"MLOps Zoomcamp modules 1–4: MLflow experiment tracking and model registry added to Flagship 1, a retraining pipeline in Prefect or Airflow, and deployment patterns (batch and online). Made-With-ML design and data sections on Thursdays. Take your English test by {exam:english} (check which test each school accepts). Post the MLflow screenshot: “my model now retrains itself”.",
-     links:[["MLOps Zoomcamp","https://github.com/DataTalksClub/mlops-zoomcamp"],["Made-With-ML","https://github.com/GokuMohandas/Made-With-ML"],["MLflow","https://mlflow.org/"]]},
-    {when:"2 – 29 Aug", what:"MLOps Zoomcamp module 5 (monitoring with Evidently: drift, performance and alerts) and module 6 (unit and integration tests, GitHub Actions deploying on merge, infrastructure as code). Deep Learning Indaba if you are attending: present Flagship 2 or 3 as a poster. Flagship 4 final: architecture diagram, README and write-up, submitted as the MLOps Zoomcamp project by {exam:mlops}. Blog post 4.",
-     links:[["Evidently","https://www.evidentlyai.com/"],["GitHub Actions","https://docs.github.com/actions"]]},
-    {when:"30 Aug – 30 Sep", what:"Portfolio README listing all four flagship projects with live links. Three questions a day from the ML interviews book, and mock interviews with a peer from the course Slack. Apply to ten roles. With a master’s offer, prepare the visa file; without one, finalise the next round of scholarship applications (many DAAD deadlines fall around 15 October). Year-in-review post with your total hours, four projects and certificates.",
-     links:[["ML interviews book","https://github.com/chiphuyen/ml-interviews-book"],["AI Engineering book resources","https://github.com/chiphuyen/aie-book"],["DAAD scholarship database","https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/"]]}
+    {when:"22 Mar – 11 Apr", what:"Developer track. Free route: AWS Skill Builder Exam Prep for DVA-C02 and the AWS SDK docs. Build a serverless API: API Gateway, Lambda (Python or Node), DynamoDB, Cognito for sign-in, S3 events, Step Functions, SQS and SNS. Learn the AWS CLI, SDK credentials and IAM roles for Lambda. Flagship v3: move the app’s backend to serverless.",
+     links:[["DVA-C02 exam guide","https://aws.amazon.com/certification/certified-developer-associate/"],["AWS Lambda documentation","https://docs.aws.amazon.com/lambda/"],["AWS SAM","https://aws.amazon.com/serverless/sam/"]]},
+    {when:"12 – 25 Apr", what:"Delivery on AWS. CodeCommit’s status has changed over the years, so use GitHub with GitHub Actions or CodePipeline and CodeBuild for CI/CD. Deploy with AWS SAM or CloudFormation, use blue/green deployments, manage secrets with Secrets Manager and Parameter Store, and encrypt with KMS. Practice questions, then sit {exam:dva} (65 questions, 130 minutes, pass at 720 out of 1000).",
+     links:[["GitHub Actions","https://docs.github.com/actions"],["AWS CloudFormation","https://docs.aws.amazon.com/cloudformation/"],["AWS KMS","https://docs.aws.amazon.com/kms/"]]},
+    {when:"26 Apr – 9 May", what:"Operations track (CloudOps Engineer – Associate, which replaced SysOps Administrator). Learn CloudWatch metrics, logs, alarms and dashboards, Systems Manager (Session Manager, Patch Manager, Run Command), EventBridge automation, AWS Config and CloudTrail, backups with AWS Backup, and troubleshooting networks and permissions. The exam includes hands-on style tasks; practise in a live account.",
+     links:[["CloudOps Associate exam page","https://aws.amazon.com/certification/"],["CloudWatch documentation","https://docs.aws.amazon.com/cloudwatch/"],["Systems Manager documentation","https://docs.aws.amazon.com/systems-manager/"]]},
+    {when:"10 – 16 May", what:"Incident week. Break your own flagship app on purpose (kill a database, fill a disk, revoke a role), find the cause from logs and metrics, fix it, and write a blameless post-mortem. Sit {exam:cloudops}. Check the exam page for the current code and format before booking: the exam changed from SysOps to CloudOps recently.",
+     links:[["Google SRE book (free)","https://sre.google/sre-book/table-of-contents/"],["Pearson VUE (AWS)","https://home.pearsonvue.com/aws"]]}
    ],
-   note:"Visa and scholarship rules change. Confirm every route on the official pages (Make it in Germany, DAAD, Canada’s Express Entry, EducationUSA) before planning around it.",
+   note:"Money in this level: two exams at about US$150 each (US$225 with one 50% voucher). The two exams overlap on CloudWatch, IAM and deployment topics, so the second takes far less study than the first. Put serverless work in the free tier: Lambda and DynamoDB are cheap or free at lab scale.",
    exams:[
-    {id:"english", name:"English test: IELTS Academic or Duolingo English Test", date:"2027-07-25", cost:"≈ US$65 (Duolingo) to ≈ US$250 (IELTS)", format:"Duolingo online at home; IELTS at a test centre. Check which one each school accepts", link:"https://englishtest.duolingo.com/", earn:"English proof for master’s and visa applications"},
-    {id:"mlops", name:"MLOps Zoomcamp project (Flagship 4, final project)", date:"2027-08-29", cost:"Free", format:"Project submitted on the DataTalksClub course platform and peer-reviewed", link:"https://github.com/DataTalksClub/mlops-zoomcamp", earn:"MLOps Zoomcamp certificate"}
+    {id:"dva", name:"AWS Certified Developer – Associate (DVA-C02)", date:"2027-04-24", cost:"US$150 plus tax", format:"65 questions, about 130 minutes, Pearson VUE test centre or online proctored", link:"https://aws.amazon.com/certification/certified-developer-associate/", earn:"AWS Certified Developer – Associate (valid 3 years)"},
+    {id:"cloudops", name:"AWS Certified CloudOps Engineer – Associate", date:"2027-05-15", cost:"US$150 plus tax", format:"Multiple-choice and hands-on style tasks; confirm the current code and length on the exam page", link:"https://aws.amazon.com/certification/", earn:"AWS Certified CloudOps Engineer – Associate (valid 3 years)"}
    ],
-   quals:["Five certificates: Machine Learning, Deep Learning, Generative AI with LLMs, Hugging Face Agents and IBM Generative AI Engineering","ML Zoomcamp and MLOps Zoomcamp certificates","A portfolio of four deployed projects with write-ups, ready for AI engineer roles and funded master’s applications"],
-   community:[["Mock interviews with a peer from the DataTalksClub Slack","https://datatalks.club/slack.html"],["Deep Learning Indaba","https://deeplearningindaba.com/"],["Teach: help the students one level below you",""]],
-   tasks:["MLflow tracking and model registry on Flagship 1","Scheduled retraining pipeline (Prefect or Airflow)","Drift monitoring with alerts (Evidently)","Tests and GitHub Actions CI/CD deploying on merge","Flagship 4 write-up published (blog post 4)","English test taken","Portfolio README with four live projects","Applied to ten roles or programmes","Year-in-review post published"]
+   quals:["AWS Certified Developer – Associate","AWS Certified CloudOps Engineer – Associate","A serverless API with sign-in, a pipeline and monitoring","A written post-mortem for an incident you caused and fixed"],
+   community:[["AWS Builder Center: write your first public post about a lab","https://builder.aws.com/"],["Serverless Land patterns","https://serverlessland.com/"]],
+   tasks:["Serverless API with Cognito deployed with SAM or CloudFormation","Pipeline deploys on every push","CloudWatch dashboard and alarms for the flagship app","Systems Manager Session Manager used instead of open SSH","Post-mortem written and published","Developer and CloudOps Associates passed"]
+ },
+ { n:5, name:"Infrastructure as code, containers and Kubernetes", tag:"Platform skills", start:"2027-05-17", end:"2027-07-25", hours:140,
+   goal:"Describe all infrastructure as code, package apps in containers, and run Kubernetes yourself. Earn the HashiCorp Terraform Associate and the Certified Kubernetes Administrator (CKA).",
+   phases:[
+    {when:"17 – 30 May", what:"Docker and containers. Free route: Docker’s official getting-started guide and Play with Docker. Write Dockerfiles, use multi-stage builds, compose multi-container apps, scan images, push to Amazon ECR. Flagship v4: containerise the app.",
+     links:[["Docker docs","https://docs.docker.com/get-started/"],["Play with Docker","https://labs.play-with-docker.com/"],["Amazon ECR","https://docs.aws.amazon.com/AmazonECR/latest/userguide/"]]},
+    {when:"31 May – 20 Jun", what:"Terraform. Free route: HashiCorp’s free tutorials. Providers, state and remote state (S3 plus locking), variables, modules, workspaces, data sources, lifecycle and import. Rebuild your whole flagship stack in Terraform and keep it in Git with a pipeline that runs plan on pull requests. Also read how CloudFormation and CDK differ, because AWS exams ask about both.",
+     links:[["Terraform tutorials","https://developer.hashicorp.com/terraform/tutorials"],["Terraform Associate certification","https://developer.hashicorp.com/certifications/infrastructure-automation"],["AWS CDK","https://docs.aws.amazon.com/cdk/"]]},
+    {when:"21 – 27 Jun", what:"Terraform exam week. Practice questions from HashiCorp’s sample questions and a practice set (about US$10–15). Sit {exam:tf} (online proctored, about an hour). Check the current exam version and price on the HashiCorp page before booking.",
+     links:[["HashiCorp certifications","https://developer.hashicorp.com/certifications"]]},
+    {when:"28 Jun – 18 Jul", what:"Kubernetes. Free route: the free LFS158 Introduction to Kubernetes, Killercoda labs and Kelsey Hightower’s Kubernetes the Hard Way. Learn pods, deployments, services, ingress, config and secrets, storage, RBAC, scheduling, networking and cluster upgrades with kubeadm, plus etcd backup and restore. Run your containerised flagship app on Amazon EKS using Terraform, then tear it down (EKS costs money by the hour).",
+     links:[["Kubernetes docs","https://kubernetes.io/docs/home/"],["Killercoda","https://killercoda.com/"],["Kubernetes the Hard Way","https://github.com/kelseyhightower/kubernetes-the-hard-way"],["CKA programme","https://training.linuxfoundation.org/certification/certified-kubernetes-administrator-cka/"]]},
+    {when:"19 – 25 Jul", what:"CKA exam week. The CKA is a hands-on, two-hour terminal exam. Your exam purchase includes two sessions of the killer.sh simulator: use them, and work through the exam’s allowed documentation fast. Sit {exam:cka}. Your fee normally includes one free retake within a year; confirm on the Linux Foundation page.",
+     links:[["killer.sh","https://killer.sh/"],["Linux Foundation certifications","https://training.linuxfoundation.org/certification/"]]}
+   ],
+   note:"Money in this level: Terraform Associate about US$70 and CKA about US$395 (confirm both), so about US$465 in all. Look for Linux Foundation sale periods and bundles before you book; they are often much cheaper than list price. EKS control planes cost about US$0.10 an hour: create and destroy them inside one study session.",
+   exams:[
+    {id:"tf", name:"HashiCorp Certified: Terraform Associate", date:"2027-06-26", cost:"About US$70 (confirm)", format:"Online proctored, about 1 hour, multiple choice", link:"https://developer.hashicorp.com/certifications/infrastructure-automation", earn:"HashiCorp Certified: Terraform Associate"},
+    {id:"cka", name:"Certified Kubernetes Administrator (CKA)", date:"2027-07-24", cost:"About US$395 (confirm; sales are common)", format:"Hands-on terminal tasks, about 2 hours, online proctored", link:"https://training.linuxfoundation.org/certification/certified-kubernetes-administrator-cka/", earn:"Certified Kubernetes Administrator (CNCF)"}
+   ],
+   quals:["HashiCorp Certified: Terraform Associate","Certified Kubernetes Administrator (CKA)","The whole flagship stack in Terraform, running on EKS and torn down by one command"],
+   community:[["CNCF community","https://www.cncf.io/community/"],["Kubernetes Slack","https://slack.k8s.io/"],["HashiCorp user groups","https://www.meetup.com/pro/hugs/"]],
+   tasks:["App containerised and pushed to ECR","Whole stack reproducible from Terraform","Remote state with locking","Pull requests run terraform plan automatically","etcd backup and restore practised","Terraform Associate and CKA passed"]
+ },
+ { n:6, name:"AWS Solutions Architect Professional: enterprise-scale design", tag:"Professional level", start:"2027-07-26", end:"2027-10-17", hours:168,
+   goal:"Design multi-account, hybrid and highly available AWS systems for large organisations and migrate them safely, and pass AWS Certified Solutions Architect – Professional.",
+   phases:[
+    {when:"26 Jul – 15 Aug", what:"Multi-account foundations. AWS Organizations, Control Tower, service control policies, IAM Identity Center, centralised logging and billing, and tagging. Free route: the AWS Control Tower and Organizations workshops, plus the free Exam Prep for SAP-C02 in Skill Builder. Build a three-account landing zone (management, security, workload).",
+     links:[["SAP-C02 exam guide","https://aws.amazon.com/certification/certified-solutions-architect-professional/"],["AWS Organizations","https://docs.aws.amazon.com/organizations/"],["AWS Control Tower","https://docs.aws.amazon.com/controltower/"]]},
+    {when:"16 Aug – 5 Sep", what:"Networking at scale. Transit Gateway, VPC peering vs PrivateLink, Direct Connect and Site-to-Site VPN concepts, Route 53 Resolver, hybrid DNS, CloudFront and Global Accelerator. You cannot take the Advanced Networking Specialty (it is due to retire at the end of 2026), so use its free exam guide and whitepapers as your study outline for this phase.",
+     links:[["AWS whitepapers","https://aws.amazon.com/whitepapers/"],["Transit Gateway","https://docs.aws.amazon.com/vpc/latest/tgw/"],["PrivateLink","https://docs.aws.amazon.com/vpc/latest/privatelink/"]]},
+    {when:"6 – 26 Sep", what:"Migration, modernisation and resilience. The seven Rs of migration, Database Migration Service, Application Migration Service, hybrid storage, multi-region designs, RTO and RPO, and chaos testing with AWS Fault Injection Service. Cost optimisation at organisation level. Flagship v5: a two-region design with a tested failover and a written decision record for each trade-off.",
+     links:[["AWS Prescriptive Guidance","https://aws.amazon.com/prescriptive-guidance/"],["AWS Fault Injection Service","https://docs.aws.amazon.com/fis/"],["AWS Architecture Blog","https://aws.amazon.com/blogs/architecture/"]]},
+    {when:"27 Sep – 17 Oct", what:"Practice and exam. Professional questions are long scenarios with several plausible answers: practise eliminating answers by the requirement that rules them out (cost, latency, operational effort, security). Use three full-length practice exams, then sit {exam:sap} (75 questions, 180 minutes, pass at 750 out of 1000). Expect 150 or more hours of study for most people.",
+     links:[["Tutorials Dojo","https://tutorialsdojo.com/"],["Pearson VUE (AWS)","https://home.pearsonvue.com/aws"]]}
+   ],
+   note:"Money in this level: exam about US$300 (US$150 with a 50% voucher). This is the hardest scheduled exam so far. If your practice scores stay under 75% two weeks before the date, move the exam by two weeks with your mentor rather than sit it unready; rescheduling is allowed up to 24 hours before, limited to two changes per appointment.",
+   exams:[
+    {id:"sap", name:"AWS Certified Solutions Architect – Professional (SAP-C02)", date:"2027-10-16", cost:"US$300 plus tax", format:"75 questions, about 180 minutes, Pearson VUE test centre or online proctored", link:"https://aws.amazon.com/certification/certified-solutions-architect-professional/", earn:"AWS Certified Solutions Architect – Professional (valid 3 years; also renews the Associate)"}
+   ],
+   quals:["AWS Certified Solutions Architect – Professional","A multi-account landing zone you built and documented","A tested two-region failover with decision records"],
+   community:[["AWS Community Builders (apply with your published posts)","https://aws.amazon.com/developer/community/community-builders/"],["Local AWS User Group: offer to give a talk","https://aws.amazon.com/developer/community/usergroups/"]],
+   tasks:["Three-account landing zone built with SCPs and central logging","Transit Gateway lab completed","Two-region failover tested and timed","Decision records written for each major trade-off","Three full practice exams above 80%","Solutions Architect Professional passed"]
+ },
+ { n:7, name:"AWS DevOps Engineer Professional: automation and reliability", tag:"Professional level", start:"2027-10-18", end:"2027-12-26", hours:140,
+   goal:"Automate delivery, governance and recovery across many accounts, practise site reliability engineering, and pass AWS Certified DevOps Engineer – Professional.",
+   phases:[
+    {when:"18 Oct – 7 Nov", what:"CI/CD at depth. CodePipeline, CodeBuild, CodeDeploy (in-place, blue/green, canary), GitHub Actions with OIDC to AWS (no stored keys), deployment strategies for EC2, ECS, Lambda and EKS, and automated rollback on alarms. Flagship v6: a pipeline that tests, deploys to staging, runs a smoke test and promotes to production with automatic rollback.",
+     links:[["DOP-C02 exam guide","https://aws.amazon.com/certification/certified-devops-engineer-professional/"],["GitHub OIDC with AWS","https://docs.github.com/actions/deployment/security-hardening-your-deployments/configuring-openid-connect-in-amazon-web-services"],["CodeDeploy","https://docs.aws.amazon.com/codedeploy/"]]},
+    {when:"8 – 28 Nov", what:"Infrastructure at scale. CloudFormation StackSets, nested stacks and drift detection, CDK pipelines, Service Catalog, ECS and Fargate in production, Systems Manager automation, AWS Config conformance packs and auto-remediation, tagging and policy as code.",
+     links:[["AWS CDK Workshop","https://cdkworkshop.com/"],["AWS Config","https://docs.aws.amazon.com/config/"],["ECS documentation","https://docs.aws.amazon.com/ecs/"]]},
+    {when:"29 Nov – 12 Dec", what:"Observability and reliability. CloudWatch Logs Insights, OpenTelemetry, X-Ray tracing, SLOs and error budgets, alerting that does not wake people for nothing, and runbooks. Read the free Google SRE book chapters on service level objectives and incident response. Hold a game day: inject failures and recover using your runbooks.",
+     links:[["OpenTelemetry","https://opentelemetry.io/docs/"],["Google SRE book (free)","https://sre.google/sre-book/table-of-contents/"],["AWS X-Ray","https://docs.aws.amazon.com/xray/"]]},
+    {when:"13 – 26 Dec", what:"Practice and exam. Official Skill Builder questions, then a third-party full-length set; scenario questions are long, so read for the one constraint that decides the answer. Sit {exam:dop} (75 questions, 180 minutes, pass at 750 out of 1000). The date falls just before the year-end holidays: if work or family make it unrealistic, agree a new date with your mentor.",
+     links:[["Tutorials Dojo","https://tutorialsdojo.com/"],["Pearson VUE (AWS)","https://home.pearsonvue.com/aws"]]}
+   ],
+   note:"Money in this level: exam about US$300 (US$150 with a 50% voucher). Passing the Professional DevOps exam can recertify the Associate-level Developer and CloudOps certificates in the same family, which saves repeat exam fees later; confirm AWS’s current recertification rules.",
+   exams:[
+    {id:"dop", name:"AWS Certified DevOps Engineer – Professional (DOP-C02)", date:"2027-12-18", cost:"US$300 plus tax", format:"75 questions, about 180 minutes, Pearson VUE test centre or online proctored", link:"https://aws.amazon.com/certification/certified-devops-engineer-professional/", earn:"AWS Certified DevOps Engineer – Professional (valid 3 years)"}
+   ],
+   quals:["AWS Certified DevOps Engineer – Professional","A pipeline with staged promotion and automatic rollback","Published runbooks and a game-day report"],
+   community:[["DevOps community: DevOpsDays events","https://devopsdays.org/"],["AWS re:Post","https://repost.aws/"]],
+   tasks:["GitHub Actions deploys to AWS with OIDC and no stored keys","Blue/green or canary deployment with auto-rollback","StackSets or CDK pipeline across two accounts","SLOs and alerts defined for the flagship app","Game day held and report published","DevOps Engineer Professional passed"]
+ },
+ { n:8, name:"Cloud security: AWS Security Specialty and Kubernetes security", tag:"Specialty level", start:"2027-12-27", end:"2028-03-05", hours:140,
+   goal:"Secure identities, data, networks and clusters, detect and respond to attacks, and earn AWS Certified Security – Specialty and the Certified Kubernetes Security Specialist (CKS).",
+   phases:[
+    {when:"27 Dec – 16 Jan", what:"Identity and data protection. Advanced IAM (conditions, session policies, cross-account roles, IAM Access Analyzer), KMS key policies and envelope encryption, Secrets Manager, ACM, S3 Block Public Access and Macie, and logging with CloudTrail, VPC Flow Logs and Config. Free route: AWS Security workshops and the Exam Prep for the current Security Specialty (SCS-C03).",
+     links:[["Security Specialty exam page","https://aws.amazon.com/certification/certified-security-specialty/"],["AWS Security workshops","https://catalog.workshops.aws/"],["IAM Access Analyzer","https://docs.aws.amazon.com/IAM/latest/UserGuide/what-is-access-analyzer.html"]]},
+    {when:"17 Jan – 6 Feb", what:"Detection and response, and attacking your own account. Use free vulnerable-by-design labs: flaws.cloud, flaws2.cloud and CloudGoat. Learn GuardDuty, Security Hub, Inspector, Detective, WAF, Shield, Network Firewall, and incident-response playbooks (isolate an instance, rotate credentials, snapshot evidence). Scan your own account with Prowler. Only test accounts you own.",
+     links:[["flaws.cloud","http://flaws.cloud/"],["CloudGoat","https://github.com/RhinoSecurityLabs/cloudgoat"],["Prowler","https://github.com/prowler-cloud/prowler"],["GuardDuty","https://docs.aws.amazon.com/guardduty/"]]},
+    {when:"7 – 13 Feb", what:"AWS Security exam week. Practice exams until you are above 80%, then sit {exam:scs} (65 questions, about 170 minutes, pass at 750 out of 1000; AWS lists three to five years of security experience as recommended, which lab work only partly covers, so study scenario questions carefully).",
+     links:[["Tutorials Dojo","https://tutorialsdojo.com/"],["Pearson VUE (AWS)","https://home.pearsonvue.com/aws"]]},
+    {when:"14 Feb – 5 Mar", what:"Kubernetes security. The CKS requires an active CKA. Study cluster hardening, RBAC least privilege, Pod Security Standards, network policies, secrets handling, image scanning with Trivy, runtime detection with Falco, audit logs and supply-chain controls. Free route: Killercoda scenarios and the Kubernetes security docs. Sit {exam:cks} (hands-on, about two hours; the killer.sh simulator comes with the purchase).",
+     links:[["CKS programme","https://training.linuxfoundation.org/certification/certified-kubernetes-security-specialist/"],["Trivy","https://trivy.dev/"],["Falco","https://falco.org/"],["Killercoda","https://killercoda.com/"]]}
+   ],
+   note:"Money in this level: Security Specialty about US$300 (US$150 with a voucher) and CKS about US$395, so about US$545–695. The AWS Machine Learning Specialty was retired for new test-takers on 31 March 2026, so it is not planned. Never run attacks against accounts you do not own.",
+   exams:[
+    {id:"scs", name:"AWS Certified Security – Specialty (SCS-C03)", date:"2028-02-12", cost:"US$300 plus tax", format:"65 questions, about 170 minutes, Pearson VUE test centre or online proctored", link:"https://aws.amazon.com/certification/certified-security-specialty/", earn:"AWS Certified Security – Specialty (valid 3 years)"},
+    {id:"cks", name:"Certified Kubernetes Security Specialist (CKS)", date:"2028-03-04", cost:"About US$395 (confirm)", format:"Hands-on terminal tasks, about 2 hours, online proctored; requires an active CKA", link:"https://training.linuxfoundation.org/certification/certified-kubernetes-security-specialist/", earn:"Certified Kubernetes Security Specialist (CNCF)"}
+   ],
+   quals:["AWS Certified Security – Specialty","Certified Kubernetes Security Specialist","A written threat model and incident-response playbook for the flagship app"],
+   community:[["CNCF Slack security channels","https://slack.cncf.io/"],["OWASP Cloud-Native security project","https://owasp.org/"],["AWS re:Post security topics","https://repost.aws/"]],
+   tasks:["flaws.cloud and flaws2.cloud finished with write-ups","CloudGoat scenario solved and the fix documented","GuardDuty, Security Hub and Config enabled and triaged","Threat model and incident playbook for the flagship app","CKS lab: network policies, Falco rule and Trivy scan in a pipeline","Security Specialty and CKS passed"]
+ },
+ { n:9, name:"Data and AI on AWS: four more certifications", tag:"AI and data", start:"2028-03-06", end:"2028-06-11", hours:196,
+   goal:"Build data pipelines and AI systems on AWS and earn the AI Practitioner, Data Engineer – Associate, Machine Learning Engineer – Associate and Generative AI Developer – Professional certificates.",
+   phases:[
+    {when:"6 – 26 Mar", what:"AI foundations. Free route: AWS Skill Builder’s free AI Practitioner Exam Prep and the AWS generative AI learning plans, plus Google Skills’ free generative AI path. Learn machine-learning concepts, responsible AI, prompt engineering, Amazon Bedrock basics and when not to use AI. Sit {exam:aif} (a foundational exam with about 65 questions; check the page for the current format).",
+     links:[["AI Practitioner exam page","https://aws.amazon.com/certification/certified-ai-practitioner/"],["Amazon Bedrock","https://docs.aws.amazon.com/bedrock/"],["AWS Skill Builder","https://skillbuilder.aws/"]]},
+    {when:"27 Mar – 30 Apr", what:"Data engineering. Free route: the Data Engineering Zoomcamp (free, with a certificate) for the concepts, then AWS Exam Prep for the Data Engineer – Associate. Build an ingestion pipeline: S3 data lake, Glue crawlers and jobs, Athena, Kinesis or MSK streaming, Redshift basics, Lake Formation permissions and orchestration with Step Functions or MWAA. Flagship v7: reporting from a real data stream. Sit {exam:dea}.",
+     links:[["Data Engineering Zoomcamp","https://github.com/DataTalksClub/data-engineering-zoomcamp"],["Data Engineer Associate","https://aws.amazon.com/certification/certified-data-engineer-associate/"],["AWS Glue","https://docs.aws.amazon.com/glue/"],["Amazon Athena","https://docs.aws.amazon.com/athena/"]]},
+    {when:"1 – 21 May", what:"Machine learning engineering. Free route: the MLOps Zoomcamp and the fast.ai practical course. SageMaker training, tuning, endpoints and pipelines, feature stores, model monitoring and drift, CI/CD for models. Train and deploy one small model, monitor it, and shut it down to stop charges. Sit {exam:mla}.",
+     links:[["MLOps Zoomcamp","https://github.com/DataTalksClub/mlops-zoomcamp"],["ML Engineer Associate","https://aws.amazon.com/certification/certified-machine-learning-engineer-associate/"],["Practical Deep Learning (fast.ai)","https://course.fast.ai/"],["SageMaker docs","https://docs.aws.amazon.com/sagemaker/"]]},
+    {when:"22 May – 11 Jun", what:"Generative AI in production. Retrieval-augmented generation (RAG) with Bedrock Knowledge Bases or your own vector store, agents, guardrails, evaluation, cost control and latency, and prompt and model governance. Flagship v8: a RAG assistant over your flagship app’s documents with measured answer quality. Sit {exam:aip} (Generative AI Developer – Professional; confirm its current code and length).",
+     links:[["Generative AI Developer Professional","https://aws.amazon.com/certification/"],["Bedrock Guardrails","https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails.html"],["AWS generative AI workshops","https://catalog.workshops.aws/"]]}
+   ],
+   note:"Money in this level: AI Practitioner US$100, Data Engineer US$150, ML Engineer US$150 and Generative AI Developer US$300, so about US$700 before vouchers. Four exams in 14 weeks is the heaviest schedule in this roadmap: if you fall behind, move the last two exams, not the study time. AI services bill by usage, so set a budget alarm before you start and tear down every endpoint after each lab.",
+   exams:[
+    {id:"aif", name:"AWS Certified AI Practitioner (AIF-C01)", date:"2028-03-25", cost:"US$100 plus tax", format:"Foundational multiple choice, Pearson VUE test centre or online proctored", link:"https://aws.amazon.com/certification/certified-ai-practitioner/", earn:"AWS Certified AI Practitioner (valid 3 years)"},
+    {id:"dea", name:"AWS Certified Data Engineer – Associate (DEA-C01)", date:"2028-04-29", cost:"US$150 plus tax", format:"Multiple choice, Pearson VUE test centre or online proctored", link:"https://aws.amazon.com/certification/certified-data-engineer-associate/", earn:"AWS Certified Data Engineer – Associate (valid 3 years)"},
+    {id:"mla", name:"AWS Certified Machine Learning Engineer – Associate (MLA-C01)", date:"2028-05-20", cost:"US$150 plus tax", format:"Multiple choice, Pearson VUE test centre or online proctored", link:"https://aws.amazon.com/certification/certified-machine-learning-engineer-associate/", earn:"AWS Certified Machine Learning Engineer – Associate (valid 3 years)"},
+    {id:"aip", name:"AWS Certified Generative AI Developer – Professional (AIP-C01)", date:"2028-06-10", cost:"US$300 plus tax", format:"Professional scenario questions; confirm length and format on the exam page", link:"https://aws.amazon.com/certification/", earn:"AWS Certified Generative AI Developer – Professional (valid 3 years)"}
+   ],
+   quals:["AWS Certified AI Practitioner","AWS Certified Data Engineer – Associate","AWS Certified Machine Learning Engineer – Associate","AWS Certified Generative AI Developer – Professional","A working RAG assistant with measured quality"],
+   community:[["DataTalks.Club community","https://datatalks.club/slack.html"],["Hugging Face","https://huggingface.co/"],["AWS Community Builders: AI/ML category","https://aws.amazon.com/developer/community/community-builders/"]],
+   tasks:["Budget alarm set before any AI lab","Data lake with Glue, Athena and permissions built","Streaming pipeline running for a week","One model trained, deployed, monitored and shut down","RAG assistant evaluated with a written test set","AI Practitioner, Data Engineer, ML Engineer and GenAI Developer passed"]
+ },
+ { n:10, name:"Multi-cloud, proof of skill and the elite audit", tag:"Capstone", start:"2028-06-12", end:"2028-08-20", hours:140,
+   goal:"Add Azure and Google Cloud credentials, publish proof of what you can do, and audit yourself against the rarest recognised achievements in cloud.",
+   phases:[
+    {when:"12 Jun – 16 Jul", what:"Azure. Free route: Microsoft Learn’s free AZ-104 (Azure Administrator) path and an Azure free account. Map every AWS idea you know to Azure: Entra ID against IAM, virtual networks against VPCs, Azure Monitor against CloudWatch, Bicep against CloudFormation. Rebuild one part of your flagship app on Azure with Terraform. Sit {exam:az104}.",
+     links:[["AZ-104 certification","https://learn.microsoft.com/credentials/certifications/azure-administrator/"],["Microsoft Learn","https://learn.microsoft.com/training/"],["Azure free account","https://azure.microsoft.com/free/"]]},
+    {when:"17 Jul – 13 Aug", what:"Google Cloud. Free route: Google Skills (Cloud Skills Boost) free labs and the free Google Cloud tier. Learn projects and IAM, VPCs, Compute Engine, GKE, Cloud Run, Cloud Storage, BigQuery and Cloud Monitoring. Sit {exam:gcp} (Professional Cloud Architect; check Google’s page for the current exam, price and format).",
+     links:[["Google Cloud certifications","https://cloud.google.com/learn/certification"],["Professional Cloud Architect","https://cloud.google.com/learn/certification/cloud-architect"],["Google Skills","https://www.skills.google/"]]},
+    {when:"14 – 20 Aug", what:"The elite audit. Write a public page that lists every credential with its Credly link, your flagship project with architecture diagrams, cost figures and post-mortems, and your talks and posts. Then audit against the achievements below and plan your next 12 months. Mentor review: {exam:audit}.",
+     links:[["Credly","https://www.credly.com/"],["AWS Community Builders","https://aws.amazon.com/developer/community/community-builders/"],["AWS Heroes","https://aws.amazon.com/developer/community/heroes/"]]}
+   ],
+   note:"Money in this level: AZ-104 about US$165 and the Google exam about US$200 (confirm both). About “top ten in the world”: no organisation publishes a global ranking of cloud engineers, so nobody can promise you a place in one. What can be measured is rarity and proof. Holding every current AWS certification at once is the requirement for the AWS Golden Jacket, which one community source estimates has fewer than 300 holders worldwide; the jacket itself is awarded through partner, account-team or event routes rather than an open application. Add the CKA and CKS, Terraform, Azure and Google professional credentials, AWS Community Builder or Hero recognition, and public work, and you will be among the most credentialled cloud engineers anywhere. Whether that is the top ten depends on a ranking nobody keeps. The twelve-certificate set also changes as AWS retires and adds exams (Advanced Networking is due to retire at the end of 2026), so check the current list.",
+   exams:[
+    {id:"az104", name:"Microsoft Certified: Azure Administrator Associate (AZ-104)", date:"2028-07-15", cost:"About US$165 (confirm)", format:"Multiple choice and case studies, Pearson VUE online or test centre", link:"https://learn.microsoft.com/credentials/certifications/azure-administrator/", earn:"Microsoft Certified: Azure Administrator Associate"},
+    {id:"gcp", name:"Google Cloud Professional Cloud Architect", date:"2028-08-12", cost:"About US$200 (confirm)", format:"About 2 hours, Kryterion online or test centre", link:"https://cloud.google.com/learn/certification/cloud-architect", earn:"Google Cloud Professional Cloud Architect"},
+    {id:"audit", name:"Checkpoint 10: the elite audit and public portfolio review", date:"2028-08-20", cost:"Free", format:"Mentor-reviewed: portfolio page, credential list and 12-month plan", link:"", earn:"Capstone signed off by your mentor"}
+   ],
+   quals:["Microsoft Certified: Azure Administrator Associate","Google Cloud Professional Cloud Architect","A public portfolio page with every credential and project","A written 12-month plan for the rarest remaining credentials"],
+   community:[["AWS Heroes programme: read the criteria","https://aws.amazon.com/developer/community/heroes/"],["Give a talk at an AWS User Group or DevOpsDays","https://aws.amazon.com/developer/community/usergroups/"],["FinOps Foundation","https://www.finops.org/"]],
+   tasks:["Azure AZ-104 passed","One part of the flagship app running on Azure via Terraform","Google Cloud Professional Cloud Architect passed","Public portfolio page live","Applied to AWS Community Builders or published 10 technical posts","Elite audit completed and signed off"]
  }
 ];
 
@@ -1103,13 +1226,15 @@ function updateNameCard(){
 
 /* ---------- commitment note ---------- */
 var COMMITMENT = {
-  intro:"I am starting a climb from my first machine learning model to working as an AI engineer. I understand that certificates alone won’t make me an AI engineer; building and shipping real projects will.",
+  intro:"I am starting a long climb from Linux and networking to professional-level cloud engineering. I understand that certificates open doors but hands-on work keeps them open, and that cloud services bill by the hour.",
   points:[
     "{STUDY}",
     "I will log my hours and what I did every day, honestly, including the days I miss.",
     "At the end of each study day, I will post my progress card on social media.",
     "I will submit the work my mentor assigns by the due date.",
-    "I will sit each exam on the planned date, or agree a new date with my mentor before it passes.",
+    "I will sit each exam on the planned date, or agree a new date with my mentor before it passes, and I will not book an exam while my practice scores are below target.",
+    "I will keep a budget alarm on every cloud account, secure the account with MFA, delete lab resources when I finish, and never put keys or secrets in code or Git.",
+    "I will only test security tools against accounts I own, and I will follow each exam provider’s rules and never use exam dumps.",
     "I will tell my mentor early when I fall behind, instead of going quiet.",
     "I will help the students in my study group and ask for help when I need it.",
     "I will finish this roadmap to the end.",
@@ -1760,15 +1885,21 @@ document.getElementById("wkPrev").addEventListener("click", function(){ var d=ad
 document.getElementById("wkNext").addEventListener("click", function(){ curWeek=iso(addDays(parseISO(curWeek),7)); renderDaysBox(); loadWeek(true); });
 
 /* ---------- plan settings (set by the mentor, read by everyone) ---------- */
-var DEFAULT_START="2026-09-04", DEFAULT_HOURS=2;
+var DEFAULT_START="2026-11-02", DEFAULT_HOURS=2;
 var settings={dailyHours:DEFAULT_HOURS, startDate:DEFAULT_START, holidays:{}, levelWeeks:{}};
 var studyDays=[];
 LEVELS.forEach(function(L){ L.ostart=L.start; L.oend=L.end; L.exams.forEach(function(e){ e.odate=e.date; }); });
 var PHASE_RANGES = {
-"1|4 – 13 Sep":["2026-09-04","2026-09-13"], "1|14 Sep – 4 Oct":["2026-09-14","2026-10-04"], "1|5 Oct – 1 Nov":["2026-10-05","2026-11-01"], "1|2 – 29 Nov":["2026-11-02","2026-11-29"], "1|30 Nov – 20 Dec":["2026-11-30","2026-12-20"],
-"2|21 Dec – 3 Jan":["2026-12-21","2027-01-03"], "2|4 – 31 Jan":["2027-01-04","2027-01-31"], "2|1 – 28 Feb":["2027-02-01","2027-02-28"], "2|1 – 21 Mar":["2027-03-01","2027-03-21"],
-"3|22 – 28 Mar":["2027-03-22","2027-03-28"], "3|29 Mar – 2 May":["2027-03-29","2027-05-02"], "3|3 – 30 May":["2027-05-03","2027-05-30"], "3|31 May – 27 Jun":["2027-05-31","2027-06-27"],
-"4|28 Jun – 1 Aug":["2027-06-28","2027-08-01"], "4|2 – 29 Aug":["2027-08-02","2027-08-29"], "4|30 Aug – 30 Sep":["2027-08-30","2027-09-30"]
+"1|2 – 15 Nov":["2026-11-02","2026-11-15"], "1|16 – 29 Nov":["2026-11-16","2026-11-29"], "1|30 Nov – 6 Dec":["2026-11-30","2026-12-06"], "1|7 – 13 Dec":["2026-12-07","2026-12-13"],
+"2|14 – 20 Dec":["2026-12-14","2026-12-20"], "2|21 Dec – 10 Jan":["2026-12-21","2027-01-10"], "2|11 – 17 Jan":["2027-01-11","2027-01-17"], "2|18 – 24 Jan":["2027-01-18","2027-01-24"],
+"3|25 Jan – 7 Feb":["2027-01-25","2027-02-07"], "3|8 – 21 Feb":["2027-02-08","2027-02-21"], "3|22 Feb – 7 Mar":["2027-02-22","2027-03-07"], "3|8 – 21 Mar":["2027-03-08","2027-03-21"],
+"4|22 Mar – 11 Apr":["2027-03-22","2027-04-11"], "4|12 – 25 Apr":["2027-04-12","2027-04-25"], "4|26 Apr – 9 May":["2027-04-26","2027-05-09"], "4|10 – 16 May":["2027-05-10","2027-05-16"],
+"5|17 – 30 May":["2027-05-17","2027-05-30"], "5|31 May – 20 Jun":["2027-05-31","2027-06-20"], "5|21 – 27 Jun":["2027-06-21","2027-06-27"], "5|28 Jun – 18 Jul":["2027-06-28","2027-07-18"], "5|19 – 25 Jul":["2027-07-19","2027-07-25"],
+"6|26 Jul – 15 Aug":["2027-07-26","2027-08-15"], "6|16 Aug – 5 Sep":["2027-08-16","2027-09-05"], "6|6 – 26 Sep":["2027-09-06","2027-09-26"], "6|27 Sep – 17 Oct":["2027-09-27","2027-10-17"],
+"7|18 Oct – 7 Nov":["2027-10-18","2027-11-07"], "7|8 – 28 Nov":["2027-11-08","2027-11-28"], "7|29 Nov – 12 Dec":["2027-11-29","2027-12-12"], "7|13 – 26 Dec":["2027-12-13","2027-12-26"],
+"8|27 Dec – 16 Jan":["2027-12-27","2028-01-16"], "8|17 Jan – 6 Feb":["2028-01-17","2028-02-06"], "8|7 – 13 Feb":["2028-02-07","2028-02-13"], "8|14 Feb – 5 Mar":["2028-02-14","2028-03-05"],
+"9|6 – 26 Mar":["2028-03-06","2028-03-26"], "9|27 Mar – 30 Apr":["2028-03-27","2028-04-30"], "9|1 – 21 May":["2028-05-01","2028-05-21"], "9|22 May – 11 Jun":["2028-05-22","2028-06-11"],
+"10|12 Jun – 16 Jul":["2028-06-12","2028-07-16"], "10|17 Jul – 13 Aug":["2028-07-17","2028-08-13"], "10|14 – 20 Aug":["2028-08-14","2028-08-20"]
 };
 function daysBetween(a,b){ return Math.round((parseISO(b)-parseISO(a))/864e5); }
 function normSettings(o){
@@ -1837,7 +1968,7 @@ function socialMins(){ return round5(settings.dailyHours*60/6); }
 
 function renderPlanLines(){
   var s=parseISO(PLAN_START);
-  var txt="Database administration · "+hoursText(settings.dailyHours)+" a day · starts "+DOW_FULL[s.getDay()]+" "+s.getDate()+" "+MON_FULL[s.getMonth()]+" "+s.getFullYear();
+  var txt="Cloud and AWS · "+hoursText(settings.dailyHours)+" a day · starts "+DOW_FULL[s.getDay()]+" "+s.getDate()+" "+MON_FULL[s.getMonth()]+" "+s.getFullYear();
   document.querySelectorAll("[data-planline]").forEach(function(el){ el.textContent=txt; });
   document.querySelectorAll("[data-social]").forEach(function(el){ el.textContent=minsText(socialMins()); });
 }
@@ -1851,11 +1982,11 @@ function renderRoutine(){
   document.getElementById("routineTitle").textContent="Daily routine: "+hoursText(settings.dailyHours)+" a day";
   var post="<b>"+minsText(soc)+"</b> post your progress card on social media";
   document.getElementById("routineBody").innerHTML=
-    "<tr><td class='date'>Mon – Tue</td><td><b>"+minsText(rest)+"</b> course: watch this week’s module and start the homework</td><td><b>"+minsText(notes)+"</b> notes in your own words, committed to GitHub</td><td>"+post+"</td></tr>"+
-    "<tr><td class='date'>Wednesday</td><td colspan='2'><b>"+minsText(work)+"</b> homework: finish it, submit it and commit the notebook</td><td>"+post+"</td></tr>"+
-    "<tr><td class='date'>Thursday</td><td colspan='2'><b>"+minsText(work)+"</b> depth: one book chapter, paper or Karpathy lesson, with the exercises</td><td>"+post+"</td></tr>"+
-    "<tr><td class='date'>Fri – Sat</td><td colspan='2'><b>"+minsText(work)+"</b> "+esc(COPY.practice)+": real data, real deployment, end with a working commit</td><td>"+post+"</td></tr>"+
-    "<tr><td class='date'>Sunday</td><td><b>"+minsText(rest)+"</b> publish: update the README and write the week’s long post</td><td><b>"+minsText(notes)+"</b> weekly reflection in your daily log</td><td>"+post+"</td></tr>"+
+    "<tr><td class='date'>Mon – Tue</td><td><b>"+minsText(rest)+"</b> learn: this week’s lesson, course module or documentation chapter</td><td><b>"+minsText(notes)+"</b> notes in your own words, committed to your cloud-journey repo</td><td>"+post+"</td></tr>"+
+    "<tr><td class='date'>Wednesday</td><td colspan='2'><b>"+minsText(work)+"</b> lab: build it in your own account, then delete it and check the bill</td><td>"+post+"</td></tr>"+
+    "<tr><td class='date'>Thursday</td><td colspan='2'><b>"+minsText(work)+"</b> practice questions: official first, then third-party, writing up every wrong answer</td><td>"+post+"</td></tr>"+
+    "<tr><td class='date'>Fri – Sat</td><td colspan='2'><b>"+minsText(work)+"</b> "+esc(COPY.practice)+": extend your flagship project and commit the change</td><td>"+post+"</td></tr>"+
+    "<tr><td class='date'>Sunday</td><td><b>"+minsText(rest)+"</b> publish: update your portfolio and write the week’s post about what broke and how you fixed it</td><td><b>"+minsText(notes)+"</b> weekly reflection in your daily log</td><td>"+post+"</td></tr>"+
     "<tr><td class='date'>Holidays</td><td colspan='3'>No study expected. Holidays set by your mentor are marked in your daily log, and your plan dates move later to make up for them.</td></tr>";
 }
 function rerenderPlan(){
