@@ -87,6 +87,18 @@ export const HUB = {
       dailyHours: 2,
       startDate: "2026-11-02",
       order: 5
+    },
+    {
+      id: "aws",
+      branch: "aws-engineer",
+      path: "aws",
+      title: "AWS Engineer",
+      tagline: "Ten stages from Linux to every reachable AWS certification, public projects recruiters remember, scholarships, a logbook, daily posts and GitHub entries, and a plan to land a remote job abroad from Cameroon.",
+      url: "/aws/",
+      levels: 10,
+      dailyHours: 2,
+      startDate: "2026-11-02",
+      order: 6
     }
   ]
 };
