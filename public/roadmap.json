@@ -1,151 +1,291 @@
 {
-  "id": "ai",
-  "title": "AI Engineer Roadmap",
-  "defaultStart": "2026-09-04",
+  "id": "aws",
+  "title": "AWS Engineer",
+  "defaultStart": "2026-11-02",
   "defaultHours": 2,
   "levels": [
     {
       "n": 1,
-      "name": "Machine learning foundations",
-      "tag": "Foundations",
-      "start": "2026-09-04",
-      "end": "2026-12-20",
-      "hours": 216,
+      "name": "Foundations: Linux, networking, Git and Python",
+      "tag": "Ground level",
+      "start": "2026-11-02",
+      "end": "2026-12-06",
+      "hours": 70,
       "tasks": [
-        "Registered for the ML Zoomcamp and joined the course Slack",
-        "Coursera Financial Aid approved for the Machine Learning Specialization",
-        "GitHub, Kaggle and Hugging Face profiles set up; Day 1 post published",
-        "Zoomcamp homework submitted every week",
-        "Flagship 1 deployed with README, tests and a live link (midterm submitted)",
-        "Three midterm projects peer-reviewed",
-        "One public Kaggle notebook",
-        "Blog post 1 published",
-        "Machine Learning Specialization certificate earned"
+        "aws-journey repo created with a logbook folder",
+        "First daily entry committed",
+        "Linux VM running and snapshotted",
+        "OverTheWire Bandit to level 15",
+        "Can subnet a /24 into four networks without a calculator",
+        "Checkpoint 1 signed off"
       ],
       "exams": [
         {
-          "id": "zoom_mid",
-          "name": "ML Zoomcamp midterm project (Flagship 1)",
-          "date": "2026-11-16",
+          "id": "a1_cp",
+          "name": "Checkpoint 1: a hardened Linux web server with a backup script",
+          "date": "2026-12-05",
           "cost": "Free",
-          "earn": "Midterm credit toward the ML Zoomcamp certificate"
-        },
-        {
-          "id": "mlspec",
-          "name": "Machine Learning Specialization (Stanford / DeepLearning.AI, 3 courses)",
-          "date": "2026-12-20",
-          "cost": "Free with Coursera Financial Aid",
-          "earn": "Machine Learning Specialization certificate"
+          "earn": "Foundations checkpoint signed off by your mentor"
         }
       ]
     },
     {
       "n": 2,
-      "name": "Deep learning and applications",
-      "tag": "Deep learning",
-      "start": "2026-12-21",
-      "end": "2027-03-21",
-      "hours": 182,
+      "name": "Cloud Practitioner: a safe account and your first site",
+      "tag": "First certification",
+      "start": "2026-12-07",
+      "end": "2027-01-10",
+      "hours": 70,
       "tasks": [
-        "Flagship 2 data explored by hand (100 examples)",
-        "Karpathy micrograd and makemore completed",
-        "First fine-tuning run tracked in Weights & Biases",
-        "A second run beats the first after error analysis",
-        "Flagship 2 live on Hugging Face Spaces with a model card",
-        "Blog post 2 published and shared with the community",
-        "Deep Learning Specialization certificate earned"
+        "AWS account secured: MFA, budget alert, no root use",
+        "LinkedIn and GitHub profile README set up",
+        "One lab per core service completed and cleaned up",
+        "Project 1: portfolio site live behind CloudFront with HTTPS",
+        "Cloud Practitioner exam passed",
+        "50% voucher claimed"
       ],
       "exams": [
         {
-          "id": "zoom_cert",
-          "name": "ML Zoomcamp certificate (midterm and capstone projects)",
-          "date": "2027-02-28",
-          "cost": "Free",
-          "earn": "ML Zoomcamp certificate"
-        },
-        {
-          "id": "dlspec",
-          "name": "Deep Learning Specialization (DeepLearning.AI, 5 courses)",
-          "date": "2027-03-21",
-          "cost": "Free with Coursera Financial Aid",
-          "earn": "Deep Learning Specialization certificate"
+          "id": "clf",
+          "name": "AWS Certified Cloud Practitioner (CLF-C02)",
+          "date": "2027-01-09",
+          "cost": "US$100 plus tax",
+          "earn": "AWS Certified Cloud Practitioner (valid 3 years) and a Credly badge"
         }
       ]
     },
     {
       "n": 3,
-      "name": "LLMs, RAG and agents",
-      "tag": "Generative AI",
-      "start": "2027-03-22",
-      "end": "2027-06-27",
-      "hours": 196,
+      "name": "Solutions Architect Associate: design real systems",
+      "tag": "Core architecture",
+      "start": "2027-01-11",
+      "end": "2027-03-07",
+      "hours": 112,
       "tasks": [
-        "An open model running locally with Ollama",
-        "Naive RAG prototype over a real document set",
-        "50-question evaluation set with hit-rate and MRR measured",
-        "Hybrid search and reranking added and measured again",
-        "Generative AI with LLMs certificate",
-        "Hugging Face Agents Course certificate",
-        "IBM Generative AI Engineering certificate",
-        "Flagship 3 deployed with evaluation report and monitoring",
-        "Applying to five roles a week"
+        "VPC built from scratch and subnetted by hand",
+        "S3 and IAM access test written up",
+        "Project 2: three-tier app across two availability zones",
+        "Design document, diagram and cost estimate published",
+        "Disaster-recovery runbook written and tested",
+        "Solutions Architect Associate exam passed"
       ],
       "exams": [
         {
-          "id": "genai",
-          "name": "Generative AI with Large Language Models (DeepLearning.AI + AWS)",
-          "date": "2027-04-25",
-          "cost": "Free with Coursera Financial Aid",
-          "earn": "Generative AI with LLMs certificate"
-        },
-        {
-          "id": "hfagents",
-          "name": "Hugging Face Agents Course",
-          "date": "2027-05-30",
-          "cost": "Free",
-          "earn": "Hugging Face Agents Course certificate"
-        },
-        {
-          "id": "ibm",
-          "name": "IBM Generative AI Engineering with LLMs",
-          "date": "2027-06-20",
-          "cost": "Free with Coursera Financial Aid",
-          "earn": "IBM Generative AI Engineering with LLMs certificate"
+          "id": "saa",
+          "name": "AWS Certified Solutions Architect – Associate (SAA-C03)",
+          "date": "2027-03-06",
+          "cost": "US$150 plus tax",
+          "earn": "AWS Certified Solutions Architect – Associate (valid 3 years) and a Credly badge"
         }
       ]
     },
     {
       "n": 4,
-      "name": "MLOps and work-ready",
-      "tag": "Top of the ladder",
-      "start": "2027-06-28",
-      "end": "2027-09-30",
-      "hours": 190,
+      "name": "Developer Associate: serverless products and first paid work",
+      "tag": "Build real software",
+      "start": "2027-03-08",
+      "end": "2027-04-25",
+      "hours": 98,
       "tasks": [
-        "MLflow tracking and model registry on Flagship 1",
-        "Scheduled retraining pipeline (Prefect or Airflow)",
-        "Drift monitoring with alerts (Evidently)",
-        "Tests and GitHub Actions CI/CD deploying on merge",
-        "Flagship 4 write-up published (blog post 4)",
-        "English test taken",
-        "Portfolio README with four live projects",
-        "Applied to ten roles or programmes",
-        "Year-in-review post published"
+        "Serverless lab series completed",
+        "Project 3: serverless SaaS template repo published",
+        "Payment webhook working in a provider sandbox",
+        "Cost per 1,000 bookings calculated",
+        "LiFT scholarship application submitted",
+        "Developer Associate exam passed",
+        "First 10 job or freelance applications logged"
       ],
       "exams": [
         {
-          "id": "english",
-          "name": "English test: IELTS Academic or Duolingo English Test",
-          "date": "2027-07-25",
-          "cost": "≈ US$65 (Duolingo) to ≈ US$250 (IELTS)",
-          "earn": "English proof for master’s and visa applications"
+          "id": "dva",
+          "name": "AWS Certified Developer – Associate (DVA-C02)",
+          "date": "2027-04-24",
+          "cost": "US$150 plus tax",
+          "earn": "AWS Certified Developer – Associate (valid 3 years) and a Credly badge"
+        }
+      ]
+    },
+    {
+      "n": 5,
+      "name": "CloudOps and Infrastructure as Code",
+      "tag": "Operate it properly",
+      "start": "2027-04-26",
+      "end": "2027-06-13",
+      "hours": 98,
+      "tasks": [
+        "Whole flagship app described in Terraform",
+        "Remote state with locking working",
+        "Project 4: three public Terraform modules with CI",
+        "SLO, alarms and runbook written",
+        "Game day run and post-mortem published",
+        "Terraform Associate passed",
+        "CloudOps Associate passed"
+      ],
+      "exams": [
+        {
+          "id": "tf",
+          "name": "HashiCorp Certified: Terraform Associate",
+          "date": "2027-05-29",
+          "cost": "About US$70 (confirm)",
+          "earn": "HashiCorp Certified: Terraform Associate"
         },
         {
-          "id": "mlops",
-          "name": "MLOps Zoomcamp project (Flagship 4, final project)",
-          "date": "2027-08-29",
+          "id": "soa",
+          "name": "AWS Certified CloudOps Engineer – Associate",
+          "date": "2027-06-12",
+          "cost": "About US$150 plus tax (confirm)",
+          "earn": "AWS Certified CloudOps Engineer – Associate (valid 3 years)"
+        }
+      ]
+    },
+    {
+      "n": 6,
+      "name": "Solutions Architect Professional: enterprise AWS",
+      "tag": "Professional level",
+      "start": "2027-06-14",
+      "end": "2027-08-22",
+      "hours": 140,
+      "tasks": [
+        "Three-account landing zone built",
+        "Transit Gateway and hybrid DNS lab completed",
+        "Project 5: landing-zone and migration case study published",
+        "Multi-region design written up",
+        "Professional practice scores 80–85% three times",
+        "Solutions Architect Professional exam passed"
+      ],
+      "exams": [
+        {
+          "id": "sap",
+          "name": "AWS Certified Solutions Architect – Professional (SAP-C02)",
+          "date": "2027-08-21",
+          "cost": "US$300 plus tax",
+          "earn": "AWS Certified Solutions Architect – Professional (valid 3 years; also renews the Associate)"
+        }
+      ]
+    },
+    {
+      "n": 7,
+      "name": "DevOps Engineer Professional: containers and delivery",
+      "tag": "Ship fast, ship safely",
+      "start": "2027-08-23",
+      "end": "2027-10-24",
+      "hours": 126,
+      "tasks": [
+        "Docker and ECS Fargate lab series completed",
+        "EKS cluster built and deleted after use",
+        "Project 6: container platform with GitOps or pipeline rollout",
+        "Canary or blue/green rollout shown with metrics",
+        "DORA metrics published",
+        "Talk proposal submitted",
+        "DevOps Engineer Professional exam passed"
+      ],
+      "exams": [
+        {
+          "id": "dop",
+          "name": "AWS Certified DevOps Engineer – Professional (DOP-C02)",
+          "date": "2027-10-23",
+          "cost": "US$300 plus tax",
+          "earn": "AWS Certified DevOps Engineer – Professional (valid 3 years)"
+        }
+      ]
+    },
+    {
+      "n": 8,
+      "name": "Security Specialty: detect, respond and prove",
+      "tag": "Security depth",
+      "start": "2027-10-25",
+      "end": "2027-12-19",
+      "hours": 112,
+      "tasks": [
+        "KMS and encryption lab series completed",
+        "Security Hub and GuardDuty enabled across accounts",
+        "Project 7: three auto-remediations working",
+        "Threat model and compliance mapping published",
+        "Incident post-mortem published",
+        "Security Specialty exam passed"
+      ],
+      "exams": [
+        {
+          "id": "scs",
+          "name": "AWS Certified Security – Specialty (SCS-C03)",
+          "date": "2027-12-18",
+          "cost": "US$300 plus tax",
+          "earn": "AWS Certified Security – Specialty (valid 3 years)"
+        }
+      ]
+    },
+    {
+      "n": 9,
+      "name": "Data and AI on AWS: lakes, ML and generative AI",
+      "tag": "The newest, scarcest skills",
+      "start": "2027-12-20",
+      "end": "2028-03-26",
+      "hours": 196,
+      "tasks": [
+        "AI Practitioner passed",
+        "Project 8: data lake with Athena queries and dashboard",
+        "Data Engineer Associate passed",
+        "SageMaker pipeline built and endpoint deleted",
+        "ML Engineer Associate passed",
+        "Project 9: RAG assistant with evaluation results published",
+        "Generative AI Developer Professional passed"
+      ],
+      "exams": [
+        {
+          "id": "aif",
+          "name": "AWS Certified AI Practitioner (AIF-C01)",
+          "date": "2028-01-08",
+          "cost": "US$100 plus tax",
+          "earn": "AWS Certified AI Practitioner (valid 3 years)"
+        },
+        {
+          "id": "dea",
+          "name": "AWS Certified Data Engineer – Associate (DEA-C01)",
+          "date": "2028-02-05",
+          "cost": "US$150 plus tax",
+          "earn": "AWS Certified Data Engineer – Associate (valid 3 years)"
+        },
+        {
+          "id": "mla",
+          "name": "AWS Certified Machine Learning Engineer – Associate (MLA-C01)",
+          "date": "2028-03-04",
+          "cost": "US$150 plus tax",
+          "earn": "AWS Certified Machine Learning Engineer – Associate (valid 3 years)"
+        },
+        {
+          "id": "aip",
+          "name": "AWS Certified Generative AI Developer – Professional (AIP-C01)",
+          "date": "2028-03-25",
+          "cost": "US$300 plus tax (confirm)",
+          "earn": "AWS Certified Generative AI Developer – Professional (valid 3 years)"
+        }
+      ]
+    },
+    {
+      "n": 10,
+      "name": "Remote career launch and the elite audit",
+      "tag": "Capstone",
+      "start": "2028-03-27",
+      "end": "2028-06-04",
+      "hours": 140,
+      "tasks": [
+        "Portfolio page live",
+        "Project 10: FinOps case study published",
+        "CV rewritten in achievement style",
+        "Ten applications a week for four weeks logged",
+        "Three mock interviews completed",
+        "Two payment routes opened and tested with small amounts",
+        "Visa options researched for two countries",
+        "Applied to AWS Community Builders",
+        "Elite audit completed and signed off"
+      ],
+      "exams": [
+        {
+          "id": "a10_audit",
+          "name": "Checkpoint 10: the elite audit, portfolio and mock interview review",
+          "date": "2028-06-03",
           "cost": "Free",
-          "earn": "MLOps Zoomcamp certificate"
+          "earn": "Capstone signed off by your mentor"
         }
       ]
     }
